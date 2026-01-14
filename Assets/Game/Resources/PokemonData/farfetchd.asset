@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: farfetchd
+  m_EditorClassIdentifier: 
+  pokemonName: "Farfetch\u2019d"
+  description: 
+  frontSprite: {fileID: 21300000, guid: 1e25ce8201118cf47b8cc7d8deeff27a, type: 3}
+  backSprite: {fileID: 21300000, guid: d38e6ed4cdedae64c99c26fc4bc0cdfa, type: 3}
+  type1: 1
+  type2: 10
+  MaxHp: 52
+  Attack: 90
+  Defense: 55
+  SpAttack: 58
+  SpDefense: 62
+  Speed: 60
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 590248e45e757744fb3fe9c7f520c2bf, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 33142d68f02ea934c86e46f20ad0f52d, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: ecca6129397e24f4fae68bf25be52c30, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 159d3b34fde15bd439dd87b7ca3da9a2, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6c5d32dc0e991c24e8b64945338a77b5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: fe5be24e281afc24b8b749c6408bd697, type: 2}
+    level: 7
+  - move: {fileID: 11400000, guid: 3a9ea8fca492ff64c8b5ff0418b7a6ce, type: 2}
+    level: 9
+  - move: {fileID: 11400000, guid: c6ba9eed4a44f1848b5d33a83717c26c, type: 2}
+    level: 9
+  - move: {fileID: 11400000, guid: fab1a5d2c396bdf41af1fad1e70c11d4, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: b204d8d5d0d979442a21a0abb40491f6, type: 2}
+    level: 19
+  - move: {fileID: 11400000, guid: f0c4e97fd24db4449af5805494d188ba, type: 2}
+    level: 21
+  - move: {fileID: 11400000, guid: 7c1bf20693dd35745a8a0454b0e5fb83, type: 2}
+    level: 25
+  - move: {fileID: 11400000, guid: a39b61c4947f22a418f97e62538a089e, type: 2}
+    level: 31
+  - move: {fileID: 11400000, guid: 3b0aa0a6b7f94e04c8d5016095fae649, type: 2}
+    level: 33
+  - move: {fileID: 11400000, guid: 6d17210eb5582bd4ea0f480d80d14dfd, type: 2}
+    level: 35
+  - move: {fileID: 11400000, guid: 3d94430411029da48be7d85c7f6e44fa, type: 2}
+    level: 37
+  - move: {fileID: 11400000, guid: 2ce577429b1389243a2d0407a88782ba, type: 2}
+    level: 37
+  - move: {fileID: 11400000, guid: b6c4868dbcc5f6440a668dc6623963d7, type: 2}
+    level: 43
+  - move: {fileID: 11400000, guid: cd8b538370ba1e04bb63cc3afde9d169, type: 2}
+    level: 55

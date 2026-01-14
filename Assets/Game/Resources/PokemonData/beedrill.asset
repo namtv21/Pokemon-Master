@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: beedrill
+  m_EditorClassIdentifier: 
+  pokemonName: Beedrill
+  description: 
+  frontSprite: {fileID: 21300000, guid: e0c245932e4f1f24ab9d391cf9537542, type: 3}
+  backSprite: {fileID: 21300000, guid: 44c69f6e1b3596444a84b85af66baaa7, type: 3}
+  type1: 12
+  type2: 8
+  MaxHp: 65
+  Attack: 90
+  Defense: 40
+  SpAttack: 45
+  SpDefense: 80
+  Speed: 75
+  learnableMoves:
+  - move: {fileID: 11400000, guid: fe5be24e281afc24b8b749c6408bd697, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: e980a95a2bd50674289a35edc6cd01da, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6bc249777bb3f1f468fe74850111e50f, type: 2}
+    level: 14
+  - move: {fileID: 11400000, guid: 4412911dd2198f6449619cb61daa6dc6, type: 2}
+    level: 17
+  - move: {fileID: 11400000, guid: e1ad1c9a77b768746b6358082d95a884, type: 2}
+    level: 23
+  - move: {fileID: 11400000, guid: 9a6547082124a55429d96e34960d57b5, type: 2}
+    level: 26
+  - move: {fileID: 11400000, guid: 510dc1467b8a02a46bd363d0ecc1f45d, type: 2}
+    level: 28
+  - move: {fileID: 11400000, guid: a39b61c4947f22a418f97e62538a089e, type: 2}
+    level: 31
+  - move: {fileID: 11400000, guid: 33142d68f02ea934c86e46f20ad0f52d, type: 2}
+    level: 35
+  - move: {fileID: 11400000, guid: 6424cd61d42b535488e2827d7a3500cb, type: 2}
+    level: 44

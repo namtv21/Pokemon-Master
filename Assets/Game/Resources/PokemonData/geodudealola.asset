@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: geodudealola
+  m_EditorClassIdentifier: 
+  pokemonName: Geodude-Alola
+  description: 
+  frontSprite: {fileID: 21300000, guid: 301d55c0b34756542bf23c5434021e94, type: 3}
+  backSprite: {fileID: 21300000, guid: 47d45c77379b7c14785334143b46209d, type: 3}
+  type1: 13
+  type2: 4
+  MaxHp: 40
+  Attack: 80
+  Defense: 100
+  SpAttack: 30
+  SpDefense: 30
+  Speed: 20
+  learnableMoves:
+  - move: {fileID: 11400000, guid: c063422a03426a844aefe5d9930f851e, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: cfec46789251e054f8a8c084d896c3bb, type: 2}
+    level: 10
+  - move: {fileID: 11400000, guid: 3a805edef0b594d4a84ff98a3cab2402, type: 2}
+    level: 12
+  - move: {fileID: 11400000, guid: 36f0a08bb0b300c4fa6bcb3170fa3926, type: 2}
+    level: 16
+  - move: {fileID: 11400000, guid: 4e2c0e9ef8bbe674eaa593e692ef3586, type: 2}
+    level: 18
+  - move: {fileID: 11400000, guid: 11d34946a74b8a14c86e79a5dcb6a804, type: 2}
+    level: 22
+  - move: {fileID: 11400000, guid: 40a681017e9fe244c885b88f18c06ebd, type: 2}
+    level: 30
+  - move: {fileID: 11400000, guid: 4ee6e796f0ab40e46b4a9b4d7f0a3d80, type: 2}
+    level: 34
+  - move: {fileID: 11400000, guid: 7d8dda4677a0a5f498cf45da24d28ab9, type: 2}
+    level: 36
+  - move: {fileID: 11400000, guid: e496f6c618ec32747bb955dabc343e88, type: 2}
+    level: 40
+  - move: {fileID: 11400000, guid: 5fd00157f771e7a469e4a61b38bd1f82, type: 2}
+    level: 42

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: shellder
+  m_EditorClassIdentifier: 
+  pokemonName: Shellder
+  description: 
+  frontSprite: {fileID: 21300000, guid: c8ae0068beff3d043b8080b856e118a7, type: 3}
+  backSprite: {fileID: 21300000, guid: fc6ed382207cacf43aea5b75408f8c0b, type: 3}
+  type1: 3
+  type2: 0
+  MaxHp: 30
+  Attack: 65
+  Defense: 100
+  SpAttack: 45
+  SpDefense: 25
+  Speed: 40
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 017b19522ce46664c81ac8803892f6a3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: c5615cf703e508e4bbcb0e81c222c205, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 57030b10f07de364e902e15bbdff816e, type: 2}
+    level: 8
+  - move: {fileID: 11400000, guid: 290047cb7db951e4eaf322306484b98c, type: 2}
+    level: 8
+  - move: {fileID: 11400000, guid: fa8f01f1a06e3cb48b94534414613880, type: 2}
+    level: 8
+  - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
+    level: 12
+  - move: {fileID: 11400000, guid: e926e8f533503184dba296b838f5c22f, type: 2}
+    level: 16
+  - move: {fileID: 11400000, guid: dbc079ba0af8b56499aa70ea8b4218ad, type: 2}
+    level: 16
+  - move: {fileID: 11400000, guid: 03333aaff66b83a448c60d0820c1f2c4, type: 2}
+    level: 17
+  - move: {fileID: 11400000, guid: b10f05ab44d46c044b59b080684a4d8c, type: 2}
+    level: 25
+  - move: {fileID: 11400000, guid: 5b1ae84558c30c645bfb47a1c6ed2681, type: 2}
+    level: 32
+  - move: {fileID: 11400000, guid: 3e5a5cc5ea929a549bc1967e285fcf55, type: 2}
+    level: 40
+  - move: {fileID: 11400000, guid: 32fb9852f075eb34e9f3d72a121ff027, type: 2}
+    level: 44
+  - move: {fileID: 11400000, guid: 00970f72f2b898344aa0272d8cccf280, type: 2}
+    level: 48

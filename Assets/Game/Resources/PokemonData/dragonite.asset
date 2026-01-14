@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: dragonite
+  m_EditorClassIdentifier: 
+  pokemonName: Dragonite
+  description: 
+  frontSprite: {fileID: 21300000, guid: aa253cb566ff82d4aad7a2104cb5c462, type: 3}
+  backSprite: {fileID: 21300000, guid: 4433e315c0356dc47940113f9fdcbb35, type: 3}
+  type1: 15
+  type2: 10
+  MaxHp: 91
+  Attack: 134
+  Defense: 95
+  SpAttack: 100
+  SpDefense: 100
+  Speed: 80
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 342f658993e99e44a8d5331a3643a8d5, type: 2}
+    level: 0
+  - move: {fileID: 11400000, guid: 540c81d2a832817459069415c40c3862, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 2256b8c0a09df494487e26ba1370b51e, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 11d34946a74b8a14c86e79a5dcb6a804, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: f7c7d99ee8389f54e87ae6d423506004, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 591aeb30ee07c20468d177d1eb10a60a, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 2edb6ac2b1bcae642883f3a8b01766fd, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: bbbb8a79f0a76504b9c964deb78fcdfe, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6e121414dc8e1da4cb68039549335d62, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: a39b61c4947f22a418f97e62538a089e, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: eef4c619e673da14f941e39ea075d5e5, type: 2}
+    level: 21
+  - move: {fileID: 11400000, guid: 9044c388256f7a0479bdcde872d633ec, type: 2}
+    level: 33
+  - move: {fileID: 11400000, guid: 004644743511e2f42b65e0804db9ce37, type: 2}
+    level: 39
+  - move: {fileID: 11400000, guid: a8998bf09aa73644981f019bbba682bc, type: 2}
+    level: 41
+  - move: {fileID: 11400000, guid: 74248fa532ebddb47947db5edaa9eafc, type: 2}
+    level: 73

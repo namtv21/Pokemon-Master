@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: nidoqueen
+  m_EditorClassIdentifier: 
+  pokemonName: Nidoqueen
+  description: 
+  frontSprite: {fileID: 21300000, guid: 3db1c07020e87e54e8d6d42a5fb10a9f, type: 3}
+  backSprite: {fileID: 21300000, guid: 4bc9832c8fccd0042a12751a522ef317, type: 3}
+  type1: 8
+  type2: 9
+  MaxHp: 90
+  Attack: 92
+  Defense: 87
+  SpAttack: 75
+  SpDefense: 85
+  Speed: 76
+  learnableMoves:
+  - move: {fileID: 11400000, guid: cd5323bededd4a54d960f5a88d2a9261, type: 2}
+    level: 0
+  - move: {fileID: 11400000, guid: 77cefdbcb4afee544b09c8d3278ccce3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 238c53ce48b414d428c60341b471f113, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 2b32ddaea99d18e4b97a8be4d91526c9, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 4881a954dd7e9944a99f2d1558c08d0f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: c663dcba04afc7e4aa464c48c3639068, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: f8656ea407699464188f9bc088726e8a, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6f06b53dade7c3845b4526356002f00f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62eb808afeac32348b4cd925896c8028, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6907ef8c4109b5647888b1f07dbffbf5, type: 2}
+    level: 22
+  - move: {fileID: 11400000, guid: c80e705910412c84d9862a1a1271d776, type: 2}
+    level: 23

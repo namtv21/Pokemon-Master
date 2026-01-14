@@ -1,0 +1,28 @@
+{
+    "partyPokemons": [
+        {
+            "name": "Pikachu",
+            "level": 5,
+            "currentHP": 13,
+            "maxHP": 13,
+            "exp": 0,
+            "moves": [
+                "Quick Attack",
+                "Tail Whip",
+                "Thunder Shock",
+                "Thunder Wave"
+            ],
+            "attack": 10,
+            "defense": 9,
+            "spAttack": 10,
+            "spDefense": 10,
+            "speed": 14
+        }
+    ],
+    "storagePokemons": [],
+    "money": 200,
+    "sceneName": "Town01",
+    "playerX": -0.5,
+    "playerY": 2.200000047683716,
+    "playerZ": 0.0
+}

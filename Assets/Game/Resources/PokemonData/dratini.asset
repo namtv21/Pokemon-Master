@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: dratini
+  m_EditorClassIdentifier: 
+  pokemonName: Dratini
+  description: 
+  frontSprite: {fileID: 21300000, guid: 6c34357b8d334f241a7edaf59f574421, type: 3}
+  backSprite: {fileID: 21300000, guid: ea7e05f93413a9c4182a2a1ce6facf63, type: 3}
+  type1: 15
+  type2: 0
+  MaxHp: 41
+  Attack: 64
+  Defense: 45
+  SpAttack: 50
+  SpDefense: 50
+  Speed: 50
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: bbbb8a79f0a76504b9c964deb78fcdfe, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: f7c7d99ee8389f54e87ae6d423506004, type: 2}
+    level: 5
+  - move: {fileID: 11400000, guid: 591aeb30ee07c20468d177d1eb10a60a, type: 2}
+    level: 5
+  - move: {fileID: 11400000, guid: 6e121414dc8e1da4cb68039549335d62, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: a39b61c4947f22a418f97e62538a089e, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: eef4c619e673da14f941e39ea075d5e5, type: 2}
+    level: 21
+  - move: {fileID: 11400000, guid: 9044c388256f7a0479bdcde872d633ec, type: 2}
+    level: 31
+  - move: {fileID: 11400000, guid: 004644743511e2f42b65e0804db9ce37, type: 2}
+    level: 35
+  - move: {fileID: 11400000, guid: a8998bf09aa73644981f019bbba682bc, type: 2}
+    level: 50
+  - move: {fileID: 11400000, guid: 74248fa532ebddb47947db5edaa9eafc, type: 2}
+    level: 55

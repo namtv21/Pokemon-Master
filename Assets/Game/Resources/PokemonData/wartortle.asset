@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: wartortle
+  m_EditorClassIdentifier: 
+  pokemonName: Wartortle
+  description: 
+  frontSprite: {fileID: 21300000, guid: cbdfee53cee314d4694598d7322671f5, type: 3}
+  backSprite: {fileID: 21300000, guid: 785de75c24e3365419e98f58b238c188, type: 3}
+  type1: 3
+  type2: 0
+  MaxHp: 59
+  Attack: 63
+  Defense: 80
+  SpAttack: 65
+  SpDefense: 80
+  Speed: 58
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 959820f8ddaa2074abe27deaf66388c1, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62eb808afeac32348b4cd925896c8028, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 017b19522ce46664c81ac8803892f6a3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: c5615cf703e508e4bbcb0e81c222c205, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 8e6ec01c4cc89f245a1595e3d9a073d2, type: 2}
+    level: 9
+  - move: {fileID: 11400000, guid: 77cefdbcb4afee544b09c8d3278ccce3, type: 2}
+    level: 12
+  - move: {fileID: 11400000, guid: 77d1893c9e046fe45a386064624bfb52, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: e926e8f533503184dba296b838f5c22f, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: 9044c388256f7a0479bdcde872d633ec, type: 2}
+    level: 30
+  - move: {fileID: 11400000, guid: 5edfd6c02f90f8d42920b25b66e322d9, type: 2}
+    level: 36
+  - move: {fileID: 11400000, guid: 00970f72f2b898344aa0272d8cccf280, type: 2}
+    level: 44

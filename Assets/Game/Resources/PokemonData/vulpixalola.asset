@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: vulpixalola
+  m_EditorClassIdentifier: 
+  pokemonName: Vulpix-Alola
+  description: 
+  frontSprite: {fileID: 21300000, guid: 7033f882b7ac01645949348121bd708b, type: 3}
+  backSprite: {fileID: 21300000, guid: 002c8b1cc6fb0fa43a059a37b16fc83f, type: 3}
+  type1: 6
+  type2: 0
+  MaxHp: 38
+  Attack: 41
+  Defense: 40
+  SpAttack: 50
+  SpDefense: 65
+  Speed: 65
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 097b537ddf892294abf28d78eb5bc430, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62eb808afeac32348b4cd925896c8028, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 57030b10f07de364e902e15bbdff816e, type: 2}
+    level: 8
+  - move: {fileID: 11400000, guid: 4f73abc6bb514aa49bb0d7eb9f33bbfe, type: 2}
+    level: 12
+  - move: {fileID: 11400000, guid: 50cca9f5420d0c24e9e63add552439aa, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: b9871c8d119e89948b6f33b00563835e, type: 2}
+    level: 18
+  - move: {fileID: 11400000, guid: 96fd45c526e12304a9f0761721a515dd, type: 2}
+    level: 23
+  - move: {fileID: 11400000, guid: 03333aaff66b83a448c60d0820c1f2c4, type: 2}
+    level: 24
+  - move: {fileID: 11400000, guid: c951b3ca23ad9b941badd279748907e2, type: 2}
+    level: 26
+  - move: {fileID: 11400000, guid: bcbfe0360f0deac459e06804ce55abe3, type: 2}
+    level: 28
+  - move: {fileID: 11400000, guid: 3e5a5cc5ea929a549bc1967e285fcf55, type: 2}
+    level: 32
+  - move: {fileID: 11400000, guid: 0a3b8595f68b936479b8f664c3401ca3, type: 2}
+    level: 42

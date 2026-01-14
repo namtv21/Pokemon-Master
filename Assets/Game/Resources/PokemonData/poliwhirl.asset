@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: poliwhirl
+  m_EditorClassIdentifier: 
+  pokemonName: Poliwhirl
+  description: 
+  frontSprite: {fileID: 21300000, guid: 7eb8f6256e0bd244bb162ab1706bd65b, type: 3}
+  backSprite: {fileID: 21300000, guid: 94b701906abdd374e80b221794fc6bfd, type: 3}
+  type1: 3
+  type2: 0
+  MaxHp: 65
+  Attack: 65
+  Defense: 65
+  SpAttack: 50
+  SpDefense: 50
+  Speed: 90
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 959820f8ddaa2074abe27deaf66388c1, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 1aac4c369ddd2784c8b785c757ee8994, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: b8b611e5a97a70242b17f7b8344337c4, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 26c2f0f3b8de511448936625c1e5b3cb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 017b19522ce46664c81ac8803892f6a3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 80b4b1b9465e0ca458786c0b8dd582c8, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: 5990984caa817ed4c84ea751e3420f19, type: 2}
+    level: 18
+  - move: {fileID: 11400000, guid: 6907ef8c4109b5647888b1f07dbffbf5, type: 2}
+    level: 21
+  - move: {fileID: 11400000, guid: 4881a954dd7e9944a99f2d1558c08d0f, type: 2}
+    level: 40
+  - move: {fileID: 11400000, guid: 8dc561dc9fb06544190dc853f1284be0, type: 2}
+    level: 43
+  - move: {fileID: 11400000, guid: 00970f72f2b898344aa0272d8cccf280, type: 2}
+    level: 48
+  - move: {fileID: 11400000, guid: 0d260db59f046d24691d424da9af9c60, type: 2}
+    level: 53
+  - move: {fileID: 11400000, guid: e496f6c618ec32747bb955dabc343e88, type: 2}
+    level: 66

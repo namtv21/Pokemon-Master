@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: mrmime
+  m_EditorClassIdentifier: 
+  pokemonName: Mr. Mime
+  description: 
+  frontSprite: {fileID: 21300000, guid: a589781fcb09b2e4fbae45acbf198f15, type: 3}
+  backSprite: {fileID: 21300000, guid: 2f1bc5c8b66237142b086636f19bc3b1, type: 3}
+  type1: 11
+  type2: 18
+  MaxHp: 40
+  Attack: 45
+  Defense: 65
+  SpAttack: 100
+  SpDefense: 120
+  Speed: 90
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 224bd97601c6c9047b1d6e820f96aec3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: cabd6d1a52bfaa64e99cfff71f13bea5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 26c2f0f3b8de511448936625c1e5b3cb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 006372f3c59042d49b5b568287bec9e9, type: 2}
+    level: 8
+  - move: {fileID: 11400000, guid: 80b4b1b9465e0ca458786c0b8dd582c8, type: 2}
+    level: 11
+  - move: {fileID: 11400000, guid: e926e8f533503184dba296b838f5c22f, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: 37229a41a5b65604eb1901844a144784, type: 2}
+    level: 25
+  - move: {fileID: 11400000, guid: 237719c8cb0509345a0bd08b39cf0baf, type: 2}
+    level: 39
+  - move: {fileID: 11400000, guid: 423a6a9b44735d34e9d97095f618ef36, type: 2}
+    level: 40
+  - move: {fileID: 11400000, guid: 31da1ab1592b9924a833ef7290eee89f, type: 2}
+    level: 44

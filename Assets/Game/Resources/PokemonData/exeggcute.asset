@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: exeggcute
+  m_EditorClassIdentifier: 
+  pokemonName: Exeggcute
+  description: 
+  frontSprite: {fileID: 21300000, guid: a6eba97c9616eee4997f90a7cd4976a5, type: 3}
+  backSprite: {fileID: 21300000, guid: b2e95c964a2067044a3782d4b0345893, type: 3}
+  type1: 5
+  type2: 11
+  MaxHp: 60
+  Attack: 40
+  Defense: 80
+  SpAttack: 60
+  SpDefense: 45
+  Speed: 40
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 7461b30f495f6dd489acd502d39ba1e9, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 8a2493f072908bd49ba0d058ea076dee, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 1aac4c369ddd2784c8b785c757ee8994, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: d78077f30527c434a811241981d9201c, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: d30e9695208659443b9d70267c52fc89, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: 7f99869c99e876c4eb1d891f17f9a756, type: 2}
+    level: 17
+  - move: {fileID: 11400000, guid: 224bd97601c6c9047b1d6e820f96aec3, type: 2}
+    level: 19
+  - move: {fileID: 11400000, guid: 08e44856acca65f45b41aa3f12a1e320, type: 2}
+    level: 21
+  - move: {fileID: 11400000, guid: 21c1a6a36c0ae8c4bac2b70e84b68cdd, type: 2}
+    level: 23
+  - move: {fileID: 11400000, guid: 3c517801cc974aa45baac7c2f2038d63, type: 2}
+    level: 35
+  - move: {fileID: 11400000, guid: bcbfe0360f0deac459e06804ce55abe3, type: 2}
+    level: 40
+  - move: {fileID: 11400000, guid: 9b734255591c43e49a172cd7249d50d5, type: 2}
+    level: 43
+  - move: {fileID: 11400000, guid: 237719c8cb0509345a0bd08b39cf0baf, type: 2}
+    level: 47

@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: electabuzz
+  m_EditorClassIdentifier: 
+  pokemonName: Electabuzz
+  description: 
+  frontSprite: {fileID: 21300000, guid: a0dffbbcc9348474b8a8a964a7a5ac95, type: 3}
+  backSprite: {fileID: 21300000, guid: 6b46e22ebad843d4ea3facf82a9bb818, type: 3}
+  type1: 4
+  type2: 0
+  MaxHp: 65
+  Attack: 83
+  Defense: 57
+  SpAttack: 95
+  SpDefense: 85
+  Speed: 105
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6fc2d68d1ff67a447b0367fb15b1c35a, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 11d34946a74b8a14c86e79a5dcb6a804, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 04c82d3a407de8b4db078420913c9278, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6ca5edd83e8be3b4e96e543c017f871f, type: 2}
+    level: 12
+  - move: {fileID: 11400000, guid: bb43d3f25943a14489c644b58989b423, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: f7c7d99ee8389f54e87ae6d423506004, type: 2}
+    level: 19
+  - move: {fileID: 11400000, guid: 16e0634bd65803c47babc9aa83833434, type: 2}
+    level: 24
+  - move: {fileID: 11400000, guid: 4ee6e796f0ab40e46b4a9b4d7f0a3d80, type: 2}
+    level: 34
+  - move: {fileID: 11400000, guid: eb3f1921cd91e8d4b9afe23fa2e1855c, type: 2}
+    level: 43
+  - move: {fileID: 11400000, guid: 44895595fa4afe541a43828bd8021441, type: 2}
+    level: 55
+  - move: {fileID: 11400000, guid: aa6ef7b32db8fb7409883f6dfa059859, type: 2}
+    level: 64

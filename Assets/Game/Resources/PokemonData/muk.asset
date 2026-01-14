@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: muk
+  m_EditorClassIdentifier: 
+  pokemonName: Muk
+  description: 
+  frontSprite: {fileID: 21300000, guid: 0771a14a277b06748b770f81d697d5c6, type: 3}
+  backSprite: {fileID: 21300000, guid: e190153fd26398648b8074c835947ee7, type: 3}
+  type1: 8
+  type2: 0
+  MaxHp: 105
+  Attack: 105
+  Defense: 75
+  SpAttack: 65
+  SpDefense: 100
+  Speed: 50
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 4181e9376aadffa4cabb13845d245783, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 2b2094182d93bc547b2174b389cf158a, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 973eea0eeae042849b9623e3fb725bef, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 26c2f0f3b8de511448936625c1e5b3cb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: c3163e33a47125c4e952a22d26352e87, type: 2}
+    level: 13
+  - move: {fileID: 11400000, guid: 0d260db59f046d24691d424da9af9c60, type: 2}
+    level: 18
+  - move: {fileID: 11400000, guid: 16e0634bd65803c47babc9aa83833434, type: 2}
+    level: 26
+  - move: {fileID: 11400000, guid: 4f4e463f918eaee4f871cd6ec74db114, type: 2}
+    level: 26
+  - move: {fileID: 11400000, guid: 6a3b195684e69e94babdda86c2dd4b59, type: 2}
+    level: 32
+  - move: {fileID: 11400000, guid: ce19ae76cd1ba5e40809ee1d0aacc5dd, type: 2}
+    level: 34
+  - move: {fileID: 11400000, guid: f3278d4c90433064f84acf241305512d, type: 2}
+    level: 40
+  - move: {fileID: 11400000, guid: a0a06b68b8874a743b457a0ca3b59da6, type: 2}
+    level: 52

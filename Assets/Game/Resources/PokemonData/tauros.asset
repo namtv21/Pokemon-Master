@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: tauros
+  m_EditorClassIdentifier: 
+  pokemonName: Tauros
+  description: 
+  frontSprite: {fileID: 21300000, guid: 7f1b505f4069ed54cb73079d7c754168, type: 3}
+  backSprite: {fileID: 21300000, guid: 6f0c9cb727116474fbc6a3bc38993b14, type: 3}
+  type1: 1
+  type2: 0
+  MaxHp: 75
+  Attack: 100
+  Defense: 95
+  SpAttack: 40
+  SpDefense: 70
+  Speed: 110
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62eb808afeac32348b4cd925896c8028, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6bc249777bb3f1f468fe74850111e50f, type: 2}
+    level: 4
+  - move: {fileID: 11400000, guid: 86e70bb2993f8dc47b5c2ce0599c0703, type: 2}
+    level: 8
+  - move: {fileID: 11400000, guid: b9871c8d119e89948b6f33b00563835e, type: 2}
+    level: 10
+  - move: {fileID: 11400000, guid: 9a6547082124a55429d96e34960d57b5, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: 4412911dd2198f6449619cb61daa6dc6, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: 6f88fa17d442e2046b93bf045442c644, type: 2}
+    level: 29
+  - move: {fileID: 11400000, guid: b015132f9e281df419ecb76847e4b227, type: 2}
+    level: 35
+  - move: {fileID: 11400000, guid: 9e37829d0711ec74087da73df370cab4, type: 2}
+    level: 43
+  - move: {fileID: 11400000, guid: e496f6c618ec32747bb955dabc343e88, type: 2}
+    level: 55
+  - move: {fileID: 11400000, guid: aa6ef7b32db8fb7409883f6dfa059859, type: 2}
+    level: 55

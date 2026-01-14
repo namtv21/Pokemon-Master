@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: voltorb
+  m_EditorClassIdentifier: 
+  pokemonName: Voltorb
+  description: 
+  frontSprite: {fileID: 21300000, guid: 3e7301a2ec37ee44cbf655ac0bafc95e, type: 3}
+  backSprite: {fileID: 21300000, guid: 37a783df76f758840a80a3ee7cc7e8e8, type: 3}
+  type1: 4
+  type2: 0
+  MaxHp: 40
+  Attack: 30
+  Defense: 50
+  SpAttack: 55
+  SpDefense: 55
+  Speed: 100
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 16e0634bd65803c47babc9aa83833434, type: 2}
+    level: 8
+  - move: {fileID: 11400000, guid: 3a805edef0b594d4a84ff98a3cab2402, type: 2}
+    level: 9
+  - move: {fileID: 11400000, guid: cfec46789251e054f8a8c084d896c3bb, type: 2}
+    level: 11
+  - move: {fileID: 11400000, guid: 7929092ef1608084b81c7fc34cd2262b, type: 2}
+    level: 16
+  - move: {fileID: 11400000, guid: 6ca5edd83e8be3b4e96e543c017f871f, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: 4ee6e796f0ab40e46b4a9b4d7f0a3d80, type: 2}
+    level: 37
+  - move: {fileID: 11400000, guid: 7d8dda4677a0a5f498cf45da24d28ab9, type: 2}
+    level: 41

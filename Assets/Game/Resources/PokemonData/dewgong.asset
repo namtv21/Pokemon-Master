@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: dewgong
+  m_EditorClassIdentifier: 
+  pokemonName: Dewgong
+  description: 
+  frontSprite: {fileID: 21300000, guid: 20dc68bfcebce354ea78678c43129c43, type: 3}
+  backSprite: {fileID: 21300000, guid: e1f022a217d2bf14ea360bd61aeb72a4, type: 3}
+  type1: 3
+  type2: 6
+  MaxHp: 90
+  Attack: 70
+  Defense: 80
+  SpAttack: 70
+  SpDefense: 95
+  Speed: 70
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 03333aaff66b83a448c60d0820c1f2c4, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 31953322f91d2af4fa2be99de2c4ba63, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 50cca9f5420d0c24e9e63add552439aa, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 16e04f09a53fc0d42bcf0169c6c9f7eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 57030b10f07de364e902e15bbdff816e, type: 2}
+    level: 17
+  - move: {fileID: 11400000, guid: 22deba9b8a72f53419a952da8f093dcc, type: 2}
+    level: 31
+  - move: {fileID: 11400000, guid: 32fb9852f075eb34e9f3d72a121ff027, type: 2}
+    level: 33
+  - move: {fileID: 11400000, guid: b015132f9e281df419ecb76847e4b227, type: 2}
+    level: 37
+  - move: {fileID: 11400000, guid: 785094e0aaa5d3a4b872ed0138e4ecfd, type: 2}
+    level: 41
+  - move: {fileID: 11400000, guid: 9044c388256f7a0479bdcde872d633ec, type: 2}
+    level: 43
+  - move: {fileID: 11400000, guid: 3e5a5cc5ea929a549bc1967e285fcf55, type: 2}
+    level: 47

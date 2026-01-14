@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: golbat
+  m_EditorClassIdentifier: 
+  pokemonName: Golbat
+  description: 
+  frontSprite: {fileID: 21300000, guid: 60b9e1d32ca38774388bc3bb4d68208f, type: 3}
+  backSprite: {fileID: 21300000, guid: 3a29969ac560d8546a6ab76ab7560a08, type: 3}
+  type1: 8
+  type2: 10
+  MaxHp: 75
+  Attack: 80
+  Defense: 70
+  SpAttack: 65
+  SpDefense: 75
+  Speed: 90
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 7461b30f495f6dd489acd502d39ba1e9, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 840cdbf3248c03b40875daaab4c2c2de, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 77cefdbcb4afee544b09c8d3278ccce3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 64f47dd5e53dc3b42b55caad299f8407, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 16e0634bd65803c47babc9aa83833434, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: fa8f01f1a06e3cb48b94534414613880, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 2edb6ac2b1bcae642883f3a8b01766fd, type: 2}
+    level: 13
+  - move: {fileID: 11400000, guid: c9c362924af9cfe45a2f5e8738bc3d55, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: 4f73abc6bb514aa49bb0d7eb9f33bbfe, type: 2}
+    level: 17
+  - move: {fileID: 11400000, guid: f0c4e97fd24db4449af5805494d188ba, type: 2}
+    level: 19
+  - move: {fileID: 11400000, guid: 6ca5edd83e8be3b4e96e543c017f871f, type: 2}
+    level: 24
+  - move: {fileID: 11400000, guid: 2ce577429b1389243a2d0407a88782ba, type: 2}
+    level: 33
+  - move: {fileID: 11400000, guid: e1ad1c9a77b768746b6358082d95a884, type: 2}
+    level: 43
+  - move: {fileID: 11400000, guid: 3d94430411029da48be7d85c7f6e44fa, type: 2}
+    level: 48

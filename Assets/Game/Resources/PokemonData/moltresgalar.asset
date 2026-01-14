@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: moltresgalar
+  m_EditorClassIdentifier: 
+  pokemonName: Moltres-Galar
+  description: 
+  frontSprite: {fileID: 21300000, guid: 0c3b31b571df85f4cb84148f2a270091, type: 3}
+  backSprite: {fileID: 21300000, guid: 8c7c916d251069640b74ca79ab21a875, type: 3}
+  type1: 16
+  type2: 10
+  MaxHp: 90
+  Attack: 85
+  Defense: 90
+  SpAttack: 100
+  SpDefense: 125
+  Speed: 90
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 06b4528290dba8146b4346412f05569f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: b9871c8d119e89948b6f33b00563835e, type: 2}
+    level: 5
+  - move: {fileID: 11400000, guid: 2edb6ac2b1bcae642883f3a8b01766fd, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: a39b61c4947f22a418f97e62538a089e, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: c40cf627fc3b7684a9ae1de302e82ee5, type: 2}
+    level: 25
+  - move: {fileID: 11400000, guid: 423a6a9b44735d34e9d97095f618ef36, type: 2}
+    level: 30
+  - move: {fileID: 11400000, guid: 3d94430411029da48be7d85c7f6e44fa, type: 2}
+    level: 35
+  - move: {fileID: 11400000, guid: 2b21763a4ac355048b8c4261b261795f, type: 2}
+    level: 45
+  - move: {fileID: 11400000, guid: 342f658993e99e44a8d5331a3643a8d5, type: 2}
+    level: 55
+  - move: {fileID: 11400000, guid: 7fea54f84c3ddc743a04274ecfdd6c90, type: 2}
+    level: 70

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: arcanine
+  m_EditorClassIdentifier: 
+  pokemonName: Arcanine
+  description: 
+  frontSprite: {fileID: 21300000, guid: dfa9dcb100feb434e93f8475a9ce29cd, type: 3}
+  backSprite: {fileID: 21300000, guid: df8b788e77bf7bd40881987ce8018b50, type: 3}
+  type1: 2
+  type2: 0
+  MaxHp: 90
+  Attack: 110
+  Defense: 80
+  SpAttack: 100
+  SpDefense: 80
+  Speed: 95
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 540c81d2a832817459069415c40c3862, type: 2}
+    level: 0
+  - move: {fileID: 11400000, guid: a39b61c4947f22a418f97e62538a089e, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 77cefdbcb4afee544b09c8d3278ccce3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: acd589d428a9b574ab53dad2c0326910, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 238c53ce48b414d428c60341b471f113, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: beac49ccdf5984d48b1f77b88fd7e1ca, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 39385cce24d6cd44a9c0395b09428967, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: a42cdd354fe20f94a8a56eeb81e0a81d, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: b5cc01b989cda5e42a3c3f188cdf43ce, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: c141d14902951864886f87d9b792c0c6, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: d2098d30d91ec33468171f9ba1887e8c, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 7d3c09f5c3452a844a8f62285b8c0948, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: b015132f9e281df419ecb76847e4b227, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 95afd95a346d8d74cace3046118d6d96, type: 2}
+    level: 1

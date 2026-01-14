@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: zapdos
+  m_EditorClassIdentifier: 
+  pokemonName: Zapdos
+  description: 
+  frontSprite: {fileID: 21300000, guid: 609a8a09de5c12f49acee7e578d9b7c3, type: 3}
+  backSprite: {fileID: 21300000, guid: 828d8b493eb807c4aa68346c113ace3a, type: 3}
+  type1: 4
+  type2: 10
+  MaxHp: 90
+  Attack: 90
+  Defense: 85
+  SpAttack: 125
+  SpDefense: 90
+  Speed: 100
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 8ec7bbb91679fd04687e594a9435adda, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 159d3b34fde15bd439dd87b7ca3da9a2, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 04c82d3a407de8b4db078420913c9278, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: f7c7d99ee8389f54e87ae6d423506004, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 480cd86a908ddc448aa753bde124847a, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: fbc5562cacabf174db7f85000797bb41, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: a39b61c4947f22a418f97e62538a089e, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: c40cf627fc3b7684a9ae1de302e82ee5, type: 2}
+    level: 25
+  - move: {fileID: 11400000, guid: 4ee6e796f0ab40e46b4a9b4d7f0a3d80, type: 2}
+    level: 45
+  - move: {fileID: 11400000, guid: 44895595fa4afe541a43828bd8021441, type: 2}
+    level: 55

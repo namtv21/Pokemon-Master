@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: marowak
+  m_EditorClassIdentifier: 
+  pokemonName: Marowak
+  description: 
+  frontSprite: {fileID: 21300000, guid: b8dbe63f29e75ac4394bd7728db5d4a3, type: 3}
+  backSprite: {fileID: 21300000, guid: df0e24c9936f8174eb40614ff266456a, type: 3}
+  type1: 9
+  type2: 0
+  MaxHp: 60
+  Attack: 80
+  Defense: 110
+  SpAttack: 50
+  SpDefense: 80
+  Speed: 45
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 5358517d1620bf04facc09e2ef0591d5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6d17210eb5582bd4ea0f480d80d14dfd, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 31953322f91d2af4fa2be99de2c4ba63, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 2b2094182d93bc547b2174b389cf158a, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62eb808afeac32348b4cd925896c8028, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
+    level: 13
+  - move: {fileID: 11400000, guid: 7d3c09f5c3452a844a8f62285b8c0948, type: 2}
+    level: 16
+  - move: {fileID: 11400000, guid: 8bcf610e5bf9cc346a38816c6a7499d6, type: 2}
+    level: 21
+  - move: {fileID: 11400000, guid: 6bc249777bb3f1f468fe74850111e50f, type: 2}
+    level: 23
+  - move: {fileID: 11400000, guid: 11e3c17ba7aa75143b682c67f1639798, type: 2}
+    level: 24
+  - move: {fileID: 11400000, guid: 5e374b7560d4ae54ea889b506e1fb711, type: 2}
+    level: 31
+  - move: {fileID: 11400000, guid: 9e37829d0711ec74087da73df370cab4, type: 2}
+    level: 33
+  - move: {fileID: 11400000, guid: e496f6c618ec32747bb955dabc343e88, type: 2}
+    level: 53

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: arbok
+  m_EditorClassIdentifier: 
+  pokemonName: Arbok
+  description: 
+  frontSprite: {fileID: 21300000, guid: f63b163751d56704f9bef3889a3e4798, type: 3}
+  backSprite: {fileID: 21300000, guid: 31c9f3220d5b06b4bb50db12ef679a0e, type: 3}
+  type1: 8
+  type2: 0
+  MaxHp: 60
+  Attack: 95
+  Defense: 69
+  SpAttack: 65
+  SpDefense: 79
+  Speed: 80
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 77cefdbcb4afee544b09c8d3278ccce3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 238c53ce48b414d428c60341b471f113, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 39385cce24d6cd44a9c0395b09428967, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: f190f1c7ce02e0f49bf31b1cf33bf94e, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: f8656ea407699464188f9bc088726e8a, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 95afd95a346d8d74cace3046118d6d96, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: bbbb8a79f0a76504b9c964deb78fcdfe, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: fd97b7d49cf999a48a7525e83daaf05b, type: 2}
+    level: 12
+  - move: {fileID: 11400000, guid: 16e0634bd65803c47babc9aa83833434, type: 2}
+    level: 17
+  - move: {fileID: 11400000, guid: 644c71fd54e4b3340a73dd6f1e6b6a30, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: a80487b75389d1c449ec8220554e4a0e, type: 2}
+    level: 32
+  - move: {fileID: 11400000, guid: 0d260db59f046d24691d424da9af9c60, type: 2}
+    level: 34
+  - move: {fileID: 11400000, guid: a0a06b68b8874a743b457a0ca3b59da6, type: 2}
+    level: 48
+  - move: {fileID: 11400000, guid: f3278d4c90433064f84acf241305512d, type: 2}
+    level: 56

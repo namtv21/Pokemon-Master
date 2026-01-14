@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: jolteon
+  m_EditorClassIdentifier: 
+  pokemonName: Jolteon
+  description: 
+  frontSprite: {fileID: 21300000, guid: a61796686d7b9c541b0a9dbff103fb9a, type: 3}
+  backSprite: {fileID: 21300000, guid: 1aa4df26a062fed46bb2fc5627d78562, type: 3}
+  type1: 4
+  type2: 0
+  MaxHp: 65
+  Attack: 65
+  Defense: 60
+  SpAttack: 110
+  SpDefense: 95
+  Speed: 130
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 04c82d3a407de8b4db078420913c9278, type: 2}
+    level: 0
+  - move: {fileID: 11400000, guid: 77cefdbcb4afee544b09c8d3278ccce3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6df84621ba287c64da68d4239af6d4c5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: e496f6c618ec32747bb955dabc343e88, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: b015132f9e281df419ecb76847e4b227, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62eb808afeac32348b4cd925896c8028, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6ca5edd83e8be3b4e96e543c017f871f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 590248e45e757744fb3fe9c7f520c2bf, type: 2}
+    level: 5
+  - move: {fileID: 11400000, guid: 6fc2d68d1ff67a447b0367fb15b1c35a, type: 2}
+    level: 10
+  - move: {fileID: 11400000, guid: 2b32ddaea99d18e4b97a8be4d91526c9, type: 2}
+    level: 17
+  - move: {fileID: 11400000, guid: 95afd95a346d8d74cace3046118d6d96, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: f7c7d99ee8389f54e87ae6d423506004, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: 510dc1467b8a02a46bd363d0ecc1f45d, type: 2}
+    level: 25
+  - move: {fileID: 11400000, guid: a39b61c4947f22a418f97e62538a089e, type: 2}
+    level: 29
+  - move: {fileID: 11400000, guid: 4ee6e796f0ab40e46b4a9b4d7f0a3d80, type: 2}
+    level: 37
+  - move: {fileID: 11400000, guid: 3fa15a1a29c3670418f9b36a6f2d2cbc, type: 2}
+    level: 41
+  - move: {fileID: 11400000, guid: 44895595fa4afe541a43828bd8021441, type: 2}
+    level: 45

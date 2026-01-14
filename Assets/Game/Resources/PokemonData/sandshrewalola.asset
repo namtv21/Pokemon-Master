@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: sandshrewalola
+  m_EditorClassIdentifier: 
+  pokemonName: Sandshrew-Alola
+  description: 
+  frontSprite: {fileID: 21300000, guid: 1cff7c76b0b2acf4495d945f26c9235e, type: 3}
+  backSprite: {fileID: 21300000, guid: 5cd0581023daee04c80251a146619dc7, type: 3}
+  type1: 6
+  type2: 17
+  MaxHp: 50
+  Attack: 75
+  Defense: 90
+  SpAttack: 10
+  SpDefense: 35
+  Speed: 40
+  learnableMoves:
+  - move: {fileID: 11400000, guid: c063422a03426a844aefe5d9930f851e, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6f06b53dade7c3845b4526356002f00f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 097b537ddf892294abf28d78eb5bc430, type: 2}
+    level: 5
+  - move: {fileID: 11400000, guid: 41496cc9aae74b645a2a8a982a798c84, type: 2}
+    level: 7
+  - move: {fileID: 11400000, guid: 8e6ec01c4cc89f245a1595e3d9a073d2, type: 2}
+    level: 9
+  - move: {fileID: 11400000, guid: cfec46789251e054f8a8c084d896c3bb, type: 2}
+    level: 9
+  - move: {fileID: 11400000, guid: 6c5d32dc0e991c24e8b64945338a77b5, type: 2}
+    level: 11
+  - move: {fileID: 11400000, guid: 81ed3b2359074f7449e74e415bcd0241, type: 2}
+    level: 14
+  - move: {fileID: 11400000, guid: 6ca5edd83e8be3b4e96e543c017f871f, type: 2}
+    level: 17
+  - move: {fileID: 11400000, guid: c663dcba04afc7e4aa464c48c3639068, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: b204d8d5d0d979442a21a0abb40491f6, type: 2}
+    level: 26
+  - move: {fileID: 11400000, guid: b8c5e7bf3aa32ee40aa9de62c9c2363f, type: 2}
+    level: 30
+  - move: {fileID: 11400000, guid: 7c1bf20693dd35745a8a0454b0e5fb83, type: 2}
+    level: 38
+  - move: {fileID: 11400000, guid: 0a3b8595f68b936479b8f664c3401ca3, type: 2}
+    level: 45

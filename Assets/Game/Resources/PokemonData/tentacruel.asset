@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: tentacruel
+  m_EditorClassIdentifier: 
+  pokemonName: Tentacruel
+  description: 
+  frontSprite: {fileID: 21300000, guid: 7677bcd0b3f9d124fb098d586d96b0fb, type: 3}
+  backSprite: {fileID: 21300000, guid: f096f374cb129a9438d5a26864cb27cb, type: 3}
+  type1: 3
+  type2: 8
+  MaxHp: 80
+  Attack: 70
+  Defense: 65
+  SpAttack: 80
+  SpDefense: 120
+  Speed: 100
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 644c71fd54e4b3340a73dd6f1e6b6a30, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 017b19522ce46664c81ac8803892f6a3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: fa8f01f1a06e3cb48b94534414613880, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: f8656ea407699464188f9bc088726e8a, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 06b45535f1e196940b18ff5ab35db32c, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: bbbb8a79f0a76504b9c964deb78fcdfe, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 77d1893c9e046fe45a386064624bfb52, type: 2}
+    level: 16
+  - move: {fileID: 11400000, guid: 5990984caa817ed4c84ea751e3420f19, type: 2}
+    level: 19
+  - move: {fileID: 11400000, guid: 16e0634bd65803c47babc9aa83833434, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: a80487b75389d1c449ec8220554e4a0e, type: 2}
+    level: 22
+  - move: {fileID: 11400000, guid: c951b3ca23ad9b941badd279748907e2, type: 2}
+    level: 28
+  - move: {fileID: 11400000, guid: 33142d68f02ea934c86e46f20ad0f52d, type: 2}
+    level: 32
+  - move: {fileID: 11400000, guid: ce19ae76cd1ba5e40809ee1d0aacc5dd, type: 2}
+    level: 34
+  - move: {fileID: 11400000, guid: 32fb9852f075eb34e9f3d72a121ff027, type: 2}
+    level: 36
+  - move: {fileID: 11400000, guid: 993b0e0b6c85cbb458837a3e917e30c4, type: 2}
+    level: 46
+  - move: {fileID: 11400000, guid: 6a3b195684e69e94babdda86c2dd4b59, type: 2}
+    level: 48
+  - move: {fileID: 11400000, guid: 00970f72f2b898344aa0272d8cccf280, type: 2}
+    level: 49

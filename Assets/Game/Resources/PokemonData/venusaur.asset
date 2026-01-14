@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: venusaur
+  m_EditorClassIdentifier: 
+  pokemonName: Venusaur
+  description: 
+  frontSprite: {fileID: 21300000, guid: c304192dd06196a49ba0fdf6c4e803ce, type: 3}
+  backSprite: {fileID: 21300000, guid: aff368ef146f3bb4aa65c55c6dcd98f4, type: 3}
+  type1: 5
+  type2: 8
+  MaxHp: 80
+  Attack: 82
+  Defense: 83
+  SpAttack: 100
+  SpDefense: 100
+  Speed: 80
+  learnableMoves:
+  - move: {fileID: 11400000, guid: beb0a00e1de2d8540b64916000d72c30, type: 2}
+    level: 0
+  - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 35e34bb02c5720744ab662302239ea40, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: cc68226ce7f82984b805e45c6711045f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 50fcffbba5365e441a73b3bfd69f9bc4, type: 2}
+    level: 12
+  - move: {fileID: 11400000, guid: 08e44856acca65f45b41aa3f12a1e320, type: 2}
+    level: 13
+  - move: {fileID: 11400000, guid: 21c1a6a36c0ae8c4bac2b70e84b68cdd, type: 2}
+    level: 13
+  - move: {fileID: 11400000, guid: b015132f9e281df419ecb76847e4b227, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: b0c45b2363b629247a7889dddf3c5204, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: e496f6c618ec32747bb955dabc343e88, type: 2}
+    level: 31
+  - move: {fileID: 11400000, guid: 9b734255591c43e49a172cd7249d50d5, type: 2}
+    level: 53

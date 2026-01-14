@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: chansey
+  m_EditorClassIdentifier: 
+  pokemonName: Chansey
+  description: 
+  frontSprite: {fileID: 21300000, guid: 32d896950cc775d42b261640025717a6, type: 3}
+  backSprite: {fileID: 21300000, guid: 98d364d78af99dc4f8e25591ea7e2f76, type: 3}
+  type1: 1
+  type2: 0
+  MaxHp: 250
+  Attack: 5
+  Defense: 5
+  SpAttack: 35
+  SpDefense: 105
+  Speed: 50
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 6df84621ba287c64da68d4239af6d4c5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: c063422a03426a844aefe5d9930f851e, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 273a3a3f99a7060429ea1a69110cca6c, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: e496f6c618ec32747bb955dabc343e88, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 26c2f0f3b8de511448936625c1e5b3cb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62eb808afeac32348b4cd925896c8028, type: 2}
+    level: 4
+  - move: {fileID: 11400000, guid: a51053d24dd7213439dfe00e69fb39c5, type: 2}
+    level: 8
+  - move: {fileID: 11400000, guid: 80b4b1b9465e0ca458786c0b8dd582c8, type: 2}
+    level: 12
+  - move: {fileID: 11400000, guid: 3c290f77a0a38af429db757087919b08, type: 2}
+    level: 16
+  - move: {fileID: 11400000, guid: b015132f9e281df419ecb76847e4b227, type: 2}
+    level: 24
+  - move: {fileID: 11400000, guid: a63509ad50d6b784b849e94d318ea242, type: 2}
+    level: 35
+  - move: {fileID: 11400000, guid: 3fa15a1a29c3670418f9b36a6f2d2cbc, type: 2}
+    level: 48

@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: raticatealola
+  m_EditorClassIdentifier: 
+  pokemonName: Raticate-Alola
+  description: 
+  frontSprite: {fileID: 21300000, guid: 3f75edb0297831345ae9875ff0c2a3ae, type: 3}
+  backSprite: {fileID: 21300000, guid: 9bf2f8fcfc0e53347ab9dcde317557ec, type: 3}
+  type1: 16
+  type2: 1
+  MaxHp: 75
+  Attack: 71
+  Defense: 70
+  SpAttack: 40
+  SpDefense: 80
+  Speed: 77
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 6fc2d68d1ff67a447b0367fb15b1c35a, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 7c1bf20693dd35745a8a0454b0e5fb83, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62eb808afeac32348b4cd925896c8028, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 77cefdbcb4afee544b09c8d3278ccce3, type: 2}
+    level: 10
+  - move: {fileID: 11400000, guid: 4412911dd2198f6449619cb61daa6dc6, type: 2}
+    level: 13
+  - move: {fileID: 11400000, guid: 3fbd22ad805afb541b32495aa70acb92, type: 2}
+    level: 16
+  - move: {fileID: 11400000, guid: 9a6547082124a55429d96e34960d57b5, type: 2}
+    level: 19
+  - move: {fileID: 11400000, guid: 238c53ce48b414d428c60341b471f113, type: 2}
+    level: 24
+  - move: {fileID: 11400000, guid: 423a6a9b44735d34e9d97095f618ef36, type: 2}
+    level: 29
+  - move: {fileID: 11400000, guid: e496f6c618ec32747bb955dabc343e88, type: 2}
+    level: 39

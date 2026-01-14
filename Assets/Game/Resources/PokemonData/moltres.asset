@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: moltres
+  m_EditorClassIdentifier: 
+  pokemonName: Moltres
+  description: 
+  frontSprite: {fileID: 21300000, guid: 0c3b31b571df85f4cb84148f2a270091, type: 3}
+  backSprite: {fileID: 21300000, guid: 8c7c916d251069640b74ca79ab21a875, type: 3}
+  type1: 2
+  type2: 10
+  MaxHp: 90
+  Attack: 100
+  Defense: 90
+  SpAttack: 125
+  SpDefense: 85
+  Speed: 90
+  learnableMoves:
+  - move: {fileID: 11400000, guid: beac49ccdf5984d48b1f77b88fd7e1ca, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 06b4528290dba8146b4346412f05569f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: e3288d0f7c5156b468d1b01c2db0e3ed, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 342f658993e99e44a8d5331a3643a8d5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 7fea54f84c3ddc743a04274ecfdd6c90, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 2edb6ac2b1bcae642883f3a8b01766fd, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 68238c251730f1547b38fa351f361fa4, type: 2}
+    level: 8
+  - move: {fileID: 11400000, guid: a39b61c4947f22a418f97e62538a089e, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: c40cf627fc3b7684a9ae1de302e82ee5, type: 2}
+    level: 25
+  - move: {fileID: 11400000, guid: bbec61c3c88c8814d94d133b242be904, type: 2}
+    level: 30
+  - move: {fileID: 11400000, guid: 3d94430411029da48be7d85c7f6e44fa, type: 2}
+    level: 35
+  - move: {fileID: 11400000, guid: a42cdd354fe20f94a8a56eeb81e0a81d, type: 2}
+    level: 36
+  - move: {fileID: 11400000, guid: acd589d428a9b574ab53dad2c0326910, type: 2}
+    level: 65
+  - move: {fileID: 11400000, guid: 9b734255591c43e49a172cd7249d50d5, type: 2}
+    level: 71

@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: starmie
+  m_EditorClassIdentifier: 
+  pokemonName: Starmie
+  description: 
+  frontSprite: {fileID: 21300000, guid: aa2e64535481af2499758fc27f15868c, type: 3}
+  backSprite: {fileID: 21300000, guid: 4b2d5162271db4f41af3805363c69bf2, type: 3}
+  type1: 3
+  type2: 11
+  MaxHp: 60
+  Attack: 75
+  Defense: 85
+  SpAttack: 100
+  SpDefense: 85
+  Speed: 115
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 32fb9852f075eb34e9f3d72a121ff027, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 4f73abc6bb514aa49bb0d7eb9f33bbfe, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 4181e9376aadffa4cabb13845d245783, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 00970f72f2b898344aa0272d8cccf280, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6c2786b6750035748b79da8286d32f5f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 37229a41a5b65604eb1901844a144784, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 237719c8cb0509345a0bd08b39cf0baf, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 8e6ec01c4cc89f245a1595e3d9a073d2, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 993b0e0b6c85cbb458837a3e917e30c4, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6ca5edd83e8be3b4e96e543c017f871f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 017b19522ce46664c81ac8803892f6a3, type: 2}
+    level: 1

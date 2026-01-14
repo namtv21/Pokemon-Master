@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: ninetalesalola
+  m_EditorClassIdentifier: 
+  pokemonName: Ninetales-Alola
+  description: 
+  frontSprite: {fileID: 21300000, guid: 0fb232e655cb52d42bee649986d94d6f, type: 3}
+  backSprite: {fileID: 21300000, guid: 7060561a8701a5240be629e8cb002551, type: 3}
+  type1: 6
+  type2: 18
+  MaxHp: 73
+  Attack: 67
+  Defense: 75
+  SpAttack: 81
+  SpDefense: 100
+  Speed: 109
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 31da1ab1592b9924a833ef7290eee89f, type: 2}
+    level: 0
+  - move: {fileID: 11400000, guid: 03333aaff66b83a448c60d0820c1f2c4, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0a3b8595f68b936479b8f664c3401ca3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 4f73abc6bb514aa49bb0d7eb9f33bbfe, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: bcbfe0360f0deac459e06804ce55abe3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 3e5a5cc5ea929a549bc1967e285fcf55, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 57030b10f07de364e902e15bbdff816e, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 50cca9f5420d0c24e9e63add552439aa, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 097b537ddf892294abf28d78eb5bc430, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62eb808afeac32348b4cd925896c8028, type: 2}
+    level: 1

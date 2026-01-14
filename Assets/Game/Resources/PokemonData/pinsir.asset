@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: pinsir
+  m_EditorClassIdentifier: 
+  pokemonName: Pinsir
+  description: 
+  frontSprite: {fileID: 21300000, guid: 4facb78249824514794ee73fcec9ef64, type: 3}
+  backSprite: {fileID: 21300000, guid: 91ace08a3279e264fb80d609cddc8541, type: 3}
+  type1: 12
+  type2: 0
+  MaxHp: 65
+  Attack: 125
+  Defense: 100
+  SpAttack: 55
+  SpDefense: 70
+  Speed: 85
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 4181e9376aadffa4cabb13845d245783, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: c863150752d78d645b2772d9f0c5e39e, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 16fbc57445aaa8d4d81e6968b8e97724, type: 2}
+    level: 4
+  - move: {fileID: 11400000, guid: 9eb390ce04ef28c449450be6563ac5ec, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: 4aa1c9e81c8998b43979b6bba0ec5669, type: 2}
+    level: 16
+  - move: {fileID: 11400000, guid: 8962ddb7677f2434abca92f1f01e49cb, type: 2}
+    level: 18
+  - move: {fileID: 11400000, guid: 4edda3bff9ceb5e47b37203f2bb29eb4, type: 2}
+    level: 18
+  - move: {fileID: 11400000, guid: eef569d483662c248bb3c82f3f5ed168, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: d32499f9bcedaa7448ff3a5110607655, type: 2}
+    level: 22
+  - move: {fileID: 11400000, guid: 4942f277b9bc72746a7b8e0ef9a68e9b, type: 2}
+    level: 26
+  - move: {fileID: 11400000, guid: 43e426944ebb11545afef9a294187c38, type: 2}
+    level: 29
+  - move: {fileID: 11400000, guid: 9e37829d0711ec74087da73df370cab4, type: 2}
+    level: 35
+  - move: {fileID: 11400000, guid: e919f1a394cec7646a3ca7eff97a104d, type: 2}
+    level: 36
+  - move: {fileID: 11400000, guid: 7c1bf20693dd35745a8a0454b0e5fb83, type: 2}
+    level: 38
+  - move: {fileID: 11400000, guid: cd5323bededd4a54d960f5a88d2a9261, type: 2}
+    level: 43

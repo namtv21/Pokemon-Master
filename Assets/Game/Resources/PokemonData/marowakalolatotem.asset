@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: marowakalolatotem
+  m_EditorClassIdentifier: 
+  pokemonName: Marowak-Alola-Totem
+  description: 
+  frontSprite: {fileID: 21300000, guid: b8dbe63f29e75ac4394bd7728db5d4a3, type: 3}
+  backSprite: {fileID: 21300000, guid: df0e24c9936f8174eb40614ff266456a, type: 3}
+  type1: 2
+  type2: 14
+  MaxHp: 60
+  Attack: 80
+  Defense: 110
+  SpAttack: 50
+  SpDefense: 80
+  Speed: 45
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 5358517d1620bf04facc09e2ef0591d5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: b5cc01b989cda5e42a3c3f188cdf43ce, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62eb808afeac32348b4cd925896c8028, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
+    level: 13
+  - move: {fileID: 11400000, guid: c951b3ca23ad9b941badd279748907e2, type: 2}
+    level: 17
+  - move: {fileID: 11400000, guid: 8bcf610e5bf9cc346a38816c6a7499d6, type: 2}
+    level: 21
+  - move: {fileID: 11400000, guid: e82a2518b44192a448ffac3054442c9d, type: 2}
+    level: 27
+  - move: {fileID: 11400000, guid: 9e37829d0711ec74087da73df370cab4, type: 2}
+    level: 33
+  - move: {fileID: 11400000, guid: 11e3c17ba7aa75143b682c67f1639798, type: 2}
+    level: 43
+  - move: {fileID: 11400000, guid: c141d14902951864886f87d9b792c0c6, type: 2}
+    level: 53
+  - move: {fileID: 11400000, guid: 7d3c09f5c3452a844a8f62285b8c0948, type: 2}
+    level: 59
+  - move: {fileID: 11400000, guid: 5e374b7560d4ae54ea889b506e1fb711, type: 2}
+    level: 65

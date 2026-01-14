@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: victreebel
+  m_EditorClassIdentifier: 
+  pokemonName: Victreebel
+  description: 
+  frontSprite: {fileID: 21300000, guid: 679d8d882b7f30148afbfeeb25031312, type: 3}
+  backSprite: {fileID: 21300000, guid: 7b041f94359f16a4497a33ea0f341175, type: 3}
+  type1: 5
+  type2: 8
+  MaxHp: 80
+  Attack: 105
+  Defense: 65
+  SpAttack: 100
+  SpDefense: 70
+  Speed: 70
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 170089a43359cd74d9f4e9a7c18923d6, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 50fcffbba5365e441a73b3bfd69f9bc4, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 21c1a6a36c0ae8c4bac2b70e84b68cdd, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: cc68226ce7f82984b805e45c6711045f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: d1aafc9809da77b44af4267efc1c452d, type: 2}
+    level: 32
+  - move: {fileID: 11400000, guid: cd8b538370ba1e04bb63cc3afde9d169, type: 2}
+    level: 44

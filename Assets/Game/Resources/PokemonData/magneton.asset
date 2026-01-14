@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: magneton
+  m_EditorClassIdentifier: 
+  pokemonName: Magneton
+  description: 
+  frontSprite: {fileID: 21300000, guid: 19b8ee8b82a7f0e49b884df67244cb5a, type: 3}
+  backSprite: {fileID: 21300000, guid: 96af2a0ff30491449bbd373aab082b98, type: 3}
+  type1: 4
+  type2: 17
+  MaxHp: 50
+  Attack: 60
+  Defense: 95
+  SpAttack: 120
+  SpDefense: 70
+  Speed: 70
+  learnableMoves:
+  - move: {fileID: 11400000, guid: d92533dd442ef59418e8f1572c8e614b, type: 2}
+    level: 0
+  - move: {fileID: 11400000, guid: 016f8b5410081304db996c2ea4df6888, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: fa8f01f1a06e3cb48b94534414613880, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 04c82d3a407de8b4db078420913c9278, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: f7c7d99ee8389f54e87ae6d423506004, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 480cd86a908ddc448aa753bde124847a, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 3a805edef0b594d4a84ff98a3cab2402, type: 2}
+    level: 19
+  - move: {fileID: 11400000, guid: 0da590d0fd03d8e4e9399dc53122f71a, type: 2}
+    level: 23
+  - move: {fileID: 11400000, guid: 16e0634bd65803c47babc9aa83833434, type: 2}
+    level: 24
+  - move: {fileID: 11400000, guid: 15a4bfe50d66ec643b89e8fc1f3a0e7d, type: 2}
+    level: 33
+  - move: {fileID: 11400000, guid: 4ee6e796f0ab40e46b4a9b4d7f0a3d80, type: 2}
+    level: 40

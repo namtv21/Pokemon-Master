@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: scyther
+  m_EditorClassIdentifier: 
+  pokemonName: Scyther
+  description: 
+  frontSprite: {fileID: 21300000, guid: 4ed2420d334f6e742871b585fb278e1b, type: 3}
+  backSprite: {fileID: 21300000, guid: fd7cabad938da4f4892b3675a14e9b89, type: 3}
+  type1: 12
+  type2: 10
+  MaxHp: 70
+  Attack: 110
+  Defense: 80
+  SpAttack: 55
+  SpDefense: 80
+  Speed: 105
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6fc2d68d1ff67a447b0367fb15b1c35a, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 19a12f53925d13a4e9e4a541fef0233d, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6c5d32dc0e991c24e8b64945338a77b5, type: 2}
+    level: 4
+  - move: {fileID: 11400000, guid: 6d17210eb5582bd4ea0f480d80d14dfd, type: 2}
+    level: 8
+  - move: {fileID: 11400000, guid: 4412911dd2198f6449619cb61daa6dc6, type: 2}
+    level: 9
+  - move: {fileID: 11400000, guid: 2edb6ac2b1bcae642883f3a8b01766fd, type: 2}
+    level: 12
+  - move: {fileID: 11400000, guid: a39b61c4947f22a418f97e62538a089e, type: 2}
+    level: 17
+  - move: {fileID: 11400000, guid: d32499f9bcedaa7448ff3a5110607655, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: b204d8d5d0d979442a21a0abb40491f6, type: 2}
+    level: 24
+  - move: {fileID: 11400000, guid: f3a13be6f7935354dad0b75c6319d64a, type: 2}
+    level: 33
+  - move: {fileID: 11400000, guid: 3d94430411029da48be7d85c7f6e44fa, type: 2}
+    level: 36
+  - move: {fileID: 11400000, guid: 7c1bf20693dd35745a8a0454b0e5fb83, type: 2}
+    level: 36
+  - move: {fileID: 11400000, guid: 43e426944ebb11545afef9a294187c38, type: 2}
+    level: 40
+  - move: {fileID: 11400000, guid: 3b0aa0a6b7f94e04c8d5016095fae649, type: 2}
+    level: 45
+  - move: {fileID: 11400000, guid: b6c4868dbcc5f6440a668dc6623963d7, type: 2}
+    level: 61

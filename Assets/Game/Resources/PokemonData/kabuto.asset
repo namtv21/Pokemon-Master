@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: kabuto
+  m_EditorClassIdentifier: 
+  pokemonName: Kabuto
+  description: 
+  frontSprite: {fileID: 21300000, guid: 57cc6d3aeb158c44c8aa58196b0112f8, type: 3}
+  backSprite: {fileID: 21300000, guid: a09abc337c2b9194ba89ccfd275d0a24, type: 3}
+  type1: 13
+  type2: 3
+  MaxHp: 30
+  Attack: 80
+  Defense: 90
+  SpAttack: 55
+  SpDefense: 45
+  Speed: 55
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 7461b30f495f6dd489acd502d39ba1e9, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 4181e9376aadffa4cabb13845d245783, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6f06b53dade7c3845b4526356002f00f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 590248e45e757744fb3fe9c7f520c2bf, type: 2}
+    level: 10
+  - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
+    level: 11
+  - move: {fileID: 11400000, guid: 22deba9b8a72f53419a952da8f093dcc, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: b8b611e5a97a70242b17f7b8344337c4, type: 2}
+    level: 16
+  - move: {fileID: 11400000, guid: c40cf627fc3b7684a9ae1de302e82ee5, type: 2}
+    level: 30
+  - move: {fileID: 11400000, guid: 32fb9852f075eb34e9f3d72a121ff027, type: 2}
+    level: 35
+  - move: {fileID: 11400000, guid: d30e9695208659443b9d70267c52fc89, type: 2}
+    level: 36
+  - move: {fileID: 11400000, guid: e926e8f533503184dba296b838f5c22f, type: 2}
+    level: 41
+  - move: {fileID: 11400000, guid: 64f47dd5e53dc3b42b55caad299f8407, type: 2}
+    level: 45
+  - move: {fileID: 11400000, guid: f6dfb3138b84ddc40827b8d6c501fd8b, type: 2}
+    level: 50
+  - move: {fileID: 11400000, guid: 5fd00157f771e7a469e4a61b38bd1f82, type: 2}
+    level: 60

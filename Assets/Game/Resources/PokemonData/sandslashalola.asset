@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: sandslashalola
+  m_EditorClassIdentifier: 
+  pokemonName: Sandslash-Alola
+  description: 
+  frontSprite: {fileID: 21300000, guid: f6ede0fe2fe3b7f40aa902cc02e130ed, type: 3}
+  backSprite: {fileID: 21300000, guid: 9d386bffc90dcfa41bbe2672988b8e34, type: 3}
+  type1: 6
+  type2: 17
+  MaxHp: 75
+  Attack: 100
+  Defense: 120
+  SpAttack: 25
+  SpDefense: 65
+  Speed: 65
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 290047cb7db951e4eaf322306484b98c, type: 2}
+    level: 0
+  - move: {fileID: 11400000, guid: 0a3b8595f68b936479b8f664c3401ca3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: c063422a03426a844aefe5d9930f851e, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6c5d32dc0e991c24e8b64945338a77b5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: c663dcba04afc7e4aa464c48c3639068, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 41496cc9aae74b645a2a8a982a798c84, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: a7f9934a181c851429345fa41490ce2c, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: b8c5e7bf3aa32ee40aa9de62c9c2363f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 81ed3b2359074f7449e74e415bcd0241, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 097b537ddf892294abf28d78eb5bc430, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 8e6ec01c4cc89f245a1595e3d9a073d2, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: cfec46789251e054f8a8c084d896c3bb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6f06b53dade7c3845b4526356002f00f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: b204d8d5d0d979442a21a0abb40491f6, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6ca5edd83e8be3b4e96e543c017f871f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 7c1bf20693dd35745a8a0454b0e5fb83, type: 2}
+    level: 1

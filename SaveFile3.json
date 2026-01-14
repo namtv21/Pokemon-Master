@@ -1,0 +1,44 @@
+{
+    "partyPokemons": [
+        {
+            "name": "Pikachu",
+            "level": 6,
+            "currentHP": 10,
+            "maxHP": 14,
+            "exp": 0,
+            "moves": [
+                "Quick Attack",
+                "Slam",
+                "Thunder Shock",
+                "Thunder Wave"
+            ],
+            "attack": 11,
+            "defense": 9,
+            "spAttack": 11,
+            "spDefense": 11,
+            "speed": 15
+        },
+        {
+            "name": "Caterpie",
+            "level": 2,
+            "currentHP": 11,
+            "maxHP": 11,
+            "exp": 0,
+            "moves": [
+                "String Shot",
+                "Tackle"
+            ],
+            "attack": 6,
+            "defense": 6,
+            "spAttack": 5,
+            "spDefense": 5,
+            "speed": 6
+        }
+    ],
+    "storagePokemons": [],
+    "money": 200,
+    "sceneName": "Town01",
+    "playerX": 8.5,
+    "playerY": 3.799999952316284,
+    "playerZ": 0.0
+}

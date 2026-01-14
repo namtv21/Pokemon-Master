@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: machop
+  m_EditorClassIdentifier: 
+  pokemonName: Machop
+  description: 
+  frontSprite: {fileID: 21300000, guid: a0a924d7df3e01b45922de91abb019ba, type: 3}
+  backSprite: {fileID: 21300000, guid: 27cc4f5c1b4d0f8469dbcfcfc4f20e84, type: 3}
+  type1: 7
+  type2: 0
+  MaxHp: 70
+  Attack: 80
+  Defense: 50
+  SpAttack: 35
+  SpDefense: 35
+  Speed: 35
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 592d7eb5c3f0e0e4886c024571fc4572, type: 2}
+    level: 7
+  - move: {fileID: 11400000, guid: 9eb390ce04ef28c449450be6563ac5ec, type: 2}
+    level: 8
+  - move: {fileID: 11400000, guid: 0a2fd75343dfb6341ba1673174d521ab, type: 2}
+    level: 12
+  - move: {fileID: 11400000, guid: c6ba9eed4a44f1848b5d33a83717c26c, type: 2}
+    level: 16
+  - move: {fileID: 11400000, guid: 4edda3bff9ceb5e47b37203f2bb29eb4, type: 2}
+    level: 24
+  - move: {fileID: 11400000, guid: 8dc561dc9fb06544190dc853f1284be0, type: 2}
+    level: 27
+  - move: {fileID: 11400000, guid: e919f1a394cec7646a3ca7eff97a104d, type: 2}
+    level: 29
+  - move: {fileID: 11400000, guid: 40f177400b91a1743a694888997a4e8e, type: 2}
+    level: 31
+  - move: {fileID: 11400000, guid: 4942f277b9bc72746a7b8e0ef9a68e9b, type: 2}
+    level: 31
+  - move: {fileID: 11400000, guid: 355893e6d4c7ddf438a71c61b1d75fa2, type: 2}
+    level: 37
+  - move: {fileID: 11400000, guid: 4d44acbfd9b1de04a9f1ddafe319db44, type: 2}
+    level: 44
+  - move: {fileID: 11400000, guid: e496f6c618ec32747bb955dabc343e88, type: 2}
+    level: 52

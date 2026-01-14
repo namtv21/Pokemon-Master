@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fc3bc25a428ae34f9cd38ef45a03709, type: 3}
+  m_Name: ultraball
+  m_EditorClassIdentifier: 
+  itemName: ultraball
+  description: 
+  icon: {fileID: 21300000, guid: 20c297f6beb2bc14d8d5ff12a401d80d, type: 3}
+  itemType: 1
+  price: 25
+  consumable: 1
+  healAmount: 0
+  healToFull: 0
+  isRevive: 0
+  revivePercent: 0
+  curesAllStatus: 0
+  curesSpecific: 
+  catchRateMultiplier: 2

@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: kingler
+  m_EditorClassIdentifier: 
+  pokemonName: Kingler
+  description: 
+  frontSprite: {fileID: 21300000, guid: 8fd57ba688aff034ea6e5f5b5d9d4147, type: 3}
+  backSprite: {fileID: 21300000, guid: da5b0b6433d9160419b92ddc08a9b055, type: 3}
+  type1: 3
+  type2: 0
+  MaxHp: 55
+  Attack: 130
+  Defense: 115
+  SpAttack: 50
+  SpDefense: 50
+  Speed: 75
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 959820f8ddaa2074abe27deaf66388c1, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 3dd42246238dc7a4a80756efbcb144e9, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 4181e9376aadffa4cabb13845d245783, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 81ed3b2359074f7449e74e415bcd0241, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: c863150752d78d645b2772d9f0c5e39e, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 017b19522ce46664c81ac8803892f6a3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: b8b611e5a97a70242b17f7b8344337c4, type: 2}
+    level: 12
+  - move: {fileID: 11400000, guid: 5990984caa817ed4c84ea751e3420f19, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: e926e8f533503184dba296b838f5c22f, type: 2}
+    level: 16
+  - move: {fileID: 11400000, guid: 0fd90bedd5e77c94580f814a0fa1357f, type: 2}
+    level: 24
+  - move: {fileID: 11400000, guid: 5b1ae84558c30c645bfb47a1c6ed2681, type: 2}
+    level: 36
+  - move: {fileID: 11400000, guid: eef4c619e673da14f941e39ea075d5e5, type: 2}
+    level: 42
+  - move: {fileID: 11400000, guid: 7c1bf20693dd35745a8a0454b0e5fb83, type: 2}
+    level: 48
+  - move: {fileID: 11400000, guid: 32fb9852f075eb34e9f3d72a121ff027, type: 2}
+    level: 51
+  - move: {fileID: 11400000, guid: 43bb17b881f0164448add339b01052eb, type: 2}
+    level: 54

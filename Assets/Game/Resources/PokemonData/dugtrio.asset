@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: dugtrio
+  m_EditorClassIdentifier: 
+  pokemonName: Dugtrio
+  description: 
+  frontSprite: {fileID: 21300000, guid: a7c90dd6164d34f4cbc7ca4c6c2fad2a, type: 3}
+  backSprite: {fileID: 21300000, guid: 032c6122f416efd4296960cd222c4bf3, type: 3}
+  type1: 9
+  type2: 0
+  MaxHp: 35
+  Attack: 100
+  Defense: 50
+  SpAttack: 50
+  SpDefense: 70
+  Speed: 120
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 530dc755a6d9b824aa7d9677fa96f5f9, type: 2}
+    level: 0
+  - move: {fileID: 11400000, guid: 840cdbf3248c03b40875daaab4c2c2de, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 3b0aa0a6b7f94e04c8d5016095fae649, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 590248e45e757744fb3fe9c7f520c2bf, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6f06b53dade7c3845b4526356002f00f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: d92533dd442ef59418e8f1572c8e614b, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 2b2094182d93bc547b2174b389cf158a, type: 2}
+    level: 10
+  - move: {fileID: 11400000, guid: fcddfa092e27ef546b4daad66d5da7a4, type: 2}
+    level: 16
+  - move: {fileID: 11400000, guid: 10d0846202914bd4183b8c7c18ed3dc3, type: 2}
+    level: 17
+  - move: {fileID: 11400000, guid: 423a6a9b44735d34e9d97095f618ef36, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: c663dcba04afc7e4aa464c48c3639068, type: 2}
+    level: 21
+  - move: {fileID: 11400000, guid: b204d8d5d0d979442a21a0abb40491f6, type: 2}
+    level: 24
+  - move: {fileID: 11400000, guid: 0d260db59f046d24691d424da9af9c60, type: 2}
+    level: 25
+  - move: {fileID: 11400000, guid: 4881a954dd7e9944a99f2d1558c08d0f, type: 2}
+    level: 28
+  - move: {fileID: 11400000, guid: 3c4cac0429c7d6240a529c98aed47ac0, type: 2}
+    level: 45
