@@ -82,8 +82,15 @@ public class MenuController : MonoBehaviour
                 });
                 break;
             case MenuState.Quest:
-                //questMenuUI.HandleUpdate();
+                questMenuUI.HandleUpdate();
+                if (Input.GetKeyDown(KeyCode.X))
+                {
+                    questMenuUI.Close();
+                    currentState = MenuState.Main;
+                    mainMenuUI.Open(OnMenuSelected, CloseAll);
+                }
                 break;
+
 
         }
 
@@ -160,8 +167,7 @@ public class MenuController : MonoBehaviour
             case MainMenuOption.Quest:
                 mainMenuUI.Close();
                 SetState(MenuState.Quest);
-                //questMenuUI.ShowQuests();
-                CloseAll();
+                questMenuUI.Open();
                 break;
         }
     }

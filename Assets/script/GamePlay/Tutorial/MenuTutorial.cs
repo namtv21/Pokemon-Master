@@ -52,7 +52,7 @@ public class MenuTutorial : MonoBehaviour
                 break;
 
             case MenuState.Quest:
-                notification.ShowNotification("Đây là Quest Menu, theo dõi nhiệm vụ hiện tại.\n Hiện tại chưa có nhiệm vụ nào");
+                notification.ShowNotification("Đây là Quest Menu, theo dõi nhiệm vụ hiện tại.");
                 break;
         }
 

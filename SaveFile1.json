@@ -2,28 +2,28 @@
     "partyPokemons": [
         {
             "name": "Pikachu",
-            "level": 5,
-            "currentHP": 1,
-            "maxHP": 13,
-            "exp": 16,
+            "level": 6,
+            "currentHP": 14,
+            "maxHP": 14,
+            "exp": 0,
             "moves": [
                 "Quick Attack",
-                "Tail Whip",
+                "Slam",
                 "Thunder Shock",
                 "Thunder Wave"
             ],
-            "attack": 10,
+            "attack": 11,
             "defense": 9,
-            "spAttack": 10,
-            "spDefense": 10,
-            "speed": 14
+            "spAttack": 11,
+            "spDefense": 11,
+            "speed": 15
         },
         {
             "name": "Bulbasaur",
             "level": 4,
             "currentHP": 13,
             "maxHP": 13,
-            "exp": 0,
+            "exp": 9,
             "moves": [
                 "Growl",
                 "Tackle",
@@ -37,9 +37,9 @@
         }
     ],
     "storagePokemons": [],
-    "money": 200,
-    "sceneName": "Tutorial",
-    "playerX": -2.5,
-    "playerY": 0.19999980926513673,
+    "money": 175,
+    "sceneName": "Town01",
+    "playerX": -0.4699993133544922,
+    "playerY": 2.5199999809265138,
     "playerZ": 0.0
 }
