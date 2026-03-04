@@ -11,7 +11,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Color white = Color.white;
 
     private int currentIndex = 0;
-    private string[] options = { "New Game", "Load Game" };
+    private string[] options = { "New Game", "Load Game", "Exit" };
     [SerializeField] private TMP_Text[] optionTexts;
 
     void Update()
@@ -49,6 +49,7 @@ public class MainMenuManager : MonoBehaviour
             {
                 case 0: SceneManager.LoadScene(newGameScene); break;
                 case 1: saveLoadMenuUI.Open(false, false); break;
+                case 2: Application.Quit(); break;
             }
         }
     }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum MenuState { None, Main, Party, Item, Storage, Save, Load, Option, Quest }
+public enum MenuState { None, Main, Party, Item, Storage, Save, Load, Option, Quest}
 
 public class MenuController : MonoBehaviour
 {
@@ -91,7 +91,6 @@ public class MenuController : MonoBehaviour
                 }
                 break;
 
-
         }
 
         if (Input.GetKeyDown(KeyCode.X))
@@ -168,6 +167,10 @@ public class MenuController : MonoBehaviour
                 mainMenuUI.Close();
                 SetState(MenuState.Quest);
                 questMenuUI.Open();
+                break;
+            
+            case MainMenuOption.Exit:
+                Application.Quit();
                 break;
         }
     }
