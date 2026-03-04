@@ -37,7 +37,6 @@ public class MainMenuUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            // Nếu đang ở đầu thì quay xuống cuối
             if (currentIndex == 0)
                 currentIndex = optionPanels.Length - 1;
             else
@@ -47,7 +46,6 @@ public class MainMenuUI : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            // Nếu đang ở cuối thì quay lên đầu
             if (currentIndex == optionPanels.Length - 1)
                 currentIndex = 0;
             else

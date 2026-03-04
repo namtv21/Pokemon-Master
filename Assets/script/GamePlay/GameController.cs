@@ -5,6 +5,7 @@ public enum GameState
     Overworld,
     Battle,
     Dialog,
+    Noti,
     Menu,
     NPCInteraction,
     Shop,

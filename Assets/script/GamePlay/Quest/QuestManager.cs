@@ -31,7 +31,7 @@ public class QuestManager : MonoBehaviour
         {
             activeQuests.Add(quest);
             // Có thể hiện thông báo
-            DialogManager.Instance.ShowDialog($"Quest added: {quest.Title}");
+            //DialogManager.Instance.ShowDialog($"Quest added: {quest.Title}");
 
         }
     }
@@ -47,7 +47,7 @@ public class QuestManager : MonoBehaviour
         {
             activeQuests.Remove(quest);
             // Có thể hiện thông báo
-            DialogManager.Instance.ShowDialog($"Quest completed: {quest}");
+            DialogManager.Instance.ShowDialog($"Quest completed: {quest.Title}");
         }
     }
 
@@ -61,6 +61,7 @@ public class QuestManager : MonoBehaviour
                 if (quest.Title == "Tutorial" && quest.Status == QuestStatus.Ongoing)
                 {
                     quest.MarkCompleted();
+                    CompleteQuest(quest);
                 }
             }
         }
