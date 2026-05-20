@@ -23,8 +23,16 @@ public class ItemSlotUI : MonoBehaviour
         }
 
         nameText.text = slot.item.itemName;
+        nameText.color = Color.white;
         iconImage.sprite = slot.item.icon;
         countText.text = slot.count.ToString();
+        countText.color = Color.white;
+    }
+
+    public void SetHighlight(bool active, Color highlightColor, Color normalColor)
+    {
+        if (nameText != null) nameText.color = active ? highlightColor : normalColor;
+        if (countText != null) countText.color = active ? highlightColor : normalColor;
     }
 
     public ItemSlot GetSlot() => slot;

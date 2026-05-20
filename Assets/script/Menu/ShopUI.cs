@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class ShopUI : MonoBehaviour
@@ -10,6 +11,7 @@ public class ShopUI : MonoBehaviour
     [SerializeField] private Transform contentParent;       // nơi chứa các item UI
     [SerializeField] private ShopItemUI shopItemPrefab;     // prefab UI cho item
     [SerializeField] private TextMeshProUGUI moneyText;
+    [SerializeField] private ScrollRect scrollRect;
 
     [Header("Default Items")]
     [SerializeField] private List<ItemBase> defaultItems = new List<ItemBase>();
@@ -23,11 +25,29 @@ public class ShopUI : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
-        shopPanel.SetActive(false);
+        if (shopPanel != null)
+            shopPanel.SetActive(false);
+
+        if (scrollRect == null)
+            scrollRect = GetComponentInChildren<ScrollRect>(true);
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
     }
 
     public void Open(List<ItemBase> shopItems = null)
     {
+        if (shopPanel == null || contentParent == null || shopItemPrefab == null || moneyText == null)
+        {
+            Debug.LogWarning("Shop UI references are missing.");
+            return;
+        }
+
+        gameObject.SetActive(true);
+        shopPanel.SetActive(true);
         items = (shopItems != null && shopItems.Count > 0) ? shopItems : defaultItems;
         currentSelection = 0;
 
@@ -44,14 +64,14 @@ public class ShopUI : MonoBehaviour
             slotUIs.Add(ui);
         }
 
-        shopPanel.SetActive(true);
         UpdateUI();
         GameController.Instance.SetState(GameState.Shop);
     }
 
     public void Close()
     {
-        shopPanel.SetActive(false);
+        if (shopPanel != null)
+            shopPanel.SetActive(false);
         GameController.Instance.SetState(GameState.Overworld);
     }
 
@@ -64,11 +84,22 @@ public class ShopUI : MonoBehaviour
         }
 
         moneyText.text = $"Money: {Inventory.Instance.Money} Yen";
+        UpdateScrollPosition();
+    }
+
+    private void UpdateScrollPosition()
+    {
+        if (scrollRect == null || slotUIs.Count <= 1)
+            return;
+
+        float normalized = 1f - ((float)currentSelection / (slotUIs.Count - 1));
+        scrollRect.verticalNormalizedPosition = Mathf.Clamp01(normalized);
     }
 
     public void HandleUpdate()
     {
         if (!shopPanel.activeInHierarchy) return;
+        if (items == null || items.Count == 0) return;
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -97,22 +128,15 @@ public class ShopUI : MonoBehaviour
         if (Inventory.Instance.SpendMoney(item.price))
         {
             Inventory.Instance.AddItem(item);
-            DialogManager.Instance.ShowDialog(
-                $"You bought {item.itemName}!",
-                () => {
-                    // callback sau khi dialog đóng
-                    GameController.Instance.SetState(GameState.Shop);
-                    UpdateUI();
-                });
+            ToastNotificationManager.Instance?.Show($"You bought {item.itemName}!");
+            GameController.Instance.SetState(GameState.Shop);
+            UpdateUI();
         }
         else
         {
-            DialogManager.Instance.ShowDialog(
-                "Not enough money!",
-                () => {
-                    GameController.Instance.SetState(GameState.Shop);
-                    UpdateUI();
-                });
+            ToastNotificationManager.Instance?.Show("Not enough money!", Color.yellow);
+            GameController.Instance.SetState(GameState.Shop);
+            UpdateUI();
         }
     }
 }

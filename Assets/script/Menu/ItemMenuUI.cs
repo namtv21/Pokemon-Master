@@ -10,6 +10,7 @@ public class ItemMenuUI : MonoBehaviour
     [SerializeField] private Transform slotParent;      // Container chứa các slot
     [SerializeField] private Color highlightColor = Color.yellow;
     [SerializeField] private Color normalColor = Color.white;
+    [SerializeField] private ScrollRect scrollRect;
 
     private List<ItemSlotUI> slotUIs = new List<ItemSlotUI>();
     private int currentIndex = 0;
@@ -21,6 +22,9 @@ public class ItemMenuUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         currentIndex = 0;
+
+        if (scrollRect == null)
+            scrollRect = GetComponentInChildren<ScrollRect>(true);
 
         onItemSelected = onSelectedCallback;
         onClose = onCloseCallback;
@@ -92,16 +96,18 @@ public class ItemMenuUI : MonoBehaviour
     {
         for (int i = 0; i < slotUIs.Count; i++)
         {
-            var text = slotUIs[i].GetComponentInChildren<TextMeshProUGUI>();
-
-            if (i == index)
-            {
-                if (text != null) text.color = highlightColor;
-            }
-            else
-            {
-                if (text != null) text.color = normalColor;
-            }
+            slotUIs[i].SetHighlight(i == index, highlightColor, normalColor);
         }
+
+        UpdateScrollPosition();
+    }
+
+    private void UpdateScrollPosition()
+    {
+        if (scrollRect == null || slotUIs.Count <= 1)
+            return;
+
+        float normalized = 1f - ((float)currentIndex / (slotUIs.Count - 1));
+        scrollRect.verticalNormalizedPosition = Mathf.Clamp01(normalized);
     }
 }

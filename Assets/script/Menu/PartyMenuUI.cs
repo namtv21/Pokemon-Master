@@ -15,6 +15,7 @@ public class PartyMenuUI : MonoBehaviour
     [SerializeField] private Color highlightColor = Color.yellow;
     [SerializeField] private Color normalColor = Color.white;
     [SerializeField] private PokemonInfoUI infoUI;
+    [SerializeField] private TMP_Text bottomPromptText;
 
     private List<PartySlotUI> slotUIs = new List<PartySlotUI>();
     private int currentIndex = 0;
@@ -23,14 +24,32 @@ public class PartyMenuUI : MonoBehaviour
     private List<Pokemon> pokemons; // giữ danh sách hiện tại
     private PartyMenuMode mode;
     private int firstSelectedIndex = -1; // cho chế độ Switch
+    public static PartyMenuUI Instance { get; private set; }
+    private void Awake() // thêm
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
-    public void Open(List<Pokemon> pokemons,PartyMenuMode mode, Action<Pokemon> onSelected, Action onCancel)
+        Instance = this;
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
+    }
+
+    public void Open(List<Pokemon> pokemons, PartyMenuMode mode, Action<Pokemon> onSelected, Action onCancel, string promptText = null)
     {
         gameObject.SetActive(true);
         this.mode = mode;
         this.onSelected = onSelected;
         this.onCancel = onCancel;
         this.pokemons = pokemons;
+        firstSelectedIndex = -1;
 
         // clear slot cũ
         foreach (Transform child in slotParent)
@@ -47,6 +66,7 @@ public class PartyMenuUI : MonoBehaviour
 
         currentIndex = 0;
         HighlightCurrent();
+        UpdateBottomPrompt(string.IsNullOrWhiteSpace(promptText) ? "Info" : promptText);
     }
 
     public void HandleUpdate()
@@ -117,6 +137,7 @@ public class PartyMenuUI : MonoBehaviour
                     if (firstSelectedIndex < 0)
                     {
                         firstSelectedIndex = currentIndex;
+                        UpdateBottomPrompt("Swap");
                     }
                     else
                     {
@@ -126,6 +147,7 @@ public class PartyMenuUI : MonoBehaviour
                         pokemons = partyHandler.GetPokemons();
                         RefreshSlots();
                         firstSelectedIndex = -1;
+                        UpdateBottomPrompt("Info");
                     }
                 }
             }
@@ -169,6 +191,54 @@ public class PartyMenuUI : MonoBehaviour
 
     public void Close()
     {
+        if (bottomPromptText != null)
+            bottomPromptText.gameObject.SetActive(false);
+
         gameObject.SetActive(false);
+    }
+
+    private void UpdateBottomPrompt(string promptText)
+    {
+        if (bottomPromptText == null)
+        {
+            bottomPromptText = EnsureBottomPromptText();
+        }
+
+        if (bottomPromptText == null)
+            return;
+
+        if (string.IsNullOrWhiteSpace(promptText))
+        {
+            bottomPromptText.gameObject.SetActive(false);
+            return;
+        }
+
+        bottomPromptText.gameObject.SetActive(true);
+        bottomPromptText.text = promptText;
+    }
+
+    private TMP_Text EnsureBottomPromptText()
+    {
+        var existing = transform.Find("BottomPrompt");
+        if (existing != null)
+            return existing.GetComponent<TMP_Text>();
+
+        var go = new GameObject("BottomPrompt");
+        go.transform.SetParent(transform, false);
+
+        var rect = go.AddComponent<RectTransform>();
+        rect.anchorMin = new Vector2(0.5f, 0f);
+        rect.anchorMax = new Vector2(0.5f, 0f);
+        rect.pivot = new Vector2(0.5f, 0f);
+        rect.anchoredPosition = new Vector2(0f, 18f);
+        rect.sizeDelta = new Vector2(400f, 40f);
+
+        var text = go.AddComponent<TextMeshProUGUI>();
+        text.font = TMP_Settings.defaultFontAsset;
+        text.fontSize = 28;
+        text.alignment = TextAlignmentOptions.Center;
+        text.color = Color.white;
+        text.raycastTarget = false;
+        return text;
     }
 }

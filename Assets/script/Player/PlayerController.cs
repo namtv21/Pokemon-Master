@@ -2,10 +2,22 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance { get; private set; }
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void ResetInstance()
+    {
+        Instance = null;
+    }
+
+    [Header("Dialog")]
+    [SerializeField] private Sprite portrait;
+
     public float moveSpeed = 3f; 
     public LayerMask SolidObjectsLayer;
     public LayerMask GrassLayer;
@@ -16,32 +28,73 @@ public class PlayerController : MonoBehaviour
     private Vector3 targetPos; // vector vị trí mục tiêu
     public bool isMoving;
     private float cellSize = 1f;
-
-     private static bool _initialized;
+    private CoroutineHost coroutineHost;
 
     //Hàm khởi tạo
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0;
-        rb.freezeRotation = true;
-        //animator = GetComponent<Animator>();
-        
-        if (_initialized)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        DontDestroyOnLoad(gameObject);
-        _initialized = true;
 
+        Instance = this;
+
+        rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0;
+        rb.freezeRotation = true;
+        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+        RebindAnimator();
+        coroutineHost = CoroutineHost.GetOrCreate();
+
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += HandleSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= HandleSceneLoaded;
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
+    }
+
+    private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        RebindAnimator();
+    }
+
+    private void RebindAnimator()
+    {
+        if (animator != null)
+            return;
+
+        animator = GetComponent<Animator>();
+        if (animator == null)
+            animator = GetComponentInChildren<Animator>(true);
     }
 
     //Hàm update sau mỗi frame
     public void HandleUpdate()
     {
         if (isMoving) return;
+        if (!isActiveAndEnabled || !gameObject.activeInHierarchy) return;
         if (GameController.Instance.State != GameState.Overworld) return;
+
+        if (animator == null)
+        {
+            RebindAnimator();
+            if (animator == null) return;
+        }
 
         input = new Vector2(
             Input.GetAxisRaw("Horizontal"),
@@ -62,8 +115,7 @@ public class PlayerController : MonoBehaviour
             if (IsWalkable(newTarget))
             {
                 targetPos = new Vector3(newTarget.x, newTarget.y, 0);
-                //StopAllCoroutines();
-                StartCoroutine(MoveTo(targetPos));
+                StartMoveRoutine(targetPos);
             }
             else
             {
@@ -76,7 +128,13 @@ public class PlayerController : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
-        Interact();
+        {
+            var dialogManager = DialogManager.Instance;
+            if (dialogManager != null && dialogManager.IsDebouncingInput)
+                return;
+
+            Interact();
+        }
         
     }
 
@@ -96,16 +154,44 @@ public class PlayerController : MonoBehaviour
             }
     }
 
+    public Vector2 GetFacingDirection()
+    {
+        if (animator == null)
+            return Vector2.down;
+
+        var facing = new Vector2(animator.GetFloat("Horizontal"), animator.GetFloat("Vertical"));
+        if (facing == Vector2.zero)
+            return Vector2.down;
+
+        return facing.normalized;
+    }
+
+    public Vector2 GetPosition()
+    {
+        return rb != null ? rb.position : (Vector2)transform.position;
+    }
+
+    public Sprite Portrait => portrait;
+
+    public void SetPortrait(Sprite newPortrait)
+    {
+        portrait = newPortrait;
+    }
+
     //Hàm di chuyển
     System.Collections.IEnumerator MoveTo(Vector3 target)
     {
         isMoving = true;
-        while ((target - transform.position).sqrMagnitude > 0.001f)
+        Vector2 target2D = target;
+
+        while ((target2D - rb.position).sqrMagnitude > 0.001f)
         {
-            transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
-            yield return null;
+            var nextPos = Vector2.MoveTowards(rb.position, target2D, moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(nextPos);
+            yield return new WaitForFixedUpdate();
         }
-        transform.position = target;
+
+        rb.MovePosition(target2D);
         isMoving = false;
         
         foreach (var grassTrigger in FindObjectsOfType<GrassTrigger>())
@@ -116,11 +202,60 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void StartMoveRoutine(Vector3 target)
+    {
+        if (coroutineHost == null)
+            coroutineHost = CoroutineHost.GetOrCreate();
+
+        if (coroutineHost == null)
+        {
+            Debug.LogWarning("[PlayerController] Coroutine host is unavailable.");
+            return;
+        }
+
+        coroutineHost.StartCoroutine(MoveTo(target));
+    }
+
     // Kiểm tra va chạm
     bool IsWalkable(Vector2 target)
     {
         var hit = Physics2D.OverlapCircle(target, 0.2f, SolidObjectsLayer | InteractableLayer);
         return hit == null;
+    }
+
+    private sealed class CoroutineHost : MonoBehaviour
+    {
+        private static CoroutineHost instance;
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void ResetInstance()
+        {
+            instance = null;
+        }
+
+        public static CoroutineHost GetOrCreate()
+        {
+            if (instance != null)
+                return instance;
+
+            var existing = FindObjectOfType<CoroutineHost>();
+            if (existing != null)
+            {
+                instance = existing;
+                return instance;
+            }
+
+            var go = new GameObject("PlayerControllerRunner");
+            DontDestroyOnLoad(go);
+            instance = go.AddComponent<CoroutineHost>();
+            return instance;
+        }
+
+        private void OnDestroy()
+        {
+            if (instance == this)
+                instance = null;
+        }
     }
     
 }

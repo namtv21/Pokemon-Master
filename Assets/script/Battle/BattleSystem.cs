@@ -19,31 +19,66 @@ public enum BattleState
 
 public class BattleSystem : MonoBehaviour
 {
-    [Header("Tham chiếu")]
-    [SerializeField] private BattleItemHandler itemHandler;
-    [SerializeField] private BattleItemMenu battleItemMenu;
-    [SerializeField] private BattlePartyHandler partyHandler;
-    [SerializeField] private BattlePartyMenu battlePartyMenu;
-    [SerializeField] private BattleDialogBox dialogBox;
-    [SerializeField] private PlayerParty playerParty;
+    [Header("Battle Units")]
     [SerializeField] private BattleUnit playerUnit;
     public BattleUnit PlayerUnit => playerUnit;
     [SerializeField] private BattleUnit enemyUnit;
     public BattleUnit EnemyUnit => enemyUnit;
 
+    [Header("UI References")]
     [SerializeField] private GameObject battleUI;
+    [SerializeField] private BattleDialogBox dialogBox;
+    [SerializeField] private BattleItemMenu battleItemMenu;
+    [SerializeField] private BattlePartyMenu battlePartyMenu;
+    [SerializeField] private MoveLearnUI moveLearnUI;
+
+    [Header("Audio")]
     [SerializeField] private AudioClip trainerBattleClip;
     [SerializeField] private AudioClip wildBattleClip;
-    [SerializeField] private MoveLearnUI moveLearnUI;
+
+    // Auto-find in scene
+    private BattleItemHandler itemHandler;
+    private BattlePartyHandler partyHandler;
     private int currentEnemyIndex;          // chỉ số Pokémon hiện tại của Trainer
     private List<Pokemon> trainerParty;     // danh sách Pokémon của Trainer
 
     private BattleState state;
     private NPC currentTrainer;
     private bool isTrainerBattle;
+    private bool isEndingBattle;
+
+    private MoveLearnUI ResolveMoveLearnUI()
+    {
+        if (!this)
+            return null;
+
+        if (moveLearnUI != null)
+            return moveLearnUI;
+
+        moveLearnUI = Object.FindObjectOfType<MoveLearnUI>(true);
+        return moveLearnUI;
+    }
+
+    private void OnDestroy()
+    {
+        isEndingBattle = true;
+        moveLearnUI = null;
+        itemHandler = null;
+        partyHandler = null;
+    }
     
     void Awake()
     {
+        // Auto-find components in BattleScene
+        if (itemHandler == null)
+            itemHandler = GetComponentInChildren<BattleItemHandler>(true);
+        if (partyHandler == null)
+            partyHandler = GetComponentInChildren<BattlePartyHandler>(true);
+        if (dialogBox == null)
+            dialogBox = GetComponentInChildren<BattleDialogBox>(true);
+        if (battleUI == null)
+            battleUI = gameObject; // fallback
+        
         battleUI.SetActive(false);
     }
     public event System.Action<BattleState> OnStateChanged;
@@ -79,6 +114,7 @@ public class BattleSystem : MonoBehaviour
         MusicManager.Instance.PlayMusic(wildBattleClip);
         battleUI.SetActive(true);
         isTrainerBattle = false;
+        var playerParty = PlayerParty.Instance;
         var playerPokemon = playerParty.GetHealthyPokemon();
         playerUnit.Setup(playerPokemon);
         enemyUnit.Setup(wildPokemon);
@@ -94,6 +130,7 @@ public class BattleSystem : MonoBehaviour
         battleUI.SetActive(true);
         isTrainerBattle = true;
         currentTrainer = trainer;
+        var playerParty = PlayerParty.Instance;
         var playerPokemon = playerParty.GetHealthyPokemon();
         playerUnit.Setup(playerPokemon);
 
@@ -138,7 +175,8 @@ public class BattleSystem : MonoBehaviour
                 break;
 
             case BattleState.NewMoveSelection:
-                moveLearnUI.HandleUpdate();
+                if (ResolveMoveLearnUI() != null)
+                    moveLearnUI.HandleUpdate();
                 break;
             
             case BattleState.WaitForNextTrainerPokemon:
@@ -210,7 +248,7 @@ public class BattleSystem : MonoBehaviour
 
         // Mở PartyMenu để chọn Pokémon target
         state = BattleState.PlayerPokemonSelection;
-        battlePartyMenu.Open(playerParty.Pokemons,
+        battlePartyMenu.Open(PlayerParty.Instance.Pokemons,
             (pokemon) =>
             {
             // Nếu chọn đúng con đang ra trận → dùng trực tiếp BattleUnit
@@ -327,10 +365,10 @@ public class BattleSystem : MonoBehaviour
         // 👉 Nếu không bị block, miss thì tiếp tục thực hiện move
         dialogBox.ShowDialog($"{playerUnit.Pokemon.Base.Name} used {move.Base.MoveName}!");
         yield return new WaitForSeconds(1f);
+        move.UseMove();
 
         if (move.Base.Power >0){
             // Tính sát thương và trừ máu
-            move.UseMove();
             if (enemyUnit.Pokemon.Status == StatusEffect.Protected)
             {
                 dialogBox.ShowDialog($"{enemyUnit.Pokemon.Base.Name} is protected!");
@@ -442,6 +480,7 @@ public class BattleSystem : MonoBehaviour
         // Nếu không bị block, miss thì tiếp tục thực hiện move
         dialogBox.ShowDialog($"{enemyUnit.Pokemon.Base.Name} used {move.Base.MoveName}!");
         yield return new WaitForSeconds(1f);
+        move.UseMove();
         if (move.Base.Power >0){
             // Tính sát thương và trừ máu
             bool isCritical;
@@ -560,7 +599,7 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {
-            dialogBox.ShowDialog($"{move.Base.MoveName} had no effect.");
+            dialogBox.ShowDialog($"{attacker.Base.Name} used {move.Base.MoveName}, but it had no effect.");
         }
     }
     private void ApplyBoosts(Pokemon target, List<StatBoost> boosts)
@@ -668,7 +707,18 @@ public class BattleSystem : MonoBehaviour
     {
         SetState(BattleState.NewMoveSelection);
 
-        moveLearnUI.Show(poke, newMove, (selectedIndex) =>
+        var learnUi = ResolveMoveLearnUI();
+        if (learnUi == null)
+        {
+            // Nếu UI học chiêu không còn tồn tại, bỏ qua học chiêu để tránh crash battle.
+            if (!isTrainerBattle)
+                EndBattle();
+            else
+                SetState(BattleState.WaitForNextTrainerPokemon);
+            return;
+        }
+
+        learnUi.Show(poke, newMove, (selectedIndex) =>
         {
             if (selectedIndex == 2) // slot giữa là chiêu mới
             {
@@ -714,7 +764,10 @@ public class BattleSystem : MonoBehaviour
             currentEnemyIndex++;
             var nextPokemon = trainerParty[currentEnemyIndex];
             enemyUnit.Setup(nextPokemon);
-            dialogBox.ShowDialog($"Trainer sent out {nextPokemon.Base.Name}!");
+            string trainerName = currentTrainer != null && !string.IsNullOrWhiteSpace(currentTrainer.npcName)
+                ? currentTrainer.npcName
+                : "Trainer";
+            dialogBox.ShowDialog($"{trainerName} sent out {nextPokemon.Base.Name}!");
             yield return new WaitForSeconds(1f);
             partyHandler.OpenPartyMenu(forceSwitch: true);
             SetState(BattleState.PlayerActionSelection);
@@ -722,21 +775,82 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {
-            dialogBox.ShowDialog("Trainer has no more Pokémon!");
+            string trainerName = currentTrainer != null && !string.IsNullOrWhiteSpace(currentTrainer.npcName)
+                ? currentTrainer.npcName
+                : "Trainer";
+            dialogBox.ShowDialog($"{trainerName} has no more Pokémon!");
             yield return new WaitForSeconds(1f);
-            dialogBox.ShowDialog("You got money from the Trainer!");
+            if (currentTrainer != null && currentTrainer.IsGymLeader)
+            {
+                // Prefer giving a configured badge item; otherwise fall back to badge id persistence.
+                if (currentTrainer.BadgeItem != null)
+                {
+                    Inventory.Instance?.AddItem(currentTrainer.BadgeItem, 1);
+                    dialogBox.ShowDialog($"You received {currentTrainer.BadgeItem.name}!");
+                }
+                else
+                {
+                    string badgeName = string.IsNullOrWhiteSpace(currentTrainer.BadgeName) ? "Badge" : currentTrainer.BadgeName;
+                    SaveBadgeLocal(badgeName);
+                    dialogBox.ShowDialog($"You received the {badgeName}!");
+                }
+
+                // If this NPC should only battle once, disable further battles.
+                if (currentTrainer.CanBattleOnce)
+                    currentTrainer.CanBattle = false;
+            }
+            else
+            {
+                int rewardMoney = currentTrainer != null ? Mathf.Max(0, currentTrainer.RewardMoney) : 20;
+                dialogBox.ShowDialog($"You got {rewardMoney} money from {trainerName}!");
+                Inventory.Instance.AddMoney(rewardMoney);
+            }
             yield return new WaitForSeconds(1f);
-            Inventory.Instance.AddMoney(20);
             EndBattle();
         }
     }
     public void EndBattle()
     {
+        if (isEndingBattle)
+            return;
+
+        isEndingBattle = true;
         SetState(BattleState.BattleOver);
-        playerUnit.Pokemon.ResetStatBoosts();
-        enemyUnit.Pokemon.ResetStatBoosts();
-        GameController.Instance.EndBattle();
-        battleUI.SetActive(false);
-        MusicManager.Instance.PlayMusic(null);
+
+        if (playerUnit != null && playerUnit.Pokemon != null)
+            playerUnit.Pokemon.ResetStatBoosts();
+
+        if (enemyUnit != null && enemyUnit.Pokemon != null)
+            enemyUnit.Pokemon.ResetStatBoosts();
+
+        if (battleUI != null)
+            battleUI.SetActive(false);
+
+        MusicManager.Instance?.PlayMusic(null);
+        GameController.Instance?.EndBattle();
+    }
+
+    // Local helper to persist badge in PlayerPrefs and notify any runtime BadgeManager if present.
+    private void SaveBadgeLocal(string badgeId)
+    {
+        if (string.IsNullOrWhiteSpace(badgeId)) return;
+
+        const string prefsKey = "PlayerBadges";
+        var data = PlayerPrefs.GetString(prefsKey, string.Empty);
+        var set = new System.Collections.Generic.HashSet<string>(System.StringComparer.OrdinalIgnoreCase);
+        if (!string.IsNullOrWhiteSpace(data))
+        {
+            var parts = data.Split(new[] {'|'}, System.StringSplitOptions.RemoveEmptyEntries);
+            foreach (var p in parts) set.Add(p);
+        }
+
+        if (!set.Contains(badgeId))
+        {
+            set.Add(badgeId);
+            PlayerPrefs.SetString(prefsKey, string.Join("|", set));
+            PlayerPrefs.Save();
+        }
+
+        ToastNotificationManager.Instance?.Show($"Received badge: {badgeId}", Color.cyan);
     }
 }

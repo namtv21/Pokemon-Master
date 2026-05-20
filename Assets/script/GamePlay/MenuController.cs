@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum MenuState { None, Main, Party, Item, Storage, Save, Load, Option, Quest}
+public enum MenuState { None, Main, Party, Item, Storage, Quest, Pokedex, SaveLoad, Option }
 
 public class MenuController : MonoBehaviour
 {
@@ -10,14 +10,13 @@ public class MenuController : MonoBehaviour
     [SerializeField] private PartyMenuUI partyMenuUI;
     [SerializeField] private ItemMenuUI itemMenuUI;
     [SerializeField] private Inventory inventory;
-    [SerializeField] private PlayerParty playerParty;
     [SerializeField] private ItemHandler itemHandler;
     [SerializeField] private PokemonInfoUI pokemonInfoUI;
-    [SerializeField] private StorageSystem storageSystem;
     [SerializeField] private SaveLoadSystem saveLoadSystem;
     [SerializeField] private SaveLoadMenuUI saveLoadMenuUI;
     [SerializeField] private AudioSettings audioSettings;
     [SerializeField] private QuestMenuUI questMenuUI;
+    [SerializeField] private PokemonDexMenuUI pokemonDexMenuUI;
 
     public Inventory Inventory => inventory;
 
@@ -29,6 +28,12 @@ public class MenuController : MonoBehaviour
         else Destroy(gameObject);
         //DontDestroyOnLoad(gameObject);
     }
+
+    private void Start()
+    {
+        CloseAll();
+    }
+
     public event System.Action<MenuState> OnStateChanged;
     public void SetState(MenuState newState)
     {
@@ -40,37 +45,43 @@ public class MenuController : MonoBehaviour
     public void OpenMainMenu()
     {
         SetState(MenuState.Main);
-        mainMenuUI.Open(OnMenuSelected, CloseAll);
+        if (mainMenuUI != null)
+            mainMenuUI.Open(OnMenuSelected, CloseAll);
+        else
+            ToastNotificationManager.Instance?.Show("Main menu is unavailable.", Color.yellow);
     }
 
     public void HandleUpdate(System.Action onClose)
     {
+        bool wasInMenu = currentState != MenuState.None;
+
         switch (currentState)
         {
             case MenuState.Main:
-                mainMenuUI.HandleUpdate();
+                mainMenuUI?.HandleUpdate();
                 break;
             case MenuState.Item:
-                itemMenuUI.HandleUpdate();
+                itemMenuUI?.HandleUpdate();
                 break;
             case MenuState.Party:
-                partyMenuUI.HandleUpdate();
+                partyMenuUI?.HandleUpdate();
                 break;
             case MenuState.Storage:
-                storageSystem.HandleUpdate();
+                var storageInMenu = StorageSystem.Instance;
+                if (storageInMenu != null)
+                    storageInMenu.HandleUpdate();
+                if (Input.GetKeyDown(KeyCode.X))
+                {
+                    storageInMenu?.CloseStorage();
+                    currentState = MenuState.Main;
+                    mainMenuUI?.Open(OnMenuSelected, CloseAll);
+                }
                 break;
-            case MenuState.Save:
-                saveLoadMenuUI.HandleUpdate(() => 
-                { 
-                    currentState = MenuState.Main; 
-                    mainMenuUI.Open(OnMenuSelected, CloseAll); 
-                });
-                break;
-            case MenuState.Load:
-                saveLoadMenuUI.HandleUpdate(() => 
-                { 
-                    currentState = MenuState.Main; 
-                    mainMenuUI.Open(OnMenuSelected, CloseAll); 
+            case MenuState.SaveLoad:
+                saveLoadMenuUI?.HandleUpdate(() =>
+                {
+                    currentState = MenuState.Main;
+                    mainMenuUI?.Open(OnMenuSelected, CloseAll);
                 });
                 break;
             case MenuState.Option:
@@ -82,22 +93,27 @@ public class MenuController : MonoBehaviour
                 });
                 break;
             case MenuState.Quest:
-                questMenuUI.HandleUpdate();
+                questMenuUI?.HandleUpdate();
                 if (Input.GetKeyDown(KeyCode.X))
                 {
-                    questMenuUI.Close();
+                    questMenuUI?.Close();
                     currentState = MenuState.Main;
-                    mainMenuUI.Open(OnMenuSelected, CloseAll);
+                    mainMenuUI?.Open(OnMenuSelected, CloseAll);
                 }
+                break;
+            case MenuState.Pokedex:
+                pokemonDexMenuUI?.HandleUpdate(() =>
+                {
+                    pokemonDexMenuUI?.Close();
+                    currentState = MenuState.Main;
+                    mainMenuUI?.Open(OnMenuSelected, CloseAll);
+                });
                 break;
 
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            CloseAll();
+        if (wasInMenu && currentState == MenuState.None)
             onClose?.Invoke();
-        }
     }
 
     /// Callback khi chọn option trong MainMenu
@@ -108,28 +124,35 @@ public class MenuController : MonoBehaviour
             case MainMenuOption.Party:
                 mainMenuUI.Close();
                 SetState(MenuState.Party);
-                partyMenuUI.Open(playerParty.Pokemons, PartyMenuMode.Switch,
+                partyMenuUI.Open(PlayerParty.Instance.Pokemons, PartyMenuMode.Switch,
                     null,
-                    CloseAll);
+                    CloseAll,
+                    "Move");
 
                 break;
 
             case MainMenuOption.Item:
                 mainMenuUI.Close();
                 SetState(MenuState.Item);
+                if (itemMenuUI == null || inventory == null || itemHandler == null)
+                {
+                    ToastNotificationManager.Instance?.Show("Item menu is unavailable.", Color.yellow);
+                    CloseAll();
+                    return;
+                }
                 itemMenuUI.OpenMenu(inventory.GetSlots(),
                     (itemBase) =>
                     {
                         if (itemBase.itemType == ItemType.Pokeball || itemBase.itemType == ItemType.KeyItem)
                         {
-                            DialogManager.Instance.ShowDialogCoroutine($"{itemBase.itemName} can't be used here.");
+                            ToastNotificationManager.Instance?.Show($"{itemBase.itemName} can't be used here.", Color.yellow);
                             CloseAll();
                             return;
                         }
 
                         // Sau khi chọn item, mở PartyMenu để chọn Pokémon target
                         currentState = MenuState.Party;
-                        partyMenuUI.Open(playerParty.Pokemons, PartyMenuMode.Selection,
+                        partyMenuUI.Open(PlayerParty.Instance.Pokemons, PartyMenuMode.Selection,
                             (pokemon) =>
                             {
                                 StartCoroutine(itemHandler.UseItemOnPokemon(itemBase, pokemon));
@@ -142,31 +165,64 @@ public class MenuController : MonoBehaviour
             case MainMenuOption.Storage:
                 mainMenuUI.Close();
                 SetState(MenuState.Storage);
-                storageSystem.OpenStorage();
-                break;
-
-            case MainMenuOption.Save:
-                mainMenuUI.Close();
-                SetState(MenuState.Save);
-                saveLoadMenuUI.Open(true, true); // mở Save menu, inGame = true
-                break;
-
-            case MainMenuOption.Load:
-                mainMenuUI.Close();
-                SetState(MenuState.Load);
-                saveLoadMenuUI.Open(false, true); // mở Load menu, inGame = true
-                break;
-
-            case MainMenuOption.Option:
-                mainMenuUI.Close();
-                SetState(MenuState.Option);
-                audioSettings.Open();
+                var storage = StorageSystem.Instance;
+                if (storage != null)
+                {
+                    storage.OpenStorage();
+                }
+                else
+                {
+                    ToastNotificationManager.Instance?.Show("Storage system is unavailable.", Color.yellow);
+                    CloseAll();
+                }
                 break;
 
             case MainMenuOption.Quest:
                 mainMenuUI.Close();
                 SetState(MenuState.Quest);
-                questMenuUI.Open();
+                if (questMenuUI != null)
+                    questMenuUI.Open();
+                else
+                {
+                    ToastNotificationManager.Instance?.Show("Quest menu is unavailable.", Color.yellow);
+                    CloseAll();
+                }
+                break;
+
+            case MainMenuOption.PokemonDex:
+                mainMenuUI.Close();
+                SetState(MenuState.Pokedex);
+                if (pokemonDexMenuUI != null)
+                    pokemonDexMenuUI.Open();
+                else
+                {
+                    ToastNotificationManager.Instance?.Show("PokemonDex menu is unavailable.", Color.yellow);
+                    CloseAll();
+                }
+                break;
+
+            case MainMenuOption.SaveLoad:
+                mainMenuUI.Close();
+                SetState(MenuState.SaveLoad);
+                if (saveLoadMenuUI != null)
+                    saveLoadMenuUI.Open(true);
+                else
+                {
+                    ToastNotificationManager.Instance?.Show("Save/Load menu is unavailable.", Color.yellow);
+                    CloseAll();
+                }
+                break;
+
+            case MainMenuOption.Option:
+                mainMenuUI.Close();
+                SetState(MenuState.Option);
+                if (audioSettings != null)
+                    audioSettings.Open();
+                else
+                {
+                    ToastNotificationManager.Instance?.Show("Options are unavailable.", Color.yellow);
+                    CloseAll();
+                }
                 break;
             
             case MainMenuOption.Exit:
@@ -179,13 +235,16 @@ public class MenuController : MonoBehaviour
     public void CloseAll()
     {
         currentState = MenuState.None;
-        mainMenuUI.Close();
-        itemMenuUI.CloseMenu();
-        partyMenuUI.Close();
-        storageSystem.CloseStorage();
-        saveLoadMenuUI.Close();
-        audioSettings.Close();
-        pokemonInfoUI.Hide();
+        mainMenuUI?.Close();
+        itemMenuUI?.CloseMenu();
+        partyMenuUI?.Close();
+        var storage = StorageSystem.Instance;
+        if (storage != null)
+            storage.CloseStorage();
+        saveLoadMenuUI?.Close();
+        audioSettings?.Close();
+        pokemonDexMenuUI?.Close();
+        pokemonInfoUI?.Hide();
         // Nếu có StorageMenu, SaveMenu, LoadMenu, OptionMenu thì Close ở đây
     }
 }

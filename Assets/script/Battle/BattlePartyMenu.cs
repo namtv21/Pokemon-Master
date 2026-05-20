@@ -10,6 +10,7 @@ public class BattlePartyMenu : MonoBehaviour
     [SerializeField] private Transform slotParent;
     [SerializeField] private Color highlightColor = Color.yellow;
     [SerializeField] private Color normalColor = Color.white;
+    [SerializeField] private ScrollRect scrollRect;
 
     private List<PartySlotUI> slotUIs = new List<PartySlotUI>();
     private int currentIndex = 0;
@@ -28,6 +29,9 @@ public class BattlePartyMenu : MonoBehaviour
         gameObject.SetActive(true);
         this.onSelected = onSelected;
         this.onCancel = onCancel;
+
+        if (scrollRect == null)
+            scrollRect = GetComponentInChildren<ScrollRect>(true);
 
         // Chỉ hủy các slot từng Instantiate từ slotPrefab
         for (int i = 0; i < slotUIs.Count; i++)
@@ -67,6 +71,8 @@ public class BattlePartyMenu : MonoBehaviour
             int newIndex = currentIndex + 2;
             if (newIndex < slotUIs.Count)
                 currentIndex = newIndex;
+            else
+                currentIndex = currentIndex % 2; // wrap to top row, same column
             HighlightCurrent();
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -74,6 +80,11 @@ public class BattlePartyMenu : MonoBehaviour
             int newIndex = currentIndex - 2;
             if (newIndex >= 0)
                 currentIndex = newIndex;
+            else
+            {
+                int lastRowStart = slotUIs.Count - (slotUIs.Count % 2 == 0 ? 2 : 1);
+                currentIndex = Mathf.Clamp(lastRowStart + (currentIndex % 2), 0, slotUIs.Count - 1);
+            }
             HighlightCurrent();
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -81,6 +92,8 @@ public class BattlePartyMenu : MonoBehaviour
             int newIndex = currentIndex + 1;
             if (newIndex < slotUIs.Count && (currentIndex % 2 == 0))
                 currentIndex = newIndex;
+            else if (currentIndex % 2 == 1)
+                currentIndex = currentIndex - 1;
             HighlightCurrent();
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -88,6 +101,8 @@ public class BattlePartyMenu : MonoBehaviour
             int newIndex = currentIndex - 1;
             if (newIndex >= 0 && (currentIndex % 2 == 1))
                 currentIndex = newIndex;
+            else if (currentIndex % 2 == 0 && currentIndex + 1 < slotUIs.Count)
+                currentIndex = currentIndex + 1;
             HighlightCurrent();
         }
         else if (Input.GetKeyDown(KeyCode.Z))
@@ -113,6 +128,12 @@ public class BattlePartyMenu : MonoBehaviour
 
             if (nameText != null)
                 nameText.color = (i == currentIndex) ? highlightColor : normalColor;
+        }
+
+        if (scrollRect != null && slotUIs.Count > 1)
+        {
+            float normalized = 1f - ((float)currentIndex / (slotUIs.Count - 1));
+            scrollRect.verticalNormalizedPosition = Mathf.Clamp01(normalized);
         }
     }
 

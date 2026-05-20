@@ -3,9 +3,16 @@ using UnityEngine;
 
 public class PlayerParty : MonoBehaviour
 {
+    public static PlayerParty Instance { get; private set; }
+
     //[SerializeField] private List<Pokemon> pokemons = new List<Pokemon>();
-    [SerializeField] private StorageSystem storage;
     public List<Pokemon> Pokemons { get; private set; } = new List<Pokemon>();
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+    }
 
     /// Khởi tạo party với pikachu lv5
     void Start()
@@ -15,7 +22,6 @@ public class PlayerParty : MonoBehaviour
             PokemonBase pikachuBase = Resources.Load<PokemonBase>("PokemonData/pikachu");
             Pokemon pikachu = new Pokemon(pikachuBase, 5);
             AddPokemon(pikachu);
-            PrintParty();
 
             var partyMenu = FindObjectOfType<PartyMenuUI>(); 
             if (partyMenu != null && partyMenu.gameObject.activeSelf) 
@@ -26,15 +32,16 @@ public class PlayerParty : MonoBehaviour
     /// Thêm Pokémon mới vào party
     public void AddPokemon(Pokemon newPokemon)
     {
-        if (Pokemons.Count < 6)   // dùng property Pokemons
+        if (Pokemons.Count < 6)
         {
             Pokemons.Add(newPokemon);
+            PokedexManager.GetOrCreate().MarkCaught(newPokemon);
             Debug.Log($"{newPokemon.Base.Name} was added to your party!");
         }
         else
         {
             Debug.Log("Party is full! Send to storage instead.");
-            storage.AddPokemon(newPokemon);
+            StorageSystem.Instance?.AddPokemon(newPokemon);
         }
     }
 
@@ -73,12 +80,4 @@ public class PlayerParty : MonoBehaviour
         Debug.Log("All Pokémon in the party have been healed!");
     }
     
-    /// Debug: In ra danh sách Pokémon trong party
-    public void PrintParty()
-    {
-        foreach (var p in Pokemons)
-        {
-            Debug.Log($"{p.Base.Name} Lv.{p.Level} HP:{p.CurrentHp}/{p.MaxHp} Status:{p.Status}");
-        }
-    }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public enum MainMenuOption { Party, Item, Storage, Save, Load, Option, Quest, Exit }
+public enum MainMenuOption { Party, Item, Storage, Quest, PokemonDex, SaveLoad, Option, Exit }
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -11,10 +11,29 @@ public class MainMenuUI : MonoBehaviour
 
     [SerializeField] private Color normalColor = Color.white;
     [SerializeField] private Color highlightColor = Color.yellow;
+    [SerializeField] private MainMenuOption[] optionOrder;
+
+    private static readonly MainMenuOption[] DefaultOptionOrder =
+    {
+        MainMenuOption.Party,
+        MainMenuOption.Item,
+        MainMenuOption.Storage,
+        MainMenuOption.Quest,
+        MainMenuOption.PokemonDex,
+        MainMenuOption.SaveLoad,
+        MainMenuOption.Option,
+        MainMenuOption.Exit
+    };
 
     private int currentIndex = 0;
     private Action<MainMenuOption> onSelected;
     private Action onClose;
+
+    private void Awake()
+    {
+        // Keep a stable, explicit top-to-bottom menu flow.
+        optionOrder = (MainMenuOption[])DefaultOptionOrder.Clone();
+    }
 
     public void Open(Action<MainMenuOption> onSelectedCallback, Action onCloseCallback)
     {
@@ -55,12 +74,13 @@ public class MainMenuUI : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Z))
         {
-            onSelected?.Invoke((MainMenuOption)currentIndex);
+            onSelected?.Invoke(GetOptionAtIndex(currentIndex));
         }
         else if (Input.GetKeyDown(KeyCode.X))
         {
+            var closeCallback = onClose;
             Close();
-            onClose?.Invoke();
+            closeCallback?.Invoke();
         }
     }
 
@@ -80,5 +100,13 @@ public class MainMenuUI : MonoBehaviour
             if (img != null)
                 img.color = (i == currentIndex) ? highlightColor : normalColor;
         }
+    }
+
+    private MainMenuOption GetOptionAtIndex(int index)
+    {
+        if (optionOrder != null && index >= 0 && index < optionOrder.Length)
+            return optionOrder[index];
+
+        return (MainMenuOption)index;
     }
 }

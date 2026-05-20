@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class QuestMenuUI : MonoBehaviour
@@ -7,15 +8,18 @@ public class QuestMenuUI : MonoBehaviour
     [SerializeField] private QuestSlotUI questSlotPrefab;
     [SerializeField] private QuestInfoUI infoUI;
 
-    private List<QuestSlotUI> slotUIs = new List<QuestSlotUI>();
+    private readonly List<QuestSlotUI> slotUIs = new();
     private int selectedIndex = 0;
 
     public void Open()
     {
         gameObject.SetActive(true);
         RefreshUI();
+
         if (slotUIs.Count > 0)
             ShowInfo(selectedIndex);
+        else
+            infoUI.Hide();
     }
 
     public void Close()
@@ -30,19 +34,26 @@ public class QuestMenuUI : MonoBehaviour
             Destroy(child.gameObject);
         slotUIs.Clear();
 
-        var quests = QuestManager.Instance.GetActiveQuests();
+        var quests = QuestManager.Instance.GetActiveQuests()
+            .Where(q => q != null && q.Category != QuestCategory.MainStory)
+            .ToList();
+
         for (int i = 0; i < quests.Count; i++)
         {
             var slot = Instantiate(questSlotPrefab, questListParent);
             slot.SetData(quests[i].Title);
             slotUIs.Add(slot);
         }
+
         selectedIndex = 0;
     }
 
     public void HandleUpdate()
     {
-        if (slotUIs.Count == 0) return;
+        if (slotUIs.Count == 0)
+        {
+            return;
+        }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -57,7 +68,6 @@ public class QuestMenuUI : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.X))
         {
             Close();
-            GameController.Instance.SetState(GameState.Overworld);
         }
     }
 
@@ -66,7 +76,11 @@ public class QuestMenuUI : MonoBehaviour
         for (int i = 0; i < slotUIs.Count; i++)
             slotUIs[i].SetHighlight(i == index);
 
-        var quests = QuestManager.Instance.GetActiveQuests();
-        infoUI.ShowInfo(quests[index]);
+        var quests = QuestManager.Instance.GetActiveQuests()
+            .Where(q => q != null && q.Category != QuestCategory.MainStory)
+            .ToList();
+
+        if (index >= 0 && index < quests.Count)
+            infoUI.ShowInfo(quests[index]);
     }
 }

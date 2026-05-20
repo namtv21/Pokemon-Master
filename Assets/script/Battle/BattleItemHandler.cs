@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class BattleItemHandler : MonoBehaviour
 {
     [SerializeField] private BattleDialogBox dialogBox;
     [SerializeField] private GameObject battleUI;
-    [SerializeField] private Inventory inventory;
-    [SerializeField] private StorageSystem storage;
+    private Inventory inventory;
 
     private bool isWildBattle;
     private Pokemon wildPokemon;
@@ -137,9 +134,14 @@ public class BattleItemHandler : MonoBehaviour
         yield return ProceedAfterPlayerAction();
     }
 
+    private void ShowNoti(string message, bool warning = false)
+    {
+        ToastNotificationManager.Instance?.Show(message, warning ? Color.yellow : Color.white);
+    }
+
     private IEnumerator AttemptCatch(ItemBase ball, Pokemon target)
     {
-        dialogBox.ShowDialog($"You used {ball.itemName}!");
+        ShowNoti($"You used {ball.itemName}!");
         yield return new WaitForSeconds(0.8f);
         if (ball.consumable)
             inventory.RemoveItem(ball, 1);
@@ -172,16 +174,35 @@ public class BattleItemHandler : MonoBehaviour
 
     private void CaptureSuccess(Pokemon target)
     {
-        var playerParty = FindObjectOfType<PlayerParty>();
+        // ⭐ Bắn event khi bắt được Pokémon
+        QuestManager.Instance?.SubmitEvent(
+            new QuestEvent(QuestEventType.PokemonCaught, target.Base.Name, 1)
+        );
+
+        var playerParty = PlayerParty.Instance;
         if (playerParty.Pokemons.Count < 6)
         {
-            playerParty.Pokemons.Add(target.CloneAsOwned());
-            dialogBox.ShowDialog($"{target.Base.Name} was added to your party!");
+            Pokemon ownedPokemon = target.CloneAsOwned();
+            playerParty.AddPokemon(ownedPokemon);
+
+            // ⭐ Bắn event khi own Pokémon (thêm vào party)
+            QuestManager.Instance?.SubmitEvent(
+                new QuestEvent(QuestEventType.PokemonOwned, target.Base.Name, 1)
+            );
+
+            ShowNoti($"{target.Base.Name} was added to your party!");
         }
         else
         {
-            storage.AddPokemon(target.CloneAsOwned());
-            dialogBox.ShowDialog($"{target.Base.Name} was sent to the Box!");
+            Pokemon ownedPokemon = target.CloneAsOwned();
+            StorageSystem.Instance.AddPokemon(ownedPokemon);
+
+            // ⭐ Bắn event khi own Pokémon (gửi vào storage)
+            QuestManager.Instance?.SubmitEvent(
+                new QuestEvent(QuestEventType.PokemonOwned, target.Base.Name, 1)
+            );
+
+            ShowNoti($"{target.Base.Name} was sent to the Box!");
         }
         EndBattleWithCapture();
     }

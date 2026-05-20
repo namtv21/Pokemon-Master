@@ -1,7 +1,6 @@
 using UnityEngine;
-using TMPro;
-using System.Collections.Generic;
 using System.IO;
+
 public class SaveLoadMenuUI : MonoBehaviour
 {
     [SerializeField] private SaveLoadSystem saveLoadSystem;
@@ -9,15 +8,22 @@ public class SaveLoadMenuUI : MonoBehaviour
     [SerializeField] private Color highlightColor = Color.yellow;
     [SerializeField] private Color normalColor = Color.white;
 
-    private int currentIndex = 0;
-    private bool isSaveMenu = true; // true = Save, false = Load
-
-    private bool isInGame = false;
-
-    public void Open(bool saveMenu, bool inGame = false)
+    private enum MenuStep
     {
-        isSaveMenu = saveMenu;
-        isInGame = inGame;   // truyền vào true nếu mở từ pause menu trong game
+        SelectSlot,
+        SelectMode
+    }
+
+    private int currentIndex = 0;
+    private bool isInGame = false;
+    private bool isSaveMode = true;
+    private MenuStep currentStep = MenuStep.SelectSlot;
+
+    public void Open(bool inGame = false)
+    {
+        isInGame = inGame;
+        isSaveMode = true;
+        currentStep = MenuStep.SelectSlot;
         gameObject.SetActive(true);
         currentIndex = 0;
         RefreshSlots();
@@ -34,45 +40,63 @@ public class SaveLoadMenuUI : MonoBehaviour
     {
         if (!gameObject.activeSelf) return;
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (currentStep == MenuStep.SelectSlot)
         {
-            currentIndex = (currentIndex - 1 + slots.Length) % slots.Length;
-            HighlightCurrent();
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                currentIndex = (currentIndex - 1 + slots.Length) % slots.Length;
+                RefreshSlots();
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                currentIndex = (currentIndex + 1) % slots.Length;
+                RefreshSlots();
+            }
+            else if (Input.GetKeyDown(KeyCode.Z))
+            {
+                currentStep = MenuStep.SelectMode;
+                RefreshSlots();
+            }
+            else if (Input.GetKeyDown(KeyCode.X))
+            {
+                Close();
+                onClose?.Invoke();
+            }
+
+            return;
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            currentIndex = (currentIndex + 1) % slots.Length;
-            HighlightCurrent();
+            isSaveMode = !isSaveMode;
+            RefreshSlots();
         }
         else if (Input.GetKeyDown(KeyCode.Z))
         {
             string slotName = "SaveFile" + (currentIndex + 1);
-            if (isSaveMenu)
+            if (isSaveMode)
                 saveLoadSystem.Save(slotName);
             else
-            { 
-                if (isInGame) 
-                    saveLoadSystem.Load(slotName); // load ngay trong map 
-                else 
-                    saveLoadSystem.LoadFromMenu(slotName); // load từ MainMenu 
+            {
+                if (isInGame)
+                    saveLoadSystem.Load(slotName);
+                else
+                    saveLoadSystem.LoadFromMenu(slotName);
             }
             Close();
             onClose?.Invoke();
         }
         else if (Input.GetKeyDown(KeyCode.X))
         {
-            Close();
-            onClose?.Invoke();
+            currentStep = MenuStep.SelectSlot;
+            RefreshSlots();
         }
     }
 
     private void HighlightCurrent()
     {
         for (int i = 0; i < slots.Length; i++)
-        {
-            var text = slots[i].GetComponentInChildren<TMP_Text>();
-            text.color = (i == currentIndex) ? highlightColor : normalColor;
-        }
+            slots[i].SetHighlighted(i == currentIndex, highlightColor, normalColor);
     }
 
     private void RefreshSlots()
@@ -89,7 +113,9 @@ public class SaveLoadMenuUI : MonoBehaviour
                 data = JsonUtility.FromJson<SaveData>(json);
             }
 
-            slots[i].SetData(slotName, data, path);
+            slots[i].SetData(slotName, data, path, i == currentIndex, currentStep == MenuStep.SelectMode, isSaveMode);
         }
+
+        HighlightCurrent();
     }
 }

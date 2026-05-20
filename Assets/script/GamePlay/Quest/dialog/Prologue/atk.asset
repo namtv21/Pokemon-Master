@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e95aaf475dde6b438f06307b490d40e, type: 3}
+  m_Name: atk
+  m_EditorClassIdentifier: 
+  sentences:
+  - "qu\xE1c qu\xE1c (n\xFAi n\xE0y do ta m\u1EDF, \u0111\u01B0\u1EDDng n\xE0y do
+    ta tr\u1ED3ng, mu\u1ED1n \u0111i qua n\u1ED9p ph\xED m\xE3i l\u1ED9)"

@@ -6,7 +6,7 @@ using TMPro;
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private SaveLoadMenuUI saveLoadMenuUI;
-    [SerializeField] private string newGameScene = "Tutorial";
+    [SerializeField] private string newGameScene = "Intro";
     [SerializeField] private Color yellow = Color.yellow;
     [SerializeField] private Color white = Color.white;
 
@@ -48,7 +48,7 @@ public class MainMenuManager : MonoBehaviour
             switch (currentIndex)
             {
                 case 0: SceneManager.LoadScene(newGameScene); break;
-                case 1: saveLoadMenuUI.Open(false, false); break;
+                case 1: saveLoadMenuUI.Open(false); break;
                 case 2: Application.Quit(); break;
             }
         }

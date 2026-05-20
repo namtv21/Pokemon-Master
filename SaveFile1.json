@@ -3,7 +3,7 @@
         {
             "name": "Pikachu",
             "level": 5,
-            "currentHP": 5,
+            "currentHP": 13,
             "maxHP": 13,
             "exp": 0,
             "moves": [
@@ -19,27 +19,54 @@
             "speed": 14
         },
         {
-            "name": "Bulbasaur",
-            "level": 4,
+            "name": "Charmander",
+            "level": 5,
             "currentHP": 13,
             "maxHP": 13,
             "exp": 0,
             "moves": [
                 "Growl",
-                "Tackle",
-                "Vine Whip"
+                "Scratch",
+                "Ember"
             ],
-            "attack": 8,
-            "defense": 8,
-            "spAttack": 10,
+            "attack": 10,
+            "defense": 9,
+            "spAttack": 11,
             "spDefense": 10,
-            "speed": 8
+            "speed": 11
         }
     ],
     "storagePokemons": [],
     "money": 200,
-    "sceneName": "Tutorial",
-    "playerX": -3.5,
-    "playerY": -5.800000190734863,
-    "playerZ": 0.0
+    "sceneName": "oke_lab",
+    "playerX": -17.0,
+    "playerY": -6.800000190734863,
+    "playerZ": 0.0,
+    "questSnapshot": {
+        "completedQuestIds": [],
+        "readyToTurnInQuestIds": [],
+        "activeQuests": []
+    },
+    "storyPrologueDone": false,
+    "storyFirstMainQuestAccepted": false,
+    "storyStarterChosen": true,
+    "storyStarterPokemonId": "charmander",
+    "storyMainSequenceIndex": 0,
+    "storyMainStepIndex": 1,
+    "pokedex": {
+        "seenPokemonIds": [
+            "Pikachu",
+            "Charmander"
+        ],
+        "caughtPokemonIds": [
+            "Pikachu",
+            "Charmander"
+        ]
+    },
+    "npcStates": [
+        {
+            "npcId": "prof_oke",
+            "canBattle": false
+        }
+    ]
 }

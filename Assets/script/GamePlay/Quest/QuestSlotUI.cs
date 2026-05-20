@@ -13,6 +13,11 @@ public class QuestSlotUI : MonoBehaviour
         SetHighlight(false);
     }
 
+    public void SetData(Quest quest)
+    {
+        SetData(quest != null ? quest.GetDisplayTitle() : "Unknown Quest");
+    }
+
     public void SetHighlight(bool active)
     {
         titleText.color = active ? highlightColor : Color.white;

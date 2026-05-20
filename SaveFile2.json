@@ -22,7 +22,26 @@
     "storagePokemons": [],
     "money": 200,
     "sceneName": "Town01",
-    "playerX": -0.5,
-    "playerY": 2.200000047683716,
-    "playerZ": 0.0
+    "playerX": -15.35848617553711,
+    "playerY": -7.0184736251831059,
+    "playerZ": -9.983179092407227,
+    "questSnapshot": {
+        "completedQuestIds": [],
+        "readyToTurnInQuestIds": [],
+        "activeQuests": []
+    },
+    "storyPrologueDone": false,
+    "storyFirstMainQuestAccepted": false,
+    "storyStarterChosen": false,
+    "storyStarterPokemonId": "",
+    "storyMainSequenceIndex": 0,
+    "storyMainStepIndex": 1,
+    "pokedex": {
+        "seenPokemonIds": [
+            "Pikachu"
+        ],
+        "caughtPokemonIds": [
+            "Pikachu"
+        ]
+    }
 }

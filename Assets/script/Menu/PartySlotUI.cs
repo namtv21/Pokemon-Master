@@ -81,7 +81,7 @@ public class PartySlotUI : MonoBehaviour
         else
         {
             statusText.text = Pokemon.Status.ToString();
-            statusText.color = Color.black;
+            statusText.color = Color.white;
         }
     }
 

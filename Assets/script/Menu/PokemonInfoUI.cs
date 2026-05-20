@@ -58,7 +58,7 @@ public class PokemonInfoUI : MonoBehaviour
         else
         {
             statusText.text = pokemon.Status.ToString();
-            statusText.color = Color.black;
+            statusText.color = Color.white;
         }
 
         statsText.text =

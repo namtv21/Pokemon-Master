@@ -12,6 +12,12 @@ public class SaveLoadSystem : MonoBehaviour
     // Dữ liệu tạm để áp sau khi scene load
     public static SaveData pendingLoadData;
 
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    private static void ResetPendingLoadData()
+    {
+        pendingLoadData = null;
+    }
+
     private string GetSavePath(string slotName)
     {
         string exeFolder = Path.GetFullPath(Path.Combine(Application.dataPath, ".."));
@@ -34,8 +40,25 @@ public class SaveLoadSystem : MonoBehaviour
             sceneName = SceneManager.GetActiveScene().name,
             playerX = player != null ? player.transform.position.x : 0f,
             playerY = player != null ? player.transform.position.y : 0f,
-            playerZ = player != null ? player.transform.position.z : 0f
+            playerZ = player != null ? player.transform.position.z : 0f,
+            storyPrologueDone = StoryFlags.Instance != null && StoryFlags.Instance.PrologueDone,
+            storyFirstMainQuestAccepted = StoryFlags.Instance != null && StoryFlags.Instance.FirstMainQuestAccepted,
+            storyStarterChosen = StoryFlags.Instance != null && StoryFlags.Instance.StarterChosen,
+            storyStarterPokemonId = StoryFlags.Instance != null ? StoryFlags.Instance.StarterPokemonId : string.Empty,
+            storyMainSequenceIndex = StoryFlags.Instance != null ? StoryFlags.Instance.MainStorySequenceIndex : 0,
+            storyMainStepIndex = StoryFlags.Instance != null ? StoryFlags.Instance.MainStoryStepIndex : 0,
+            questSnapshot = QuestManager.Instance != null ? QuestManager.Instance.ExportSaveSnapshot() : null,
+            pokedex = PokedexManager.GetOrCreate().ExportData()
         };
+
+        // Save NPC states
+        data.npcStates = new List<NPCStateSaveData>();
+        var allNpcs = FindObjectsOfType<NPC>(true);
+        foreach (var npc in allNpcs)
+        {
+            if (string.IsNullOrWhiteSpace(npc.NPCId)) continue;
+            data.npcStates.Add(new NPCStateSaveData { npcId = npc.NPCId, canBattle = npc.CanBattle });
+        }
 
         foreach (var p in playerParty.Pokemons)
             data.partyPokemons.Add(new PokemonData(p));
@@ -62,6 +85,13 @@ public class SaveLoadSystem : MonoBehaviour
         string json = File.ReadAllText(path);
         SaveData data = JsonUtility.FromJson<SaveData>(json);
 
+        if (!string.IsNullOrWhiteSpace(data.sceneName) && !string.Equals(SceneManager.GetActiveScene().name, data.sceneName))
+        {
+            pendingLoadData = data;
+            SceneManager.LoadScene(data.sceneName);
+            return;
+        }
+
         ApplyData(data);
         Debug.Log($"Game Loaded from {path}");
     }
@@ -83,7 +113,10 @@ public class SaveLoadSystem : MonoBehaviour
         pendingLoadData = data;
 
         // Chuyển sang scene đã lưu
-        SceneManager.LoadScene(data.sceneName);
+        if (!string.IsNullOrWhiteSpace(data.sceneName))
+            SceneManager.LoadScene(data.sceneName);
+        else
+            Debug.LogWarning("Save file has no scene name. Pending data will be applied in current scene.");
 
         Debug.Log($"Scene switched to {data.sceneName}, waiting to apply save data...");
     }
@@ -104,12 +137,11 @@ public class SaveLoadSystem : MonoBehaviour
         var storageSystem = FindObjectOfType<StorageSystem>();
         var inventory = FindObjectOfType<Inventory>();
         var player = FindObjectOfType<PlayerController>();
-        
-        SceneManager.LoadScene(data.sceneName);
+
         if (playerParty != null)
         {
             playerParty.Pokemons.Clear();
-            foreach (var pd in data.partyPokemons)
+            foreach (var pd in data.partyPokemons ?? new List<PokemonData>())
                 playerParty.Pokemons.Add(new Pokemon(pd));
         }
 
@@ -117,7 +149,7 @@ public class SaveLoadSystem : MonoBehaviour
         {
             var storageList = storageSystem.GetStoredPokemons();
             storageList.Clear();
-            foreach (var sd in data.storagePokemons)
+            foreach (var sd in data.storagePokemons ?? new List<PokemonData>())
                 storageList.Add(new Pokemon(sd));
             storageSystem.RefreshUIAfterLoad();
         }
@@ -127,6 +159,62 @@ public class SaveLoadSystem : MonoBehaviour
 
         if (player != null)
             player.transform.position = new Vector3(data.playerX, data.playerY, data.playerZ);
+
+        var storyFlags = StoryFlags.GetOrCreate();
+        storyFlags.PrologueDone = data.storyPrologueDone;
+        storyFlags.FirstMainQuestAccepted = data.storyFirstMainQuestAccepted;
+        storyFlags.StarterChosen = data.storyStarterChosen;
+        storyFlags.StarterPokemonId = data.storyStarterPokemonId;
+
+        var savedSequenceIndex = Mathf.Max(0, data.storyMainSequenceIndex);
+        var savedStepIndex = Mathf.Max(0, data.storyMainStepIndex);
+        var currentSequenceIndex = storyFlags.MainStorySequenceIndex;
+        var currentStepIndex = storyFlags.MainStoryStepIndex;
+
+        var shouldApplyStoryProgress = savedSequenceIndex > currentSequenceIndex ||
+                                       (savedSequenceIndex == currentSequenceIndex && savedStepIndex >= currentStepIndex);
+
+        if (shouldApplyStoryProgress)
+        {
+            storyFlags.MainStorySequenceIndex = savedSequenceIndex;
+            storyFlags.MainStoryStepIndex = savedStepIndex;
+        }
+        else
+        {
+            Debug.Log($"[SaveLoadSystem] Ignoring regressive story progress from save: current seqIdx={currentSequenceIndex}, stepIdx={currentStepIndex}, saved seqIdx={savedSequenceIndex}, stepIdx={savedStepIndex}");
+        }
+
+        if (QuestManager.Instance != null && data.questSnapshot != null)
+            QuestManager.Instance.ImportSaveSnapshot(data.questSnapshot);
+
+        var pokedex = PokedexManager.GetOrCreate();
+        pokedex.ImportData(data.pokedex);
+        bool missingPokedex = data.pokedex == null ||
+                              ((data.pokedex.seenPokemonIds == null || data.pokedex.seenPokemonIds.Count == 0) &&
+                               (data.pokedex.caughtPokemonIds == null || data.pokedex.caughtPokemonIds.Count == 0));
+
+        if (missingPokedex && playerParty != null)
+        {
+            pokedex.RebuildFromOwnedPokemon(playerParty.Pokemons, storageSystem != null ? storageSystem.GetStoredPokemons() : null);
+        }
+
+        // Apply NPC states
+        if (data.npcStates != null)
+        {
+            var allNpcs = Object.FindObjectsOfType<NPC>(true);
+            var map = new Dictionary<string, NPC>();
+            foreach (var n in allNpcs)
+                if (!string.IsNullOrWhiteSpace(n.NPCId)) map[n.NPCId] = n;
+
+            foreach (var ns in data.npcStates)
+            {
+                if (ns == null || string.IsNullOrWhiteSpace(ns.npcId)) continue;
+                if (map.TryGetValue(ns.npcId, out var npc))
+                {
+                    npc.CanBattle = ns.canBattle;
+                }
+            }
+        }
     }
 
     // ---------------- LẤY DANH SÁCH FILE SAVE ----------------

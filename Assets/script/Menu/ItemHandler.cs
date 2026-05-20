@@ -4,9 +4,7 @@ using UnityEngine;
 public class ItemHandler : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
-    [SerializeField] private PlayerParty playerParty;
-    [SerializeField] private StorageSystem storage;
-    [SerializeField] private DialogManager dialogBox; // UI hiển thị thông báo ngoài battle
+    // [SerializeField] private DialogManager dialogBox; // bỏ
 
     public IEnumerator UseItemOnPokemon(ItemBase item, Pokemon targetPokemon)
     {
@@ -14,8 +12,8 @@ public class ItemHandler : MonoBehaviour
         ItemSlot slot = inventory.GetSlots().Find(s => s.item == item);
         if (slot == null || slot.count <= 0)
         {
-            dialogBox.ShowDialog($"You don't have any {item.itemName}.");
-            yield return new WaitForSeconds(1f);
+            ToastNotificationManager.Instance?.Show($"You don't have any {item.itemName}.", Color.yellow);
+            yield return new WaitForSeconds(0.8f);
             yield break;
         }
 
@@ -96,12 +94,12 @@ public class ItemHandler : MonoBehaviour
                 break;
         }
 
-        yield return dialogBox.ShowDialogCoroutine(msg);
-
+        ToastNotificationManager.Instance?.Show(msg, success ? Color.white : Color.yellow);
+        yield return new WaitForSeconds(0.8f);
 
         if (success && item.consumable)
             inventory.RemoveItem(item, 1);
-    
+
         MenuController.Instance.CloseAll();
         GameController.Instance.SetState(GameState.Overworld);
     }

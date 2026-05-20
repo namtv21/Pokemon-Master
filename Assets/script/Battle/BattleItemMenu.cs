@@ -10,6 +10,7 @@ public class BattleItemMenu : MonoBehaviour
     [SerializeField] private Transform slotParent;      // Container chứa các slot
     [SerializeField] private Color highlightColor = Color.yellow;
     [SerializeField] private Color normalColor = Color.white;
+    [SerializeField] private ScrollRect scrollRect;
 
     private List<ItemSlotUI> slotUIs = new List<ItemSlotUI>();
     private int currentIndex = 0;
@@ -21,6 +22,9 @@ public class BattleItemMenu : MonoBehaviour
     {
         gameObject.SetActive(true);
         currentIndex = 0;
+
+        if (scrollRect == null)
+            scrollRect = GetComponentInChildren<ScrollRect>(true);
 
         onItemSelected = onSelectedCallback;
         onClose = onCloseCallback;
@@ -64,12 +68,12 @@ public class BattleItemMenu : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            currentIndex = Mathf.Max(0, currentIndex - 1);
+            currentIndex = (currentIndex - 1 + slotUIs.Count) % slotUIs.Count;
             HighlightCurrent(currentIndex, highlightColor, normalColor);
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            currentIndex = Mathf.Min(slotUIs.Count - 1, currentIndex + 1);
+            currentIndex = (currentIndex + 1) % slotUIs.Count;
             HighlightCurrent(currentIndex, highlightColor, normalColor);
         }
         else if (Input.GetKeyDown(KeyCode.Z)) // chọn item
@@ -102,6 +106,12 @@ public class BattleItemMenu : MonoBehaviour
             {
                 if (text != null) text.color = normalColor;
             }
+        }
+
+        if (scrollRect != null && slotUIs.Count > 1)
+        {
+            float normalized = 1f - ((float)currentIndex / (slotUIs.Count - 1));
+            scrollRect.verticalNormalizedPosition = Mathf.Clamp01(normalized);
         }
 
     }

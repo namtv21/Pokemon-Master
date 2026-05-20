@@ -1,22 +1,190 @@
+// ...existing code...
+using System;
+using System.Text;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuestInfoUI : MonoBehaviour
 {
+    [Header("Quest Info")]
     [SerializeField] private TMP_Text titleText;
     [SerializeField] private TMP_Text descriptionText;
+    [SerializeField] private TMP_Text objectivesText;
 
+    [Header("Confirm Panel")]
+    [SerializeField] private GameObject confirmPanel;
+    [SerializeField] private Image accept;
+    [SerializeField] private Image decline;
+    [SerializeField] private Color selectedColor = Color.yellow;
+    [SerializeField] private Color normalColor = Color.white;
+
+    public static QuestInfoUI Instance { get; private set; }
+
+    private Quest currentQuest;
+    private Action onAccept;
+    private Action onDecline;
+    private bool confirmMode;
+    private int selectedIndex; // 0 = Accept, 1 = Decline
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        Hide();
+    }
+
+    private void Update()
+    {
+        if (!gameObject.activeSelf || !confirmMode) return;
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            selectedIndex = 0;
+            UpdateConfirmVisual();
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            selectedIndex = 1;
+            UpdateConfirmVisual();
+        }
+        else if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Confirm();
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            Decline();
+        }
+    }
+
+    // Xem info quest (không xác nhận)
     public void ShowInfo(Quest quest)
     {
+        currentQuest = quest;
+        confirmMode = false;
+        onAccept = null;
+        onDecline = null;
+
         gameObject.SetActive(true);
-        titleText.text = quest.Title;
-        descriptionText.text = quest.Description;
+        if (confirmPanel != null) confirmPanel.SetActive(false);
+        Render();
+    }
+
+    // Nhận quest (có xác nhận)
+    public void ShowQuestConfirm(Quest quest, Action accept, Action decline)
+    {
+        currentQuest = quest;
+        onAccept = accept;
+        onDecline = decline;
+        confirmMode = true;
+        selectedIndex = 0;
+
+        gameObject.SetActive(true);
+        Render();
+
+        if (confirmPanel != null) confirmPanel.SetActive(true);
+        UpdateConfirmVisual();
+    }
+
+    public void RefreshCurrent()
+    {
+        if (currentQuest == null) return;
+        Render();
     }
 
     public void Hide()
     {
         gameObject.SetActive(false);
-        titleText.text = "";
-        descriptionText.text = "";
+        currentQuest = null;
+        confirmMode = false;
+        onAccept = null;
+        onDecline = null;
+
+        if (titleText != null) titleText.text = "";
+        if (descriptionText != null) descriptionText.text = "";
+        if (objectivesText != null) objectivesText.text = "";
+        if (confirmPanel != null) confirmPanel.SetActive(false);
+    }
+
+    private void Render()
+    {
+        if (currentQuest == null)
+        {
+            if (titleText != null) titleText.text = "";
+            if (descriptionText != null) descriptionText.text = "";
+            if (objectivesText != null) objectivesText.text = "";
+            return;
+        }
+
+        if (titleText != null) titleText.text = currentQuest.GetDisplayTitle();
+        if (descriptionText != null) descriptionText.text = currentQuest.Description;
+        if (objectivesText != null) objectivesText.text = BuildObjectivesText(currentQuest);
+    }
+
+    private string BuildObjectivesText(Quest quest)
+    {
+        var objectives = quest.Objectives;
+        if (objectives == null || objectives.Count == 0)
+            return "No objectives.";
+
+        var state = QuestManager.Instance != null ? QuestManager.Instance.GetState(quest) : null;
+
+        var sb = new StringBuilder();
+        for (int i = 0; i < objectives.Count; i++)
+        {
+            var obj = objectives[i];
+            if (obj == null)
+            {
+                sb.Append("□ Unknown objective");
+                if (i < objectives.Count - 1) sb.AppendLine();
+                continue;
+            }
+
+            int required = Mathf.Max(1, obj.RequiredCount);
+            int current = state != null ? Mathf.Min(required, state.GetObjectiveCurrent(i)) : 0;
+            bool done = state != null ? state.IsObjectiveCompleted(i) : false;
+
+            string line = obj.Text;
+            if (required > 1)
+                line += $" ({current}/{required})";
+
+            sb.Append(done ? "✔ <s>" : "□ ");
+            sb.Append(line);
+            if (done) sb.Append("</s>");
+
+            if (i < objectives.Count - 1)
+                sb.AppendLine();
+        }
+
+        return sb.ToString();
+    }
+
+    private void Confirm()
+    {
+        var cb = selectedIndex == 0 ? onAccept : onDecline;
+        Hide();
+        cb?.Invoke();
+    }
+
+    private void Decline()
+    {
+        var cb = onDecline;
+        Hide();
+        cb?.Invoke();
+    }
+
+    private void UpdateConfirmVisual()
+    {
+        if (accept != null)
+            accept.color = selectedIndex == 0 ? selectedColor : normalColor;
+
+        if (decline != null)
+            decline.color = selectedIndex == 1 ? selectedColor : normalColor;
     }
 }
