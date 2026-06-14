@@ -85,6 +85,7 @@ public class BattlePartyHandler : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         playerUnit.Setup(newPokemon);
+        battleSystem.BindMoveLearnHandler(newPokemon);
         dialogBox.ShowDialog($"Go! {newPokemon.Base.Name}!");
         yield return new WaitForSeconds(1f);
 
@@ -122,6 +123,7 @@ public class BattlePartyHandler : MonoBehaviour
             dialogBox.ShowDialog("All your Pokémon fainted... You lose!");
             yield return new WaitForSeconds(1f);
 
+            battleSystem.SetBattleOutcome(BattleOutcome.Lose);
             battleSystem.EndBattle();
         }
         else

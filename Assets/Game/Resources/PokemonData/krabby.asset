@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: krabby
   m_EditorClassIdentifier: 
   pokemonName: Krabby
+  num: 98
   description: 
   frontSprite: {fileID: 21300000, guid: 7b6e574121908c345ba937a7af0118b8, type: 3}
   backSprite: {fileID: 21300000, guid: f5a7ca52cb24a3441ad9ec6b7f79a198, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 25
   SpDefense: 25
   Speed: 50
+  evolvable: 1
+  evolutionLevel: 28
+  evolvesTo: {fileID: 11400000, guid: 7e257424645270443b081f98e0e171a0, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 959820f8ddaa2074abe27deaf66388c1, type: 2}
     level: 1

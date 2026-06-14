@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: victreebel
   m_EditorClassIdentifier: 
   pokemonName: Victreebel
+  num: 71
   description: 
   frontSprite: {fileID: 21300000, guid: 679d8d882b7f30148afbfeeb25031312, type: 3}
   backSprite: {fileID: 21300000, guid: 7b041f94359f16a4497a33ea0f341175, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 100
   SpDefense: 70
   Speed: 70
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 170089a43359cd74d9f4e9a7c18923d6, type: 2}
     level: 1

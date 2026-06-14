@@ -5,12 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/Tutorial.unity
-    guid: 87b7912b26a83e64faa2068c01df2831
   - enabled: 1
     path: Assets/Scenes/MainMenuScreen.unity
     guid: c7934d92aa517c640abd244b8ce358d4
@@ -36,24 +30,51 @@ EditorBuildSettings:
     path: Assets/Scenes/oke_lab.unity
     guid: 31c0ddaf1409ccb4498654e575a4994b
   - enabled: 1
-    path: Assets/GrassTown.unity
+    path: Assets/Scenes/GrassTown.unity
     guid: 700609c9199607e4089575f9df566cd8
   - enabled: 1
-    path: Assets/poke.unity
+    path: Assets/Scenes/poke.unity
     guid: abe0a711df32b384ea2d2e0be94cb710
   - enabled: 1
-    path: Assets/poke_mart.unity
+    path: Assets/Scenes/poke_mart.unity
     guid: 412ad7a02c24b944490e3720c85fe0b7
   - enabled: 1
-    path: Assets/GrassGym.unity
+    path: Assets/Scenes/GrassGym.unity
     guid: ceb5088aabd583b42b54ce0cafe864ff
-  - enabled: 1
-    path: Assets/OkayLab.unity
+  - enabled: 0
+    path: Assets/Scenes/OkayLab.unity
     guid: d1abfceb9a552204fa628c65bb82fb05
   - enabled: 1
-    path: Assets/Road02.unity
+    path: Assets/Scenes/Road02.unity
     guid: d16a1e931bdd39640b7758fc1a46d6df
   - enabled: 1
-    path: Assets/Road03.unity
+    path: Assets/Scenes/Road03.unity
     guid: b0821e86c95a29f4c8cc8169ee6e0157
+  - enabled: 1
+    path: Assets/Scenes/WaterTown.unity
+    guid: 5728c1e077c28af409b9389cd578c3a0
+  - enabled: 1
+    path: Assets/Scenes/Mountain.unity
+    guid: 98708a32a21977347acda77528a00244
+  - enabled: 1
+    path: Assets/Scenes/FireTown.unity
+    guid: c97e0780c3d8e3c408405f1d60136e25
+  - enabled: 1
+    path: Assets/Scenes/Cave.unity
+    guid: 4bda0f250aa58ea4a9dae41f47994ec5
+  - enabled: 1
+    path: Assets/Scenes/Road04.unity
+    guid: f5d88161b69cc53429de15393139115f
+  - enabled: 1
+    path: Assets/Scenes/CM_studio.unity
+    guid: 0a9048d48d836324889659819e9c9d05
+  - enabled: 1
+    path: Assets/Scenes/ChampionMeet.unity
+    guid: c067a259c06359a41bf196f8fa1e3d14
+  - enabled: 1
+    path: Assets/Scenes/FireGym.unity
+    guid: b6081ed8f50e1e240ac073ecadf2e210
+  - enabled: 1
+    path: Assets/Scenes/WaterGym.unity
+    guid: 9d959bb2bd04d5a40a321983a9290eec
   m_configObjects: {}

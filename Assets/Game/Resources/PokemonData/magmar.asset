@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: magmar
   m_EditorClassIdentifier: 
   pokemonName: Magmar
+  num: 126
   description: 
   frontSprite: {fileID: 21300000, guid: 4eed6606e1b159840948cecc27d5867a, type: 3}
   backSprite: {fileID: 21300000, guid: e6a9267e964583e4b97c12ed226b56f6, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 100
   SpDefense: 85
   Speed: 93
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: beac49ccdf5984d48b1f77b88fd7e1ca, type: 2}
     level: 1

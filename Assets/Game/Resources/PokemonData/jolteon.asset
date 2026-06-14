@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: jolteon
   m_EditorClassIdentifier: 
   pokemonName: Jolteon
+  num: 135
   description: 
   frontSprite: {fileID: 21300000, guid: a61796686d7b9c541b0a9dbff103fb9a, type: 3}
   backSprite: {fileID: 21300000, guid: 1aa4df26a062fed46bb2fc5627d78562, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 110
   SpDefense: 95
   Speed: 130
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 04c82d3a407de8b4db078420913c9278, type: 2}
     level: 0

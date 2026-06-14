@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: magikarp
   m_EditorClassIdentifier: 
   pokemonName: Magikarp
+  num: 129
   description: 
   frontSprite: {fileID: 21300000, guid: 844d164ec0c339c4a8f5f74211c3a807, type: 3}
   backSprite: {fileID: 21300000, guid: dedcac8d98d5ba24e82a8f95215f42bb, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 15
   SpDefense: 20
   Speed: 80
+  evolvable: 1
+  evolutionLevel: 20
+  evolvesTo: {fileID: 11400000, guid: 6a7552ea66bae514ab5dad338c611b55, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 36ef91dc75ad43240b8525a82d464481, type: 2}
     level: 1

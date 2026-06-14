@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: paras
   m_EditorClassIdentifier: 
   pokemonName: Paras
+  num: 46
   description: 
   frontSprite: {fileID: 21300000, guid: de7594c5930a1744a9609d6f34c41784, type: 3}
   backSprite: {fileID: 21300000, guid: dc11a807c8876bf4aa4e55eaa2e9ed25, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 45
   SpDefense: 55
   Speed: 25
+  evolvable: 1
+  evolutionLevel: 24
+  evolvesTo: {fileID: 11400000, guid: 9949e13ed1c2f83428150bfa2e6f0bef, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 6f06b53dade7c3845b4526356002f00f, type: 2}
     level: 1

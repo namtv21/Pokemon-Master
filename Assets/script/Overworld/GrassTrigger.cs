@@ -4,6 +4,8 @@ public class GrassTrigger : MonoBehaviour
 {
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private EncounterZone encounterZone;
+    [SerializeField] private bool useEncounterZoneBattleRate = true;
+    [SerializeField, Range(0f, 100f)] private float battleRatePercent = 10f;
 
     private bool playerInGrass = false;
 
@@ -22,47 +24,33 @@ public class GrassTrigger : MonoBehaviour
             playerInGrass = false;
     }
 
-    /* private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (!IsPlayer(collision)) return;
-
-        Bounds b = GetComponent<Collider2D>().bounds;
-        Vector3 pos = collision.transform.position;
-
-        float margin = 0.1f; // khoảng cách an toàn từ mép
-        bool inside =
-            pos.x > b.min.x + margin &&
-            pos.x < b.max.x - margin &&
-            pos.y > b.min.y + margin &&
-            pos.y < b.max.y - margin;
-
-        playerInGrass = inside;
-    }*/
-
-    /*private void Update()
-    {
-        if (playerInGrass && (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0))
-        {
-            TryEncounter();
-        }
-    }*/
-    
     public void TryEncounter()
     {
-        if (playerInGrass)
-        {
-            if (Random.Range(1, 101) <= 10)
-            {
-                Debug.Log("Wild Pokémon appeared!");
-                GameController.Instance.StartWildBattle(encounterZone.GetRandomPokemon());
-            }
-        }
+        if (!playerInGrass)
+            return;
+
+        float resolvedRate = ResolveBattleRatePercent();
+        if (Random.Range(0f, 100f) > resolvedRate)
+            return;
+
+        var wildPokemon = encounterZone != null ? encounterZone.GetRandomPokemon() : null;
+        if (wildPokemon == null)
+            return;
+
+        Debug.Log($"Wild Pokemon appeared! Rate={resolvedRate:0.##}%");
+        GameController.Instance.StartWildBattle(wildPokemon);
     }
-    
+
     private bool IsPlayer(Collider2D collider)
     {
         return ((1 << collider.gameObject.layer) & playerLayer) != 0;
     }
 
-   
+    private float ResolveBattleRatePercent()
+    {
+        if (useEncounterZoneBattleRate && encounterZone != null)
+            return encounterZone.BattleRatePercent;
+
+        return Mathf.Clamp(battleRatePercent, 0f, 100f);
+    }
 }

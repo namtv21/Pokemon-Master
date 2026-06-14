@@ -47,13 +47,6 @@ public class QuestAutoTrigger : MonoBehaviour
         if (oneShot && hasTriggered)
             return;
 
-        if (requirePrologueDone)
-        {
-            var flags = StoryFlags.Instance;
-            if (flags == null || !flags.PrologueDone)
-                return;
-        }
-
         if (restrictToScene && !string.IsNullOrWhiteSpace(requiredSceneName))
         {
             var activeScene = SceneManager.GetActiveScene().name;

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: sandslash
   m_EditorClassIdentifier: 
   pokemonName: Sandslash
+  num: 28
   description: 
   frontSprite: {fileID: 21300000, guid: f6ede0fe2fe3b7f40aa902cc02e130ed, type: 3}
   backSprite: {fileID: 21300000, guid: 9d386bffc90dcfa41bbe2672988b8e34, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 45
   SpDefense: 55
   Speed: 65
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: e0c11565cd436e54db510ff17b53ddfc, type: 2}
     level: 1

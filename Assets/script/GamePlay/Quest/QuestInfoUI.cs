@@ -36,7 +36,6 @@ public class QuestInfoUI : MonoBehaviour
         }
 
         Instance = this;
-        Hide();
     }
 
     private void Update()
@@ -124,7 +123,21 @@ public class QuestInfoUI : MonoBehaviour
 
         if (titleText != null) titleText.text = currentQuest.GetDisplayTitle();
         if (descriptionText != null) descriptionText.text = currentQuest.Description;
-        if (objectivesText != null) objectivesText.text = BuildObjectivesText(currentQuest);
+
+        if (objectivesText != null)
+        {
+            var sb = new StringBuilder();
+            sb.Append(BuildObjectivesText(currentQuest));
+            string rewards = BuildRewardsText(currentQuest);
+            if (!string.IsNullOrEmpty(rewards))
+            {
+                sb.AppendLine();
+                sb.AppendLine();
+                sb.AppendLine("── Phần thưởng ──");
+                sb.Append(rewards);
+            }
+            objectivesText.text = sb.ToString();
+        }
     }
 
     private string BuildObjectivesText(Quest quest)
@@ -163,6 +176,35 @@ public class QuestInfoUI : MonoBehaviour
         }
 
         return sb.ToString();
+    }
+
+    private string BuildRewardsText(Quest quest)
+    {
+        var sb = new StringBuilder();
+
+        if (quest.RewardMoney > 0)
+            sb.AppendLine($"• {quest.RewardMoney}₽");
+
+        if (quest.RewardItems != null)
+        {
+            foreach (var r in quest.RewardItems)
+            {
+                if (r == null || r.item == null) continue;
+                string line = r.amount > 1 ? $"• {r.item.itemName} x{r.amount}" : $"• {r.item.itemName}";
+                sb.AppendLine(line);
+            }
+        }
+
+        if (quest.RewardPokemons != null)
+        {
+            foreach (var p in quest.RewardPokemons)
+            {
+                if (p == null || p.pokemonBase == null) continue;
+                sb.AppendLine($"• {p.pokemonBase.Name} Lv.{p.level}");
+            }
+        }
+
+        return sb.ToString().TrimEnd();
     }
 
     private void Confirm()

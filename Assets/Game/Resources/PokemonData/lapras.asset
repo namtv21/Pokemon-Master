@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: lapras
   m_EditorClassIdentifier: 
   pokemonName: Lapras
+  num: 131
   description: 
   frontSprite: {fileID: 21300000, guid: d10f0253d555ff547b2db06ff4942b3d, type: 3}
   backSprite: {fileID: 21300000, guid: aacad6651eb9ae24ca9922218d779012, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 85
   SpDefense: 95
   Speed: 60
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
     level: 1

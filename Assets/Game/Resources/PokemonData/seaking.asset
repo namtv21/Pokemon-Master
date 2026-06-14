@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: seaking
   m_EditorClassIdentifier: 
   pokemonName: Seaking
+  num: 119
   description: 
   frontSprite: {fileID: 21300000, guid: 2e688297ee9e82f4386ad1537036aaff, type: 3}
   backSprite: {fileID: 21300000, guid: 6f5f5e7c82825144e8f5a7d4668cfc4f, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 65
   SpDefense: 80
   Speed: 68
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: c9e15f0a5922a754b8315c924892bc4f, type: 2}
     level: 1

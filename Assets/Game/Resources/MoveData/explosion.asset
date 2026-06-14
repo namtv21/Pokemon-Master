@@ -17,8 +17,8 @@ MonoBehaviour:
   category: Physical
   power: 250
   accuracy: 100
-  pp: 5
-  priority: 0
+  pp: 1
+  learnPriority: 400
   target: 1
   drainNumerator: 0
   drainDenominator: 0

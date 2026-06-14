@@ -39,6 +39,7 @@ public class MainMenuUI : MonoBehaviour
     {
         menuPanel.SetActive(true);
         currentIndex = 0;
+        RefreshLabels();
         HighlightCurrent();
 
         onSelected = onSelectedCallback;
@@ -54,10 +55,14 @@ public class MainMenuUI : MonoBehaviour
 
     public void HandleUpdate()
     {
+        int visibleCount = GetVisibleOptionCount();
+        if (visibleCount <= 0)
+            return;
+
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (currentIndex == 0)
-                currentIndex = optionPanels.Length - 1;
+                currentIndex = visibleCount - 1;
             else
                 currentIndex--;
 
@@ -65,7 +70,7 @@ public class MainMenuUI : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (currentIndex == optionPanels.Length - 1)
+            if (currentIndex == visibleCount - 1)
                 currentIndex = 0;
             else
                 currentIndex++;
@@ -91,6 +96,11 @@ public class MainMenuUI : MonoBehaviour
             var panel = optionPanels[i];
             if (panel == null) continue;
 
+            bool hasOption = optionOrder != null && i < optionOrder.Length;
+            panel.SetActive(hasOption);
+            if (!hasOption)
+                continue;
+
             // Lấy Text hoặc Image trong panel để đổi màu
             var text = panel.GetComponentInChildren<Text>();
             if (text != null)
@@ -102,11 +112,50 @@ public class MainMenuUI : MonoBehaviour
         }
     }
 
+    private void RefreshLabels()
+    {
+        for (int i = 0; i < optionPanels.Length; i++)
+        {
+            var panel = optionPanels[i];
+            if (panel == null) continue;
+
+            bool hasOption = optionOrder != null && i < optionOrder.Length;
+            panel.SetActive(hasOption);
+            if (!hasOption)
+                continue;
+
+            var text = panel.GetComponentInChildren<Text>();
+            if (text != null)
+                text.text = GetOptionLabel(GetOptionAtIndex(i));
+        }
+    }
+
+    private string GetOptionLabel(MainMenuOption option)
+    {
+        switch (option)
+        {
+            case MainMenuOption.Party: return "Party";
+            case MainMenuOption.Item: return "Item";
+            case MainMenuOption.Storage: return "Storage";
+            case MainMenuOption.Quest: return "Quest";
+            case MainMenuOption.PokemonDex: return "Pokédex";
+            case MainMenuOption.SaveLoad: return "Save/Load";
+            case MainMenuOption.Option: return "Option";
+            case MainMenuOption.Exit: return "Exit";
+            default: return option.ToString();
+        }
+    }
+
     private MainMenuOption GetOptionAtIndex(int index)
     {
         if (optionOrder != null && index >= 0 && index < optionOrder.Length)
             return optionOrder[index];
 
         return (MainMenuOption)index;
+    }
+
+    private int GetVisibleOptionCount()
+    {
+        return optionOrder != null ? optionOrder.Length : optionPanels != null ? optionPanels.Length : 0;
     }
 }

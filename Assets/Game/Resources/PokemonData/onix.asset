@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: onix
   m_EditorClassIdentifier: 
   pokemonName: Onix
+  num: 95
   description: 
   frontSprite: {fileID: 21300000, guid: 24c73cced0fb520418d8bc54dbce4906, type: 3}
   backSprite: {fileID: 21300000, guid: aa6e44ddecc0bdf4b92cd49d7c919aff, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 30
   SpDefense: 45
   Speed: 70
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 16fbc57445aaa8d4d81e6968b8e97724, type: 2}
     level: 1

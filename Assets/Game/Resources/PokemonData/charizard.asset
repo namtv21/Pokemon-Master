@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: charizard
   m_EditorClassIdentifier: 
   pokemonName: Charizard
+  num: 6
   description: 
   frontSprite: {fileID: 21300000, guid: 7b49f7776661d704e8dcf55b69eae4ef, type: 3}
   backSprite: {fileID: 21300000, guid: c321b32bb983dd943b975b00e08427cf, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 109
   SpDefense: 85
   Speed: 100
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 3d94430411029da48be7d85c7f6e44fa, type: 2}
     level: 0

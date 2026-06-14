@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: kakuna
   m_EditorClassIdentifier: 
   pokemonName: Kakuna
+  num: 14
   description: 
   frontSprite: {fileID: 21300000, guid: d05c78577fd36524aa1b87b4d167c0da, type: 3}
   backSprite: {fileID: 21300000, guid: 3df99150e19e9254584f8995e536e7c2, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 25
   SpDefense: 25
   Speed: 35
+  evolvable: 1
+  evolutionLevel: 10
+  evolvesTo: {fileID: 11400000, guid: 2b0c1171ed8ab8b4fb6a8b900688641f, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 4181e9376aadffa4cabb13845d245783, type: 2}
     level: 1

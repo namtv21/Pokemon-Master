@@ -41,7 +41,7 @@ public class QuestManager : MonoBehaviour
 
     [Header("Main Story Auto Accept")]
     [SerializeField] private bool autoAcceptMainStory = true;
-    [SerializeField] private bool requirePrologueDoneForMainStory = true;
+    [SerializeField] private bool requirePrologueDoneForMainStory = false;
     [SerializeField] private bool mainStoryOnceOnly = true;
     [SerializeField] private bool restrictMainStoryAutoAcceptToScene = true;
     [SerializeField] private string mainStoryAutoAcceptSceneName = "Town1";
@@ -64,7 +64,7 @@ public class QuestManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(gameObject);
+            DuplicateSystemRootUtility.DestroyDuplicate(this, Instance);
             return;
         }
 
@@ -99,6 +99,15 @@ public class QuestManager : MonoBehaviour
         var result = new List<Quest>(activeStates.Count);
         for (int i = 0; i < activeStates.Count; i++)
             result.Add(activeStates[i].Definition);
+        return result;
+    }
+
+    public List<Quest> GetCompletedSideQuests()
+    {
+        var result = new List<Quest>();
+        foreach (var q in completedQuests)
+            if (q != null && q.Category != QuestCategory.MainStory)
+                result.Add(q);
         return result;
     }
 
@@ -468,6 +477,20 @@ public class QuestManager : MonoBehaviour
         return quest != null && readyToTurnInQuests.Contains(quest);
     }
 
+    public Quest GetReadyToTurnInQuestForNpc(string npcId, Quest preferredQuest = null)
+    {
+        if (preferredQuest != null && CanTurnInQuest(preferredQuest, npcId))
+            return preferredQuest;
+
+        foreach (var quest in readyToTurnInQuests)
+        {
+            if (CanTurnInQuest(quest, npcId))
+                return quest;
+        }
+
+        return null;
+    }
+
     public bool CanTurnInQuest(Quest quest, string npcId = "")
     {
         if (quest == null) return false;
@@ -550,13 +573,6 @@ public class QuestManager : MonoBehaviour
     {
         if (!autoAcceptMainStory)
             return;
-
-        if (requirePrologueDoneForMainStory)
-        {
-            var storyFlags = StoryFlags.Instance;
-            if (storyFlags == null || !storyFlags.PrologueDone)
-                return;
-        }
 
         if (restrictMainStoryAutoAcceptToScene && !string.IsNullOrWhiteSpace(mainStoryAutoAcceptSceneName))
         {

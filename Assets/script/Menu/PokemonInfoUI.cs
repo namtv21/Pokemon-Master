@@ -8,7 +8,8 @@ public class PokemonInfoUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private TextMeshProUGUI statusText;
-    [SerializeField] private TextMeshProUGUI statsText;
+    [SerializeField] private TextMeshProUGUI statsLeftText;
+    [SerializeField] private TextMeshProUGUI statsRightText;
     [SerializeField] private Transform movesParent;
     [SerializeField] private MoveSelectionUI moveSlotPrefab;
     [SerializeField] private Image type1Icon;
@@ -16,6 +17,25 @@ public class PokemonInfoUI : MonoBehaviour
     [SerializeField] private TypeIconDatabase typeIcons;
     [SerializeField] private HpBar hpBar;
     [SerializeField] private ExpBar expBar;
+    [SerializeField] private FriendshipBar friendshipBar;
+    [SerializeField] private int moveColumns = 2;
+
+    private GridLayoutGroup movesGrid;
+
+    private void Awake()
+    {
+        if (movesParent != null)
+            movesGrid = movesParent.GetComponent<GridLayoutGroup>();
+
+        if (movesGrid == null && movesParent != null)
+            movesGrid = movesParent.gameObject.AddComponent<GridLayoutGroup>();
+
+        if (movesGrid != null)
+        {
+            movesGrid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+            movesGrid.constraintCount = Mathf.Max(1, moveColumns);
+        }
+    }
 
     public void Show(Pokemon pokemon)
     {
@@ -39,37 +59,23 @@ public class PokemonInfoUI : MonoBehaviour
         expBar.SetExpFraction(normalizedExp);
         expBar.SetExpNumbers(pokemon.Exp, pokemon.ExpToNextLevel);
 
+        if (friendshipBar != null)
+        {
+            friendshipBar.SetFriendshipFraction(pokemon.FriendshipProgress / 10f);
+            friendshipBar.SetFriendshipNumbers(pokemon.FriendshipLevel, pokemon.FriendshipProgress, 10);
+        }
+
         float fraction = (float)pokemon.CurrentHp / pokemon.MaxHp;
         hpBar.SetHpFraction(fraction);
         hpBar.SetHpNumbers(pokemon.CurrentHp, pokemon.MaxHp);
 
-        if (pokemon.IsFainted)
-        {
-            statusText.text = "Fainted";
-            statusText.color = Color.red;
-            return;
-        }
-
-        if (pokemon.Status == StatusEffect.None)
-        {
-            statusText.text = "";
-            statusText.color = Color.white;
-        }
-        else
-        {
-            statusText.text = pokemon.Status.ToString();
-            statusText.color = Color.white;
-        }
-
-        statsText.text =
-            $"Atk: {pokemon.Attack}\n" +
-            $"Def: {pokemon.Defense}\n" +
-            $"SpAtk: {pokemon.SpAttack}\n" +
-            $"SpDef: {pokemon.SpDefense}\n" +
-            $"Speed: {pokemon.Speed}";
+        SetStatsText(pokemon);
 
         foreach (Transform child in movesParent)
             Destroy(child.gameObject);
+
+        if (movesGrid != null)
+            movesGrid.constraintCount = Mathf.Max(1, moveColumns);
 
         foreach (var move in pokemon.Moves)
         {
@@ -77,10 +83,52 @@ public class PokemonInfoUI : MonoBehaviour
             slot.SetMoveData(move);
             slot.SetHighlight(false);
         }
+
+        if (pokemon.IsFainted)
+        {
+            statusText.text = "Fainted";
+            statusText.color = Color.red;
+        }
+        else if (pokemon.Status == StatusEffect.None)
+        {
+            statusText.text = string.Empty;
+            statusText.color = Color.white;
+        }
+        else
+        {
+            statusText.text = pokemon.Status.ToString();
+            statusText.color = Color.white;
+        }
     }
     public void Hide()
     {
         gameObject.SetActive(false);
+    }
+
+    private void SetStatsText(Pokemon pokemon)
+    {
+        if (pokemon == null)
+            return;
+
+        string leftColumn =
+            $"HP: {pokemon.MaxHp}\n" +
+            $"Atk: {pokemon.Attack}\n" +
+            $"SpAtk: {pokemon.SpAttack}";
+
+        string rightColumn =
+            $"Spd: {pokemon.Speed}\n" +
+            $"Def: {pokemon.Defense}\n" +
+            $"SpDef: {pokemon.SpDefense}" ;
+
+        if (statsLeftText != null || statsRightText != null)
+        {
+            if (statsLeftText != null)
+                statsLeftText.text = leftColumn;
+
+            if (statsRightText != null)
+                statsRightText.text = rightColumn;
+
+        }
     }
 
 }

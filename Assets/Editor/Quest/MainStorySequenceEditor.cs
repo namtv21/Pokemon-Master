@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using System;
 
 [CustomEditor(typeof(MainStorySequence))]
 public class MainStorySequenceEditor : Editor
@@ -78,7 +79,13 @@ public class MainStorySequenceEditor : Editor
         EditorGUILayout.PropertyField(stepProp.FindPropertyRelative("sceneName"));
         EditorGUILayout.PropertyField(stepProp.FindPropertyRelative("triggerId"));
         EditorGUILayout.PropertyField(stepProp.FindPropertyRelative("triggerOnSceneLoad"));
-        EditorGUILayout.PropertyField(stepProp.FindPropertyRelative("requirePrologueDone"));
+        var requireStoryFlagProp = stepProp.FindPropertyRelative("requireStoryFlag");
+        EditorGUILayout.PropertyField(requireStoryFlagProp);
+        if (requireStoryFlagProp.boolValue)
+        {
+            DrawFilteredStoryFlagField(stepProp.FindPropertyRelative("requiredStoryFlag"), "Required Story Flag");
+            EditorGUILayout.PropertyField(stepProp.FindPropertyRelative("requiredStoryFlagValue"));
+        }
         EditorGUILayout.PropertyField(stepProp.FindPropertyRelative("oneShot"));
     }
 
@@ -91,10 +98,12 @@ public class MainStorySequenceEditor : Editor
         {
             var actionProp = actionsProp.GetArrayElementAtIndex(i);
             var typeProp = actionProp.FindPropertyRelative("type");
+            var actionType = GetActionType(typeProp);
+            string actionLabel = GetEnumDisplayName(typeProp, actionType);
 
             EditorGUILayout.BeginVertical("helpbox");
             EditorGUILayout.BeginHorizontal();
-            actionProp.isExpanded = EditorGUILayout.Foldout(actionProp.isExpanded, $"Action {i + 1}: {typeProp.enumDisplayNames[typeProp.enumValueIndex]}", true);
+            actionProp.isExpanded = EditorGUILayout.Foldout(actionProp.isExpanded, $"Action {i + 1}: {actionLabel}", true);
 
             GUI.enabled = i > 0;
             if (GUILayout.Button("Up", GUILayout.Width(40f)))
@@ -118,7 +127,7 @@ public class MainStorySequenceEditor : Editor
             if (actionProp.isExpanded)
             {
                 EditorGUILayout.PropertyField(typeProp);
-                DrawActionByType(actionProp, (MainStoryActionType)typeProp.enumValueIndex);
+                DrawActionByType(actionProp, GetActionType(typeProp));
             }
 
             EditorGUILayout.EndVertical();
@@ -139,11 +148,33 @@ public class MainStorySequenceEditor : Editor
                 int index = actionsProp.arraySize;
                 actionsProp.InsertArrayElementAtIndex(index);
                 var newAction = actionsProp.GetArrayElementAtIndex(index);
-                newAction.FindPropertyRelative("type").enumValueIndex = (int)type;
+                newAction.FindPropertyRelative("type").intValue = (int)type;
                 serializedObject.ApplyModifiedProperties();
             });
         }
         menu.ShowAsContext();
+    }
+
+    private static MainStoryActionType GetActionType(SerializedProperty typeProp)
+    {
+        return typeProp == null
+            ? MainStoryActionType.ShowDialog
+            : (MainStoryActionType)typeProp.intValue;
+    }
+
+    private static string GetEnumDisplayName(SerializedProperty typeProp, MainStoryActionType actionType)
+    {
+        if (typeProp == null)
+            return actionType.ToString();
+
+        var values = (MainStoryActionType[])Enum.GetValues(typeof(MainStoryActionType));
+        for (int i = 0; i < values.Length; i++)
+        {
+            if (values[i] == actionType)
+                return i >= 0 && i < typeProp.enumDisplayNames.Length ? typeProp.enumDisplayNames[i] : actionType.ToString();
+        }
+
+        return actionType.ToString();
     }
 
     private void DrawActionByType(SerializedProperty actionProp, MainStoryActionType type)
@@ -175,6 +206,7 @@ public class MainStorySequenceEditor : Editor
 
             case MainStoryActionType.Wait:
                 EditorGUILayout.PropertyField(actionProp.FindPropertyRelative("waitSeconds"));
+                EditorGUILayout.PropertyField(actionProp.FindPropertyRelative("freezePlayerInput"));
                 break;
 
             case MainStoryActionType.MoveNpc:
@@ -190,13 +222,13 @@ public class MainStorySequenceEditor : Editor
                 break;
 
             case MainStoryActionType.SetStoryFlag:
-                EditorGUILayout.PropertyField(actionProp.FindPropertyRelative("storyFlag"));
+                DrawFilteredStoryFlagField(actionProp.FindPropertyRelative("storyFlag"), "Story Flag");
                 EditorGUILayout.PropertyField(actionProp.FindPropertyRelative("storyFlagValue"));
                 EditorGUILayout.PropertyField(actionProp.FindPropertyRelative("starterPokemonId"));
                 break;
 
             case MainStoryActionType.GivePokemon:
-                EditorGUILayout.PropertyField(actionProp.FindPropertyRelative("pokemonResourceId"));
+                DrawPokemonResourceField(actionProp.FindPropertyRelative("pokemonResourceId"), "Pokemon");
                 EditorGUILayout.PropertyField(actionProp.FindPropertyRelative("pokemonLevel"));
                 break;
 
@@ -212,7 +244,7 @@ public class MainStorySequenceEditor : Editor
                 EditorGUILayout.PropertyField(battleType);
                 if ((MainStoryBattleType)battleType.enumValueIndex == MainStoryBattleType.Wild)
                 {
-                    EditorGUILayout.PropertyField(actionProp.FindPropertyRelative("wildPokemonResourceId"));
+                    DrawPokemonResourceField(actionProp.FindPropertyRelative("wildPokemonResourceId"), "Wild Pokemon");
                     EditorGUILayout.PropertyField(actionProp.FindPropertyRelative("wildPokemonLevel"));
                 }
                 else
@@ -220,8 +252,64 @@ public class MainStorySequenceEditor : Editor
                     EditorGUILayout.PropertyField(actionProp.FindPropertyRelative("trainerNpcId"));
                 }
                 EditorGUILayout.PropertyField(actionProp.FindPropertyRelative("waitForBattleEnd"));
+                if (actionProp.FindPropertyRelative("waitForBattleEnd").boolValue)
+                    EditorGUILayout.PropertyField(actionProp.FindPropertyRelative("continueOnlyIfWon"));
+                break;
+
+            case MainStoryActionType.FadeNpc:
+                EditorGUILayout.PropertyField(actionProp.FindPropertyRelative("npcId"));
+                EditorGUILayout.PropertyField(actionProp.FindPropertyRelative("npcFadeDuration"));
+                EditorGUILayout.PropertyField(actionProp.FindPropertyRelative("disableNpcAfterFade"));
+                break;
+
+            case MainStoryActionType.GiveItem:
+                DrawItemField(actionProp.FindPropertyRelative("item"), "Item");
+                EditorGUILayout.PropertyField(actionProp.FindPropertyRelative("itemCount"));
+                break;
+
+            case MainStoryActionType.TakeItem:
+                DrawItemField(actionProp.FindPropertyRelative("item"), "Item");
+                EditorGUILayout.PropertyField(actionProp.FindPropertyRelative("itemCount"));
                 break;
         }
+    }
+
+    private void DrawPokemonResourceField(SerializedProperty resourceIdProp, string label)
+    {
+        var currentPokemon = LoadPokemonBase(resourceIdProp.stringValue);
+        var selectedPokemon = (PokemonBase)EditorGUILayout.ObjectField(label, currentPokemon, typeof(PokemonBase), false);
+
+        if (selectedPokemon != currentPokemon)
+            resourceIdProp.stringValue = GetPokemonResourceId(selectedPokemon);
+
+        if (selectedPokemon == null)
+            EditorGUILayout.PropertyField(resourceIdProp, new GUIContent($"{label} Resource Id"));
+    }
+
+    private PokemonBase LoadPokemonBase(string resourceId)
+    {
+        string normalizedId = TextKeyUtility.NormalizeResourceId(resourceId);
+        if (string.IsNullOrEmpty(normalizedId))
+            return null;
+
+        return Resources.Load<PokemonBase>($"PokemonData/{normalizedId}");
+    }
+
+    private string GetPokemonResourceId(PokemonBase pokemonBase)
+    {
+        if (pokemonBase == null)
+            return string.Empty;
+
+        string assetPath = AssetDatabase.GetAssetPath(pokemonBase);
+        if (!string.IsNullOrWhiteSpace(assetPath))
+            return TextKeyUtility.NormalizeResourceId(System.IO.Path.GetFileNameWithoutExtension(assetPath));
+
+        return TextKeyUtility.NormalizeResourceId(pokemonBase.name);
+    }
+
+    private void DrawItemField(SerializedProperty itemProp, string label)
+    {
+        EditorGUILayout.PropertyField(itemProp, new GUIContent(label));
     }
 
     private void DrawChoiceOptions(SerializedProperty choiceOptionsProp)
@@ -266,7 +354,7 @@ public class MainStorySequenceEditor : Editor
                 EditorGUILayout.PropertyField(option.FindPropertyRelative("givePokemon"));
                 if (option.FindPropertyRelative("givePokemon").boolValue)
                 {
-                    EditorGUILayout.PropertyField(option.FindPropertyRelative("pokemonResourceId"));
+                    DrawPokemonResourceField(option.FindPropertyRelative("pokemonResourceId"), "Pokemon");
                     EditorGUILayout.PropertyField(option.FindPropertyRelative("pokemonLevel"));
                 }
 
@@ -281,12 +369,11 @@ public class MainStorySequenceEditor : Editor
                 EditorGUILayout.PropertyField(option.FindPropertyRelative("setStoryFlag"));
                 if (option.FindPropertyRelative("setStoryFlag").boolValue)
                 {
-                    EditorGUILayout.PropertyField(option.FindPropertyRelative("storyFlag"));
+                    DrawFilteredStoryFlagField(option.FindPropertyRelative("storyFlag"), "Story Flag");
                     EditorGUILayout.PropertyField(option.FindPropertyRelative("storyFlagValue"));
                     EditorGUILayout.PropertyField(option.FindPropertyRelative("starterPokemonId"));
                 }
 
-                EditorGUILayout.PropertyField(option.FindPropertyRelative("resultLine"));
             }
 
             EditorGUILayout.EndVertical();
@@ -305,10 +392,34 @@ public class MainStorySequenceEditor : Editor
         step.FindPropertyRelative("sceneName").stringValue = string.Empty;
         step.FindPropertyRelative("triggerId").stringValue = string.Empty;
         step.FindPropertyRelative("triggerOnSceneLoad").boolValue = true;
-        step.FindPropertyRelative("requirePrologueDone").boolValue = true;
+        step.FindPropertyRelative("requirePrologueDone").boolValue = false;
+        step.FindPropertyRelative("requireStoryFlag").boolValue = false;
+        step.FindPropertyRelative("requiredStoryFlag").enumValueIndex = (int)StoryFlagKey.StarterChosen;
+        step.FindPropertyRelative("requiredStoryFlagValue").boolValue = true;
         step.FindPropertyRelative("oneShot").boolValue = true;
 
         var actions = step.FindPropertyRelative("actions");
         actions.arraySize = 0;
+    }
+
+    private void DrawFilteredStoryFlagField(SerializedProperty property, string label)
+    {
+        var allValues = (StoryFlagKey[])Enum.GetValues(typeof(StoryFlagKey));
+        var filteredValues = new System.Collections.Generic.List<StoryFlagKey>();
+        var filteredNames = new System.Collections.Generic.List<string>();
+
+        foreach (var value in allValues)
+        {
+            if (value == StoryFlagKey.PrologueDone || value == StoryFlagKey.FirstMainQuestAccepted)
+                continue;
+
+            filteredValues.Add(value);
+            filteredNames.Add(ObjectNames.NicifyVariableName(value.ToString()));
+        }
+
+        var currentValue = (StoryFlagKey)property.enumValueIndex;
+        int selectedIndex = Mathf.Max(0, filteredValues.IndexOf(currentValue));
+        int nextIndex = EditorGUILayout.Popup(label, selectedIndex, filteredNames.ToArray());
+        property.enumValueIndex = (int)filteredValues[Mathf.Clamp(nextIndex, 0, filteredValues.Count - 1)];
     }
 }

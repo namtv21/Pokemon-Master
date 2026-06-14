@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: ultraball
   m_EditorClassIdentifier: 
   itemName: ultraball
-  description: 
+  description: "T\u1EC9 l\u1EC7 b\u1EAFt g\u1EA5p 2 l\u1EA7n pokeball"
   icon: {fileID: 21300000, guid: 20c297f6beb2bc14d8d5ff12a401d80d, type: 3}
   itemType: 1
-  price: 25
+  price: 40
   consumable: 1
   healAmount: 0
   healToFull: 0
@@ -25,3 +25,5 @@ MonoBehaviour:
   curesAllStatus: 0
   curesSpecific: 
   catchRateMultiplier: 2
+  isExperienceBottle: 0
+  expAmount: 1

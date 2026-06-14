@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: fearow
   m_EditorClassIdentifier: 
   pokemonName: Fearow
+  num: 22
   description: 
   frontSprite: {fileID: 21300000, guid: bdca88fe739ce4241982eab565f75c51, type: 3}
   backSprite: {fileID: 21300000, guid: 27979ea8a56d30a4d995c901009660c3, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 61
   SpDefense: 61
   Speed: 100
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: cabbc0a711f8f4b44a1677a1b69f0c26, type: 2}
     level: 1

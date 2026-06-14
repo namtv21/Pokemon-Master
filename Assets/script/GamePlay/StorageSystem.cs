@@ -22,8 +22,15 @@ public class StorageSystem : MonoBehaviour
 
     private void Awake()
     {
-        if (_instance == null) _instance = this;
-        else Destroy(gameObject);
+        if (_instance != null && _instance != this)
+        {
+            DuplicateSystemRootUtility.DestroyDuplicate(this, _instance);
+            return;
+        }
+
+        _instance = this;
+
+        SaveLoadSystem.ApplyDeferredStorageDataIfAvailable(this);
     }
 
     private void OnDestroy()

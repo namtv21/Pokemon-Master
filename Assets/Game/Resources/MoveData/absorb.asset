@@ -18,7 +18,7 @@ MonoBehaviour:
   power: 20
   accuracy: 100
   pp: 25
-  priority: 0
+  learnPriority: 200
   target: 1
   drainNumerator: 0
   drainDenominator: 0

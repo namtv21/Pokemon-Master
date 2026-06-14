@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: arcanine
   m_EditorClassIdentifier: 
   pokemonName: Arcanine
+  num: 59
   description: 
   frontSprite: {fileID: 21300000, guid: dfa9dcb100feb434e93f8475a9ce29cd, type: 3}
   backSprite: {fileID: 21300000, guid: df8b788e77bf7bd40881987ce8018b50, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 100
   SpDefense: 80
   Speed: 95
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 540c81d2a832817459069415c40c3862, type: 2}
     level: 0

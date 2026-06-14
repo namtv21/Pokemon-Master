@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 91, y: -47.345}
+  m_AnchoredPosition: {x: -376, y: -2.65}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8882559123717656498
@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 457.53, y: -48.67}
+  m_AnchoredPosition: {x: 2.47, y: -1.325}
   m_SizeDelta: {x: 915.06, y: 97.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &647469937787384404
@@ -184,7 +184,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 640.51996, y: -59.845}
+  m_AnchoredPosition: {x: 269, y: 0.000030518}
   m_SizeDelta: {x: 267.72, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8960223637432952959
@@ -380,6 +380,9 @@ MonoBehaviour:
   nameText: {fileID: 8138481993550859047}
   priceText: {fileID: 8620673270465052572}
   highlight: {fileID: 3144952938579039301}
+  highlightTextColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  normalTextColor: {r: 1, g: 1, b: 1, a: 1}
+  highlightImageColor: {r: 1, g: 0.9, b: 0.2, a: 0.4}
 --- !u!1 &9149932778342314512
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,7 +417,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 372.8, y: -59.845}
+  m_AnchoredPosition: {x: -110, y: 0.000030518}
   m_SizeDelta: {x: 267.72, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &18307426754114539

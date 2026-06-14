@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ekans
   m_EditorClassIdentifier: 
   pokemonName: Ekans
+  num: 23
   description: 
   frontSprite: {fileID: 21300000, guid: c3c9dbd2ccb96ab4c99d2b2919368e60, type: 3}
   backSprite: {fileID: 21300000, guid: aaafa9f303c49e14587f1785704e1e92, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 40
   SpDefense: 54
   Speed: 55
+  evolvable: 1
+  evolutionLevel: 22
+  evolvesTo: {fileID: 11400000, guid: dfefee5ecb2820041ab834fa51e72433, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
     level: 1

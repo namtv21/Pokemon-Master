@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: mewtwo
   m_EditorClassIdentifier: 
   pokemonName: Mewtwo
+  num: 150
   description: 
   frontSprite: {fileID: 21300000, guid: 395caebfb4f59ab4ea7c5599694ed779, type: 3}
   backSprite: {fileID: 21300000, guid: 2d37c8fc61482c84e8c1eb6576a1d41c, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 154
   SpDefense: 90
   Speed: 130
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 224bd97601c6c9047b1d6e820f96aec3, type: 2}
     level: 1

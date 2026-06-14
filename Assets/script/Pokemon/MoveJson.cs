@@ -13,7 +13,7 @@ public class MoveJson
     public int accuracy;
     public int pp;
     public string category;
-    public int priority;
+    public int learnPriority;
     public string target;
 
     public int[] drain; // ví dụ: [1, 2] → hồi 50% sát thương

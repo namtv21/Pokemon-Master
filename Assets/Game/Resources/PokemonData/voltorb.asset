@@ -12,18 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: voltorb
   m_EditorClassIdentifier: 
+  num: 100
   pokemonName: Voltorb
   description: 
   frontSprite: {fileID: 21300000, guid: 3e7301a2ec37ee44cbf655ac0bafc95e, type: 3}
   backSprite: {fileID: 21300000, guid: 37a783df76f758840a80a3ee7cc7e8e8, type: 3}
   type1: 4
   type2: 0
-  MaxHp: 40
+  MaxHp: 10
   Attack: 30
-  Defense: 50
+  Defense: 10
   SpAttack: 55
-  SpDefense: 55
+  SpDefense: 10
   Speed: 100
+  evolvable: 1
+  evolutionLevel: 28
+  evolvesTo: {fileID: 11400000, guid: f2857c1eb7e15414d871661def9625ec, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
     level: 1

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: mew
   m_EditorClassIdentifier: 
   pokemonName: Mew
+  num: 151
   description: 
   frontSprite: {fileID: 21300000, guid: 9907bd74b83eb1d42801b2f509e32ff3, type: 3}
   backSprite: {fileID: 21300000, guid: e8e034603a4f4e943b3ee79a5c78583d, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 100
   SpDefense: 100
   Speed: 100
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 26c2f0f3b8de511448936625c1e5b3cb, type: 2}
     level: 1

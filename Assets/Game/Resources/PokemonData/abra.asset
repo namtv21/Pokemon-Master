@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: abra
   m_EditorClassIdentifier: 
   pokemonName: Abra
+  num: 63
   description: 
   frontSprite: {fileID: 21300000, guid: 2180afaeeddfd3a46ac2567bad89bf8d, type: 3}
   backSprite: {fileID: 21300000, guid: 75abd8f6e5403e648bbacfc3d6c514a1, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 105
   SpDefense: 55
   Speed: 90
+  evolvable: 1
+  evolutionLevel: 16
+  evolvesTo: {fileID: 11400000, guid: bcf3215dbdde6554489080c7339c99bd, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: abf2157a326bf784497cb3b73fb6d8f7, type: 2}
     level: 1

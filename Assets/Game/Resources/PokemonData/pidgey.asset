@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: pidgey
   m_EditorClassIdentifier: 
   pokemonName: Pidgey
+  num: 16
   description: 
   frontSprite: {fileID: 21300000, guid: 549ba8f71db06274aaedc012df2d2296, type: 3}
   backSprite: {fileID: 21300000, guid: 76a9dccca8ce389498e136645a80492d, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 35
   SpDefense: 35
   Speed: 56
+  evolvable: 1
+  evolutionLevel: 18
+  evolvesTo: {fileID: 11400000, guid: aed61b7f306b7534595f4a41d8bcaaa9, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
     level: 1

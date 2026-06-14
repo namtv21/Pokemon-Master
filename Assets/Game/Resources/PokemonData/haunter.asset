@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: haunter
   m_EditorClassIdentifier: 
+  num: 93
   pokemonName: Haunter
   description: 
   frontSprite: {fileID: 21300000, guid: 9696bb7c064aaff4aa73721a18c0fc27, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 115
   SpDefense: 55
   Speed: 95
+  evolvable: 1
+  evolutionLevel: 40
+  evolvesTo: {fileID: 11400000, guid: 1ffe2b98d128a69418a9e0720308f131, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: f4ac680419bf47f40a8a71edac802d4a, type: 2}
     level: 0

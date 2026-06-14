@@ -115,15 +115,58 @@ public class BattleDialogBox : MonoBehaviour
     public void HandleMoveSelection()
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
-            currentMoveIndex = Mathf.Min(currentMoveIndex + 1, moveSlots.Length - 1);
+            MoveSelection(Vector2.right);
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            currentMoveIndex = Mathf.Max(currentMoveIndex - 1, 0);
+            MoveSelection(Vector2.left);
         else if (Input.GetKeyDown(KeyCode.DownArrow))
-            currentMoveIndex = Mathf.Min(currentMoveIndex + 2, moveSlots.Length - 1);
+            MoveSelection(Vector2.down);
         else if (Input.GetKeyDown(KeyCode.UpArrow))
-            currentMoveIndex = Mathf.Max(currentMoveIndex - 2, 0);
+            MoveSelection(Vector2.up);
 
         UpdateMoveHighlight();
+    }
+
+    private void MoveSelection(Vector2 direction)
+    {
+        if (moveSlots == null || moveSlots.Length == 0)
+            return;
+
+        var currentRect = moveSlots[currentMoveIndex] != null ? moveSlots[currentMoveIndex].transform as RectTransform : null;
+        if (currentRect == null)
+            return;
+
+        int bestIndex = -1;
+        float bestScore = float.NegativeInfinity;
+        Vector2 currentPos = currentRect.anchoredPosition;
+        Vector2 dir = direction.normalized;
+
+        for (int i = 0; i < moveSlots.Length; i++)
+        {
+            if (i == currentMoveIndex || moveSlots[i] == null || !moveSlots[i].gameObject.activeSelf)
+                continue;
+
+            var candidateRect = moveSlots[i].transform as RectTransform;
+            if (candidateRect == null)
+                continue;
+
+            Vector2 delta = candidateRect.anchoredPosition - currentPos;
+            if (delta.sqrMagnitude < 0.001f)
+                continue;
+
+            float alignment = Vector2.Dot(delta.normalized, dir);
+            if (alignment <= 0.1f)
+                continue;
+
+            float score = alignment * 1000f - delta.magnitude;
+            if (score > bestScore)
+            {
+                bestScore = score;
+                bestIndex = i;
+            }
+        }
+
+        if (bestIndex >= 0)
+            currentMoveIndex = bestIndex;
     }
 
     private void UpdateMoveHighlight()

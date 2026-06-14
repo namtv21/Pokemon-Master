@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: ponyta
   m_EditorClassIdentifier: 
+  num: 77
   pokemonName: Ponyta
   description: 
   frontSprite: {fileID: 21300000, guid: 87dcf1fba8aff60489f9924e39ea8cf7, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 65
   SpDefense: 65
   Speed: 90
+  evolvable: 1
+  evolutionLevel: 36
+  evolvesTo: {fileID: 11400000, guid: ce9df5a78c4dcfb4e871b9f652268af5, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
     level: 1

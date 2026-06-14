@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Sprite portrait;
 
     public float moveSpeed = 3f; 
+    [SerializeField] private float sprintMultiplier = 1.75f;
     public LayerMask SolidObjectsLayer;
     public LayerMask GrassLayer;
     public LayerMask InteractableLayer;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public bool isMoving;
     private float cellSize = 1f;
     private CoroutineHost coroutineHost;
+    private Coroutine activeMoveRoutine;
 
     //Hàm khởi tạo
     void Awake()
@@ -107,6 +109,7 @@ public class PlayerController : MonoBehaviour
 
         if (input != Vector2.zero)
         {
+            bool isSprinting = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
             animator.SetFloat("Horizontal", input.x);
             animator.SetFloat("Vertical", input.y);
             animator.SetFloat("Speed", 1f);
@@ -115,7 +118,7 @@ public class PlayerController : MonoBehaviour
             if (IsWalkable(newTarget))
             {
                 targetPos = new Vector3(newTarget.x, newTarget.y, 0);
-                StartMoveRoutine(targetPos);
+                StartMoveRoutine(targetPos, isSprinting ? sprintMultiplier : 1f);
             }
             else
             {
@@ -166,6 +169,28 @@ public class PlayerController : MonoBehaviour
         return facing.normalized;
     }
 
+    public void SetFacingDirection(Vector2 direction)
+    {
+        if (animator == null)
+        {
+            RebindAnimator();
+            if (animator == null)
+                return;
+        }
+
+        Vector2 resolvedDirection;
+        if (direction.sqrMagnitude < 0.0001f)
+            resolvedDirection = Vector2.up;
+        else if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
+            resolvedDirection = direction.x >= 0f ? Vector2.right : Vector2.left;
+        else
+            resolvedDirection = direction.y >= 0f ? Vector2.up : Vector2.down;
+
+        animator.SetFloat("Horizontal", resolvedDirection.x);
+        animator.SetFloat("Vertical", resolvedDirection.y);
+        animator.SetFloat("Speed", 0f);
+    }
+
     public Vector2 GetPosition()
     {
         return rb != null ? rb.position : (Vector2)transform.position;
@@ -179,20 +204,22 @@ public class PlayerController : MonoBehaviour
     }
 
     //Hàm di chuyển
-    System.Collections.IEnumerator MoveTo(Vector3 target)
+    System.Collections.IEnumerator MoveTo(Vector3 target, float speedMultiplier)
     {
         isMoving = true;
         Vector2 target2D = target;
+        float stepSpeed = moveSpeed * Mathf.Max(1f, speedMultiplier);
 
         while ((target2D - rb.position).sqrMagnitude > 0.001f)
         {
-            var nextPos = Vector2.MoveTowards(rb.position, target2D, moveSpeed * Time.fixedDeltaTime);
+            var nextPos = Vector2.MoveTowards(rb.position, target2D, stepSpeed * Time.fixedDeltaTime);
             rb.MovePosition(nextPos);
             yield return new WaitForFixedUpdate();
         }
 
         rb.MovePosition(target2D);
         isMoving = false;
+        activeMoveRoutine = null;
         
         foreach (var grassTrigger in FindObjectsOfType<GrassTrigger>())
         {
@@ -202,7 +229,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void StartMoveRoutine(Vector3 target)
+    private void StartMoveRoutine(Vector3 target, float speedMultiplier)
     {
         if (coroutineHost == null)
             coroutineHost = CoroutineHost.GetOrCreate();
@@ -213,7 +240,13 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        coroutineHost.StartCoroutine(MoveTo(target));
+        if (activeMoveRoutine != null)
+        {
+            coroutineHost.StopCoroutine(activeMoveRoutine);
+            activeMoveRoutine = null;
+        }
+
+        activeMoveRoutine = coroutineHost.StartCoroutine(MoveTo(target, speedMultiplier));
     }
 
     // Kiểm tra va chạm

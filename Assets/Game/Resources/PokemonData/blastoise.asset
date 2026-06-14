@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: blastoise
   m_EditorClassIdentifier: 
   pokemonName: Blastoise
+  num: 9
   description: 
   frontSprite: {fileID: 21300000, guid: 25444193bb733034bb48c6bc303968a7, type: 3}
   backSprite: {fileID: 21300000, guid: 299f824a32ce46e4ab3df3372204ec9a, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 85
   SpDefense: 105
   Speed: 78
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 15a4bfe50d66ec643b89e8fc1f3a0e7d, type: 2}
     level: 0

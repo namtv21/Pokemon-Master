@@ -9,13 +9,20 @@ public static class BootstrapLoader
         "SystemsRoot"
     };
 
+    private static readonly string[] MainMenuSceneNames =
+    {
+        "MainMenu",
+        "MainMenuScreen"
+    };
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Init()
     {
         // Don't load SystemRoot in Main Menu
         var currentScene = SceneManager.GetActiveScene();
-        if (!string.IsNullOrWhiteSpace(currentScene.name) && 
-            currentScene.name.Equals("MainMenu", System.StringComparison.OrdinalIgnoreCase))
+        if (!string.IsNullOrWhiteSpace(currentScene.name) &&
+            System.Array.Exists(MainMenuSceneNames, sceneName =>
+                currentScene.name.Equals(sceneName, System.StringComparison.OrdinalIgnoreCase)))
         {
             return;
         }
@@ -43,6 +50,7 @@ public static class BootstrapLoader
         }
 
         var instance = Object.Instantiate(prefab);
+        instance.name = "SystemRoot (Runtime)";
         Object.DontDestroyOnLoad(instance);
     }
 }

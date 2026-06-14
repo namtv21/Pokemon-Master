@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: raticate
   m_EditorClassIdentifier: 
   pokemonName: Raticate
+  num: 20
   description: 
   frontSprite: {fileID: 21300000, guid: 3f75edb0297831345ae9875ff0c2a3ae, type: 3}
   backSprite: {fileID: 21300000, guid: 9bf2f8fcfc0e53347ab9dcde317557ec, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 50
   SpDefense: 70
   Speed: 97
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 6fc2d68d1ff67a447b0367fb15b1c35a, type: 2}
     level: 1

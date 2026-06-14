@@ -29,4 +29,8 @@ public class ItemBase : ScriptableObject
     [Header("Pokeball")]
     public float catchRateMultiplier; // 1.0 Poké Ball, 1.5 Great Ball, 2.0 Ultra Ball
 
+    [Header("Training")]
+    public bool isExperienceBottle;
+    public int expAmount = 1;
+
 }

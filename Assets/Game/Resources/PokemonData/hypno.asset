@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: hypno
   m_EditorClassIdentifier: 
   pokemonName: Hypno
+  num: 97
   description: 
   frontSprite: {fileID: 21300000, guid: 1dd4f70400099774f961706f2d536194, type: 3}
   backSprite: {fileID: 21300000, guid: 1a247564bfc828549b74e260b109f45b, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 73
   SpDefense: 115
   Speed: 67
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 224bd97601c6c9047b1d6e820f96aec3, type: 2}
     level: 1

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: goldeen
   m_EditorClassIdentifier: 
+  num: 118
   pokemonName: Goldeen
   description: 
   frontSprite: {fileID: 21300000, guid: eece9d4acdbbd30439f733903609e9e6, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 35
   SpDefense: 50
   Speed: 63
+  evolvable: 1
+  evolutionLevel: 28
+  evolvesTo: {fileID: 11400000, guid: f48eddebe3139a34b830b9e7867bc7ad, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 159d3b34fde15bd439dd87b7ca3da9a2, type: 2}
     level: 1

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: rhydon
   m_EditorClassIdentifier: 
   pokemonName: Rhydon
+  num: 112
   description: 
   frontSprite: {fileID: 21300000, guid: 7bfdc5d991781244ea4cea49acfea5a2, type: 3}
   backSprite: {fileID: 21300000, guid: 12167ee134719a943ad34549665a141c, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 45
   SpDefense: 45
   Speed: 40
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 3dd42246238dc7a4a80756efbcb144e9, type: 2}
     level: 0

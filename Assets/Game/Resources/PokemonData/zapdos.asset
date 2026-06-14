@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: zapdos
   m_EditorClassIdentifier: 
   pokemonName: Zapdos
+  num: 145
   description: 
   frontSprite: {fileID: 21300000, guid: 609a8a09de5c12f49acee7e578d9b7c3, type: 3}
   backSprite: {fileID: 21300000, guid: 828d8b493eb807c4aa68346c113ace3a, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 125
   SpDefense: 90
   Speed: 100
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 8ec7bbb91679fd04687e594a9435adda, type: 2}
     level: 1

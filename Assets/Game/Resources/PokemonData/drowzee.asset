@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: drowzee
   m_EditorClassIdentifier: 
   pokemonName: Drowzee
+  num: 96
   description: 
   frontSprite: {fileID: 21300000, guid: 8204ffd07b4fe924aa2685eaacd334f6, type: 3}
   backSprite: {fileID: 21300000, guid: d57bfb21ca0f73d4db8e3c64a17257bd, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 43
   SpDefense: 90
   Speed: 42
+  evolvable: 1
+  evolutionLevel: 26
+  evolvesTo: {fileID: 11400000, guid: 380be47ebb6988d4697e7dcef3994465, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 1aac4c369ddd2784c8b785c757ee8994, type: 2}
     level: 1

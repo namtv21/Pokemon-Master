@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: poliwag
   m_EditorClassIdentifier: 
   pokemonName: Poliwag
+  num: 60
   description: 
   frontSprite: {fileID: 21300000, guid: 1a89fd7254532e4408a0c47cf30893a3, type: 3}
   backSprite: {fileID: 21300000, guid: 59df8082963ed4849935a6319e4d113f, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 40
   SpDefense: 40
   Speed: 90
+  evolvable: 1
+  evolutionLevel: 25
+  evolvesTo: {fileID: 11400000, guid: 6c724ba34100af644a9dd406c621d167, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 959820f8ddaa2074abe27deaf66388c1, type: 2}
     level: 1

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: gengar
   m_EditorClassIdentifier: 
   pokemonName: Gengar
+  num: 94
   description: 
   frontSprite: {fileID: 21300000, guid: 41f5f1f88d6aad2488111f0da8e976bc, type: 3}
   backSprite: {fileID: 21300000, guid: 900a20621d2ba104da2b18e5f9a4cb92, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 130
   SpDefense: 75
   Speed: 110
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 4f73abc6bb514aa49bb0d7eb9f33bbfe, type: 2}
     level: 1

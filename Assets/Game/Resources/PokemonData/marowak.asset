@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: marowak
   m_EditorClassIdentifier: 
   pokemonName: Marowak
+  num: 105
   description: 
   frontSprite: {fileID: 21300000, guid: b8dbe63f29e75ac4394bd7728db5d4a3, type: 3}
   backSprite: {fileID: 21300000, guid: df0e24c9936f8174eb40614ff266456a, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 50
   SpDefense: 80
   Speed: 45
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 5358517d1620bf04facc09e2ef0591d5, type: 2}
     level: 1

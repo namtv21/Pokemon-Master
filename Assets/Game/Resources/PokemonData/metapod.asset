@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: metapod
   m_EditorClassIdentifier: 
   pokemonName: Metapod
+  num: 11
   description: 
   frontSprite: {fileID: 21300000, guid: 886f425e9f1132042b91da052ec51a9d, type: 3}
   backSprite: {fileID: 21300000, guid: f7ab49151af62c244a5b79df2b0391da, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 25
   SpDefense: 25
   Speed: 30
+  evolvable: 1
+  evolutionLevel: 10
+  evolvesTo: {fileID: 11400000, guid: 0af2b5fff849e4046b85da6f6269f6dc, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 4181e9376aadffa4cabb13845d245783, type: 2}
     level: 0

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: tentacool
   m_EditorClassIdentifier: 
+  num: 72
   pokemonName: Tentacool
   description: 
   frontSprite: {fileID: 21300000, guid: 5ee5ad1feae918d4d8f4f667d7e90aaa, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 50
   SpDefense: 100
   Speed: 70
+  evolvable: 1
+  evolutionLevel: 28
+  evolvesTo: {fileID: 11400000, guid: 361839d3e240a4f41a7aaedd9418bb23, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 017b19522ce46664c81ac8803892f6a3, type: 2}
     level: 1

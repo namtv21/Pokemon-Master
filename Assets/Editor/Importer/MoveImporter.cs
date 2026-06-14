@@ -3,6 +3,7 @@ using UnityEditor;
 using System.IO;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Linq;
 
 public class MoveImporter : EditorWindow
 {
@@ -52,8 +53,12 @@ public class MoveImporter : EditorWindow
             // Tạo Move asset
             MoveBase moveAsset = ScriptableObject.CreateInstance<MoveBase>();
             moveAsset.LoadFromJson(moveData);
+            moveAsset.SetLearnPriority(MoveBase.CalculateLearnPriority(moveData));
 
-            string assetPath = Path.Combine(outputFolder, $"{moveKey}.asset");
+            string assetPath = Path.Combine(outputFolder, $"{moveKey}.asset").Replace("\\", "/");
+            if (AssetDatabase.LoadAssetAtPath<MoveBase>(assetPath) != null)
+                AssetDatabase.DeleteAsset(assetPath);
+
             AssetDatabase.CreateAsset(moveAsset, assetPath);
             Debug.Log($"✅ Tạo Move asset: {moveKey} (Target: {moveAsset.Target})");
         }

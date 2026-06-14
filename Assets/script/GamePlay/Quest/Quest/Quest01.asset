@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f906c7dd221ec48924b115e6940e65, type: 3}
+  m_Name: Quest01
+  m_EditorClassIdentifier: 
+  questId: 001
+  title: "Mang n\xE3o cho SVBK"
+  description: "\u0110\u1EBFn Town01 G\u1EB7p SVBK v\xE0 mang n\xE3o cho anh \u1EA5y"
+  category: 1
+  prerequisiteQuestIds: []
+  objectives:
+  - text: "H\xF4m nay l\xE0 bu\u1ED5i thi cu\u1ED1i k\xEC, 1 svbk \u0111i thi \u0111\xE3
+      qu\xEAn mang n\xE3o, h\xE3y mang n\xE3o cho anh \u1EA5y"
+    type: 2
+    targetId: Town01_svbk
+    requiredCount: 1
+  turnInNpcId: Town01_svbk
+  rewardMoney: 20
+  rewardItems: []
+  rewardPokemons: []

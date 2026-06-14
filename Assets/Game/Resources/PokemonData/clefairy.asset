@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: clefairy
   m_EditorClassIdentifier: 
+  num: 35
   pokemonName: Clefairy
   description: 
   frontSprite: {fileID: 21300000, guid: c744a67c8d5524b4c874b1d1963247d7, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 60
   SpDefense: 65
   Speed: 35
+  evolvable: 1
+  evolutionLevel: 36
+  evolvesTo: {fileID: 11400000, guid: ee3277b9e16ca6d41bdb3971bdc5513a, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: c063422a03426a844aefe5d9930f851e, type: 2}
     level: 1

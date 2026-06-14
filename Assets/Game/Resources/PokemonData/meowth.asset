@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: meowth
   m_EditorClassIdentifier: 
   pokemonName: Meowth
+  num: 52
   description: 
   frontSprite: {fileID: 21300000, guid: 48fba79b99e045549b705a1262f7ca44, type: 3}
   backSprite: {fileID: 21300000, guid: c7ffa7446a033a94fb58492363c5676d, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 40
   SpDefense: 40
   Speed: 90
+  evolvable: 1
+  evolutionLevel: 28
+  evolvesTo: {fileID: 11400000, guid: b2fbedf6bf977bd4db5c9b620ca6b251, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: d15287fe2fc48304aa3eb9a8d1684a02, type: 2}
     level: 1

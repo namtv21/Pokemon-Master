@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: dragonite
   m_EditorClassIdentifier: 
   pokemonName: Dragonite
+  num: 149
   description: 
   frontSprite: {fileID: 21300000, guid: aa253cb566ff82d4aad7a2104cb5c462, type: 3}
   backSprite: {fileID: 21300000, guid: 4433e315c0356dc47940113f9fdcbb35, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 100
   SpDefense: 100
   Speed: 80
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 342f658993e99e44a8d5331a3643a8d5, type: 2}
     level: 0

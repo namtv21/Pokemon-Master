@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: raichu
   m_EditorClassIdentifier: 
   pokemonName: Raichu
+  num: 26
   description: 
   frontSprite: {fileID: 21300000, guid: f38806d695d1353479efab12f0887a25, type: 3}
   backSprite: {fileID: 21300000, guid: 4376b27b2a498f0449c11a756a288bc2, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 90
   SpDefense: 80
   Speed: 110
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 11d34946a74b8a14c86e79a5dcb6a804, type: 2}
     level: 0

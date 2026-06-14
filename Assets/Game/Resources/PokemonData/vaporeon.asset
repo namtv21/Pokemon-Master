@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: vaporeon
   m_EditorClassIdentifier: 
   pokemonName: Vaporeon
+  num: 134
   description: 
   frontSprite: {fileID: 21300000, guid: 6512e5031183c654495ba930b3069feb, type: 3}
   backSprite: {fileID: 21300000, guid: 8c7ed32705f2e8043858f9ae82fc1d7d, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 110
   SpDefense: 95
   Speed: 65
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 017b19522ce46664c81ac8803892f6a3, type: 2}
     level: 0

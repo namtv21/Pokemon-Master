@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: flareon
   m_EditorClassIdentifier: 
   pokemonName: Flareon
+  num: 136
   description: 
   frontSprite: {fileID: 21300000, guid: e5cc70cdffbfd0b4ab2532860ae65f25, type: 3}
   backSprite: {fileID: 21300000, guid: 012590fbe600caf46b68838ea47c32ba, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 95
   SpDefense: 110
   Speed: 65
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: beac49ccdf5984d48b1f77b88fd7e1ca, type: 2}
     level: 0

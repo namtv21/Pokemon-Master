@@ -3,10 +3,42 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public static string NextSpawnPointId; // được set trước khi LoadScene
+    public static Vector2? NextFacingDirection;
+    public static string ReturnSceneName;
+    public static string ReturnSpawnPointId;
 
     public static void SetNextSpawnPoint(string spawnPointId)
     {
         NextSpawnPointId = spawnPointId;
+    }
+
+    public static void SetNextSpawnFacingDirection(Vector2 facingDirection)
+    {
+        NextFacingDirection = facingDirection;
+    }
+
+    public static void SetReturnLocation(string sceneName, string spawnPointId)
+    {
+        ReturnSceneName = string.IsNullOrWhiteSpace(sceneName) ? null : sceneName;
+        ReturnSpawnPointId = string.IsNullOrWhiteSpace(spawnPointId) ? null : spawnPointId;
+    }
+
+    public static bool HasReturnLocation()
+    {
+        return !string.IsNullOrWhiteSpace(ReturnSceneName) && !string.IsNullOrWhiteSpace(ReturnSpawnPointId);
+    }
+
+    public static bool TryConsumeReturnLocation(out string sceneName, out string spawnPointId)
+    {
+        sceneName = ReturnSceneName;
+        spawnPointId = ReturnSpawnPointId;
+
+        if (!HasReturnLocation())
+            return false;
+
+        ReturnSceneName = null;
+        ReturnSpawnPointId = null;
+        return true;
     }
 
     private void Awake()
@@ -22,6 +54,7 @@ public class SpawnManager : MonoBehaviour
 
         // Dùng xong thì xóa để tránh dùng lại nhầm
         NextSpawnPointId = null;
+        NextFacingDirection = null;
     }
 
     private GameObject ResolvePlayer()
@@ -65,8 +98,7 @@ public class SpawnManager : MonoBehaviour
         {
             controller.StopAllCoroutines();
             controller.isMoving = false;
-            if (controller.animator != null)
-                controller.animator.SetFloat("Speed", 0f);
+            controller.SetFacingDirection(NextFacingDirection ?? Vector2.up);
         }
 
         var animator = player.GetComponent<Animator>();

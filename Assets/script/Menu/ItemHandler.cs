@@ -8,11 +8,16 @@ public class ItemHandler : MonoBehaviour
 
     public IEnumerator UseItemOnPokemon(ItemBase item, Pokemon targetPokemon)
     {
+        yield return UseItemOnPokemon(item, targetPokemon, -1);
+    }
+
+    public IEnumerator UseItemOnPokemon(ItemBase item, Pokemon targetPokemon, int requestedExpAmount)
+    {
         // kiểm tra số lượng item
         ItemSlot slot = inventory.GetSlots().Find(s => s.item == item);
         if (slot == null || slot.count <= 0)
         {
-            ToastNotificationManager.Instance?.Show($"You don't have any {item.itemName}.", Color.yellow);
+            ToastNotificationManager.Instance?.Show($"Bạn không có {item.itemName}.", Color.yellow);
             yield return new WaitForSeconds(0.8f);
             yield break;
         }
@@ -84,21 +89,49 @@ public class ItemHandler : MonoBehaviour
                 break;
 
             case ItemType.Pokeball:
-                msg = $"{item.itemName} can't be used here.";
+                msg = $"Không thể dùng {item.itemName} ở đây.";
                 success = false;
                 break;
 
             case ItemType.KeyItem:
-                msg = $"{item.itemName} can't be used here.";
-                success = false;
+                if (item.isExperienceBottle)
+                {
+                    int availableExp = inventory.GetExperienceBottleExp(item);
+                    int desiredExp = requestedExpAmount > 0 ? requestedExpAmount : availableExp;
+                    int totalExp = Mathf.Clamp(desiredExp, 1, availableExp);
+
+                    if (availableExp > 0 && totalExp > 0)
+                    {
+                        if (GameController.Instance != null)
+                            yield return GameController.Instance.GainExpAndProcessEvolution(targetPokemon, totalExp, false);
+                        else
+                            targetPokemon.GainExp(totalExp, false, autoEvolveWhenUnobserved: false);
+
+                        inventory.SpendExperienceBottleExp(item, totalExp);
+                        msg = $"{targetPokemon.Base.Name} nhận được {totalExp} EXP!";
+                        success = true;
+                    }
+                    else
+                    {
+                        msg = $"{item.itemName} chưa có EXP tích lũy.";
+                    }
+                }
+                else
+                {
+                    msg = $"Không thể dùng {item.itemName} ở đây.";
+                    success = false;
+                }
                 break;
         }
 
         ToastNotificationManager.Instance?.Show(msg, success ? Color.white : Color.yellow);
         yield return new WaitForSeconds(0.8f);
 
-        if (success && item.consumable)
-            inventory.RemoveItem(item, 1);
+        if (success)
+        {
+            if (!item.isExperienceBottle && item.consumable)
+                inventory.RemoveItem(item, 1);
+        }
 
         MenuController.Instance.CloseAll();
         GameController.Instance.SetState(GameState.Overworld);

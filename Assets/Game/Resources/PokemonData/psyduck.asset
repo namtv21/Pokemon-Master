@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: psyduck
   m_EditorClassIdentifier: 
   pokemonName: Psyduck
+  num: 54
   description: 
   frontSprite: {fileID: 21300000, guid: 724e311c764800e40b07ee44a3314175, type: 3}
   backSprite: {fileID: 21300000, guid: 4c714fffc59549e43963c8dc7bfa602a, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 65
   SpDefense: 50
   Speed: 55
+  evolvable: 1
+  evolutionLevel: 33
+  evolvesTo: {fileID: 11400000, guid: ad6818a05a51f104c80123d26f08710b, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 6f06b53dade7c3845b4526356002f00f, type: 2}
     level: 1

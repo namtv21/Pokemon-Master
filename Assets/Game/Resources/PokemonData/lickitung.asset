@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: lickitung
   m_EditorClassIdentifier: 
   pokemonName: Lickitung
+  num: 108
   description: 
   frontSprite: {fileID: 21300000, guid: 1347034e584ed854fb6181e5512f3c85, type: 3}
   backSprite: {fileID: 21300000, guid: 96deefccc94e98c40a5dd7938ea58847, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 60
   SpDefense: 75
   Speed: 30
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: c063422a03426a844aefe5d9930f851e, type: 2}
     level: 1

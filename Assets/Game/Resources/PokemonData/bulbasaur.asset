@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: bulbasaur
   m_EditorClassIdentifier: 
   pokemonName: Bulbasaur
+  num: 1
   description: 
   frontSprite: {fileID: 21300000, guid: 9724ed74214969648a92a447b04a5295, type: 3}
   backSprite: {fileID: 21300000, guid: 02be5ed97d3d06b49958cdcf6a60cf18, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 65
   SpDefense: 65
   Speed: 45
+  evolvable: 1
+  evolutionLevel: 16
+  evolvesTo: {fileID: 11400000, guid: 7ffe7a555ea35494cbee1cf8ac49b2a8, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
     level: 1

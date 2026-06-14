@@ -15,7 +15,8 @@ public class AudioSettings : MonoBehaviour
         volumeLevel = PlayerPrefs.GetInt("MusicVolumeLevel", 2);
         float normalizedVolume = volumeLevel / (float)maxLevel;
 
-        MusicManager.Instance.SetVolume(normalizedVolume);
+        if (MusicManager.Instance != null)
+            MusicManager.Instance.SetVolume(normalizedVolume);
         volumeSlider.value = normalizedVolume;
 
         volumeSlider.onValueChanged.AddListener(SetVolume);
@@ -43,7 +44,8 @@ public class AudioSettings : MonoBehaviour
     private void ApplyVolume()
     {
         float normalizedVolume = volumeLevel / (float)maxLevel;
-        MusicManager.Instance.SetVolume(normalizedVolume);
+        if (MusicManager.Instance != null)
+            MusicManager.Instance.SetVolume(normalizedVolume);
         volumeSlider.value = normalizedVolume;
 
         PlayerPrefs.SetInt("MusicVolumeLevel", volumeLevel);

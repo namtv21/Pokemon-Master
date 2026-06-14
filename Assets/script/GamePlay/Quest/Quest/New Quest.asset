@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f906c7dd221ec48924b115e6940e65, type: 3}
+  m_Name: New Quest
+  m_EditorClassIdentifier: 
+  questId: 002
+  title: "\u0110\xF4 r\xEA Doko?"
+  description: "N\xF4 Bi \u0111ang t\xECm con m\xE8o \u0110\xF4 R\xEA"
+  category: 1
+  prerequisiteQuestIds: []
+  objectives:
+  - text: "T\xECm \u0110\xF4 R\xEA trong map Town01 n\xE0y"
+    type: 2
+    targetId: dore
+    requiredCount: 1
+  turnInNpcId: dore
+  rewardMoney: 20
+  rewardItems: []
+  rewardPokemons: []

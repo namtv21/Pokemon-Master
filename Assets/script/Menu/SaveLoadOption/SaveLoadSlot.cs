@@ -1,12 +1,20 @@
 using UnityEngine;
 using TMPro;
 using System.IO;
+using UnityEngine.UI;
 
 public class SaveLoadSlot : MonoBehaviour
 {
     [SerializeField] private TMP_Text slotText;
+    [SerializeField] private Image slotPanel;
 
     private string slotName;
+
+    private void Awake()
+    {
+        if (slotPanel == null)
+            slotPanel = GetComponent<Image>();
+    }
 
     public void SetData(string slotName, SaveData data, string path, bool isSelected, bool isModeSelecting, bool isSaveMode)
     {
@@ -20,9 +28,15 @@ public class SaveLoadSlot : MonoBehaviour
 
         // Line 1: include SAVE/LOAD labels and slot label with scene name and datetime
         string scenePart = data != null && !string.IsNullOrWhiteSpace(data.sceneName) ? data.sceneName : "NoScene";
-        string saveLabel = isModeSelecting && isSelected && isSaveMode ? "<color=#FFFF66>SAVE</color>" : "<color=#FFFFFF>SAVE</color>";
-        string loadLabel = isModeSelecting && isSelected && !isSaveMode ? "<color=#FFFF66>LOAD</color>" : "<color=#FFFFFF>LOAD</color>";
-        string line1 = $"{saveLabel} {loadLabel}  {slotName} ({scenePart}, {dateStr})";
+        bool isAutoSave = string.Equals(slotName, "AutoSave");
+        string slotDisplayName = isAutoSave ? "AUTO SAVE" : slotName;
+        string saveLabel = isModeSelecting && isSelected && isSaveMode
+            ? "<color=#FFFF66>SAVE</color>"
+            : "<color=#FFFFFF>SAVE</color>";
+        string loadLabel = isModeSelecting && isSelected && !isSaveMode
+            ? "<color=#FFFF66>LOAD</color>"
+            : "<color=#FFFFFF>LOAD</color>";
+        string line1 = $"{saveLabel} {loadLabel}  {slotDisplayName} ({scenePart}, {dateStr})";
 
         // Prepare lines 2 and 3 with up to 3 pokemons each
         string line2 = "";
@@ -63,8 +77,11 @@ public class SaveLoadSlot : MonoBehaviour
 
     public void SetHighlighted(bool highlighted, Color highlightColor, Color normalColor)
     {
-        if (slotText == null) return;
-        slotText.color = highlighted ? highlightColor : normalColor;
+        if (slotPanel != null)
+            slotPanel.color = highlighted ? highlightColor : normalColor;
+
+        if (slotText != null)
+            slotText.color = Color.white;
     }
 
     public string GetSlotName() => slotName;

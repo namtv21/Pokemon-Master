@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: mankey
   m_EditorClassIdentifier: 
   pokemonName: Mankey
+  num: 56
   description: 
   frontSprite: {fileID: 21300000, guid: 4eb7cfa4295ff754698076c556eb119b, type: 3}
   backSprite: {fileID: 21300000, guid: d88633e6a00975d44a68ab8a1d3ac718, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 35
   SpDefense: 45
   Speed: 70
+  evolvable: 1
+  evolutionLevel: 28
+  evolvesTo: {fileID: 11400000, guid: bf6d7fc77c29a844d8bc0767603c5784, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 6df84621ba287c64da68d4239af6d4c5, type: 2}
     level: 1

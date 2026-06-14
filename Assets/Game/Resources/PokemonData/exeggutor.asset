@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: exeggutor
   m_EditorClassIdentifier: 
   pokemonName: Exeggutor
+  num: 103
   description: 
   frontSprite: {fileID: 21300000, guid: 848ce912377db7a41ae84481a5b99817, type: 3}
   backSprite: {fileID: 21300000, guid: 724226a27b6691641888156fe66cbca4, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 125
   SpDefense: 75
   Speed: 55
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 0fd90bedd5e77c94580f814a0fa1357f, type: 2}
     level: 0

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: charmander
   m_EditorClassIdentifier: 
   pokemonName: Charmander
+  num: 4
   description: 
   frontSprite: {fileID: 21300000, guid: b3818805f9d257540bc721b0af0ac4d1, type: 3}
   backSprite: {fileID: 21300000, guid: 9685c7930c79eca49af8cf77ad04a0db, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 60
   SpDefense: 50
   Speed: 65
+  evolvable: 1
+  evolutionLevel: 16
+  evolvesTo: {fileID: 11400000, guid: 664f9086385a6ba4b9203c8dce2f4998, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
     level: 1

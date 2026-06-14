@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: jynx
   m_EditorClassIdentifier: 
   pokemonName: Jynx
+  num: 124
   description: 
   frontSprite: {fileID: 21300000, guid: 911e0c9d279efe349b8b162cde1064e0, type: 3}
   backSprite: {fileID: 21300000, guid: fbb3bd2b7b0836e4095afe44ddeddd41, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 115
   SpDefense: 95
   Speed: 95
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 7ba294e281e434848ad1727d3bab4cba, type: 2}
     level: 1

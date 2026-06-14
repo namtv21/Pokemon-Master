@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: articuno
   m_EditorClassIdentifier: 
   pokemonName: Articuno
+  num: 144
   description: 
   frontSprite: {fileID: 21300000, guid: 784a76daa4cde5f42bf23bebf04e54dd, type: 3}
   backSprite: {fileID: 21300000, guid: 4323069f08a6e1340a30b470a807258d, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 95
   SpDefense: 125
   Speed: 85
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 77c12fc93d054364cbd63ed464ae683b, type: 2}
     level: 1

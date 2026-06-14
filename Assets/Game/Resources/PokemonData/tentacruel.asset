@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: tentacruel
   m_EditorClassIdentifier: 
   pokemonName: Tentacruel
+  num: 73
   description: 
   frontSprite: {fileID: 21300000, guid: 7677bcd0b3f9d124fb098d586d96b0fb, type: 3}
   backSprite: {fileID: 21300000, guid: f096f374cb129a9438d5a26864cb27cb, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 80
   SpDefense: 120
   Speed: 100
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 644c71fd54e4b3340a73dd6f1e6b6a30, type: 2}
     level: 1

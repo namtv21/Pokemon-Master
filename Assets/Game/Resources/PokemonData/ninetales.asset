@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ninetales
   m_EditorClassIdentifier: 
   pokemonName: Ninetales
+  num: 38
   description: 
   frontSprite: {fileID: 21300000, guid: 0fb232e655cb52d42bee649986d94d6f, type: 3}
   backSprite: {fileID: 21300000, guid: 7060561a8701a5240be629e8cb002551, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 81
   SpDefense: 100
   Speed: 100
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 4f73abc6bb514aa49bb0d7eb9f33bbfe, type: 2}
     level: 1

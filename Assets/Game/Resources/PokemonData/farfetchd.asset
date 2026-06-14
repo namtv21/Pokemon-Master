@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: farfetchd
   m_EditorClassIdentifier: 
   pokemonName: "Farfetch\u2019d"
+  num: 83
   description: 
   frontSprite: {fileID: 21300000, guid: 1e25ce8201118cf47b8cc7d8deeff27a, type: 3}
   backSprite: {fileID: 21300000, guid: d38e6ed4cdedae64c99c26fc4bc0cdfa, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 58
   SpDefense: 62
   Speed: 60
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 590248e45e757744fb3fe9c7f520c2bf, type: 2}
     level: 1

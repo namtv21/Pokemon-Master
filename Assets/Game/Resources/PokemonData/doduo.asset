@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: doduo
   m_EditorClassIdentifier: 
   pokemonName: Doduo
+  num: 84
   description: 
   frontSprite: {fileID: 21300000, guid: dc1f31911812912498d41a078160f61f, type: 3}
   backSprite: {fileID: 21300000, guid: 550efc0f233a49a4ea3e60601a6ff297, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 35
   SpDefense: 35
   Speed: 75
+  evolvable: 1
+  evolutionLevel: 31
+  evolvesTo: {fileID: 11400000, guid: 954dd8ccd8d6d5341932a650792105ee, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
     level: 1

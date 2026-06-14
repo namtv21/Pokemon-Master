@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: GrassBadge
   m_EditorClassIdentifier: 
   itemName: GrassBadge
-  description: 
+  description: "Huy ch\u01B0\u01A1ng sau khi \u0111\xE1nh b\u1EA1i ch\u1EE7 nh\xE0
+    hu\u1EA5n luy\u1EC7n th\xFA h\u1EC7 l\xE1"
   icon: {fileID: 21300000, guid: 7cd9322176a3af646ac61c861d75c1a4, type: 3}
   itemType: 4
   price: 0
@@ -25,3 +26,5 @@ MonoBehaviour:
   curesAllStatus: 0
   curesSpecific: 
   catchRateMultiplier: 0
+  isExperienceBottle: 0
+  expAmount: 1

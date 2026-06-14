@@ -1,44 +1,463 @@
 {
     "partyPokemons": [
         {
+            "name": "Mew",
+            "resourceId": "mew",
+            "level": 56,
+            "currentHP": 96,
+            "maxHP": 122,
+            "exp": 3080,
+            "moves": [
+                "Pound",
+                "Mega Punch",
+                "Ancient Power",
+                "Psychic"
+            ],
+            "battleParticipationCount": 6,
+            "friendshipLevel": 2,
+            "attack": 117,
+            "defense": 117,
+            "spAttack": 117,
+            "spDefense": 117,
+            "speed": 117
+        },
+        {
+            "name": "Charmeleon",
+            "resourceId": "charmeleon",
+            "level": 30,
+            "currentHP": 44,
+            "maxHP": 44,
+            "exp": 293,
+            "moves": [
+                "Flamethrower",
+                "Scratch",
+                "Flame Burst",
+                "Fire Fang"
+            ],
+            "battleParticipationCount": 7,
+            "friendshipLevel": 2,
+            "attack": 43,
+            "defense": 39,
+            "spAttack": 53,
+            "spDefense": 44,
+            "speed": 53
+        },
+        {
             "name": "Pikachu",
-            "level": 7,
-            "currentHP": 11,
+            "resourceId": "pikachu",
+            "level": 6,
+            "currentHP": 9,
             "maxHP": 14,
-            "exp": 0,
+            "exp": 25,
             "moves": [
                 "Quick Attack",
                 "Slam",
                 "Thunder Shock",
                 "Thunder Wave"
             ],
-            "attack": 12,
-            "defense": 10,
-            "spAttack": 12,
-            "spDefense": 12,
-            "speed": 17
-        },
-        {
-            "name": "Caterpie",
-            "level": 2,
-            "currentHP": 9,
-            "maxHP": 11,
-            "exp": 0,
-            "moves": [
-                "String Shot",
-                "Tackle"
-            ],
-            "attack": 6,
-            "defense": 6,
-            "spAttack": 5,
-            "spDefense": 5,
-            "speed": 6
+            "battleParticipationCount": 7,
+            "friendshipLevel": 2,
+            "attack": 11,
+            "defense": 9,
+            "spAttack": 11,
+            "spDefense": 11,
+            "speed": 15
         }
     ],
     "storagePokemons": [],
-    "money": 200,
-    "sceneName": "Road01",
-    "playerX": -2.5,
-    "playerY": -2.8000001907348635,
-    "playerZ": 0.0
+    "money": 590,
+    "sceneName": "FireGym",
+    "playerX": -18.0,
+    "playerY": -3.8000001907348635,
+    "playerZ": 0.0,
+    "questSnapshot": {
+        "completedQuestIds": [],
+        "readyToTurnInQuestIds": [],
+        "activeQuests": []
+    },
+    "storyPrologueDone": false,
+    "storyFirstMainQuestAccepted": false,
+    "storyStarterChosen": true,
+    "storyStarterPokemonId": "charmander",
+    "storyInCave": true,
+    "storyAfterGrassGym": true,
+    "storyAfterWaterGym": true,
+    "storyAfterFireGym": false,
+    "storyMainSequenceIndex": 0,
+    "storyMainStepIndex": 10,
+    "pokedex": {
+        "seenPokemonIds": [
+            "Pikachu",
+            "Charmander",
+            "Mew",
+            "Charmeleon"
+        ],
+        "caughtPokemonIds": [
+            "Pikachu",
+            "Charmander",
+            "Mew",
+            "Charmeleon"
+        ]
+    },
+    "npcStates": [
+        {
+            "stateKey": "FireGym|Fire_GymMaster|-17.938|-0.128|0.000",
+            "npcId": "Fire_GymMaster",
+            "canBattle": true,
+            "sceneName": "FireGym",
+            "posX": -17.938486099243165,
+            "posY": -0.1284729540348053,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "FireGym|Fire_Gym_Trainer2|-18.108|-3.048|0.000",
+            "npcId": "Fire_Gym_Trainer2",
+            "canBattle": true,
+            "sceneName": "FireGym",
+            "posX": -18.10848617553711,
+            "posY": -3.0484728813171388,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "FireGym|Fire_Gym_Trainer1|-18.038|-6.888|0.000",
+            "npcId": "Fire_Gym_Trainer1",
+            "canBattle": true,
+            "sceneName": "FireGym",
+            "posX": -21.258487701416017,
+            "posY": -6.988473415374756,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Cave|Road02_npc|-5.458|-6.498|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "Cave",
+            "posX": -5.458486557006836,
+            "posY": -6.498473167419434,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Cave|Team_Rocket_Cave|-7.018|-14.338|0.000",
+            "npcId": "",
+            "canBattle": true,
+            "sceneName": "Cave",
+            "posX": -7.248486518859863,
+            "posY": -9.29847240447998,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Cave|road01_grandmother|-13.978|-5.188|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "Cave",
+            "posX": -13.978487014770508,
+            "posY": -5.188473224639893,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Cave|Road02_npc|11.222|10.582|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "Cave",
+            "posX": 11.221513748168946,
+            "posY": 10.581527709960938,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Cave|Team_Rocket_M|7.962|-9.098|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "Cave",
+            "posX": 11.511512756347657,
+            "posY": -9.19847297668457,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Cave|Team_Rocket_M|7.922|0.932|0.000",
+            "npcId": "",
+            "canBattle": true,
+            "sceneName": "Cave",
+            "posX": 11.441513061523438,
+            "posY": 0.7615270614624023,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Cave|Team_Rocket_M|5.322|6.512|0.000",
+            "npcId": "",
+            "canBattle": true,
+            "sceneName": "Cave",
+            "posX": 11.721513748168946,
+            "posY": 6.14152717590332,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Cave|Team_Rocket_F|-14.558|0.082|0.000",
+            "npcId": "",
+            "canBattle": true,
+            "sceneName": "Cave",
+            "posX": -14.558486938476563,
+            "posY": 0.08152702450752258,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Cave|Team_Rocket_F|7.892|-4.478|0.000",
+            "npcId": "",
+            "canBattle": true,
+            "sceneName": "Cave",
+            "posX": 11.511512756347657,
+            "posY": -4.35847282409668,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Cave|Team_Rocket_F|-8.648|9.042|0.000",
+            "npcId": "",
+            "canBattle": true,
+            "sceneName": "Cave",
+            "posX": -8.648487091064454,
+            "posY": 9.04152774810791,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Cave|Team_Rocket_M|5.452|7.552|0.000",
+            "npcId": "",
+            "canBattle": true,
+            "sceneName": "Cave",
+            "posX": 11.75151252746582,
+            "posY": 7.211526870727539,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "FireTown|Green|-17.948|-9.868|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "FireTown",
+            "posX": -18.078487396240236,
+            "posY": -9.828472137451172,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "FireTown|Board4|6.562|10.802|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "FireTown",
+            "posX": 6.561513423919678,
+            "posY": 10.80152702331543,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "FireTown|NPC_town01_01|-20.368|5.982|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "FireTown",
+            "posX": -20.368486404418947,
+            "posY": 5.981526851654053,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "FireTown|Board4|-14.538|1.072|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "FireTown",
+            "posX": -14.53848648071289,
+            "posY": 1.0715270042419434,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "FireTown|Board4|-0.508|6.162|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "FireTown",
+            "posX": -0.5084865093231201,
+            "posY": 6.161527156829834,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "FireTown|Board4|-15.738|-6.978|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "FireTown",
+            "posX": -15.738487243652344,
+            "posY": -6.97847318649292,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "FireTown|NPC_town01_02|-14.108|-2.598|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "FireTown",
+            "posX": -14.10848617553711,
+            "posY": -2.598473072052002,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Mountain|Green|-6.428|-12.058|0.000",
+            "npcId": "",
+            "canBattle": true,
+            "sceneName": "Mountain",
+            "posX": -6.4284868240356449,
+            "posY": -12.058472633361817,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Mountain|Blue|7.492|1.152|0.000",
+            "npcId": "",
+            "canBattle": true,
+            "sceneName": "Mountain",
+            "posX": 7.491513729095459,
+            "posY": 1.1515270471572877,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Mountain|Team_Rocket_F|-8.898|4.432|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "Mountain",
+            "posX": -8.898487091064454,
+            "posY": 4.431527137756348,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Mountain|Board1|-9.338|2.542|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "Mountain",
+            "posX": -9.338486671447754,
+            "posY": 2.541527032852173,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Mountain|Board1|3.722|2.552|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "Mountain",
+            "posX": 3.721513271331787,
+            "posY": 2.5515270233154299,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Mountain|road01_grandmother|-19.068|-1.898|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "Mountain",
+            "posX": -19.0684871673584,
+            "posY": -1.8984730243682862,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Mountain|road01_grandmother|2.672|-1.928|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "Mountain",
+            "posX": 2.671513557434082,
+            "posY": -1.9284729957580567,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Road03|Blue|-24.798|4.782|0.000",
+            "npcId": "",
+            "canBattle": true,
+            "sceneName": "Road03",
+            "posX": -24.798486709594728,
+            "posY": 4.781527042388916,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Road03|Board1|-21.108|5.662|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "Road03",
+            "posX": -21.10848617553711,
+            "posY": 5.661527156829834,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Road03|Board1|3.962|5.582|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "Road03",
+            "posX": 3.9615135192871095,
+            "posY": 5.581527233123779,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Road03|road01_kid|-20.398|0.882|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "Road03",
+            "posX": -20.398487091064454,
+            "posY": 0.8815269470214844,
+            "posZ": 0.0,
+            "isActive": true
+        },
+        {
+            "stateKey": "Road03|Road03_npc|2.782|2.162|0.000",
+            "npcId": "",
+            "canBattle": false,
+            "sceneName": "Road03",
+            "posX": 2.7815136909484865,
+            "posY": 2.161526918411255,
+            "posZ": 0.0,
+            "isActive": true
+        }
+    ],
+    "inventoryItems": [
+        {
+            "itemName": "potion",
+            "count": 5,
+            "storedExp": 0
+        },
+        {
+            "itemName": "Pokeball",
+            "count": 5,
+            "storedExp": 0
+        },
+        {
+            "itemName": "Exp Bottle",
+            "count": 1,
+            "storedExp": 1014
+        },
+        {
+            "itemName": "GrassBadge",
+            "count": 1,
+            "storedExp": 0
+        },
+        {
+            "itemName": "WaterBadge",
+            "count": 1,
+            "storedExp": 0
+        }
+    ],
+    "triggeredTriggers": [],
+    "capturedOverworldPokemonIds": []
 }

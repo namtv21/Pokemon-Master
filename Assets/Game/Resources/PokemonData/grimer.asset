@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: grimer
   m_EditorClassIdentifier: 
   pokemonName: Grimer
+  num: 88
   description: 
   frontSprite: {fileID: 21300000, guid: 76d8664593975fb4799f9c9be4653b44, type: 3}
   backSprite: {fileID: 21300000, guid: 416aa984911819740aa158dc442624f7, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 40
   SpDefense: 50
   Speed: 25
+  evolvable: 1
+  evolutionLevel: 38
+  evolvesTo: {fileID: 11400000, guid: 552edd7f9679edb479b4bb98563ebf0f, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 973eea0eeae042849b9623e3fb725bef, type: 2}
     level: 1

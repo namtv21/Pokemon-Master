@@ -26,11 +26,21 @@ public class BattleItemHandler : MonoBehaviour
     {
         battleSystem.SetState(BattleState.Busy);
 
+        Debug.Log($"BattleItemHandler: UseItemOnPokemon called for {item?.itemName} on {targetPokemon?.Base?.Name}");
+
         // kiểm tra số lượng item
         ItemSlot slot = inventory.GetSlots().Find(s => s.item == item);
         if (slot == null || slot.count <= 0)
         {
-            dialogBox.ShowDialog($"You don't have any {item.itemName}.");
+            if (dialogBox != null)
+            {
+                dialogBox.ShowDialog($"You don't have any {item.itemName}.");
+                Debug.Log($"BattleItemHandler: dialog shown for missing item {item.itemName}");
+            }
+            else
+            {
+                Debug.LogWarning("BattleItemHandler: dialogBox is null when reporting missing item.");
+            }
             yield return new WaitForSeconds(1f);
             yield break;
         }
@@ -125,7 +135,15 @@ public class BattleItemHandler : MonoBehaviour
                 break;
         }
 
-        dialogBox.ShowDialog(msg);
+        if (dialogBox != null)
+        {
+            dialogBox.ShowDialog(msg);
+            Debug.Log($"BattleItemHandler: dialog shown with message: {msg}");
+        }
+        else
+        {
+            Debug.LogWarning($"BattleItemHandler: dialogBox is null, message not shown: {msg}");
+        }
         yield return new WaitForSeconds(1.2f);
 
         if (success && item.consumable)
@@ -174,42 +192,15 @@ public class BattleItemHandler : MonoBehaviour
 
     private void CaptureSuccess(Pokemon target)
     {
-        // ⭐ Bắn event khi bắt được Pokémon
-        QuestManager.Instance?.SubmitEvent(
-            new QuestEvent(QuestEventType.PokemonCaught, target.Base.Name, 1)
-        );
-
-        var playerParty = PlayerParty.Instance;
-        if (playerParty.Pokemons.Count < 6)
-        {
-            Pokemon ownedPokemon = target.CloneAsOwned();
-            playerParty.AddPokemon(ownedPokemon);
-
-            // ⭐ Bắn event khi own Pokémon (thêm vào party)
-            QuestManager.Instance?.SubmitEvent(
-                new QuestEvent(QuestEventType.PokemonOwned, target.Base.Name, 1)
-            );
-
-            ShowNoti($"{target.Base.Name} was added to your party!");
-        }
-        else
-        {
-            Pokemon ownedPokemon = target.CloneAsOwned();
-            StorageSystem.Instance.AddPokemon(ownedPokemon);
-
-            // ⭐ Bắn event khi own Pokémon (gửi vào storage)
-            QuestManager.Instance?.SubmitEvent(
-                new QuestEvent(QuestEventType.PokemonOwned, target.Base.Name, 1)
-            );
-
-            ShowNoti($"{target.Base.Name} was sent to the Box!");
-        }
+        GameController.Instance?.TryReceivePokemon(target);
         EndBattleWithCapture();
     }
 
     private void EndBattleWithCapture()
     {
         battleSystem.SetState(BattleState.BattleOver);
+        battleSystem.SetBattleOutcome(BattleOutcome.Capture);
+        GameController.Instance?.NotifyActiveOverworldPokemonCaptured();
         GameController.Instance.EndBattle();
         battleUI.SetActive(false);
     }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: tauros
   m_EditorClassIdentifier: 
   pokemonName: Tauros
+  num: 128
   description: 
   frontSprite: {fileID: 21300000, guid: 7f1b505f4069ed54cb73079d7c754168, type: 3}
   backSprite: {fileID: 21300000, guid: 6f0c9cb727116474fbc6a3bc38993b14, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 40
   SpDefense: 70
   Speed: 110
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
     level: 1

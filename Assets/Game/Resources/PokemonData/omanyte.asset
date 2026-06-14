@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: omanyte
   m_EditorClassIdentifier: 
   pokemonName: Omanyte
+  num: 138
   description: 
   frontSprite: {fileID: 21300000, guid: 52de8c9fad5d11d439d83d2eddbc447d, type: 3}
   backSprite: {fileID: 21300000, guid: 704687491ddd9c2498db0ebba0d46b15, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 90
   SpDefense: 55
   Speed: 35
+  evolvable: 1
+  evolutionLevel: 40
+  evolvesTo: {fileID: 11400000, guid: 05e63d6d63bb0c240a3dfca1ef91cee7, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 16fbc57445aaa8d4d81e6968b8e97724, type: 2}
     level: 1

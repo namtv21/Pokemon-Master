@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: nidorina
   m_EditorClassIdentifier: 
+  num: 30
   pokemonName: Nidorina
   description: 
   frontSprite: {fileID: 21300000, guid: 106750aad20ea544bb9e3504d3ec2a3f, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 55
   SpDefense: 55
   Speed: 56
+  evolvable: 1
+  evolutionLevel: 36
+  evolvesTo: {fileID: 11400000, guid: 59387129e46c7d14497517f56d4f2bfb, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
     level: 1

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: pinsir
   m_EditorClassIdentifier: 
   pokemonName: Pinsir
+  num: 127
   description: 
   frontSprite: {fileID: 21300000, guid: 4facb78249824514794ee73fcec9ef64, type: 3}
   backSprite: {fileID: 21300000, guid: 91ace08a3279e264fb80d609cddc8541, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 55
   SpDefense: 70
   Speed: 85
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 4181e9376aadffa4cabb13845d245783, type: 2}
     level: 1

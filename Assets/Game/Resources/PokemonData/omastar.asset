@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: omastar
   m_EditorClassIdentifier: 
   pokemonName: Omastar
+  num: 139
   description: 
   frontSprite: {fileID: 21300000, guid: f7ca5e59389725a43bdd32f5b46cf713, type: 3}
   backSprite: {fileID: 21300000, guid: 6f43dba7fb65b204ab01cf1e552e8fb6, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 115
   SpDefense: 70
   Speed: 55
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 238c53ce48b414d428c60341b471f113, type: 2}
     level: 0

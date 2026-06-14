@@ -23,11 +23,16 @@ public class NPCDirectionalAnimator : MonoBehaviour
     private Coroutine walkRoutine;
     private CoroutineHost host;
     private Vector2 facing = Vector2.down;
+    private Vector2 walkingDirection = Vector2.zero;
+    private bool isWalking;
+
+    public Vector2 FacingDirection => facing;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         host = CoroutineHost.GetOrCreate();
+        facing = ResolveInitialFacingFromCurrentSprite();
         ShowIdle(facing);
     }
 
@@ -37,6 +42,7 @@ public class NPCDirectionalAnimator : MonoBehaviour
 
         if (idle)
         {
+            isWalking = false;
             StopWalkRoutine();
             ShowIdle(facing);
             return;
@@ -55,6 +61,7 @@ public class NPCDirectionalAnimator : MonoBehaviour
             return;
         }
 
+        isWalking = false;
         StopWalkRoutine();
         ShowIdle(facing);
     }
@@ -64,14 +71,20 @@ public class NPCDirectionalAnimator : MonoBehaviour
         if (spriteRenderer == null)
             return;
 
-        if (walkRoutine != null && host != null)
-            host.StopCoroutine(walkRoutine);
-
         if (host == null)
         {
             ShowIdle(direction);
             return;
         }
+
+        if (isWalking && walkingDirection == direction && walkRoutine != null)
+            return;
+
+        isWalking = true;
+        walkingDirection = direction;
+
+        if (walkRoutine != null)
+            host.StopCoroutine(walkRoutine);
 
         walkRoutine = host.StartCoroutine(AnimateWalk(direction));
     }
@@ -92,18 +105,21 @@ public class NPCDirectionalAnimator : MonoBehaviour
         {
             ShowIdle(direction);
             walkRoutine = null;
+            isWalking = false;
             yield break;
         }
 
         float delay = 1f / Mathf.Max(1f, framesPerSecond);
         int index = 0;
 
-        while (true)
+        while (isWalking && walkingDirection == direction)
         {
             spriteRenderer.sprite = frames[index % frames.Length];
             index++;
             yield return new WaitForSeconds(delay);
         }
+
+        walkRoutine = null;
     }
 
     private void ShowIdle(Vector2 direction)
@@ -139,6 +155,47 @@ public class NPCDirectionalAnimator : MonoBehaviour
             return worldDirection.x >= 0f ? Vector2.right : Vector2.left;
 
         return worldDirection.y >= 0f ? Vector2.up : Vector2.down;
+    }
+
+    private Vector2 ResolveInitialFacingFromCurrentSprite()
+    {
+        if (spriteRenderer == null || spriteRenderer.sprite == null)
+            return Vector2.down;
+
+        var current = spriteRenderer.sprite;
+        if (current == idleUp)
+            return Vector2.up;
+        if (current == idleLeft)
+            return Vector2.left;
+        if (current == idleRight)
+            return Vector2.right;
+        if (current == idleDown)
+            return Vector2.down;
+
+        if (ContainsSprite(walkUpFrames, current))
+            return Vector2.up;
+        if (ContainsSprite(walkLeftFrames, current))
+            return Vector2.left;
+        if (ContainsSprite(walkRightFrames, current))
+            return Vector2.right;
+        if (ContainsSprite(walkDownFrames, current))
+            return Vector2.down;
+
+        return Vector2.down;
+    }
+
+    private static bool ContainsSprite(Sprite[] sprites, Sprite target)
+    {
+        if (sprites == null || target == null)
+            return false;
+
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            if (sprites[i] == target)
+                return true;
+        }
+
+        return false;
     }
 
     private sealed class CoroutineHost : MonoBehaviour

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: slowbro
   m_EditorClassIdentifier: 
   pokemonName: Slowbro
+  num: 80
   description: 
   frontSprite: {fileID: 21300000, guid: 39a30ff5748494d47a2438a89e0a6c90, type: 3}
   backSprite: {fileID: 21300000, guid: 4395ca7d19bbee44492f3663b87b513a, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 100
   SpDefense: 80
   Speed: 30
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
     level: 1

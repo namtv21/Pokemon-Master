@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: squirtle
   m_EditorClassIdentifier: 
   pokemonName: Squirtle
+  num: 7
   description: 
   frontSprite: {fileID: 21300000, guid: 6a21684fed5237b4a92ba4b7224def2b, type: 3}
   backSprite: {fileID: 21300000, guid: 1326da2e9750a55449aee7b70a553213, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 50
   SpDefense: 64
   Speed: 43
+  evolvable: 1
+  evolutionLevel: 16
+  evolvesTo: {fileID: 11400000, guid: 3e3e90cc346b0da4196d127fd0dd086d, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
     level: 1

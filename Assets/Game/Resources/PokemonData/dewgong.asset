@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: dewgong
   m_EditorClassIdentifier: 
   pokemonName: Dewgong
+  num: 87
   description: 
   frontSprite: {fileID: 21300000, guid: 20dc68bfcebce354ea78678c43129c43, type: 3}
   backSprite: {fileID: 21300000, guid: e1f022a217d2bf14ea360bd61aeb72a4, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 70
   SpDefense: 95
   Speed: 70
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 03333aaff66b83a448c60d0820c1f2c4, type: 2}
     level: 1

@@ -52,7 +52,7 @@ public class QuestPokemonReward
     [Min(1)] public int level = 5;
 }
 
-[CreateAssetMenu(menuName = "Quest")]
+[CreateAssetMenu(menuName = "Quest/New Quest", order = 0)]
 public class Quest : ScriptableObject
 {
     [Header("Identity")]

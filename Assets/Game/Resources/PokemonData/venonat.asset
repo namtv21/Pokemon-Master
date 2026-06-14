@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: venonat
   m_EditorClassIdentifier: 
+  num: 48
   pokemonName: Venonat
   description: 
   frontSprite: {fileID: 21300000, guid: 7c25348d5562cf149bf76ee8862621f0, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 40
   SpDefense: 55
   Speed: 45
+  evolvable: 1
+  evolutionLevel: 24
+  evolvesTo: {fileID: 11400000, guid: e1ff4dbbb97dfca46a7e59de59ecc17a, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
     level: 1

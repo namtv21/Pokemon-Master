@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: eevee
   m_EditorClassIdentifier: 
   pokemonName: Eevee
+  num: 133
   description: 
   frontSprite: {fileID: 21300000, guid: 9cfbc58ed8f6d874daa7f9a3a83e1cfa, type: 3}
   backSprite: {fileID: 21300000, guid: f09436a5b10790c45abd827220d46eda, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 45
   SpDefense: 65
   Speed: 55
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 6df84621ba287c64da68d4239af6d4c5, type: 2}
     level: 1

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9f906c7dd221ec48924b115e6940e65, type: 3}
+  m_Name: CatchPokemon
+  m_EditorClassIdentifier: 
+  questId: 000
+  title: Gotta Catch Them All
+  description: "H\xE3y thu th\u1EADp t\u1EA5t c\u1EA3 Pokemon c\xF3 trong PokemonDEX,
+    c\xF3 th\u1EC3 b\u1EAFt t\u1EEB b\xE3i c\u1ECF, nhi\u1EC7m v\u1EE5 ho\u1EB7c
+    ti\u1EBFn h\xF3a"
+  category: 1
+  prerequisiteQuestIds: []
+  objectives:
+  - text: Gotta catch them all
+    type: 0
+    targetId: 
+    requiredCount: 151
+  turnInNpcId: prof_oke
+  rewardMoney: 10000
+  rewardItems: []
+  rewardPokemons: []

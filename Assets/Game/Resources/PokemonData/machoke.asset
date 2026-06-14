@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: machoke
   m_EditorClassIdentifier: 
+  num: 67
   pokemonName: Machoke
   description: 
   frontSprite: {fileID: 21300000, guid: e2cd942ce96cbb94a84a8561a1635924, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 50
   SpDefense: 60
   Speed: 45
+  evolvable: 1
+  evolutionLevel: 40
+  evolvesTo: {fileID: 11400000, guid: b4b44b557a40dd346b83bd7fdd2dc459, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 592d7eb5c3f0e0e4886c024571fc4572, type: 2}
     level: 1

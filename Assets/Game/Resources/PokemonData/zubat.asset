@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: zubat
   m_EditorClassIdentifier: 
   pokemonName: Zubat
+  num: 41
   description: 
   frontSprite: {fileID: 21300000, guid: b7a400b1fba1a74479abbd8e8757ca6e, type: 3}
   backSprite: {fileID: 21300000, guid: 36338743b6769c14d8a2099e11b08301, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 30
   SpDefense: 40
   Speed: 55
+  evolvable: 1
+  evolutionLevel: 22
+  evolvesTo: {fileID: 11400000, guid: 84aa1fcff54b65c408515578354951bb, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 7461b30f495f6dd489acd502d39ba1e9, type: 2}
     level: 1

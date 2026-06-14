@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: FireBadge
   m_EditorClassIdentifier: 
   itemName: FireBadge
-  description: 
+  description: "Huy ch\u01B0\u01A1ng sau khi \u0111\xE1nh b\u1EA1i ch\u1EE7 nh\xE0
+    hu\u1EA5n luy\u1EC7n th\xFA h\u1EC7 l\u1EEDa"
   icon: {fileID: 21300000, guid: 3f98711c9c9eb4044b9339c181253a42, type: 3}
   itemType: 4
   price: 0
@@ -25,3 +26,5 @@ MonoBehaviour:
   curesAllStatus: 0
   curesSpecific: 
   catchRateMultiplier: 0
+  isExperienceBottle: 0
+  expAmount: 1

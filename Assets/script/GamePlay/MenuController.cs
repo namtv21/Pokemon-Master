@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public enum MenuState { None, Main, Party, Item, Storage, Quest, Pokedex, SaveLoad, Option }
 
@@ -11,6 +12,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] private ItemMenuUI itemMenuUI;
     [SerializeField] private Inventory inventory;
     [SerializeField] private ItemHandler itemHandler;
+    [SerializeField] private ItemAmountSelectorUI itemAmountSelectorUI;
     [SerializeField] private PokemonInfoUI pokemonInfoUI;
     [SerializeField] private SaveLoadSystem saveLoadSystem;
     [SerializeField] private SaveLoadMenuUI saveLoadMenuUI;
@@ -21,6 +23,8 @@ public class MenuController : MonoBehaviour
     public Inventory Inventory => inventory;
 
     private MenuState currentState = MenuState.None;
+    private ItemBase selectedItemForUse;
+    private int selectedExpAmountForUse;
 
     private void Awake()
     {
@@ -78,11 +82,21 @@ public class MenuController : MonoBehaviour
                 }
                 break;
             case MenuState.SaveLoad:
-                saveLoadMenuUI?.HandleUpdate(() =>
-                {
-                    currentState = MenuState.Main;
-                    mainMenuUI?.Open(OnMenuSelected, CloseAll);
-                });
+                saveLoadMenuUI?.HandleUpdate(
+                    onCancel: () =>
+                    {
+                        currentState = MenuState.Main;
+                        mainMenuUI?.Open(OnMenuSelected, CloseAll);
+                    },
+                    onSaveCompleted: () =>
+                    {
+                        currentState = MenuState.Main;
+                        mainMenuUI?.Open(OnMenuSelected, CloseAll);
+                    },
+                    onLoadCompleted: () =>
+                    {
+                        CloseAll();
+                    });
                 break;
             case MenuState.Option:
                 audioSettings.HandleUpdate(() =>
@@ -132,34 +146,7 @@ public class MenuController : MonoBehaviour
                 break;
 
             case MainMenuOption.Item:
-                mainMenuUI.Close();
-                SetState(MenuState.Item);
-                if (itemMenuUI == null || inventory == null || itemHandler == null)
-                {
-                    ToastNotificationManager.Instance?.Show("Item menu is unavailable.", Color.yellow);
-                    CloseAll();
-                    return;
-                }
-                itemMenuUI.OpenMenu(inventory.GetSlots(),
-                    (itemBase) =>
-                    {
-                        if (itemBase.itemType == ItemType.Pokeball || itemBase.itemType == ItemType.KeyItem)
-                        {
-                            ToastNotificationManager.Instance?.Show($"{itemBase.itemName} can't be used here.", Color.yellow);
-                            CloseAll();
-                            return;
-                        }
-
-                        // Sau khi chọn item, mở PartyMenu để chọn Pokémon target
-                        currentState = MenuState.Party;
-                        partyMenuUI.Open(PlayerParty.Instance.Pokemons, PartyMenuMode.Selection,
-                            (pokemon) =>
-                            {
-                                StartCoroutine(itemHandler.UseItemOnPokemon(itemBase, pokemon));
-                            },
-                            CloseAll);
-                    },
-                    CloseAll);
+                OpenItemMenu();
                 break;
 
             case MainMenuOption.Storage:
@@ -245,6 +232,125 @@ public class MenuController : MonoBehaviour
         audioSettings?.Close();
         pokemonDexMenuUI?.Close();
         pokemonInfoUI?.Hide();
+        HideAmountSelector();
         // Nếu có StorageMenu, SaveMenu, LoadMenu, OptionMenu thì Close ở đây
+    }
+
+    private void OpenItemMenu()
+    {
+        mainMenuUI.Close();
+        SetState(MenuState.Item);
+        if (itemMenuUI == null || inventory == null || itemHandler == null)
+        {
+            ToastNotificationManager.Instance?.Show("Item menu is unavailable.", Color.yellow);
+            CloseAll();
+            return;
+        }
+
+        var slotsList = inventory.GetSlots();
+        if (inventory.ExperienceBottleItem != null && !slotsList.Exists(s => s.item == inventory.ExperienceBottleItem))
+        {
+            inventory.AddItem(inventory.ExperienceBottleItem, 1);
+            var ensuredBottleExp = inventory.GetExperienceBottleExp(inventory.ExperienceBottleItem);
+            if (ensuredBottleExp < 0)
+                Debug.LogWarning("Experience bottle slot was created without valid stored exp.");
+        }
+
+        itemMenuUI.OpenMenu(inventory.GetSlots(),
+            (itemBase) =>
+            {
+                if (itemBase == null)
+                {
+                    CloseAll();
+                    return;
+                }
+
+                if (itemBase.itemType == ItemType.Pokeball || (itemBase.itemType == ItemType.KeyItem && !itemBase.isExperienceBottle))
+                {
+                    ToastNotificationManager.Instance?.Show($"Không thể dùng {itemBase.itemName} ở đây.", Color.yellow);
+                    CloseAll();
+                    return;
+                }
+
+                if (itemBase.isExperienceBottle)
+                {
+                    int availableExp = inventory.GetExperienceBottleExp(itemBase);
+                    if (availableExp <= 0)
+                    {
+                        ToastNotificationManager.Instance?.Show($"{itemBase.itemName} chưa có EXP tích lũy.", Color.yellow);
+                        return;
+                    }
+
+                    selectedItemForUse = itemBase;
+                    itemMenuUI.CloseMenu();
+                    ShowAmountSelector(
+                        availableExp,
+                        amount =>
+                        {
+                            selectedExpAmountForUse = amount;
+                            OpenPokemonTargetSelectionForSelectedItem();
+                        },
+                        () =>
+                        {
+                            selectedItemForUse = null;
+                            selectedExpAmountForUse = 0;
+                            OpenItemMenu();
+                        });
+                    return;
+                }
+
+                selectedItemForUse = itemBase;
+                selectedExpAmountForUse = 0;
+                OpenPokemonTargetSelectionForSelectedItem();
+            },
+            CloseAll);
+    }
+
+    private void OpenPokemonTargetSelectionForSelectedItem()
+    {
+        if (selectedItemForUse == null)
+            return;
+
+        currentState = MenuState.Party;
+        partyMenuUI.Open(PlayerParty.Instance.Pokemons, PartyMenuMode.Selection,
+            (pokemon) =>
+            {
+                StartCoroutine(itemHandler.UseItemOnPokemon(selectedItemForUse, pokemon, selectedExpAmountForUse));
+            },
+            () =>
+            {
+                selectedItemForUse = null;
+                selectedExpAmountForUse = 0;
+                OpenItemMenu();
+            });
+    }
+
+    private ItemAmountSelectorUI EnsureAmountSelector()
+    {
+        if (itemAmountSelectorUI != null)
+            return itemAmountSelectorUI;
+
+        itemAmountSelectorUI = ItemAmountSelectorUI.GetOrCreate();
+        return itemAmountSelectorUI;
+    }
+
+    private void ShowAmountSelector(int maxAmount, Action<int> onSelected, Action onCancel)
+    {
+        var selector = EnsureAmountSelector();
+        if (selector == null)
+        {
+            onSelected?.Invoke(maxAmount);
+            return;
+        }
+
+        selector.Show(maxAmount, onSelected, onCancel);
+    }
+
+    private void HideAmountSelector()
+    {
+        if (itemAmountSelectorUI == null)
+            return;
+
+        itemAmountSelectorUI.Hide();
     }
 }

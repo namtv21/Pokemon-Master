@@ -10,13 +10,21 @@ public class PlayerParty : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance != null && Instance != this)
+        {
+            DuplicateSystemRootUtility.DestroyDuplicate(this, Instance);
+            return;
+        }
+
+        Instance = this;
     }
 
     /// Khởi tạo party với pikachu lv5
     void Start()
     {
+        if (SaveLoadSystem.HasPendingLoadData())
+            return;
+
         if (Pokemons.Count == 0)
         {
             PokemonBase pikachuBase = Resources.Load<PokemonBase>("PokemonData/pikachu");
@@ -78,6 +86,14 @@ public class PlayerParty : MonoBehaviour
             p.HealAll(); // gọi hàm HealAll() của từng Pokemon
         }
         Debug.Log("All Pokémon in the party have been healed!");
+    }
+
+    public void RecordBattleParticipation()
+    {
+        foreach (var p in Pokemons)
+        {
+            p?.AddBattleParticipation(1);
+        }
     }
     
 }

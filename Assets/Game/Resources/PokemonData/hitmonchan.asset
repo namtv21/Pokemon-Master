@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: hitmonchan
   m_EditorClassIdentifier: 
   pokemonName: Hitmonchan
+  num: 107
   description: 
   frontSprite: {fileID: 21300000, guid: b0a641148e72f5146bf998a922605cf0, type: 3}
   backSprite: {fileID: 21300000, guid: 6d4790d375181ac4bb0c02bc05994dee, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 35
   SpDefense: 110
   Speed: 76
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: fda2bd16deda16d4d9def44960da4ff3, type: 2}
     level: 0

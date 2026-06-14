@@ -47,17 +47,12 @@ public static class MainStorySequenceTemplateCreator
         step.FindPropertyRelative("oneShot").boolValue = true;
 
         var actions = step.FindPropertyRelative("actions");
-        actions.arraySize = 2;
+        actions.arraySize = 1;
 
         var dialogAction = actions.GetArrayElementAtIndex(0);
         dialogAction.FindPropertyRelative("type").enumValueIndex = (int)MainStoryActionType.ShowDialog;
         dialogAction.FindPropertyRelative("speakerName").stringValue = "Narrator";
         dialogAction.FindPropertyRelative("dialogText").stringValue = "Tien si Oke goi minh hom nay.";
-
-        var setFlagAction = actions.GetArrayElementAtIndex(1);
-        setFlagAction.FindPropertyRelative("type").enumValueIndex = (int)MainStoryActionType.SetStoryFlag;
-        setFlagAction.FindPropertyRelative("storyFlag").enumValueIndex = (int)StoryFlagKey.FirstMainQuestAccepted;
-        setFlagAction.FindPropertyRelative("storyFlagValue").boolValue = true;
     }
 
     private static void ConfigureOakStep(SerializedProperty step)
@@ -104,7 +99,6 @@ public static class MainStorySequenceTemplateCreator
         option.FindPropertyRelative("storyFlag").enumValueIndex = (int)StoryFlagKey.StarterChosen;
         option.FindPropertyRelative("storyFlagValue").boolValue = true;
         option.FindPropertyRelative("starterPokemonId").stringValue = pokemonId;
-        option.FindPropertyRelative("resultLine").stringValue = "Great choice! {pokemon} joins your team!";
     }
 
     [MenuItem("Assets/Create/Quest/Main Story Sequence Template", true)]

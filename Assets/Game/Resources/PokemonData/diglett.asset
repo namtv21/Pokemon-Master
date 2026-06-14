@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: diglett
   m_EditorClassIdentifier: 
   pokemonName: Diglett
+  num: 50
   description: 
   frontSprite: {fileID: 21300000, guid: 447ea4fcd6ecd634b9cfb53e8c6b529b, type: 3}
   backSprite: {fileID: 21300000, guid: ab03a78636a5b354db9613c497efd5dc, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 35
   SpDefense: 45
   Speed: 95
+  evolvable: 1
+  evolutionLevel: 26
+  evolvesTo: {fileID: 11400000, guid: 39f6990e5f4bc1a4ba34b66d34ca5e6d, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 590248e45e757744fb3fe9c7f520c2bf, type: 2}
     level: 1

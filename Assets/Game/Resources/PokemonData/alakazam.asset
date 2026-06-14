@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: alakazam
   m_EditorClassIdentifier: 
   pokemonName: Alakazam
+  num: 65
   description: 
   frontSprite: {fileID: 21300000, guid: 14b283a6cbd52b84b9cd8bde142c0465, type: 3}
   backSprite: {fileID: 21300000, guid: c1a16677c95c6934d99217a1c8b06731, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 135
   SpDefense: 95
   Speed: 120
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 224bd97601c6c9047b1d6e820f96aec3, type: 2}
     level: 1

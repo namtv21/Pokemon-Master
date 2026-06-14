@@ -9,13 +9,13 @@ public class QuestMenuUI : MonoBehaviour
     [SerializeField] private QuestInfoUI infoUI;
 
     private readonly List<QuestSlotUI> slotUIs = new();
+    private List<Quest> displayQuests = new();
     private int selectedIndex = 0;
 
     public void Open()
     {
         gameObject.SetActive(true);
         RefreshUI();
-
         if (slotUIs.Count > 0)
             ShowInfo(selectedIndex);
         else
@@ -34,14 +34,18 @@ public class QuestMenuUI : MonoBehaviour
             Destroy(child.gameObject);
         slotUIs.Clear();
 
-        var quests = QuestManager.Instance.GetActiveQuests()
+        displayQuests = QuestManager.Instance.GetActiveQuests()
             .Where(q => q != null && q.Category != QuestCategory.MainStory)
             .ToList();
+        displayQuests.AddRange(
+            QuestManager.Instance.GetCompletedSideQuests()
+                .Where(q => q != null)
+        );
 
-        for (int i = 0; i < quests.Count; i++)
+        for (int i = 0; i < displayQuests.Count; i++)
         {
             var slot = Instantiate(questSlotPrefab, questListParent);
-            slot.SetData(quests[i].Title);
+            slot.SetData(displayQuests[i]);
             slotUIs.Add(slot);
         }
 
@@ -50,10 +54,7 @@ public class QuestMenuUI : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if (slotUIs.Count == 0)
-        {
-            return;
-        }
+        if (slotUIs.Count == 0) return;
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -76,11 +77,7 @@ public class QuestMenuUI : MonoBehaviour
         for (int i = 0; i < slotUIs.Count; i++)
             slotUIs[i].SetHighlight(i == index);
 
-        var quests = QuestManager.Instance.GetActiveQuests()
-            .Where(q => q != null && q.Category != QuestCategory.MainStory)
-            .ToList();
-
-        if (index >= 0 && index < quests.Count)
-            infoUI.ShowInfo(quests[index]);
+        if (index >= 0 && index < displayQuests.Count)
+            infoUI.ShowInfo(displayQuests[index]);
     }
 }

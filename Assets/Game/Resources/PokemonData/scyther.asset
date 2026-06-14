@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: scyther
   m_EditorClassIdentifier: 
   pokemonName: Scyther
+  num: 123
   description: 
   frontSprite: {fileID: 21300000, guid: 4ed2420d334f6e742871b585fb278e1b, type: 3}
   backSprite: {fileID: 21300000, guid: fd7cabad938da4f4892b3675a14e9b89, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 55
   SpDefense: 80
   Speed: 105
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
     level: 1

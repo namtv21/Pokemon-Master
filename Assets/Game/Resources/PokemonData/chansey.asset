@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: chansey
   m_EditorClassIdentifier: 
   pokemonName: Chansey
+  num: 113
   description: 
   frontSprite: {fileID: 21300000, guid: 32d896950cc775d42b261640025717a6, type: 3}
   backSprite: {fileID: 21300000, guid: 98d364d78af99dc4f8e25591ea7e2f76, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 35
   SpDefense: 105
   Speed: 50
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 6df84621ba287c64da68d4239af6d4c5, type: 2}
     level: 1

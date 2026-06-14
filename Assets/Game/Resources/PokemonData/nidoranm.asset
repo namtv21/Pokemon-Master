@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: nidoranm
   m_EditorClassIdentifier: 
   pokemonName: Nidoran-M
+  num: 32
   description: 
   frontSprite: {fileID: 21300000, guid: 2dff34d2ec423a842bd35daa88180b79, type: 3}
   backSprite: {fileID: 21300000, guid: 9d1771ca9572b574c8b4c1c668553005, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 40
   SpDefense: 40
   Speed: 50
+  evolvable: 1
+  evolutionLevel: 16
+  evolvesTo: {fileID: 11400000, guid: bce981758480a4e41ab11de4f629e423, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
     level: 1

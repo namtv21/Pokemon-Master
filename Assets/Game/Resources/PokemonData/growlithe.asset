@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: growlithe
   m_EditorClassIdentifier: 
+  num: 58
   pokemonName: Growlithe
   description: 
   frontSprite: {fileID: 21300000, guid: 0f1d45b2c7fa19947bf883103e1e89f0, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 70
   SpDefense: 50
   Speed: 60
+  evolvable: 1
+  evolutionLevel: 36
+  evolvesTo: {fileID: 11400000, guid: f1075044e51b5cb42b8555f1d3f3c0c3, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 77cefdbcb4afee544b09c8d3278ccce3, type: 2}
     level: 1

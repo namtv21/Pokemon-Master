@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: porygon
   m_EditorClassIdentifier: 
   pokemonName: Porygon
+  num: 137
   description: 
   frontSprite: {fileID: 21300000, guid: 805ae305568d457409013cb0c5de73e5, type: 3}
   backSprite: {fileID: 21300000, guid: b99415ba50564e843a874d679f1b9df6, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 85
   SpDefense: 75
   Speed: 40
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: ee101a779d19d3d4b94598e3fdbf10fa, type: 2}
     level: 1

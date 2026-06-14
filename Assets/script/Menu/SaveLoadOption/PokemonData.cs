@@ -5,11 +5,15 @@ using System.Collections.Generic;
 public class PokemonData
 {
     public string name;
+    public string resourceId;
     public int level;
     public int currentHP;
     public int maxHP;
     public int exp;
     public List<string> moves;
+
+    public int battleParticipationCount;
+    public int friendshipLevel;
 
     public int attack;
     public int defense;
@@ -22,6 +26,7 @@ public class PokemonData
     public PokemonData(Pokemon p)
     {
         name = p.Base.Name;
+        resourceId = p.Base.name;
         level = p.Level;
         currentHP = p.CurrentHp;
         maxHP = p.MaxHp;
@@ -36,5 +41,8 @@ public class PokemonData
         spAttack = p.SpAttack;
         spDefense = p.SpDefense;
         speed = p.Speed;
+
+        battleParticipationCount = p.BattleParticipationCount;
+        friendshipLevel = p.FriendshipLevel;
     }
 }

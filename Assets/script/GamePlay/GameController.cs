@@ -14,11 +14,21 @@ public enum GameState
     NPCInteraction,
     Shop,
     Storage,
+    Cutscene,
     HealingCenter,
     Quest
 }
 
-public class GameController : MonoBehaviour
+public enum BattleOutcome
+{
+    None,
+    Win,
+    Lose,
+    Escape,
+    Capture
+}
+
+public partial class GameController : MonoBehaviour
 {
     [Header("Core systems")]
     [SerializeField] private PlayerController playerController;
@@ -39,6 +49,8 @@ public class GameController : MonoBehaviour
     public PartyMenuUI PartyMenuUI => PartyMenuUI.Instance;
     public BattleSystem BattleSystem => battleSystem;
     public BattleUnit EnemyUnit => battleSystem?.EnemyUnit;
+    public BattleOutcome LastBattleOutcome { get; private set; } = BattleOutcome.None;
+    public bool WasLastBattleSuccessful => LastBattleOutcome == BattleOutcome.Win || LastBattleOutcome == BattleOutcome.Capture;
 
     public static GameController Instance { get; private set; }
     public GameState State { get; private set; }
@@ -47,10 +59,15 @@ public class GameController : MonoBehaviour
     private string cachedOverworldSceneName;
     private bool battleSceneLoaded;
     private readonly Dictionary<Camera, bool> cachedCameraEnabledStates = new();
+    private readonly Dictionary<AudioListener, bool> cachedListenerEnabledStates = new();
     private readonly Dictionary<GameObject, bool> cachedOverworldRootStates = new();
     private float nextBattleCameraEnforceTime;
     private CanvasGroup sceneFadeCanvasGroup;
+    // scene fade is handled by SceneFadeController
     private bool isSceneTransitioning;
+    private bool pendingBattleAllowRun = true;
+    private OverworldPokemon activeOverworldPokemon;
+    private bool activeOverworldPokemonCaptured;
 
     private PlayerController ResolvePlayerController()
     {
@@ -67,108 +84,23 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else { Destroy(gameObject); return; }
+        if (Instance != null && Instance != this)
+        {
+            DuplicateSystemRootUtility.DestroyDuplicate(this, Instance);
+            return;
+        }
+
+        Instance = this;
 
         DontDestroyOnLoad(gameObject);
     }
 
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    private void Start()
-    {
-        SetState(GameState.Overworld);
-        SaveLoadSystem.ApplyLoadedData();
-
-        if (DialogManager.Instance != null)
-        {
-            DialogManager.Instance.OnDialogStarted += OnDialogStarted;
-            DialogManager.Instance.OnDialogFinished += OnDialogFinished;
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (DialogManager.Instance != null)
-        {
-            DialogManager.Instance.OnDialogStarted -= OnDialogStarted;
-            DialogManager.Instance.OnDialogFinished -= OnDialogFinished;
-        }
-    }
-
-    private void OnDialogStarted()
-    {
-        // DialogManager callback chỉ nên đặt Dialog state khi game chưa bị chuyển sang state khác bởi flow riêng.
-        if (State != GameState.Battle && State != GameState.Shop && State != GameState.Storage)
-            SetState(GameState.Dialog);
-    }
-
-    private void OnDialogFinished()
-    {
-        // Nếu callback riêng (NPC/Quest/Shop) đã đổi state trước đó, không ghi đè về Overworld.
-        if (State == GameState.Dialog)
-            SetState(GameState.Overworld);
-    }
-
-    public void SetState(GameState newState)
-    {
-        State = newState;
-        OnStateChanged?.Invoke(newState);
-    }
-
-    private void Update()
-    {
-        switch (State)
-        {
-            case GameState.Overworld:
-                var livePlayerController = ResolvePlayerController();
-                if (livePlayerController != null)
-                    livePlayerController.HandleUpdate();
-                if (Input.GetKeyDown(KeyCode.X)) OpenMenu();
-                break;
-
-            case GameState.Menu:
-                menuController?.HandleUpdate(() => SetState(GameState.Overworld));
-                break;
-
-            case GameState.Dialog:
-                DialogManager.Instance?.HandleUpdate();
-                break;
-
-            case GameState.NPCInteraction:
-                OptionUI.Instance?.HandleUpdate();
-                break;
-
-            case GameState.Shop:
-                ShopUI.Instance?.HandleUpdate();
-                break;
-
-            case GameState.Storage:
-                if (PartyMenuUI != null && PartyMenuUI.gameObject.activeInHierarchy)
-                    PartyMenuUI.HandleUpdate();
-                else if (StorageSystem != null && StorageSystem.gameObject.activeInHierarchy)
-                    StorageSystem.HandleUpdate();
-                break;
-
-            case GameState.Battle:
-                if (Time.unscaledTime >= nextBattleCameraEnforceTime)
-                {
-                    EnforceBattleCameraSettings();
-                    nextBattleCameraEnforceTime = Time.unscaledTime + 0.1f;
-                }
-                break;
-        }
-    }
-
     public void StartWildBattle(Pokemon wildPokemon)
+    {
+        StartWildBattle(wildPokemon, true);
+    }
+
+    public void StartWildBattle(Pokemon wildPokemon, bool allowRun)
     {
         var battleScene = SceneManager.GetSceneByName(battleSceneName);
         if (State == GameState.Battle || isSceneTransitioning || battleSceneLoaded || (battleScene.IsValid() && battleScene.isLoaded))
@@ -177,7 +109,74 @@ public class GameController : MonoBehaviour
             return;
         }
 
+        LastBattleOutcome = BattleOutcome.None;
+        pendingBattleAllowRun = allowRun;
         StartCoroutine(StartWildBattleRoutine(wildPokemon));
+    }
+
+    public void StartOverworldPokemonBattle(OverworldPokemon source, bool allowRun = true)
+    {
+        if (source == null)
+            return;
+
+        var wildPokemon = source.CreateBattlePokemon();
+        if (wildPokemon == null)
+            return;
+
+        var battleScene = SceneManager.GetSceneByName(battleSceneName);
+        if (State == GameState.Battle || isSceneTransitioning || battleSceneLoaded || (battleScene.IsValid() && battleScene.isLoaded))
+        {
+            Debug.LogWarning("[Battle] Ignored duplicate overworld pokemon battle start request.");
+            return;
+        }
+
+        activeOverworldPokemon = source;
+        activeOverworldPokemonCaptured = false;
+        StartWildBattle(wildPokemon, allowRun);
+    }
+
+    public void NotifyActiveOverworldPokemonCaptured()
+    {
+        activeOverworldPokemonCaptured = true;
+    }
+
+    public bool TryReceivePokemon(Pokemon sourcePokemon, bool submitCaughtEvent = true)
+    {
+        if (sourcePokemon == null || sourcePokemon.Base == null)
+            return false;
+
+        var playerParty = PlayerParty.Instance;
+        if (playerParty == null)
+            return false;
+
+        bool sentToStorage = playerParty.Pokemons.Count >= 6;
+        if (sentToStorage && StorageSystem.Instance == null)
+            return false;
+
+        var ownedPokemon = sourcePokemon.CloneAsOwned();
+
+        if (submitCaughtEvent)
+        {
+            QuestManager.Instance?.SubmitEvent(
+                new QuestEvent(QuestEventType.PokemonCaught, sourcePokemon.Base.Name, 1)
+            );
+        }
+
+        if (sentToStorage)
+            StorageSystem.Instance?.AddPokemon(ownedPokemon);
+        else
+            playerParty.AddPokemon(ownedPokemon);
+
+        QuestManager.Instance?.SubmitEvent(
+            new QuestEvent(QuestEventType.PokemonOwned, sourcePokemon.Base.Name, 1)
+        );
+
+        if (sentToStorage)
+            ToastNotificationManager.Instance?.Show($"{sourcePokemon.Base.Name} was sent to storage!");
+        else
+            ToastNotificationManager.Instance?.Show($"{sourcePokemon.Base.Name} was added to your party!");
+
+        return true;
     }
 
     public void LoadSceneWithFade(string sceneName, string spawnPointId, float fadeOutDuration = 0.5f, float fadeInDuration = 0.25f)
@@ -205,10 +204,13 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            yield return FadeSceneOverlay(1f, battleFallbackFadeDuration);
+            var fadeCtrl = GetOrCreateSceneFadeController();
+            if (fadeCtrl != null)
+                yield return fadeCtrl.Fade(1f, battleFallbackFadeDuration);
         }
 
-        battleSystem.StartWildBattle(wildPokemon);
+        battleSystem.StartWildBattle(wildPokemon, pendingBattleAllowRun);
+        pendingBattleAllowRun = true;
 
         if (battleTransition != null)
         {
@@ -216,11 +218,18 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            yield return FadeSceneOverlay(0f, battleFallbackFadeDuration);
+            var fadeCtrl = GetOrCreateSceneFadeController();
+            if (fadeCtrl != null)
+                yield return fadeCtrl.Fade(0f, battleFallbackFadeDuration);
         }
     }
 
     public void StartTrainerBattle(NPC trainer)
+    {
+        StartTrainerBattle(trainer, false);
+    }
+
+    public void StartTrainerBattle(NPC trainer, bool allowRun)
     {
         var battleScene = SceneManager.GetSceneByName(battleSceneName);
         if (State == GameState.Battle || isSceneTransitioning || battleSceneLoaded || (battleScene.IsValid() && battleScene.isLoaded))
@@ -229,6 +238,8 @@ public class GameController : MonoBehaviour
             return;
         }
 
+        LastBattleOutcome = BattleOutcome.None;
+        pendingBattleAllowRun = allowRun;
         StartCoroutine(StartTrainerBattleRoutine(trainer));
     }
 
@@ -249,10 +260,13 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            yield return FadeSceneOverlay(1f, battleFallbackFadeDuration);
+            var fadeCtrl = GetOrCreateSceneFadeController();
+            if (fadeCtrl != null)
+                yield return fadeCtrl.Fade(1f, battleFallbackFadeDuration);
         }
 
-        battleSystem.StartTrainerBattle(trainer);
+        battleSystem.StartTrainerBattle(trainer, pendingBattleAllowRun);
+        pendingBattleAllowRun = true;
 
         if (battleTransition != null)
         {
@@ -260,7 +274,9 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            yield return FadeSceneOverlay(0f, battleFallbackFadeDuration);
+            var fadeCtrl = GetOrCreateSceneFadeController();
+            if (fadeCtrl != null)
+                yield return fadeCtrl.Fade(0f, battleFallbackFadeDuration);
         }
     }
 
@@ -287,6 +303,20 @@ public class GameController : MonoBehaviour
 
     private IEnumerator EndBattleRoutine()
     {
+        var defeatedTrainer = battleSystem != null ? battleSystem.CurrentTrainer : null;
+        var defeatedWildPokemon = battleSystem != null && battleSystem.EnemyUnit != null
+            ? battleSystem.EnemyUnit.Pokemon
+            : null;
+        LastBattleOutcome = battleSystem != null ? battleSystem.Outcome : BattleOutcome.None;
+        bool shouldAutoCaptureOverworldPokemon =
+            activeOverworldPokemon != null &&
+            !activeOverworldPokemonCaptured &&
+            defeatedWildPokemon != null &&
+            defeatedWildPokemon.IsFainted;
+
+        if (shouldAutoCaptureOverworldPokemon && TryReceivePokemon(defeatedWildPokemon))
+            activeOverworldPokemonCaptured = true;
+
         if (battleTransition != null)
         {
             yield return battleTransition.PlayClose();
@@ -306,9 +336,9 @@ public class GameController : MonoBehaviour
             var unload = SceneManager.UnloadSceneAsync(battleSceneName);
             if (unload != null) yield return unload;
             battleSceneLoaded = false;
-            battleSystem = null;
-            battleTransition = null;
         }
+        battleSystem = null;
+        battleTransition = null;
 
         if (!string.IsNullOrEmpty(cachedOverworldSceneName))
         {
@@ -321,6 +351,99 @@ public class GameController : MonoBehaviour
         if (playerController != null) playerController.enabled = true;
 
         yield return FadeSceneOverlay(0f, battleEndRevealDuration);
+
+        if (PlayerParty.Instance != null)
+        {
+            PlayerParty.Instance.RecordBattleParticipation();
+            yield return StartCoroutine(ProcessPostBattleEvolution());
+        }
+
+        if (LastBattleOutcome == BattleOutcome.Win || LastBattleOutcome == BattleOutcome.Capture)
+            defeatedTrainer?.OnBattleEnded();
+
+        activeOverworldPokemon?.HandleBattleFinished(activeOverworldPokemonCaptured);
+        activeOverworldPokemon = null;
+        activeOverworldPokemonCaptured = false;
+    }
+
+    private IEnumerator ProcessPostBattleEvolution()
+    {
+        if (PlayerParty.Instance == null || PlayerParty.Instance.Pokemons == null)
+            yield break;
+
+        var partySnapshot = new List<Pokemon>(PlayerParty.Instance.Pokemons);
+        foreach (var pokemon in partySnapshot)
+            yield return StartCoroutine(ProcessPokemonEvolution(pokemon));
+    }
+
+    public IEnumerator GainExpAndProcessEvolution(Pokemon pokemon, int expAmount, bool awardBonusExp = false)
+    {
+        if (pokemon == null || expAmount <= 0)
+            yield break;
+
+        var previousState = State;
+        if (State != GameState.Battle)
+            SetState(GameState.Cutscene);
+
+        pokemon.GainExp(expAmount, awardBonusExp, autoEvolveWhenUnobserved: false);
+        yield return StartCoroutine(ProcessPokemonEvolution(pokemon));
+
+        if (State == GameState.Cutscene)
+            SetState(previousState == GameState.Battle ? GameState.Overworld : previousState);
+    }
+
+    public IEnumerator ProcessPokemonEvolution(Pokemon pokemon)
+    {
+        if (pokemon == null)
+            yield break;
+
+        while (pokemon.CanEvolveNow())
+        {
+            var oldBase = pokemon.Base;
+            var newBase = oldBase?.EvolvesTo;
+            string oldName = oldBase != null ? oldBase.Name : pokemon.Base.Name;
+            string targetName = newBase != null ? newBase.Name : pokemon.GetEvolutionTargetName();
+
+            yield return ShowDialogAndWait($"{oldName} is evolving!");
+            yield return FadeSceneOverlay(1f, 0.35f);
+
+            Sprite beforeSprite = oldBase != null ? oldBase.FrontSprite : null;
+            Sprite afterSprite = newBase != null ? newBase.FrontSprite : null;
+            yield return StartCoroutine(PlayEvolutionVisual(beforeSprite, afterSprite));
+
+            bool evolved = pokemon.TryEvolve();
+            yield return FadeSceneOverlay(0f, 0.35f);
+
+            if (!evolved)
+                break;
+
+            PokedexManager.GetOrCreate().MarkCaught(pokemon);
+            yield return ShowDialogAndWait($"Congratulations! {oldName} evolved into {targetName}!");
+        }
+    }
+
+    // Evolution visual was moved to EvolutionVisuals.cs
+
+    private IEnumerator ShowDialogAndWait(string line)
+    {
+        var dialogManager = DialogManager.Instance;
+        if (dialogManager == null)
+            yield break;
+
+        bool finished = false;
+
+        void OnFinish()
+        {
+            finished = true;
+        }
+
+        dialogManager.OnDialogFinished += OnFinish;
+        dialogManager.ShowDialog(line, GameState.Overworld);
+
+        while (!finished)
+            yield return null;
+
+        dialogManager.OnDialogFinished -= OnFinish;
     }
 
     private IEnumerator LoadSceneWithFadeRoutine(string sceneName, string spawnPointId, float fadeOutDuration, float fadeInDuration)
@@ -377,6 +500,13 @@ public class GameController : MonoBehaviour
 
     private IEnumerator FadeSceneOverlay(float targetAlpha, float duration)
     {
+        var fadeCtrl = GetOrCreateSceneFadeController();
+        if (fadeCtrl != null)
+        {
+            yield return fadeCtrl.Fade(targetAlpha, duration);
+            yield break;
+        }
+
         EnsureSceneFadeOverlay();
 
         float startAlpha = sceneFadeCanvasGroup.alpha;
@@ -396,18 +526,38 @@ public class GameController : MonoBehaviour
 
     private void SetSceneFadeImmediate(float alpha)
     {
-        EnsureSceneFadeOverlay();
-        sceneFadeCanvasGroup.alpha = Mathf.Clamp01(alpha);
+        var fadeCtrl = GetOrCreateSceneFadeController();
+        if (fadeCtrl != null)
+            fadeCtrl.SetImmediate(alpha);
+
+        if (sceneFadeCanvasGroup != null)
+            sceneFadeCanvasGroup.alpha = Mathf.Clamp01(alpha);
+    }
+
+    private SceneFadeController GetOrCreateSceneFadeController()
+    {
+        if (SceneFadeController.Instance != null)
+            return SceneFadeController.Instance;
+
+        var existing = FindObjectOfType<SceneFadeController>(true);
+        if (existing != null)
+            return existing;
+
+        var go = new GameObject("SceneFadeController");
+        DontDestroyOnLoad(go);
+        return go.AddComponent<SceneFadeController>();
     }
 
     private void SetBattleCameraIsolation(bool inBattle)
     {
         var cameras = FindObjectsOfType<Camera>(true);
+        var listeners = FindObjectsOfType<AudioListener>(true);
         var battleScene = SceneManager.GetSceneByName(battleSceneName);
 
         if (inBattle)
         {
             cachedCameraEnabledStates.Clear();
+            cachedListenerEnabledStates.Clear();
 
             for (int i = 0; i < cameras.Length; i++)
             {
@@ -419,6 +569,16 @@ public class GameController : MonoBehaviour
                 cam.enabled = belongsToBattleScene;
             }
 
+            for (int i = 0; i < listeners.Length; i++)
+            {
+                var al = listeners[i];
+                if (al == null) continue;
+
+                bool belongsToBattleScene = battleScene.IsValid() && al.gameObject.scene == battleScene;
+                cachedListenerEnabledStates[al] = al.enabled;
+                al.enabled = belongsToBattleScene;
+            }
+
             return;
         }
 
@@ -428,7 +588,14 @@ public class GameController : MonoBehaviour
                 kv.Key.enabled = kv.Value;
         }
 
+        foreach (var kv in cachedListenerEnabledStates)
+        {
+            if (kv.Key != null)
+                kv.Key.enabled = kv.Value;
+        }
+
         cachedCameraEnabledStates.Clear();
+        cachedListenerEnabledStates.Clear();
     }
 
     private void SetOverworldSceneVisibility(bool visible)
@@ -507,10 +674,9 @@ public class GameController : MonoBehaviour
     private IEnumerator EnsureBattleSceneLoadedAndBound()
     {
         var battleScene = SceneManager.GetSceneByName(battleSceneName);
-        if (battleScene.IsValid() && battleScene.isLoaded)
-            battleSceneLoaded = true;
+        bool sceneAlreadyLoaded = battleScene.IsValid() && battleScene.isLoaded;
 
-        if (!battleSceneLoaded)
+        if (!sceneAlreadyLoaded)
         {
             var op = SceneManager.LoadSceneAsync(battleSceneName, LoadSceneMode.Additive);
             if (op == null)
@@ -573,7 +739,7 @@ public class GameController : MonoBehaviour
 
         if (battleSystem == null)
         {
-            Debug.LogError($"[Bind] ✗ BattleSystem STILL NOT FOUND after searching all roots!\n" +
+            Debug.LogError($"[Bind] âœ— BattleSystem STILL NOT FOUND after searching all roots!\n" +
                           "SOLUTION:\n" +
                           "1. Open BattleScene\n" +
                           "2. Select 'Battle' GameObject in hierarchy\n" +
@@ -591,41 +757,5 @@ public class GameController : MonoBehaviour
 
         if (scene.name == battleSceneName)
             BindBattleReferencesFromScene(scene);
-    }
-
-    private void OpenMenu()
-    {
-        SetState(GameState.Menu);
-        menuController?.OpenMainMenu();
-    }
-
-    public void HealAllPlayerPokemon()
-    {
-        PlayerParty.HealAll();
-        ToastNotificationManager.Instance?.Show("Your Pokémon have been fully healed!");
-        SetState(GameState.Overworld);
-    }
-
-    public void OpenShop()
-    {
-        ShopUI.Open();
-        SetState(GameState.Shop);
-    }
-
-    public void OpenStorageParty(NPC currentNPC)
-    {
-        var partyPokemons = PlayerParty.Pokemons;
-        SetState(GameState.Storage);
-
-        PartyMenuUI.Open(
-            partyPokemons,
-            PartyMenuMode.Selection,
-            onSelected: (pokemon) =>
-            {
-                currentNPC.SendPokemonToStorage(pokemon);
-                PartyMenuUI.Close();
-            },
-            onCancel: () => OptionUI.Instance.ShowOptions(currentNPC)
-        );
     }
 }

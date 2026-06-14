@@ -1,6 +1,6 @@
-using UnityEngine;
-using TMPro;
 using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
 
 public class OptionUI : MonoBehaviour
 {
@@ -13,8 +13,6 @@ public class OptionUI : MonoBehaviour
     private int optionCount;
     private NPC currentNPC;
     private float inputLockedUntil;
-
-    // Danh sách action động dựa trên chức năng NPC
     private List<(string label, System.Action action)> availableOptions;
 
     private void Awake()
@@ -35,19 +33,18 @@ public class OptionUI : MonoBehaviour
 
     public void ShowOptions(NPC npc)
     {
-        if (npc == null) return;
+        if (npc == null)
+            return;
 
         currentNPC = npc;
         availableOptions = new List<(string, System.Action)>();
 
-        // Chỉ hiện Team/Fight khi NPC có chức năng battle
         if (npc.HasBattle())
         {
             availableOptions.Add(("Team", OnSelectTeam));
             availableOptions.Add(("Fight", OnSelectFight));
         }
 
-        // Thêm option đặc biệt nếu NPC có chức năng
         if (npc.HasQuest())
             availableOptions.Add(("Quest", OnSelectQuest));
 
@@ -60,7 +57,6 @@ public class OptionUI : MonoBehaviour
         if (npc.HasStorage())
             availableOptions.Add(("Storage", OnSelectStorage));
 
-        // Chỉ mở menu khi có ít nhất một option; nếu không thì chỉ dialog xong là thoát
         if (availableOptions.Count == 0)
         {
             HideOptions();
@@ -68,16 +64,12 @@ public class OptionUI : MonoBehaviour
             return;
         }
 
-        // Cuối cùng là Leave
         availableOptions.Add(("Leave", OnSelectLeave));
-
-        // Cập nhật UI
         optionCount = availableOptions.Count;
 
         if (optionTexts == null || optionTexts.Length == 0)
             optionTexts = optionsPanel.GetComponentsInChildren<TextMeshProUGUI>(true);
 
-        // Hiển thị text option
         for (int i = 0; i < optionTexts.Length; i++)
         {
             bool active = i < optionCount;
@@ -102,8 +94,11 @@ public class OptionUI : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if (optionsPanel == null || !optionsPanel.activeInHierarchy) return;
-        if (Time.unscaledTime < inputLockedUntil) return;
+        if (optionsPanel == null || !optionsPanel.activeInHierarchy)
+            return;
+
+        if (Time.unscaledTime < inputLockedUntil)
+            return;
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -117,9 +112,7 @@ public class OptionUI : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
-        {
             ExecuteSelection();
-        }
 
         if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Escape))
         {
@@ -146,7 +139,6 @@ public class OptionUI : MonoBehaviour
             availableOptions[currentSelection].action?.Invoke();
     }
 
-    // ===== Option Actions =====
     private void OnSelectTeam()
     {
         HideOptions();
@@ -170,7 +162,7 @@ public class OptionUI : MonoBehaviour
         if (currentNPC.HasBattle())
             currentNPC.StartBattle();
         else
-            Debug.LogWarning($"{currentNPC.npcName} không có chức năng chiến đấu.");
+            Debug.LogWarning($"{currentNPC.npcName} has no battle function.");
     }
 
     private void OnSelectQuest()
@@ -179,7 +171,7 @@ public class OptionUI : MonoBehaviour
         if (currentNPC.HasQuest())
             currentNPC.GiveQuest();
         else
-            Debug.LogWarning($"{currentNPC.npcName} không có quest.");
+            Debug.LogWarning($"{currentNPC.npcName} has no quest.");
     }
 
     private void OnSelectHeal()
@@ -188,7 +180,7 @@ public class OptionUI : MonoBehaviour
         if (currentNPC.HasHealer())
             currentNPC.HealPlayerPokemon();
         else
-            Debug.LogWarning($"{currentNPC.npcName} không có chức năng heal.");
+            Debug.LogWarning($"{currentNPC.npcName} has no heal function.");
     }
 
     private void OnSelectShop()
@@ -197,7 +189,7 @@ public class OptionUI : MonoBehaviour
         if (currentNPC.HasShop())
             currentNPC.OpenShop();
         else
-            Debug.LogWarning($"{currentNPC.npcName} không có shop.");
+            Debug.LogWarning($"{currentNPC.npcName} has no shop.");
     }
 
     private void OnSelectStorage()
@@ -205,7 +197,7 @@ public class OptionUI : MonoBehaviour
         HideOptions();
 
         if (currentNPC != null && currentNPC.HasStorage())
-            currentNPC.OpenStorageSendMenu(); // chuyển logic sang NPC
+            currentNPC.OpenStorageSendMenu();
         else
             Debug.LogWarning("This NPC has no storage function.");
     }
@@ -214,18 +206,7 @@ public class OptionUI : MonoBehaviour
     {
         HideOptions();
         currentNPC = null;
-        if (DialogManager.Instance != null)
-        {
-            DialogManager.Instance.OnDialogFinished += () =>
-            {
-                GameController.Instance?.SetState(GameState.Overworld);
-            };
-            DialogManager.Instance.ShowDialog("See you next time!");
-        }
-        else
-        {
-            GameController.Instance?.SetState(GameState.Overworld);
-        }
+        GameController.Instance?.SetState(GameState.Overworld);
     }
 
     private void EndNpcInteraction()

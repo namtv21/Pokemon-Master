@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: aerodactyl
   m_EditorClassIdentifier: 
   pokemonName: Aerodactyl
+  num: 142
   description: 
   frontSprite: {fileID: 21300000, guid: 0b91277a90e076848a6d3723fd3b2ab3, type: 3}
   backSprite: {fileID: 21300000, guid: 698c08569a42ea343a420e023c39362f, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 60
   SpDefense: 75
   Speed: 130
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: c40cf627fc3b7684a9ae1de302e82ee5, type: 2}
     level: 1

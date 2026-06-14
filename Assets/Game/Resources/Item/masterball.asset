@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: masterball
   m_EditorClassIdentifier: 
   itemName: masterball
-  description: 
+  description: "Ch\u1EAFc ch\u1EAFn b\u1EAFt \u0111\u01B0\u1EE3c pokemon"
   icon: {fileID: 21300000, guid: ad779edd2e648564787d2913ca1d8a59, type: 3}
   itemType: 1
   price: 200
@@ -25,3 +25,5 @@ MonoBehaviour:
   curesAllStatus: 0
   curesSpecific: 
   catchRateMultiplier: 999
+  isExperienceBottle: 0
+  expAmount: 1

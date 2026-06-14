@@ -49,15 +49,13 @@ public class MoveLearnUI : MonoBehaviour
     public void HandleUpdate()
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            currentIndex = (currentIndex - 1 + moveSlots.Count) % moveSlots.Count;
-            HighlightCurrent();
-        }
+            MoveSelection(Vector2.up);
         else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            currentIndex = (currentIndex + 1) % moveSlots.Count;
-            HighlightCurrent();
-        }
+            MoveSelection(Vector2.down);
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            MoveSelection(Vector2.left);
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+            MoveSelection(Vector2.right);
         else if (Input.GetKeyDown(KeyCode.Z))
         {
             onMoveSelected?.Invoke(currentIndex);
@@ -68,6 +66,53 @@ public class MoveLearnUI : MonoBehaviour
             // Hủy học chiêu
             onMoveSelected?.Invoke(-1);
             gameObject.SetActive(false);
+        }
+    }
+
+    private void MoveSelection(Vector2 direction)
+    {
+        if (moveSlots == null || moveSlots.Count == 0)
+            return;
+
+        var currentRect = moveSlots[currentIndex] != null ? moveSlots[currentIndex].transform as RectTransform : null;
+        if (currentRect == null)
+            return;
+
+        int bestIndex = -1;
+        float bestScore = float.NegativeInfinity;
+
+        Vector2 currentPos = currentRect.anchoredPosition;
+        Vector2 dir = direction.normalized;
+
+        for (int i = 0; i < moveSlots.Count; i++)
+        {
+            if (i == currentIndex || moveSlots[i] == null || !moveSlots[i].gameObject.activeSelf)
+                continue;
+
+            var candidateRect = moveSlots[i].transform as RectTransform;
+            if (candidateRect == null)
+                continue;
+
+            Vector2 delta = candidateRect.anchoredPosition - currentPos;
+            if (delta.sqrMagnitude < 0.001f)
+                continue;
+
+            float alignment = Vector2.Dot(delta.normalized, dir);
+            if (alignment <= 0.1f)
+                continue;
+
+            float score = alignment * 1000f - delta.magnitude;
+            if (score > bestScore)
+            {
+                bestScore = score;
+                bestIndex = i;
+            }
+        }
+
+        if (bestIndex >= 0)
+        {
+            currentIndex = bestIndex;
+            HighlightCurrent();
         }
     }
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: persian
   m_EditorClassIdentifier: 
   pokemonName: Persian
+  num: 53
   description: 
   frontSprite: {fileID: 21300000, guid: e182ce97a68492a47ae77d6b92eaadd0, type: 3}
   backSprite: {fileID: 21300000, guid: 3efb41754776be74fbf6e4de8f830347, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 65
   SpDefense: 65
   Speed: 115
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 6c2786b6750035748b79da8286d32f5f, type: 2}
     level: 0

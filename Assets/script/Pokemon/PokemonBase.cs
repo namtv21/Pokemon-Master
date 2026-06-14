@@ -13,6 +13,7 @@ public class LearnableMove
 [CreateAssetMenu(fileName = "Pokemon", menuName = "Pokemon/New Pokemon")]
 public class PokemonBase : ScriptableObject
 {
+    [SerializeField] int num;
     [SerializeField] string pokemonName;
 
     [TextArea]
@@ -27,14 +28,23 @@ public class PokemonBase : ScriptableObject
     public int SpAttack;
     public int SpDefense;
     public int Speed;
+    [Header("Evolution")]
+    [SerializeField] private bool evolvable;
+    [SerializeField] private int evolutionLevel = 0;
+    [SerializeField] private PokemonBase evolvesTo;
+    public int Num => num;
     public string Name => pokemonName;
     public Sprite FrontSprite => frontSprite;
     public Sprite BackSprite => backSprite;
     //public string Description => description;
     public PokemonType Type1 => type1;
     public PokemonType Type2 => type2;
+    public bool Evolvable => evolvable;
+    public int EvolutionLevel => evolutionLevel;
+    public PokemonBase EvolvesTo => evolvesTo;
     public void LoadFromJson(PokemonJson data)
     {
+        num = data.num;
         pokemonName = data.name;
         type1 = ParseType(data.types[0]);
         type2 = data.types.Length > 1 ? ParseType(data.types[1]) : PokemonType.None;
@@ -46,7 +56,7 @@ public class PokemonBase : ScriptableObject
         SpDefense = data.baseStats.spd;
         Speed = data.baseStats.spe;
 
-        string spriteName = data.num.ToString();
+        string spriteName = num.ToString();
         frontSprite = Resources.Load<Sprite>($"Sprites/Front/{spriteName}");
         backSprite = Resources.Load<Sprite>($"Sprites/Back/{spriteName}");
     }

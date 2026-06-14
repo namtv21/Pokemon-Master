@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: rattata
   m_EditorClassIdentifier: 
   pokemonName: Rattata
+  num: 19
   description: 
   frontSprite: {fileID: 21300000, guid: 90ab1011baa36da4c8715ad0e4a07044, type: 3}
   backSprite: {fileID: 21300000, guid: 9c203b99161c4af4c934d3402b327986, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 25
   SpDefense: 35
   Speed: 72
+  evolvable: 1
+  evolutionLevel: 20
+  evolvesTo: {fileID: 11400000, guid: 0baedb4fcb363ee4c93c771513792780, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
     level: 1

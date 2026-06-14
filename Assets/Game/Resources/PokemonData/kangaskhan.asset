@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: kangaskhan
   m_EditorClassIdentifier: 
   pokemonName: Kangaskhan
+  num: 115
   description: 
   frontSprite: {fileID: 21300000, guid: 0e7231aaf6e724445a26622ce61eac5e, type: 3}
   backSprite: {fileID: 21300000, guid: c3b188008b9d35345ab2be7c8fc56140, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 40
   SpDefense: 80
   Speed: 90
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 62eb808afeac32348b4cd925896c8028, type: 2}
     level: 1

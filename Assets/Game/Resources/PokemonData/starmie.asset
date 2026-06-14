@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: starmie
   m_EditorClassIdentifier: 
   pokemonName: Starmie
+  num: 121
   description: 
   frontSprite: {fileID: 21300000, guid: aa2e64535481af2499758fc27f15868c, type: 3}
   backSprite: {fileID: 21300000, guid: 4b2d5162271db4f41af3805363c69bf2, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 100
   SpDefense: 85
   Speed: 115
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 32fb9852f075eb34e9f3d72a121ff027, type: 2}
     level: 1

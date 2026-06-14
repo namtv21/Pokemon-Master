@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: electabuzz
   m_EditorClassIdentifier: 
   pokemonName: Electabuzz
+  num: 125
   description: 
   frontSprite: {fileID: 21300000, guid: a0dffbbcc9348474b8a8a964a7a5ac95, type: 3}
   backSprite: {fileID: 21300000, guid: 6b46e22ebad843d4ea3facf82a9bb818, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 95
   SpDefense: 85
   Speed: 105
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
     level: 1

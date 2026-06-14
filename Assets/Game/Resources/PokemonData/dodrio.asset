@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: dodrio
   m_EditorClassIdentifier: 
   pokemonName: Dodrio
+  num: 85
   description: 
   frontSprite: {fileID: 21300000, guid: 0b1b19e409e37d3449afa53c9a113262, type: 3}
   backSprite: {fileID: 21300000, guid: 336056994529f094b89f5a1870d976ab, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 60
   SpDefense: 60
   Speed: 110
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
   learnableMoves:
   - move: {fileID: 11400000, guid: fe5be24e281afc24b8b749c6408bd697, type: 2}
     level: 1

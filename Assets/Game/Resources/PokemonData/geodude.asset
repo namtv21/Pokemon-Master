@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: geodude
   m_EditorClassIdentifier: 
   pokemonName: Geodude
+  num: 74
   description: 
   frontSprite: {fileID: 21300000, guid: 301d55c0b34756542bf23c5434021e94, type: 3}
   backSprite: {fileID: 21300000, guid: 47d45c77379b7c14785334143b46209d, type: 3}
@@ -24,6 +25,9 @@ MonoBehaviour:
   SpAttack: 30
   SpDefense: 30
   Speed: 20
+  evolvable: 1
+  evolutionLevel: 25
+  evolvesTo: {fileID: 11400000, guid: 506498df39593054bb50fa81492aa05f, type: 2}
   learnableMoves:
   - move: {fileID: 11400000, guid: c063422a03426a844aefe5d9930f851e, type: 2}
     level: 1
