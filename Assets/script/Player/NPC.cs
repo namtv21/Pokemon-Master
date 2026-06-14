@@ -202,7 +202,7 @@ public class NPC : MonoBehaviour, Interactable
             if (readyQuest != null && QuestManager.Instance.TurnInQuest(readyQuest, talkTarget))
             {
                 if (ToastNotificationManager.Instance != null)
-                    ToastNotificationManager.Instance.Show($"Quest \"{readyQuest.Title}\" completed!", Color.green);
+                    ToastNotificationManager.Instance.Show($"Hoàn thành nhiệm vụ \"{readyQuest.Title}\"!", Color.green);
             }
         }
 
@@ -655,33 +655,11 @@ public class NPC : MonoBehaviour, Interactable
             return;
         }
 
-        if (QuestInfoUI.Instance == null)
-        {
-            bool addedDirect = questManager.AddQuest(targetQuest, giveQuestOnce);
-            ShowDialogThenReturnToOverworld(
-                addedDirect
-                    ? $"Quest accepted: {targetQuest.Title}"
-                    : "Cannot accept this quest."
-            );
-            return;
-        }
-
-        GameController.Instance?.SetState(GameState.NPCInteraction);
-        QuestInfoUI.Instance.ShowQuestConfirm(
-            targetQuest,
-            accept: () =>
-            {
-                bool added = questManager.AddQuest(targetQuest, giveQuestOnce);
-                ShowDialogThenReturnToOverworld(
-                    added
-                        ? $"Quest accepted: {targetQuest.Title}"
-                        : "Cannot accept this quest."
-                );
-            },
-            decline: () =>
-            {
-                ShowDialogThenReturnToOverworld("Quest declined.");
-            }
+        bool added = questManager.AddQuest(targetQuest, giveQuestOnce);
+        ShowDialogThenReturnToOverworld(
+            added
+                ? $"Da nhan nhiem vu: {targetQuest.Title}"
+                : "Khong the nhan nhiem vu nay."
         );
         return;
 /*
@@ -779,8 +757,8 @@ public class NPC : MonoBehaviour, Interactable
         if (!canUseStorage) return;
 
         var gc = GameController.Instance;
-        var partyMenu = ResolvePartyMenu();
-        if (gc == null || gc.PlayerParty == null || partyMenu == null)
+        var storage = StorageSystem.Instance;
+        if (gc == null || storage == null)
         {
             ResolveToast()?.Show("Storage system is unavailable.", Color.yellow);
             FinishInteraction();
@@ -788,21 +766,7 @@ public class NPC : MonoBehaviour, Interactable
         }
 
         gc.SetState(GameState.Storage);
-
-        partyMenu.Open(
-            gc.PlayerParty.Pokemons,
-            PartyMenuMode.Selection,
-            onSelected: (pokemon) =>
-            {
-                partyMenu.Close();
-                SendPokemonToStorage(pokemon);
-            },
-            onCancel: () =>
-            {
-                partyMenu.Close();
-                FinishInteraction();
-            }
-        );
+        storage.OpenStorage();
     }
 
     public void SendPokemonToStorage(Pokemon pokemon)

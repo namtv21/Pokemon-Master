@@ -410,7 +410,7 @@ public class MainStorySequenceEditor : Editor
 
         foreach (var value in allValues)
         {
-            if (value == StoryFlagKey.PrologueDone || value == StoryFlagKey.FirstMainQuestAccepted)
+            if (value == StoryFlagKey.PrologueDone)
                 continue;
 
             filteredValues.Add(value);

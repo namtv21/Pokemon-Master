@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public enum MainMenuOption { Party, Item, Storage, Quest, PokemonDex, SaveLoad, Option, Exit }
+public enum MainMenuOption { Party, Item, Storage, Quest, PokemonDex, SaveLoad, Option, Companion, Exit }
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -17,9 +17,9 @@ public class MainMenuUI : MonoBehaviour
     {
         MainMenuOption.Party,
         MainMenuOption.Item,
-        MainMenuOption.Storage,
-        MainMenuOption.Quest,
+        MainMenuOption.Companion,
         MainMenuOption.PokemonDex,
+        MainMenuOption.Quest,
         MainMenuOption.SaveLoad,
         MainMenuOption.Option,
         MainMenuOption.Exit
@@ -136,12 +136,12 @@ public class MainMenuUI : MonoBehaviour
         {
             case MainMenuOption.Party: return "Party";
             case MainMenuOption.Item: return "Item";
-            case MainMenuOption.Storage: return "Storage";
-            case MainMenuOption.Quest: return "Quest";
+            case MainMenuOption.Companion: return "Chat";
             case MainMenuOption.PokemonDex: return "Pokédex";
+            case MainMenuOption.Quest: return "Quest";
             case MainMenuOption.SaveLoad: return "Save/Load";
-            case MainMenuOption.Option: return "Option";
-            case MainMenuOption.Exit: return "Exit";
+            case MainMenuOption.Option: return "Setting";
+            case MainMenuOption.Exit: return "Exit Game";
             default: return option.ToString();
         }
     }

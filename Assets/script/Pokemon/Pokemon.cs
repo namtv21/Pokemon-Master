@@ -238,6 +238,12 @@ public class Pokemon
         }
     }
 
+    public void AddFriendship(int amount = 1)
+    {
+        if (amount > 0)
+            _friendshipLevel += amount;
+    }
+
     public void AddBattleParticipation(int count = 1)
     {
         if (count <= 0)

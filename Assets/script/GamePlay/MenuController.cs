@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public enum MenuState { None, Main, Party, Item, Storage, Quest, Pokedex, SaveLoad, Option }
+public enum MenuState { None, Main, Party, Item, Companion, Quest, Pokedex, SaveLoad, Option }
 
 public class MenuController : MonoBehaviour
 {
@@ -19,6 +19,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] private AudioSettings audioSettings;
     [SerializeField] private QuestMenuUI questMenuUI;
     [SerializeField] private PokemonDexMenuUI pokemonDexMenuUI;
+    [SerializeField] private CompanionChatUI companionChatUI;
 
     public Inventory Inventory => inventory;
 
@@ -70,17 +71,6 @@ public class MenuController : MonoBehaviour
             case MenuState.Party:
                 partyMenuUI?.HandleUpdate();
                 break;
-            case MenuState.Storage:
-                var storageInMenu = StorageSystem.Instance;
-                if (storageInMenu != null)
-                    storageInMenu.HandleUpdate();
-                if (Input.GetKeyDown(KeyCode.X))
-                {
-                    storageInMenu?.CloseStorage();
-                    currentState = MenuState.Main;
-                    mainMenuUI?.Open(OnMenuSelected, CloseAll);
-                }
-                break;
             case MenuState.SaveLoad:
                 saveLoadMenuUI?.HandleUpdate(
                     onCancel: () =>
@@ -124,6 +114,10 @@ public class MenuController : MonoBehaviour
                 });
                 break;
 
+            case MenuState.Companion:
+                companionChatUI?.HandleUpdate();
+                break;
+
         }
 
         if (wasInMenu && currentState == MenuState.None)
@@ -147,21 +141,6 @@ public class MenuController : MonoBehaviour
 
             case MainMenuOption.Item:
                 OpenItemMenu();
-                break;
-
-            case MainMenuOption.Storage:
-                mainMenuUI.Close();
-                SetState(MenuState.Storage);
-                var storage = StorageSystem.Instance;
-                if (storage != null)
-                {
-                    storage.OpenStorage();
-                }
-                else
-                {
-                    ToastNotificationManager.Instance?.Show("Storage system is unavailable.", Color.yellow);
-                    CloseAll();
-                }
                 break;
 
             case MainMenuOption.Quest:
@@ -212,6 +191,29 @@ public class MenuController : MonoBehaviour
                 }
                 break;
             
+            case MainMenuOption.Companion:
+                mainMenuUI.Close();
+                SetState(MenuState.Companion);
+                var chatSystem = CompanionChatSystem.Instance;
+                var companion = chatSystem?.GetCompanion();
+                if (companion == null)
+                {
+                    ToastNotificationManager.Instance?.Show("Bạn chưa có Pokemon nào!", Color.yellow);
+                    CloseAll();
+                    break;
+                }
+                if (companionChatUI == null)
+                {
+                    ToastNotificationManager.Instance?.Show("Companion chat unavailable.", Color.yellow);
+                    CloseAll();
+                    break;
+                }
+                if (chatSystem.IsOnline)
+                    companionChatUI.OpenOnlineMode(companion);
+                else
+                    companionChatUI.OpenOfflineMode(companion);
+                break;
+
             case MainMenuOption.Exit:
                 Application.Quit();
                 break;
@@ -231,6 +233,7 @@ public class MenuController : MonoBehaviour
         saveLoadMenuUI?.Close();
         audioSettings?.Close();
         pokemonDexMenuUI?.Close();
+        companionChatUI?.Close();
         pokemonInfoUI?.Hide();
         HideAmountSelector();
         // Nếu có StorageMenu, SaveMenu, LoadMenu, OptionMenu thì Close ở đây

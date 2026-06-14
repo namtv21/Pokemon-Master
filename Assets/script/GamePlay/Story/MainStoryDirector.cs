@@ -331,10 +331,6 @@ public class MainStoryDirector : MonoBehaviour
         if (!step.RequireStoryFlag)
             return true;
 
-        if (step.RequiredStoryFlag == StoryFlagKey.PrologueDone ||
-            step.RequiredStoryFlag == StoryFlagKey.FirstMainQuestAccepted)
-            return true;
-
         var flags = StoryFlags.Instance;
         if (flags == null)
             return false;

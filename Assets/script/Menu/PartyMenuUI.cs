@@ -66,7 +66,10 @@ public class PartyMenuUI : MonoBehaviour
 
         currentIndex = 0;
         HighlightCurrent();
-        UpdateBottomPrompt(string.IsNullOrWhiteSpace(promptText) ? "Info" : promptText);
+        string hint = (mode == PartyMenuMode.Switch)
+            ? "[Z] Swap  [C] Vào kho"
+            : (string.IsNullOrWhiteSpace(promptText) ? "Info" : promptText);
+        UpdateBottomPrompt(hint);
     }
 
     public void HandleUpdate()
@@ -137,7 +140,7 @@ public class PartyMenuUI : MonoBehaviour
                     if (firstSelectedIndex < 0)
                     {
                         firstSelectedIndex = currentIndex;
-                        UpdateBottomPrompt("Swap");
+                        UpdateBottomPrompt("[Z] Xác nhận  [X] Thoát");
                     }
                     else
                     {
@@ -147,16 +150,46 @@ public class PartyMenuUI : MonoBehaviour
                         pokemons = partyHandler.GetPokemons();
                         RefreshSlots();
                         firstSelectedIndex = -1;
-                        UpdateBottomPrompt("Info");
+                        UpdateBottomPrompt("[Z] Swap  [C] Vào kho");
                     }
                 }
             }
         }
         else if (Input.GetKeyDown(KeyCode.X))
         {
-            onCancel?.Invoke();
-            infoUI.Hide();
-            Close();
+            if (mode == PartyMenuMode.Switch && firstSelectedIndex >= 0)
+            {
+                firstSelectedIndex = -1;
+                UpdateBottomPrompt("[Z] Swap  [C] Vào kho");
+            }
+            else
+            {
+                onCancel?.Invoke();
+                infoUI.Hide();
+                Close();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.C) && mode == PartyMenuMode.Switch)
+        {
+            var storage = StorageSystem.Instance;
+            if (storage == null)
+            {
+                ToastNotificationManager.Instance?.Show("Kho không khả dụng.", Color.yellow);
+                return;
+            }
+            var party = PlayerParty.Instance;
+            if (party == null || party.Pokemons.Count <= 1)
+            {
+                ToastNotificationManager.Instance?.Show("Không thể gửi Pokemon cuối cùng vào kho!", Color.yellow);
+                return;
+            }
+            var selected = slotUIs[currentIndex].Pokemon;
+            party.RemovePokemon(selected);
+            storage.AddPokemon(selected);
+            ToastNotificationManager.Instance?.Show($"Đã gửi {selected.Base.Name} vào kho!", Color.white);
+            pokemons = party.Pokemons;
+            currentIndex = Mathf.Clamp(currentIndex, 0, pokemons.Count - 1);
+            RefreshSlots();
         }
     }
 
