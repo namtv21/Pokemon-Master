@@ -133,7 +133,7 @@ public class QuestInfoUI : MonoBehaviour
             {
                 sb.AppendLine();
                 sb.AppendLine();
-                sb.AppendLine("── Phần thưởng ──");
+                sb.AppendLine("--- Phan thuong ---");
                 sb.Append(rewards);
             }
             objectivesText.text = sb.ToString();
@@ -146,7 +146,9 @@ public class QuestInfoUI : MonoBehaviour
         if (objectives == null || objectives.Count == 0)
             return "No objectives.";
 
-        var state = QuestManager.Instance != null ? QuestManager.Instance.GetState(quest) : null;
+        var qm = QuestManager.Instance;
+        var state = qm != null ? qm.GetState(quest) : null;
+        bool allDone = qm != null && qm.IsQuestCompleted(quest);
 
         var sb = new StringBuilder();
         for (int i = 0; i < objectives.Count; i++)
@@ -154,20 +156,20 @@ public class QuestInfoUI : MonoBehaviour
             var obj = objectives[i];
             if (obj == null)
             {
-                sb.Append("□ Unknown objective");
+                sb.Append("[ ] Unknown objective");
                 if (i < objectives.Count - 1) sb.AppendLine();
                 continue;
             }
 
             int required = Mathf.Max(1, obj.RequiredCount);
-            int current = state != null ? Mathf.Min(required, state.GetObjectiveCurrent(i)) : 0;
-            bool done = state != null ? state.IsObjectiveCompleted(i) : false;
+            bool done = allDone || (state != null && state.IsObjectiveCompleted(i));
+            int current = done ? required : (state != null ? Mathf.Min(required, state.GetObjectiveCurrent(i)) : 0);
 
             string line = obj.Text;
             if (required > 1)
                 line += $" ({current}/{required})";
 
-            sb.Append(done ? "✔ <s>" : "□ ");
+            sb.Append(done ? "[v] <s>" : "[ ] ");
             sb.Append(line);
             if (done) sb.Append("</s>");
 
@@ -183,7 +185,7 @@ public class QuestInfoUI : MonoBehaviour
         var sb = new StringBuilder();
 
         if (quest.RewardMoney > 0)
-            sb.AppendLine($"• {quest.RewardMoney}₽");
+            sb.AppendLine($"• {quest.RewardMoney} dong");
 
         if (quest.RewardItems != null)
         {
