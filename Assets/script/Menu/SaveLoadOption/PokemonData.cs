@@ -11,6 +11,7 @@ public class PokemonData
     public int maxHP;
     public int exp;
     public List<string> moves;
+    public List<int> movePPs;
 
     public int battleParticipationCount;
     public int friendshipLevel;
@@ -33,8 +34,12 @@ public class PokemonData
         exp = p.Exp;
 
         moves = new List<string>();
+        movePPs = new List<int>();
         foreach (var m in p.Moves)
+        {
             moves.Add(m.Base.MoveName);
+            movePPs.Add(m.PP);
+        }
 
         attack = p.Attack;
         defense = p.Defense;

@@ -2001,14 +2001,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possiblePokemon:
-  - pokemon: {fileID: 11400000, guid: 12d37622c4f838d4c8b7002bb868d209, type: 2}
-    minLevel: 36
-    maxLevel: 36
-    encounterRate: 0.1
-  - pokemon: {fileID: 11400000, guid: bcf3215dbdde6554489080c7339c99bd, type: 2}
-    minLevel: 33
-    maxLevel: 35
-    encounterRate: 0.3
   - pokemon: {fileID: 11400000, guid: 7acefff746dc94e46a8c5d8e23809d31, type: 2}
     minLevel: 33
     maxLevel: 35
@@ -2017,6 +2009,10 @@ MonoBehaviour:
     minLevel: 33
     maxLevel: 35
     encounterRate: 0.3
+  - pokemon: {fileID: 11400000, guid: 9a920d6eed376a84a818dfc2bd03b7d5, type: 2}
+    minLevel: 24
+    maxLevel: 24
+    encounterRate: 0.2
   battleRatePercent: 10
 --- !u!1 &539868562
 GameObject:
@@ -2664,8 +2660,7 @@ MonoBehaviour:
   npcId: Road01_npc
   npcName: ???
   portrait: {fileID: 0}
-  introDialog: "\u1EDE \u0111\xE2y ch\u1EE7 y\u1EBFu l\xE0 h\u1EC7 Fairy, Psychic
-    v\xE0 Normal"
+  introDialog: (Clefabel, Jigglypuff, Chansey), (Gastly, Jynx, Mrmine)
   outroDialog: 
   Party: {fileID: 1201151050}
   canHeal: 0
@@ -14483,9 +14478,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possiblePokemon:
-  - pokemon: {fileID: 11400000, guid: ee3277b9e16ca6d41bdb3971bdc5513a, type: 2}
+  - pokemon: {fileID: 11400000, guid: e1e0924cef64db049add61bff221db3d, type: 2}
     minLevel: 33
-    maxLevel: 36
+    maxLevel: 34
     encounterRate: 0.3
   - pokemon: {fileID: 11400000, guid: 21e6caf835368a54f84d24454f5cde4d, type: 2}
     minLevel: 33
@@ -14493,12 +14488,8 @@ MonoBehaviour:
     encounterRate: 0.3
   - pokemon: {fileID: 11400000, guid: 11f25d1c00f7a624084a6dc14004ca33, type: 2}
     minLevel: 33
-    maxLevel: 36
+    maxLevel: 35
     encounterRate: 0.3
-  - pokemon: {fileID: 11400000, guid: fe453ba6cff20f548b66355780655cda, type: 2}
-    minLevel: 36
-    maxLevel: 36
-    encounterRate: 0.1
   battleRatePercent: 10
 --- !u!1 &1946673418
 GameObject:

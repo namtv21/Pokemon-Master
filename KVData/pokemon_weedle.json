@@ -1,0 +1,1 @@
+{"name":"Weedle","type1":"Bug","type2":"Poison","hp":40,"attack":35,"defense":30,"spAttack":20,"spDefense":20,"speed":50,"learnset":[{"level":1,"move":"Poison Sting","type":"Poison","power":15,"pp":35},{"level":1,"move":"String Shot","type":"Bug","power":0,"pp":40},{"level":9,"move":"Bug Bite","type":"Bug","power":60,"pp":20}]}

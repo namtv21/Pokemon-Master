@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+public enum BattleContext
+{
+    Grass = 0,
+    Cave = 1,
+    Water = 2,
+    Indoor = 3,
+    Fishing = 4
+}
+
 public enum BattleState
 {
     Start,
@@ -35,6 +44,10 @@ public class BattleSystem : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioClip trainerBattleClip;
     [SerializeField] private AudioClip wildBattleClip;
+
+    [Header("Background")]
+    [SerializeField] private UnityEngine.UI.Image backgroundImage;
+    [SerializeField] private Sprite[] contextBackgrounds; // index = BattleContext enum value
 
     [Header("Portrait")]
     [SerializeField] private UnityEngine.UI.Image trainerPortraitImage;
@@ -126,6 +139,14 @@ public class BattleSystem : MonoBehaviour
         playerUnit.Pokemon.ResetStatBoosts();
         enemyUnit.Pokemon.ResetStatBoosts();
     }
+    public void SetBackground(BattleContext context)
+    {
+        if (backgroundImage == null || contextBackgrounds == null) return;
+        int idx = (int)context;
+        if (idx >= 0 && idx < contextBackgrounds.Length && contextBackgrounds[idx] != null)
+            backgroundImage.sprite = contextBackgrounds[idx];
+    }
+
     public void StartWildBattle(Pokemon wildPokemon, bool allowRun)
     {
         Outcome = BattleOutcome.None;
@@ -376,7 +397,12 @@ public class BattleSystem : MonoBehaviour
         {
             int moveIndex = dialogBox.GetSelectedMove();
             var move = playerUnit.Pokemon.Moves[moveIndex];
-            SetState(BattleState.Busy); // changed
+            if (move.PP <= 0)
+            {
+                if (ToastNotificationManager.Instance != null) ToastNotificationManager.Instance.Show("Không còn PP cho đòn này!", Color.yellow);
+                return;
+            }
+            SetState(BattleState.Busy);
             StartCoroutine(PerformPlayerMove(move));
         }
         else if (Input.GetKeyDown(KeyCode.X))
@@ -526,12 +552,17 @@ public class BattleSystem : MonoBehaviour
             int expGain = CalculateExp(enemyUnit.Pokemon);
             playerUnit.Pokemon.GainExp(expGain);
             dialogBox.ShowDialog($"{playerUnit.Pokemon.Base.Name} gained {expGain} EXP!");
-            
-            yield return new WaitForSeconds(1f);
             playerUnit.Hud.SetData(playerUnit.Pokemon);
 
-            if (state == BattleState.NewMoveSelection)
+            // Kiểm tra NGAY sau GainExp, trước yield đầu tiên.
+            // Nếu GainExp trigger move learn → state = NewMoveSelection (synchronous, chưa có frame nào chạy).
+            // Nếu check sau WaitForSeconds: player có thể chọn move trong lúc yield,
+            // ContinueAfterMoveLearn set WaitForNextTrainerPokemon → Update set Busy+StartCoroutine(SendNext...) →
+            // coroutine thức dậy thấy Busy → không break → gọi SetState(WaitForNextTrainerPokemon) lần 2 → bug.
+            if (state != BattleState.Busy)
                 yield break;
+
+            yield return new WaitForSeconds(1f);
 
             // Ä‘Å¸â€˜â€° KiĂ¡Â»Æ’m tra nĂ¡ÂºÂ¿u lÄ‚Â  Trainer battle
             if (isTrainerBattle)
@@ -877,7 +908,8 @@ public class BattleSystem : MonoBehaviour
                 ? currentTrainer.npcName
                 : "Trainer";
             dialogBox.ShowDialog($"{trainerName} sent out {nextPokemon.Base.Name}!");
-            yield return new WaitForSeconds(1f);
+            yield return StartCoroutine(enemyUnit.PlayEnterAnimation());
+            yield return new WaitForSeconds(0.5f);
             SetState(BattleState.PlayerActionSelection);
             dialogBox.ShowActionMenu();
         }

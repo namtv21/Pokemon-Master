@@ -17,6 +17,8 @@ public partial class GameController
     {
         SetState(GameState.Overworld);
         SaveLoadSystem.ApplyLoadedData();
+        // Prologue đã bị bỏ — luôn coi là đã hoàn thành
+        if (StoryFlags.Instance != null) StoryFlags.Instance.PrologueDone = true;
 
         if (DialogManager.Instance != null)
         {
@@ -81,6 +83,7 @@ public partial class GameController
                 break;
 
             case GameState.Cutscene:
+                DialogManager.Instance?.HandleUpdate();
                 break;
 
             case GameState.Battle:

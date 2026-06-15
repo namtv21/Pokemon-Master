@@ -263,7 +263,10 @@ public class NPC : MonoBehaviour, Interactable
         dialogManager.OnDialogFinished -= handler;
         dialogManager.OnDialogFinished += handler;
 
-        if (hasScriptedDialog)
+        bool isDefeated = canBattleOnce && !canBattle && !string.IsNullOrWhiteSpace(outroDialog);
+        if (isDefeated)
+            dialogManager.ShowDialog(npcName, portrait, outroDialog, GameState.Overworld);
+        else if (hasScriptedDialog)
             dialogManager.ShowDialog(npcName, portrait, dialog, GameState.Overworld);
         else
             dialogManager.ShowDialog(npcName, portrait, introDialog, GameState.Overworld);
@@ -558,6 +561,9 @@ public class NPC : MonoBehaviour, Interactable
 
     public void OnBattleEnded()
     {
+        if (canBattleOnce)
+            CanBattle = false;
+
         if (!string.IsNullOrWhiteSpace(outroDialog))
         {
             var dialogManager = DialogManager.Instance;

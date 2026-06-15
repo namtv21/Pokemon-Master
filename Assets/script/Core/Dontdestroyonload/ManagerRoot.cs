@@ -13,7 +13,7 @@ public class ManagerRootBootstrap : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(transform.root.gameObject);
     }
 
 }

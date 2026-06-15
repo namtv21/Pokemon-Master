@@ -41,7 +41,7 @@ public class CompanionChatUI : MonoBehaviour
         "Trò chuyện (Online)"
     };
 
-    private enum ChatState { ChoosingTopic, ShowingResponse, TypingMessage }
+    private enum ChatState { ChoosingTopic, ShowingResponse, TypingMessage, WaitingForResponse }
     private ChatState state;
     private int selectedIndex;
     private Pokemon companion;
@@ -94,9 +94,10 @@ public class CompanionChatUI : MonoBehaviour
 
         switch (state)
         {
-            case ChatState.ChoosingTopic:   HandleTopicInput();    break;
-            case ChatState.ShowingResponse: HandleResponseInput(); break;
-            case ChatState.TypingMessage:   HandleTypingInput();   break;
+            case ChatState.ChoosingTopic:      HandleTopicInput();    break;
+            case ChatState.ShowingResponse:    HandleResponseInput(); break;
+            case ChatState.TypingMessage:      HandleTypingInput();   break;
+            case ChatState.WaitingForResponse: break; // chờ API — không nhận input
         }
     }
 
@@ -208,13 +209,26 @@ public class CompanionChatUI : MonoBehaviour
             if (string.IsNullOrEmpty(msg)) return;
             chatInputField.text = "";
             inputPanel?.SetActive(false);
-            ShowResponse("(Claude API chưa được kết nối — tính năng sắp ra mắt)");
+            StartCoroutine(SendOnlineMessage(msg));
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
             inputPanel?.SetActive(false);
             ShowTopicSelection();
         }
+    }
+
+    private IEnumerator SendOnlineMessage(string userMessage)
+    {
+        state = ChatState.WaitingForResponse;
+        if (responsePanel != null) responsePanel.SetActive(true);
+        if (responseText != null)
+            responseText.text = "Đang nhập...\n\n<size=70%><color=#aaa>Vui lòng chờ</color></size>";
+
+        yield return CompanionChatSystem.Instance.SendMessageToCompanion(userMessage, response =>
+        {
+            ShowResponse(response);
+        });
     }
 
     // --- Sprite & Animation ---

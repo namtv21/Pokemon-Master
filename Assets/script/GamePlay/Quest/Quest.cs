@@ -21,7 +21,8 @@ public enum QuestObjectiveType
     DefeatTrainer,
     CollectItem,
     ReachLocation,
-    Custom
+    Custom,
+    CatchAllPokemon   // đếm unique Pokemon đã bắt qua Pokedex; RequiredCount = tổng Pokemon trong game
 }
 
 [System.Serializable]

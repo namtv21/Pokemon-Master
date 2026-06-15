@@ -27,6 +27,7 @@ public class CheatGiveByNameInput : MonoBehaviour, Interactable
             return;
 
         panel.SetActive(true);
+        panel.transform.SetAsLastSibling();
         isOpen = true;
 
         if (hintLabel != null)
@@ -286,12 +287,23 @@ public class CheatGiveByNameInput : MonoBehaviour, Interactable
         if (panel != null && inputField != null)
             return;
 
-        Canvas canvas = FindObjectOfType<Canvas>(true);
+        // Tìm canvas ScreenSpaceOverlay để đảm bảo panel hiện trên cùng
+        Canvas canvas = null;
+        foreach (var c in FindObjectsOfType<Canvas>(true))
+        {
+            if (c.renderMode == RenderMode.ScreenSpaceOverlay && c.isRootCanvas)
+            {
+                canvas = c;
+                break;
+            }
+        }
+
         if (canvas == null)
         {
             var canvasGo = new GameObject("CheatGiveInputCanvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
             canvas = canvasGo.GetComponent<Canvas>();
             canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            canvas.sortingOrder = 999;
             var scaler = canvasGo.GetComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1920, 1080);

@@ -11,9 +11,8 @@ public class MusicManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
             audioSource = GetComponent<AudioSource>();
-            int savedLevel = PlayerPrefs.GetInt("MusicVolumeLevel", 2);
+            int savedLevel = PlayerPrefs.GetInt("MusicVolumeLevel", 1);
             audioSource.volume = savedLevel / 9f;
         }
         else

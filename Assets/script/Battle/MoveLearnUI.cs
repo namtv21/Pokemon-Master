@@ -17,7 +17,7 @@ public class MoveLearnUI : MonoBehaviour
     public void Show(Pokemon pokemon, MoveBase newMoveBase, Action<int> onSelected)
     {
         gameObject.SetActive(true);
-        titleText.text = "Which move?";
+        titleText.text = "Delete which move?";
 
         onMoveSelected = onSelected;
         int moveIndex = 0;

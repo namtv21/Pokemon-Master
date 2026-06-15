@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private SaveLoadMenuUI saveLoadMenuUI;
-    [SerializeField] private string newGameScene = "Intro";
+    [SerializeField] private string newGameScene = "Town01";
     [SerializeField] private Color yellow = Color.yellow;
     [SerializeField] private Color white = Color.white;
     [SerializeField] private TMP_Text[] optionTexts;

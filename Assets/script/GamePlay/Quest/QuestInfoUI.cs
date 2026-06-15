@@ -133,7 +133,7 @@ public class QuestInfoUI : MonoBehaviour
             {
                 sb.AppendLine();
                 sb.AppendLine();
-                sb.AppendLine("--- Phan thuong ---");
+                sb.AppendLine("--- Phần thưởng ---");
                 sb.Append(rewards);
             }
             objectivesText.text = sb.ToString();
@@ -185,7 +185,7 @@ public class QuestInfoUI : MonoBehaviour
         var sb = new StringBuilder();
 
         if (quest.RewardMoney > 0)
-            sb.AppendLine($"• {quest.RewardMoney} dong");
+            sb.AppendLine($"• {quest.RewardMoney} đồng");
 
         if (quest.RewardItems != null)
         {

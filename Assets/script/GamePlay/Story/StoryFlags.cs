@@ -290,7 +290,6 @@ public class StoryFlags : MonoBehaviour
             mainStoryStepIndex = runtimeMainStoryStepIndex;
         }
 
-        DontDestroyOnLoad(gameObject);
     }
 
     private void OnDestroy()

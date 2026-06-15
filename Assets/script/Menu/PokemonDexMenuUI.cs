@@ -1459,7 +1459,7 @@ public class PokemonDexMenuUI : MonoBehaviour
             moveSearchInput.DeactivateInputField();
             UnityEngine.EventSystems.EventSystem.current?.SetSelectedGameObject(null);
             if (moveSearchHint != null)
-                moveSearchHint.text = "Nháº¥n Enter Ä‘á»ƒ tĂ¬m move";
+                moveSearchHint.text = "Nhấn Enter để tìm move";
             return;
         }
     }
@@ -1490,7 +1490,7 @@ public class PokemonDexMenuUI : MonoBehaviour
         moveSearchHint.fontSize = 20f;
         moveSearchHint.alignment = TextAlignmentOptions.MidlineLeft;
         moveSearchHint.color = Color.white;
-        moveSearchHint.text = "Nháº¥n Enter Ä‘á»ƒ tĂ¬m move";
+        moveSearchHint.text = "Nhấn Enter để tìm move";
         if (TMP_Settings.defaultFontAsset != null)
             moveSearchHint.font = TMP_Settings.defaultFontAsset;
 

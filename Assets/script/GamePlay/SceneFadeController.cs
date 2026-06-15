@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SceneFadeController : MonoBehaviour
@@ -13,7 +14,6 @@ public class SceneFadeController : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
             EnsureSceneFadeOverlay();
         }
         else if (Instance != this)
@@ -33,7 +33,10 @@ public class SceneFadeController : MonoBehaviour
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         canvas.sortingOrder = 9999;
 
-        canvasGO.AddComponent<CanvasScaler>();
+        var scaler = canvasGO.AddComponent<CanvasScaler>();
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.referenceResolution = new Vector2(1920, 1080);
+        scaler.matchWidthOrHeight = 0.5f;
         canvasGO.AddComponent<GraphicRaycaster>();
 
         var panel = new GameObject("Panel");
@@ -79,5 +82,16 @@ public class SceneFadeController : MonoBehaviour
             EnsureSceneFadeOverlay();
 
         sceneFadeCanvasGroup.alpha = Mathf.Clamp01(alpha);
+    }
+
+    // Gọi trước SceneManager.LoadScene — tự động fade in sau khi scene mới load xong
+    public void FadeInAfterLoad(float duration)
+    {
+        void OnLoaded(Scene scene, LoadSceneMode mode)
+        {
+            SceneManager.sceneLoaded -= OnLoaded;
+            StartCoroutine(Fade(0f, duration));
+        }
+        SceneManager.sceneLoaded += OnLoaded;
     }
 }

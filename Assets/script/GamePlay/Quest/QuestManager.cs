@@ -39,6 +39,9 @@ public class QuestManager : MonoBehaviour
     [Header("Main Story (optional, ordered)")]
     [SerializeField] private List<Quest> mainStoryOrder = new();
 
+    [Header("Side / Special Quests (đặt tất cả side quest vào đây để save/load hoạt động)")]
+    [SerializeField] private List<Quest> knownSideQuests = new();
+
     [Header("Main Story Auto Accept")]
     [SerializeField] private bool autoAcceptMainStory = true;
     [SerializeField] private bool requirePrologueDoneForMainStory = false;
@@ -69,7 +72,6 @@ public class QuestManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -240,6 +242,9 @@ public class QuestManager : MonoBehaviour
                     readyToTurnInQuests.Add(quest);
             }
         }
+
+        // Đảm bảo main story quest kế tiếp được auto-accept sau khi load
+        TryAutoAcceptCurrentMainStoryQuest();
     }
 
     public Quest GetCurrentMainStoryQuest()
@@ -330,11 +335,25 @@ public class QuestManager : MonoBehaviour
                 if (state.IsObjectiveCompleted(objIndex)) continue;
                 if (!IsObjectiveMatch(obj, questEvent)) continue;
 
-                changed |= state.AddProgress(
-                    objIndex,
-                    questEvent.Amount <= 0 ? 1 : questEvent.Amount,
-                    obj.RequiredCount
-                );
+                if (obj.Type == QuestObjectiveType.CatchAllPokemon)
+                {
+                    // Dùng số unique Pokemon đã bắt từ Pokedex (không đếm trùng)
+                    int uniqueCaught = PokedexManager.GetOrCreate().GetCaughtCount();
+                    int oldCurrent = state.GetObjectiveCurrent(objIndex);
+                    if (uniqueCaught != oldCurrent)
+                    {
+                        state.SetObjectiveProgress(objIndex, uniqueCaught, uniqueCaught >= obj.RequiredCount);
+                        changed = true;
+                    }
+                }
+                else
+                {
+                    changed |= state.AddProgress(
+                        objIndex,
+                        questEvent.Amount <= 0 ? 1 : questEvent.Amount,
+                        obj.RequiredCount
+                    );
+                }
             }
 
             if (changed)
@@ -364,6 +383,10 @@ public class QuestManager : MonoBehaviour
         if (obj == null) return false;
         if (!EventTypeMatches(obj.Type, e.Type)) return false;
 
+        // CatchAllPokemon không lọc theo TargetId — bất kỳ Pokemon nào cũng tính
+        if (obj.Type == QuestObjectiveType.CatchAllPokemon)
+            return true;
+
         if (string.IsNullOrWhiteSpace(obj.TargetId))
             return true;
 
@@ -374,14 +397,15 @@ public class QuestManager : MonoBehaviour
     {
         return objectiveType switch
         {
-            QuestObjectiveType.CatchPokemon => eventType == QuestEventType.PokemonCaught,
-            QuestObjectiveType.OwnPokemon => eventType == QuestEventType.PokemonOwned,
-            QuestObjectiveType.TalkToNPC => eventType == QuestEventType.NPCTalked,
-            QuestObjectiveType.DefeatTrainer => eventType == QuestEventType.TrainerDefeated,
-            QuestObjectiveType.CollectItem => eventType == QuestEventType.ItemCollected,
-            QuestObjectiveType.ReachLocation => eventType == QuestEventType.LocationReached,
-            QuestObjectiveType.Custom => eventType == QuestEventType.Custom,
-            _ => false
+            QuestObjectiveType.CatchPokemon    => eventType == QuestEventType.PokemonCaught,
+            QuestObjectiveType.CatchAllPokemon => eventType == QuestEventType.PokemonCaught,
+            QuestObjectiveType.OwnPokemon      => eventType == QuestEventType.PokemonOwned,
+            QuestObjectiveType.TalkToNPC       => eventType == QuestEventType.NPCTalked,
+            QuestObjectiveType.DefeatTrainer   => eventType == QuestEventType.TrainerDefeated,
+            QuestObjectiveType.CollectItem     => eventType == QuestEventType.ItemCollected,
+            QuestObjectiveType.ReachLocation   => eventType == QuestEventType.LocationReached,
+            QuestObjectiveType.Custom          => eventType == QuestEventType.Custom,
+            _                                  => false
         };
     }
 
@@ -436,6 +460,9 @@ public class QuestManager : MonoBehaviour
 
         foreach (var quest in mainStoryOrder)
             yield return quest;
+
+        foreach (var quest in knownSideQuests)
+            if (quest != null) yield return quest;
 
         foreach (var state in activeStates)
             yield return state?.Definition;

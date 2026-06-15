@@ -20,6 +20,20 @@ public class Move
         Base = moveBase;
         PP = moveBase.PP;
     }
+
+    public Move(MoveBase moveBase, int currentPP)
+    {
+        if (moveBase == null)
+        {
+            Debug.LogError("MoveBase is null when creating Move!");
+            Base = null;
+            PP = 0;
+            return;
+        }
+
+        Base = moveBase;
+        PP = Mathf.Clamp(currentPP, 0, moveBase.PP);
+    }
     public void UseMove()
     {
         PP = Mathf.Max(PP - 1, 0);

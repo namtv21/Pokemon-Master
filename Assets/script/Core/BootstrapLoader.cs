@@ -12,35 +12,52 @@ public static class BootstrapLoader
     private static readonly string[] MainMenuSceneNames =
     {
         "MainMenu",
-        "MainMenuScreen"
+        "MainMenuScreen",
+        "Intro"
     };
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Init()
     {
-        // Don't load SystemRoot in Main Menu
         var currentScene = SceneManager.GetActiveScene();
-        if (!string.IsNullOrWhiteSpace(currentScene.name) &&
-            System.Array.Exists(MainMenuSceneNames, sceneName =>
-                currentScene.name.Equals(sceneName, System.StringComparison.OrdinalIgnoreCase)))
+        bool isMainMenu = !string.IsNullOrWhiteSpace(currentScene.name) &&
+            System.Array.Exists(MainMenuSceneNames, s =>
+                currentScene.name.Equals(s, System.StringComparison.OrdinalIgnoreCase));
+
+        if (isMainMenu)
         {
+            // MainMenu không cần SystemRoot, nhưng đăng ký để tạo khi scene game đầu tiên load
+            SceneManager.sceneLoaded += OnFirstGameSceneLoaded;
             return;
         }
 
+        TryInstantiateSystemRoot();
+    }
+
+    private static void OnFirstGameSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        bool isMainMenu = System.Array.Exists(MainMenuSceneNames, s =>
+            scene.name.Equals(s, System.StringComparison.OrdinalIgnoreCase));
+
+        if (isMainMenu)
+            return; // vẫn còn trong MainMenu, tiếp tục chờ scene game thật sự
+
+        SceneManager.sceneLoaded -= OnFirstGameSceneLoaded;
+        TryInstantiateSystemRoot();
+    }
+
+    private static void TryInstantiateSystemRoot()
+    {
         if (Object.FindObjectOfType<GameController>() != null)
             return;
 
         GameObject prefab = null;
-        string loadedPath = null;
 
         foreach (var resourcePath in ResourcePaths)
         {
             prefab = Resources.Load<GameObject>(resourcePath);
             if (prefab != null)
-            {
-                loadedPath = resourcePath;
                 break;
-            }
         }
 
         if (prefab == null)

@@ -21,7 +21,7 @@ MonoBehaviour:
   prerequisiteQuestIds: []
   objectives:
   - text: Gotta catch them all
-    type: 0
+    type: 7
     targetId: 
     requiredCount: 151
   turnInNpcId: prof_oke

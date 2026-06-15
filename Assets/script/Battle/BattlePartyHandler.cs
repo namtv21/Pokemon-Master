@@ -87,7 +87,8 @@ public class BattlePartyHandler : MonoBehaviour
         playerUnit.Setup(newPokemon);
         battleSystem.BindMoveLearnHandler(newPokemon);
         dialogBox.ShowDialog($"Go! {newPokemon.Base.Name}!");
-        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(playerUnit.PlayEnterAnimation());
+        yield return new WaitForSeconds(0.5f);
 
         battleSystem.ProceedTurn();
     }

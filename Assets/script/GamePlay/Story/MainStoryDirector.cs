@@ -43,8 +43,6 @@ public class MainStoryDirector : MonoBehaviour
 
         Instance = this;
 
-        if (persistAcrossScenes)
-            DontDestroyOnLoad(gameObject);
     }
 
     private void TryInheritRuntimeConfigFrom(MainStoryDirector incoming)
@@ -228,6 +226,9 @@ public class MainStoryDirector : MonoBehaviour
 
         return string.Equals(step.TriggerId, triggerId, System.StringComparison.OrdinalIgnoreCase);
     }
+
+    // Gọi sau khi battle kết thúc trong cùng scene để check step mới được unlock bởi flag vừa set
+    public void TryPlayAfterBattle() => TryPlaySceneStartStep();
 
     private void TryPlaySceneStartStep()
     {

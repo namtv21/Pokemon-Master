@@ -4325,7 +4325,7 @@ MonoBehaviour:
   - pokemon: {fileID: 11400000, guid: ed192bea1c2c6fb499c7cfdb0222f08d, type: 2}
     minLevel: 27
     maxLevel: 30
-    encounterRate: 0.3
+    encounterRate: 0.2
   - pokemon: {fileID: 11400000, guid: 1720916550dff3949b11ff61bf1124ae, type: 2}
     minLevel: 27
     maxLevel: 30
@@ -4338,14 +4338,6 @@ MonoBehaviour:
     minLevel: 27
     maxLevel: 30
     encounterRate: 0.3
-  - pokemon: {fileID: 11400000, guid: 71ef9d893b045df4aab40e66e88cecfa, type: 2}
-    minLevel: 27
-    maxLevel: 30
-    encounterRate: 0.2
-  - pokemon: {fileID: 11400000, guid: 61746ca5d807e8d4f91ae5a0ca13bd89, type: 2}
-    minLevel: 30
-    maxLevel: 30
-    encounterRate: 0.1
   battleRatePercent: 10
 --- !u!1 &394556028
 GameObject:
@@ -5312,8 +5304,8 @@ MonoBehaviour:
   npcId: road01_kid
   npcName: Kid
   portrait: {fileID: -1683979358755408206, guid: 7d5d460b8e4e4ec4aa73a866f1ba347f, type: 3}
-  introDialog: "\u1EDE \u0111\xE2y c\xF3 th\u1EC3 b\u1EAFt pokemon h\u1EC7 Fire v\xE0
-    h\u1EC7 Normal"
+  introDialog: (Slowpoke, Psyduck, Dratini), (Growlithe, Vulpix, Ponyta, Magmar),
+    (Meoth, Tauros, Lickitung, Flareon)
   outroDialog: 
   Party: {fileID: 452488652}
   canHeal: 0
@@ -5562,17 +5554,13 @@ MonoBehaviour:
     maxLevel: 30
     encounterRate: 0.4
   - pokemon: {fileID: 11400000, guid: 4ab8ad1dca5465a469c6003a11a32e37, type: 2}
-    minLevel: 30
-    maxLevel: 30
-    encounterRate: 0.1
+    minLevel: 24
+    maxLevel: 24
+    encounterRate: 0.2
   - pokemon: {fileID: 11400000, guid: 754471951d482aa43a85484abe6dd025, type: 2}
     minLevel: 27
     maxLevel: 30
     encounterRate: 0.4
-  - pokemon: {fileID: 11400000, guid: 191bf5cd773f16543a60db719eb54adf, type: 2}
-    minLevel: 30
-    maxLevel: 30
-    encounterRate: 0.1
   battleRatePercent: 10
 --- !u!1 &1002541025
 GameObject:
@@ -15337,6 +15325,80 @@ Transform:
   - {fileID: 52635576}
   m_Father: {fileID: 1754196665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1721115300
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1754196665}
+    m_Modifications:
+    - target: {fileID: 267739558638795320, guid: 57fbd775f6204064eab3e6135edd575c, type: 3}
+      propertyPath: itemReward
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 267739558638795320, guid: 57fbd775f6204064eab3e6135edd575c, type: 3}
+      propertyPath: pokemonLevel
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 267739558638795320, guid: 57fbd775f6204064eab3e6135edd575c, type: 3}
+      propertyPath: pokemonReward
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c4d560c2b1338a48b47fac43bcdc700, type: 2}
+    - target: {fileID: 3592032703222811927, guid: 57fbd775f6204064eab3e6135edd575c, type: 3}
+      propertyPath: m_Name
+      value: Chest1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182806381527524846, guid: 57fbd775f6204064eab3e6135edd575c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -16.191513
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182806381527524846, guid: 57fbd775f6204064eab3e6135edd575c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.158472
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182806381527524846, guid: 57fbd775f6204064eab3e6135edd575c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.983179
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182806381527524846, guid: 57fbd775f6204064eab3e6135edd575c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182806381527524846, guid: 57fbd775f6204064eab3e6135edd575c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182806381527524846, guid: 57fbd775f6204064eab3e6135edd575c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182806381527524846, guid: 57fbd775f6204064eab3e6135edd575c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182806381527524846, guid: 57fbd775f6204064eab3e6135edd575c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182806381527524846, guid: 57fbd775f6204064eab3e6135edd575c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9182806381527524846, guid: 57fbd775f6204064eab3e6135edd575c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 57fbd775f6204064eab3e6135edd575c, type: 3}
+--- !u!4 &1721115301 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9182806381527524846, guid: 57fbd775f6204064eab3e6135edd575c, type: 3}
+  m_PrefabInstance: {fileID: 1721115300}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1724942821
 GameObject:
   m_ObjectHideFlags: 0
@@ -15478,6 +15540,7 @@ Transform:
   - {fileID: 1724942822}
   - {fileID: 1754415909}
   - {fileID: 706222640}
+  - {fileID: 1721115301}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1754415908
@@ -17998,15 +18061,11 @@ MonoBehaviour:
   - pokemon: {fileID: 11400000, guid: c701ae6f741e08044989193f91136f99, type: 2}
     minLevel: 27
     maxLevel: 30
-    encounterRate: 0.2
-  - pokemon: {fileID: 11400000, guid: fe453ba6cff20f548b66355780655cda, type: 2}
-    minLevel: 30
-    maxLevel: 30
-    encounterRate: 0.1
-  - pokemon: {fileID: 11400000, guid: 83a2448ae5865d445a437d775fec0a18, type: 2}
+    encounterRate: 0.3
+  - pokemon: {fileID: 11400000, guid: 71ef9d893b045df4aab40e66e88cecfa, type: 2}
     minLevel: 27
     maxLevel: 30
-    encounterRate: 0.1
+    encounterRate: 0.2
   battleRatePercent: 10
 --- !u!1 &1988286379
 GameObject:

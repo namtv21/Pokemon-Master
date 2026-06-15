@@ -58,7 +58,7 @@ public class FishingSpot : MonoBehaviour, Interactable
                 if (wildPokemon != null && gc != null)
                 {
                     ToastNotificationManager.Instance?.Show("Có cá cắn câu!");
-                    gc.StartWildBattle(wildPokemon);
+                    gc.StartWildBattle(wildPokemon, true, BattleContext.Fishing);
                 }
                 else
                 {

@@ -25,7 +25,7 @@ MonoBehaviour:
   SpAttack: 50
   SpDefense: 50
   Speed: 90
-  evolvable: 1
+  evolvable: 0
   evolutionLevel: 30
   evolvesTo: {fileID: 11400000, guid: 48cc3869d8515b949b9d0f7836bab391, type: 2}
   learnableMoves:

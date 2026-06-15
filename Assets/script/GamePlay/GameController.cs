@@ -91,16 +91,31 @@ public partial class GameController : MonoBehaviour
         }
 
         Instance = this;
+    }
 
-        DontDestroyOnLoad(gameObject);
+    private BattleContext pendingBattleContext = BattleContext.Grass;
+
+    private BattleContext DetectBattleContext()
+    {
+        string scene = SceneManager.GetActiveScene().name.ToLower();
+        if (scene.Contains("cave") || scene.Contains("mountain")) return BattleContext.Cave;
+        if (scene.Contains("gym") || scene.Contains("poke") || scene.Contains("mart") ||
+            scene.Contains("lab") || scene.Contains("studio") || scene.Contains("champion"))
+            return BattleContext.Indoor;
+        return BattleContext.Grass;
     }
 
     public void StartWildBattle(Pokemon wildPokemon)
     {
-        StartWildBattle(wildPokemon, true);
+        StartWildBattle(wildPokemon, true, DetectBattleContext());
     }
 
     public void StartWildBattle(Pokemon wildPokemon, bool allowRun)
+    {
+        StartWildBattle(wildPokemon, allowRun, DetectBattleContext());
+    }
+
+    public void StartWildBattle(Pokemon wildPokemon, bool allowRun, BattleContext context)
     {
         var battleScene = SceneManager.GetSceneByName(battleSceneName);
         if (State == GameState.Battle || isSceneTransitioning || battleSceneLoaded || (battleScene.IsValid() && battleScene.isLoaded))
@@ -111,6 +126,7 @@ public partial class GameController : MonoBehaviour
 
         LastBattleOutcome = BattleOutcome.None;
         pendingBattleAllowRun = allowRun;
+        pendingBattleContext = context;
         StartCoroutine(StartWildBattleRoutine(wildPokemon));
     }
 
@@ -209,6 +225,7 @@ public partial class GameController : MonoBehaviour
                 yield return fadeCtrl.Fade(1f, battleFallbackFadeDuration);
         }
 
+        battleSystem.SetBackground(pendingBattleContext);
         battleSystem.StartWildBattle(wildPokemon, pendingBattleAllowRun);
         pendingBattleAllowRun = true;
 
@@ -240,6 +257,7 @@ public partial class GameController : MonoBehaviour
 
         LastBattleOutcome = BattleOutcome.None;
         pendingBattleAllowRun = allowRun;
+        pendingBattleContext = DetectBattleContext();
         StartCoroutine(StartTrainerBattleRoutine(trainer));
     }
 
@@ -265,6 +283,7 @@ public partial class GameController : MonoBehaviour
                 yield return fadeCtrl.Fade(1f, battleFallbackFadeDuration);
         }
 
+        battleSystem.SetBackground(pendingBattleContext);
         battleSystem.StartTrainerBattle(trainer, pendingBattleAllowRun);
         pendingBattleAllowRun = true;
 
@@ -359,7 +378,11 @@ public partial class GameController : MonoBehaviour
         }
 
         if (LastBattleOutcome == BattleOutcome.Win || LastBattleOutcome == BattleOutcome.Capture)
+        {
             defeatedTrainer?.OnBattleEnded();
+            // Flag có thể vừa được set bởi NPC (setStoryFlagAfterBadge) → check story step mới trong cùng scene
+            if (MainStoryDirector.Instance != null) MainStoryDirector.Instance.TryPlayAfterBattle();
+        }
 
         activeOverworldPokemon?.HandleBattleFinished(activeOverworldPokemonCaptured);
         activeOverworldPokemon = null;
@@ -478,7 +501,10 @@ public partial class GameController : MonoBehaviour
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         canvas.sortingOrder = 9999;
 
-        canvasGO.AddComponent<CanvasScaler>();
+        var scaler = canvasGO.AddComponent<CanvasScaler>();
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.referenceResolution = new Vector2(1920, 1080);
+        scaler.matchWidthOrHeight = 0.5f;
         canvasGO.AddComponent<GraphicRaycaster>();
 
         var panel = new GameObject("Panel");
@@ -621,8 +647,8 @@ public partial class GameController : MonoBehaviour
                 if (transform.IsChildOf(root.transform))
                     continue;
 
-                // Keep prologue flow object active during prologue battle so its coroutine can continue.
-                if (root.GetComponentInChildren<PrologueDirector>(true) != null)
+                // MusicManager phải luôn active để có thể restore nhạc khi battle kết thúc.
+                if (root.GetComponentInChildren<MusicManager>(true) != null)
                     continue;
 
                 cachedOverworldRootStates[root] = root.activeSelf;

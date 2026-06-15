@@ -1,0 +1,1 @@
+{"name":"Magikarp","type1":"Water","hp":20,"attack":10,"defense":55,"spAttack":15,"spDefense":20,"speed":80,"learnset":[{"level":1,"move":"Splash","type":"Normal","power":0,"pp":0},{"level":15,"move":"Tackle","type":"Normal","power":40,"pp":35}]}

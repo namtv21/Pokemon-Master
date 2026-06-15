@@ -18,7 +18,6 @@ public class PokedexManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public static PokedexManager GetOrCreate()
@@ -36,6 +35,8 @@ public class PokedexManager : MonoBehaviour
 
     public bool HasSeen(string pokemonName) => !string.IsNullOrWhiteSpace(pokemonName) && seenIds.Contains(pokemonName);
     public bool HasCaught(string pokemonName) => !string.IsNullOrWhiteSpace(pokemonName) && caughtIds.Contains(pokemonName);
+    public int GetCaughtCount() => caughtIds.Count;
+    public int GetSeenCount() => seenIds.Count;
 
     public void MarkSeen(PokemonBase pokemonBase)
     {

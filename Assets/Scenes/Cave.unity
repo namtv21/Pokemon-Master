@@ -8082,8 +8082,7 @@ MonoBehaviour:
   npcId: Road02_npc
   npcName: ???
   portrait: {fileID: 0}
-  introDialog: "\u1EDE \u0111\xE2y ch\u1EE7 y\u1EBFu l\xE0 pokemon h\u1EC7 Ground
-    v\xE0 Rock"
+  introDialog: (Geodude, Onix, Diglett, cubone, Sandshrew)
   outroDialog: 
   Party: {fileID: 1289012709}
   canHeal: 0
@@ -8723,7 +8722,7 @@ MonoBehaviour:
   fadeFromBlackDuration: 0.25
   requireStarterChosen: 1
   requireStoryFlag: 1
-  requiredStoryFlag: 3
+  requiredStoryFlag: 10
   requiredStoryFlagValue: 1
   blockedReminder: "M\xECnh c\u1EA7n l\u1EA5y l\u1EA1i Water Badge tr\u01B0\u1EDBc"
   blockedReminderCooldown: 0
@@ -11958,7 +11957,7 @@ Transform:
   m_GameObject: {fileID: 982346281}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.51, y: 0.32, z: 0}
+  m_LocalPosition: {x: -12.43, y: 3.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12008,58 +12007,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4acc1d77050b9e448a080cadefd60488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1031260183
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1031260184}
-  - component: {fileID: 1031260185}
-  m_Layer: 8
-  m_Name: TrainerParty
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1031260184
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1031260183}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1871161465}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1031260185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1031260183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa22d58be6a4c9c43aca7a55faa739cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pokemons:
-  - baseData: {fileID: 11400000, guid: 36dbfd1785357104488b46ca84c92174, type: 2}
-    level: 5
-  - baseData: {fileID: 11400000, guid: bcf3215dbdde6554489080c7339c99bd, type: 2}
-    level: 4
-  - baseData: {fileID: 11400000, guid: 9a920d6eed376a84a818dfc2bd03b7d5, type: 2}
-    level: 6
-  evolvePokemonByLevel: 1
 --- !u!1 &1034724898
 GameObject:
   m_ObjectHideFlags: 0
@@ -15330,7 +15277,7 @@ MonoBehaviour:
   fadeFromBlackDuration: 0.25
   requireStarterChosen: 0
   requireStoryFlag: 0
-  requiredStoryFlag: 2
+  requiredStoryFlag: 10
   requiredStoryFlagValue: 0
   blockedReminder: 
   blockedReminderCooldown: 0
@@ -15410,6 +15357,7 @@ Transform:
   m_Children:
   - {fileID: 1034724899}
   - {fileID: 1871161465}
+  - {fileID: 1753656177}
   - {fileID: 288341594}
   - {fileID: 770787316}
   - {fileID: 4518630071055692609}
@@ -15562,6 +15510,181 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 2039768902}
+--- !u!1 &1753656176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1753656177}
+  - component: {fileID: 1753656181}
+  - component: {fileID: 1753656180}
+  - component: {fileID: 1753656179}
+  - component: {fileID: 1753656178}
+  m_Layer: 8
+  m_Name: Rhyhorn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1753656177
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753656176}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -15.1029, y: -10.6214, z: 9.983179}
+  m_LocalScale: {x: -5.6105433, y: 5.285798, z: 5.679396}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1684216417}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1753656178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753656176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c52f3890ffd569c458d82da6edfeea01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterId: 
+  pokemonBase: {fileID: 11400000, guid: f2a3ce7a23668774ba69c8ad399f01bf, type: 2}
+  level: 30
+  allowRun: 1
+--- !u!61 &1753656179
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753656176}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.023838848, y: 0.0007957816}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.26, y: 0.22}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.33336234, y: 0.27341127}
+  m_EdgeRadius: 0
+--- !u!50 &1753656180
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753656176}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!212 &1753656181
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1753656176}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1174901505
+  m_SortingLayer: 4
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -6406658640180123582, guid: 0d1ace86bf4640e4390dced444c11331, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1754196664
 GameObject:
   m_ObjectHideFlags: 0
@@ -16550,7 +16673,7 @@ GameObject:
   - component: {fileID: 1871161466}
   - component: {fileID: 1871161469}
   m_Layer: 8
-  m_Name: NPC (2)
+  m_Name: aerodacty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16565,11 +16688,10 @@ Transform:
   m_GameObject: {fileID: 1871161464}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.25, y: 0.27, z: 9.983179}
-  m_LocalScale: {x: 3.9875, y: 3.9875, z: 5.679396}
+  m_LocalPosition: {x: -17.98, y: 0.2, z: 9.983179}
+  m_LocalScale: {x: -4.1003466, y: 3.9875, z: 5.679396}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1031260184}
+  m_Children: []
   m_Father: {fileID: 1684216417}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1871161466
@@ -18594,14 +18716,6 @@ MonoBehaviour:
     minLevel: 22
     maxLevel: 25
     encounterRate: 0.3
-  - pokemon: {fileID: 11400000, guid: f2a3ce7a23668774ba69c8ad399f01bf, type: 2}
-    minLevel: 25
-    maxLevel: 25
-    encounterRate: 0.2
-  - pokemon: {fileID: 11400000, guid: 0b7b469cad1fc71429be143c434c08aa, type: 2}
-    minLevel: 21
-    maxLevel: 21
-    encounterRate: 0.3
   - pokemon: {fileID: 11400000, guid: 773bd4489a7d69b4eb6acbfa7c916382, type: 2}
     minLevel: 22
     maxLevel: 25
@@ -18610,10 +18724,6 @@ MonoBehaviour:
     minLevel: 21
     maxLevel: 21
     encounterRate: 0.3
-  - pokemon: {fileID: 11400000, guid: 59f00d871e91e554bbddc0db9ff39988, type: 2}
-    minLevel: 27
-    maxLevel: 27
-    encounterRate: 0.1
   battleRatePercent: 10
 --- !u!1 &1988286379
 GameObject:
@@ -34342,12 +34452,12 @@ MonoBehaviour:
   directionalAnimator: {fileID: 0}
   quest: {fileID: 0}
   giveQuestOnce: 1
-  rewardMoney: 20
+  rewardMoney: 50
   isGymLeader: 1
   badgeName: WaterBadge
   badgeItem: {fileID: 11400000, guid: c37563804f923f043b77c99327d823cf, type: 2}
   setStoryFlagAfterBadge: 1
-  storyFlagAfterBadge: 3
+  storyFlagAfterBadge: 10
   storyFlagAfterBadgeValue: 1
   canBattleOnce: 1
   enableMovement: 0
@@ -34884,7 +34994,7 @@ Transform:
   m_GameObject: {fileID: 8741164600319121255}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.33, y: 0.26, z: 9.983179}
+  m_LocalPosition: {x: -11.97, y: 0.44, z: 9.983179}
   m_LocalScale: {x: 1, y: 1, z: 1.4243}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -35708,7 +35818,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.058439255, y: -0.33602464}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -35719,7 +35829,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.1753178, y: 1.6720493}
   m_EdgeRadius: 0
 --- !u!50 &6968055091689051820
 Rigidbody2D:

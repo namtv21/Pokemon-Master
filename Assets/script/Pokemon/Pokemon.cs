@@ -83,11 +83,13 @@ public class Pokemon
         _friendshipLevel = Mathf.Max(0, data.friendshipLevel);
 
         Moves = new List<Move>();
-        foreach (var moveName in data.moves ?? Enumerable.Empty<string>())
+        var moveNames = data.moves ?? new List<string>();
+        for (int i = 0; i < moveNames.Count; i++)
         {
-            var moveBase = MoveDB.Instance.GetMoveByName(moveName);
-            if (moveBase != null)
-                Moves.Add(new Move(moveBase));
+            var moveBase = MoveDB.Instance.GetMoveByName(moveNames[i]);
+            if (moveBase == null) continue;
+            bool hasSavedPP = data.movePPs != null && i < data.movePPs.Count;
+            Moves.Add(hasSavedPP ? new Move(moveBase, data.movePPs[i]) : new Move(moveBase));
         }
 
         RecalculateStats();
