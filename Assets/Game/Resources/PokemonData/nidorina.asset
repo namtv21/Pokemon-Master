@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 30
   pokemonName: Nidorina
   description: 
-  frontSprite: {fileID: 21300000, guid: 106750aad20ea544bb9e3504d3ec2a3f, type: 3}
-  backSprite: {fileID: 21300000, guid: e95bbf7742d27dc4281d80142c554049, type: 3}
+  frontSprite: {fileID: 21300000, guid: 9118573081de64740bd6551e30a229eb, type: 3}
+  backSprite: {fileID: 21300000, guid: 655793719708bff48b95077fe14fc517, type: 3}
   type1: 8
   type2: 0
   MaxHp: 70
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 36
   evolvesTo: {fileID: 11400000, guid: 59387129e46c7d14497517f56d4f2bfb, type: 2}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
     level: 1

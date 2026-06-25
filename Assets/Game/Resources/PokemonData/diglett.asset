@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: diglett
   m_EditorClassIdentifier: 
-  pokemonName: Diglett
   num: 50
+  pokemonName: Diglett
   description: 
-  frontSprite: {fileID: 21300000, guid: 447ea4fcd6ecd634b9cfb53e8c6b529b, type: 3}
-  backSprite: {fileID: 21300000, guid: ab03a78636a5b354db9613c497efd5dc, type: 3}
+  frontSprite: {fileID: 21300000, guid: 346dea57e7e93b94696d46c4bc81b27c, type: 3}
+  backSprite: {fileID: 21300000, guid: ec9685f67f8fa944ab996d8561ec6c42, type: 3}
   type1: 9
   type2: 0
   MaxHp: 10
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 26
   evolvesTo: {fileID: 11400000, guid: 39f6990e5f4bc1a4ba34b66d34ca5e6d, type: 2}
+  encounterLocations:
+  - Cave
   learnableMoves:
   - move: {fileID: 11400000, guid: 590248e45e757744fb3fe9c7f520c2bf, type: 2}
     level: 1

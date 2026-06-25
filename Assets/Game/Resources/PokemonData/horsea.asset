@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 116
   pokemonName: Horsea
   description: 
-  frontSprite: {fileID: 21300000, guid: ff77417f0aafe2f4f92137787e1bfbaa, type: 3}
-  backSprite: {fileID: 21300000, guid: 0292cc0a04ef8cf4aaad9a705427508b, type: 3}
+  frontSprite: {fileID: 21300000, guid: 1c574b5f5efe4094e93c59c8ef241fb2, type: 3}
+  backSprite: {fileID: 21300000, guid: 2f10fbf61b2dd7d4bbba4b1f066afc36, type: 3}
   type1: 3
   type2: 0
   MaxHp: 30
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 28
   evolvesTo: {fileID: 11400000, guid: f22b32034dc55ad4d907f847701998eb, type: 2}
+  encounterLocations:
+  - WaterTown
   learnableMoves:
   - move: {fileID: 11400000, guid: 959820f8ddaa2074abe27deaf66388c1, type: 2}
     level: 1

@@ -13,12 +13,6 @@ public class CompanionChatUI : MonoBehaviour
     [SerializeField] private TMP_Text intimacyText;
     [SerializeField] private TMP_Text statusText;
 
-    [Header("Mood Sprites (0=mệt, 1=bình thường, 2=vui)")]
-    [SerializeField] private Sprite[] moodSprites;
-
-    [Header("Reaction Sprites theo topic (index khớp Topics[])")]
-    [SerializeField] private Sprite[] reactionSprites; // null = dùng mood sprite mặc định
-
     [Header("Chọn chủ đề")]
     [SerializeField] private GameObject optionsPanel;
     [SerializeField] private TMP_Text[] optionTexts;
@@ -56,7 +50,7 @@ public class CompanionChatUI : MonoBehaviour
         this.companion = companion;
         panel.SetActive(true);
 
-        UpdateMoodSprite(CompanionChatSystem.Instance.GetMoodIndex(companion));
+        UpdateCompanionSprite();
         RefreshIntimacy();
 
         if (statusText != null)
@@ -111,7 +105,7 @@ public class CompanionChatUI : MonoBehaviour
         optionsPanel?.SetActive(true);
         responsePanel?.SetActive(false);
         inputPanel?.SetActive(false);
-        ApplyReactionSprite(-1);
+        UpdateCompanionSprite();
 
         for (int i = 0; i < optionTexts.Length; i++)
         {
@@ -149,7 +143,7 @@ public class CompanionChatUI : MonoBehaviour
             string response = CompanionChatSystem.Instance.GetOfflineResponse(companion, selectedIndex);
             RefreshIntimacy();
 
-            ApplyReactionSprite(selectedIndex);
+            UpdateCompanionSprite();
 
             if (selectedIndex == 0) // Tâm trạng — thêm animation
             {
@@ -233,13 +227,10 @@ public class CompanionChatUI : MonoBehaviour
 
     // --- Sprite & Animation ---
 
-    private void UpdateMoodSprite(int moodIndex)
+    private void UpdateCompanionSprite()
     {
-        if (companionSprite == null) return;
-        Sprite s = null;
-        if (moodSprites != null && moodIndex < moodSprites.Length)
-            s = moodSprites[moodIndex];
-        companionSprite.sprite = s != null ? s : companion?.Base?.FrontSprite;
+        if (companionSprite == null || companion == null) return;
+        companionSprite.sprite = companion.Base.FrontSprite;
     }
 
     private IEnumerator PlayMoodAnimation(int moodIndex)
@@ -285,19 +276,6 @@ public class CompanionChatUI : MonoBehaviour
     }
 
     // --- Helpers ---
-
-    // Đổi sprite companion theo topic; index -1 hoặc không có sprite → dùng mood sprite
-    private void ApplyReactionSprite(int topicIndex)
-    {
-        if (companionSprite == null) return;
-        Sprite reaction = (topicIndex >= 0 && reactionSprites != null && topicIndex < reactionSprites.Length)
-            ? reactionSprites[topicIndex]
-            : null;
-        if (reaction != null)
-            companionSprite.sprite = reaction;
-        else
-            UpdateMoodSprite(CompanionChatSystem.Instance.GetMoodIndex(companion));
-    }
 
     private void RefreshIntimacy()
     {

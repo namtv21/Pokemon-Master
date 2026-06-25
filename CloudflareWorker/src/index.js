@@ -56,36 +56,32 @@ async function handleRequest(request, env) {
         const staticPrompt  = buildStaticPrompt(gameState.companionName, pokemonData, storyLore, allItems);
         const dynamicPrompt = buildDynamicPrompt(gameState);
 
-        // --- Gọi Claude với Prompt Caching ---
-        // Phần static (từ KV) → cache để không tính full token mỗi lần
-        // Phần dynamic (save state) → luôn fresh, không cache
+        // Inject system prompt vào đầu messages (key này không cho dùng system field)
+        const systemContent = staticPrompt + "\n\n" + dynamicPrompt;
+        const firstMsg = messages[0];
+        const messagesWithSystem = [
+            { role: firstMsg.role, content: systemContent + "\n\n---\n" + firstMsg.content },
+            ...messages.slice(1),
+        ];
+
         const anthropicRes = await fetch("https://api.anthropic.com/v1/messages", {
             method: "POST",
             headers: {
                 "x-api-key": env.CLAUDE_API_KEY,
                 "anthropic-version": "2023-06-01",
-                "anthropic-beta": "prompt-caching-2024-07-31",
                 "content-type": "application/json",
             },
             body: JSON.stringify({
                 model:      model || "claude-haiku-4-5-20251001",
                 max_tokens: max_tokens || 250,
-                system: [
-                    {
-                        type: "text",
-                        text: staticPrompt,
-                        cache_control: { type: "ephemeral" }  // cache 5 phút, chỉ tính 10% token
-                    },
-                    {
-                        type: "text",
-                        text: dynamicPrompt   // dynamic — không cache, luôn mới theo save file
-                    }
-                ],
-                messages: messages,
+                messages:   messagesWithSystem,
             }),
         });
 
         const responseText = await anthropicRes.text();
+        if (anthropicRes.status !== 200) {
+            console.error(`Anthropic error ${anthropicRes.status}: ${responseText}`);
+        }
         return new Response(responseText, {
             status: anthropicRes.status,
             headers: { "content-type": "application/json" },

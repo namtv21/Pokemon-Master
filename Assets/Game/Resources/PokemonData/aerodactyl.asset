@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: aerodactyl
   m_EditorClassIdentifier: 
+  num: 141
   pokemonName: Aerodactyl
-  num: 142
   description: 
-  frontSprite: {fileID: 21300000, guid: 0b91277a90e076848a6d3723fd3b2ab3, type: 3}
-  backSprite: {fileID: 21300000, guid: 698c08569a42ea343a420e023c39362f, type: 3}
+  frontSprite: {fileID: 21300000, guid: b573c3563b30267438d566a6ae428ac6, type: 3}
+  backSprite: {fileID: 21300000, guid: 5f8d24ea426955e4fa28ec2afb205f98, type: 3}
   type1: 13
   type2: 10
   MaxHp: 80
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations:
+  - Overworld
   learnableMoves:
   - move: {fileID: 11400000, guid: c40cf627fc3b7684a9ae1de302e82ee5, type: 2}
     level: 1

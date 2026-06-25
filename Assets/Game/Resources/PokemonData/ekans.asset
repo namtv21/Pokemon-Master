@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: ekans
   m_EditorClassIdentifier: 
-  pokemonName: Ekans
   num: 23
+  pokemonName: Ekans
   description: 
-  frontSprite: {fileID: 21300000, guid: c3c9dbd2ccb96ab4c99d2b2919368e60, type: 3}
-  backSprite: {fileID: 21300000, guid: aaafa9f303c49e14587f1785704e1e92, type: 3}
+  frontSprite: {fileID: 21300000, guid: 7e314d6f19069b2409532b1b4c8593b6, type: 3}
+  backSprite: {fileID: 21300000, guid: d62bbd3d5f1cc6a458cf4a6e8f7253e6, type: 3}
   type1: 8
   type2: 0
   MaxHp: 35
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 22
   evolvesTo: {fileID: 11400000, guid: dfefee5ecb2820041ab834fa51e72433, type: 2}
+  encounterLocations:
+  - Road02
   learnableMoves:
   - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
     level: 1

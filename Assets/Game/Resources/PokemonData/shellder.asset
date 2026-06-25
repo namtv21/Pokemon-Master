@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 90
   pokemonName: Shellder
   description: 
-  frontSprite: {fileID: 21300000, guid: c8ae0068beff3d043b8080b856e118a7, type: 3}
-  backSprite: {fileID: 21300000, guid: fc6ed382207cacf43aea5b75408f8c0b, type: 3}
+  frontSprite: {fileID: 21300000, guid: cfad02e112eec6747a739be591a520cf, type: 3}
+  backSprite: {fileID: 21300000, guid: 0e444f7f8781f8f429ea3dc5377664bc, type: 3}
   type1: 3
   type2: 0
   MaxHp: 30
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 28
   evolvesTo: {fileID: 11400000, guid: 09a793d9d421c594ba869799ad06f75b, type: 2}
+  encounterLocations:
+  - WaterTown
   learnableMoves:
   - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
     level: 1

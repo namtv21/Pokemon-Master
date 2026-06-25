@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: dodrio
   m_EditorClassIdentifier: 
-  pokemonName: Dodrio
   num: 85
+  pokemonName: Dodrio
   description: 
-  frontSprite: {fileID: 21300000, guid: 0b1b19e409e37d3449afa53c9a113262, type: 3}
-  backSprite: {fileID: 21300000, guid: 336056994529f094b89f5a1870d976ab, type: 3}
+  frontSprite: {fileID: 21300000, guid: 38f0c4f120b3b73409125a5b44d82875, type: 3}
+  backSprite: {fileID: 21300000, guid: 0bbaff31be2129e4988181d9c693ae82, type: 3}
   type1: 1
   type2: 10
   MaxHp: 60
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: fe5be24e281afc24b8b749c6408bd697, type: 2}
     level: 1

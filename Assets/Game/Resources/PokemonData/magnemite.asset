@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: magnemite
   m_EditorClassIdentifier: 
-  pokemonName: Magnemite
   num: 81
+  pokemonName: Magnemite
   description: 
-  frontSprite: {fileID: 21300000, guid: c52910ff5467f654c8b14138a35ad7fa, type: 3}
-  backSprite: {fileID: 21300000, guid: 4226317ce30ddd74e9fe19b14d1e71f4, type: 3}
+  frontSprite: {fileID: 21300000, guid: 3ea75d305ca8ff94e99613e76c9193a4, type: 3}
+  backSprite: {fileID: 21300000, guid: 1595ad2d0a986944da80c867f0ed3751, type: 3}
   type1: 4
   type2: 17
   MaxHp: 25
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 30
   evolvesTo: {fileID: 11400000, guid: 4162ee5c761e25342a2e4b8859a20900, type: 2}
+  encounterLocations:
+  - Mountain
   learnableMoves:
   - move: {fileID: 11400000, guid: fa8f01f1a06e3cb48b94534414613880, type: 2}
     level: 1

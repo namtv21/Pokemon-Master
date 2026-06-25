@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 48
   pokemonName: Venonat
   description: 
-  frontSprite: {fileID: 21300000, guid: 7c25348d5562cf149bf76ee8862621f0, type: 3}
-  backSprite: {fileID: 21300000, guid: 5039721103903714185416d80f043df8, type: 3}
+  frontSprite: {fileID: 21300000, guid: a47acf2762e06324394853bbe682040f, type: 3}
+  backSprite: {fileID: 21300000, guid: 9f27ff73bd5dc014ebb17b066cf50e22, type: 3}
   type1: 12
   type2: 8
   MaxHp: 60
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 24
   evolvesTo: {fileID: 11400000, guid: e1ff4dbbb97dfca46a7e59de59ecc17a, type: 2}
+  encounterLocations:
+  - Road02
   learnableMoves:
   - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
     level: 1

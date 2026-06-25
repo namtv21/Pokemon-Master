@@ -51,6 +51,7 @@ MonoBehaviour:
     level: 4
   - baseData: {fileID: 11400000, guid: 9a920d6eed376a84a818dfc2bd03b7d5, type: 2}
     level: 6
+  evolvePokemonByLevel: 0
 --- !u!1 &7624572098060288597
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,12 +130,12 @@ SpriteRenderer:
   m_SortingLayerID: -1174901505
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1589967442, guid: a12bffa94f6057e428b355547868042d, type: 3}
+  m_Sprite: {fileID: 328187946, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -204,7 +205,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1.5}
-    newSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -226,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcId: Blue
   npcName: Blue
-  portrait: {fileID: 21300000, guid: e912aaa35bddf4142b43abbeab3b924f, type: 3}
+  portrait: {fileID: 21300000, guid: 5b9355a2ea4d7784d82e186bded8534a, type: 3}
   introDialog: "Ch\xE0o Red!"
   outroDialog: 
   Party: {fileID: 894050774244079898}
@@ -235,6 +236,9 @@ MonoBehaviour:
   canUseStorage: 0
   canGiveQuest: 0
   canBattle: 1
+  fadeAwayAfterDialog: 0
+  fadeAfterDialogDuration: 0.5
+  disableNpcAfterDialogFade: 1
   shopItems: []
   dialog: {fileID: 0}
   directionalAnimator: {fileID: 0}
@@ -244,6 +248,9 @@ MonoBehaviour:
   isGymLeader: 0
   badgeName: 
   badgeItem: {fileID: 0}
+  setStoryFlagAfterBadge: 0
+  storyFlagAfterBadge: 4
+  storyFlagAfterBadgeValue: 1
   canBattleOnce: 0
   enableMovement: 0
   patrolPoints: []
@@ -271,28 +278,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e126ebbad944541b3ca063e57ffb72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleDown: {fileID: 1589967442, guid: a12bffa94f6057e428b355547868042d, type: 3}
-  idleLeft: {fileID: -2059896025, guid: a12bffa94f6057e428b355547868042d, type: 3}
-  idleRight: {fileID: -984744833, guid: a12bffa94f6057e428b355547868042d, type: 3}
-  idleUp: {fileID: -703059520, guid: a12bffa94f6057e428b355547868042d, type: 3}
+  idleDown: {fileID: 328187946, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
+  idleLeft: {fileID: 1463377967, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
+  idleRight: {fileID: 1722376045, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
+  idleUp: {fileID: 1642648901, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
   walkDownFrames:
-  - {fileID: 1589967442, guid: a12bffa94f6057e428b355547868042d, type: 3}
-  - {fileID: 1132531806, guid: a12bffa94f6057e428b355547868042d, type: 3}
-  - {fileID: -1293345499, guid: a12bffa94f6057e428b355547868042d, type: 3}
-  - {fileID: -180055157, guid: a12bffa94f6057e428b355547868042d, type: 3}
+  - {fileID: 328187946, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
+  - {fileID: -593240087, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
+  - {fileID: 884285001, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
+  - {fileID: 655793820, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
   walkLeftFrames:
-  - {fileID: -2059896025, guid: a12bffa94f6057e428b355547868042d, type: 3}
-  - {fileID: 1308439638, guid: a12bffa94f6057e428b355547868042d, type: 3}
-  - {fileID: 1357106762, guid: a12bffa94f6057e428b355547868042d, type: 3}
-  - {fileID: 805252205, guid: a12bffa94f6057e428b355547868042d, type: 3}
+  - {fileID: 1463377967, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
+  - {fileID: 511334895, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
+  - {fileID: -1685583372, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
+  - {fileID: -1954411481, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
   walkRightFrames:
-  - {fileID: -984744833, guid: a12bffa94f6057e428b355547868042d, type: 3}
-  - {fileID: -751218331, guid: a12bffa94f6057e428b355547868042d, type: 3}
-  - {fileID: -162970685, guid: a12bffa94f6057e428b355547868042d, type: 3}
-  - {fileID: -1459917116, guid: a12bffa94f6057e428b355547868042d, type: 3}
+  - {fileID: 1722376045, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
+  - {fileID: -1180749023, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
+  - {fileID: -456267185, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
+  - {fileID: -1341651346, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
   walkUpFrames:
-  - {fileID: -703059520, guid: a12bffa94f6057e428b355547868042d, type: 3}
-  - {fileID: 781153683, guid: a12bffa94f6057e428b355547868042d, type: 3}
-  - {fileID: 998041932, guid: a12bffa94f6057e428b355547868042d, type: 3}
-  - {fileID: -491023453, guid: a12bffa94f6057e428b355547868042d, type: 3}
+  - {fileID: 1642648901, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
+  - {fileID: 191420221, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
+  - {fileID: 1065585635, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
+  - {fileID: 739331861, guid: c98a6da864636fd449eedf44b2ff5719, type: 3}
   framesPerSecond: 8

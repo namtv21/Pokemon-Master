@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 102
   pokemonName: Exeggcute
   description: 
-  frontSprite: {fileID: 21300000, guid: a6eba97c9616eee4997f90a7cd4976a5, type: 3}
-  backSprite: {fileID: 21300000, guid: b2e95c964a2067044a3782d4b0345893, type: 3}
+  frontSprite: {fileID: 21300000, guid: 815705ceac684e645baa84552d923d9c, type: 3}
+  backSprite: {fileID: 21300000, guid: 1e0e9957641eba448821144a54957322, type: 3}
   type1: 5
   type2: 11
   MaxHp: 60
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 30
   evolvesTo: {fileID: 11400000, guid: 1f333370da2e6b843843a06bcec350e0, type: 2}
+  encounterLocations:
+  - Road02
   learnableMoves:
   - move: {fileID: 11400000, guid: 7461b30f495f6dd489acd502d39ba1e9, type: 2}
     level: 1

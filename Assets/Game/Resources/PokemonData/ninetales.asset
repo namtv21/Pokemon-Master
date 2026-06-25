@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: ninetales
   m_EditorClassIdentifier: 
-  pokemonName: Ninetales
   num: 38
+  pokemonName: Ninetales
   description: 
-  frontSprite: {fileID: 21300000, guid: 0fb232e655cb52d42bee649986d94d6f, type: 3}
-  backSprite: {fileID: 21300000, guid: 7060561a8701a5240be629e8cb002551, type: 3}
+  frontSprite: {fileID: 21300000, guid: 8ea107f5d482c7946b9329f5f5777efa, type: 3}
+  backSprite: {fileID: 21300000, guid: 8b45b56107c28ca49a4af4abd045e462, type: 3}
   type1: 2
   type2: 0
   MaxHp: 73
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 4f73abc6bb514aa49bb0d7eb9f33bbfe, type: 2}
     level: 1

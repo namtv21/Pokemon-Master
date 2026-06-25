@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 69
   pokemonName: Bellsprout
   description: 
-  frontSprite: {fileID: 21300000, guid: 920690f7b3b228d4c88659be60207645, type: 3}
-  backSprite: {fileID: 21300000, guid: 28721f911614c5f44b8659a065398bac, type: 3}
+  frontSprite: {fileID: 21300000, guid: 1910c37891f15ad4c9edfeccce0fc6f2, type: 3}
+  backSprite: {fileID: 21300000, guid: 6b8544f0926db6f44a2ab0015df055e8, type: 3}
   type1: 5
   type2: 8
   MaxHp: 50
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 18
   evolvesTo: {fileID: 11400000, guid: 6a772bfbd3afe1547a3d0880f3f25190, type: 2}
+  encounterLocations:
+  - Road02
   learnableMoves:
   - move: {fileID: 11400000, guid: cc68226ce7f82984b805e45c6711045f, type: 2}
     level: 1

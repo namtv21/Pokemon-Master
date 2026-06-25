@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 86
   pokemonName: Seel
   description: 
-  frontSprite: {fileID: 21300000, guid: ad309b50b10c1c349981d92df1ea9e21, type: 3}
-  backSprite: {fileID: 21300000, guid: e30b5021deeef5f4789b98d4841e134c, type: 3}
+  frontSprite: {fileID: 21300000, guid: 9e27fc3e0fb4f884f9434beac986924b, type: 3}
+  backSprite: {fileID: 21300000, guid: 1042bd6a80407cb47a1ae0c4e7f0089e, type: 3}
   type1: 3
   type2: 0
   MaxHp: 65
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 29
   evolvesTo: {fileID: 11400000, guid: 8f52caa487720474db8ebfa8557a38cc, type: 2}
+  encounterLocations:
+  - WaterTown
   learnableMoves:
   - move: {fileID: 11400000, guid: 31953322f91d2af4fa2be99de2c4ba63, type: 2}
     level: 1

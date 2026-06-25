@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 118
   pokemonName: Goldeen
   description: 
-  frontSprite: {fileID: 21300000, guid: eece9d4acdbbd30439f733903609e9e6, type: 3}
-  backSprite: {fileID: 21300000, guid: 3523b086b504cc4409fef9ea3765c6bc, type: 3}
+  frontSprite: {fileID: 21300000, guid: bbafdbdc21b0797459e1156f390effd4, type: 3}
+  backSprite: {fileID: 21300000, guid: 34b40e99374ed0b40ab9f679ea90e563, type: 3}
   type1: 3
   type2: 0
   MaxHp: 45
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 28
   evolvesTo: {fileID: 11400000, guid: f48eddebe3139a34b830b9e7867bc7ad, type: 2}
+  encounterLocations:
+  - WaterTown
   learnableMoves:
   - move: {fileID: 11400000, guid: 159d3b34fde15bd439dd87b7ca3da9a2, type: 2}
     level: 1

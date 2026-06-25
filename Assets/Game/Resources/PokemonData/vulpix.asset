@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 37
   pokemonName: Vulpix
   description: 
-  frontSprite: {fileID: 21300000, guid: 7033f882b7ac01645949348121bd708b, type: 3}
-  backSprite: {fileID: 21300000, guid: 002c8b1cc6fb0fa43a059a37b16fc83f, type: 3}
+  frontSprite: {fileID: 21300000, guid: 5600bf63606b68242b74be5039dcbdad, type: 3}
+  backSprite: {fileID: 21300000, guid: 585bbe248272cc347a52e637f688756c, type: 3}
   type1: 2
   type2: 0
   MaxHp: 38
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 36
   evolvesTo: {fileID: 11400000, guid: 43be84bc957eb2142845fbe0360a52fc, type: 2}
+  encounterLocations:
+  - Road03
   learnableMoves:
   - move: {fileID: 11400000, guid: beac49ccdf5984d48b1f77b88fd7e1ca, type: 2}
     level: 1

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: starmie
   m_EditorClassIdentifier: 
-  pokemonName: Starmie
   num: 121
+  pokemonName: Starmie
   description: 
-  frontSprite: {fileID: 21300000, guid: aa2e64535481af2499758fc27f15868c, type: 3}
-  backSprite: {fileID: 21300000, guid: 4b2d5162271db4f41af3805363c69bf2, type: 3}
+  frontSprite: {fileID: 21300000, guid: 0545dc37b6b90ee419b3935f3e516b55, type: 3}
+  backSprite: {fileID: 21300000, guid: d2a0c5e8754a6be4484465066bc15a35, type: 3}
   type1: 3
   type2: 11
   MaxHp: 60
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 32fb9852f075eb34e9f3d72a121ff027, type: 2}
     level: 1

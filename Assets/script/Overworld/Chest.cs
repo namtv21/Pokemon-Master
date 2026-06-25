@@ -86,7 +86,7 @@ public class Chest : MonoBehaviour, Interactable
         else if (moneyReward > 0)
         {
             Inventory.Instance?.AddMoney(moneyReward);
-            DialogManager.Instance?.ShowDialog($"You found {moneyReward} Yen!");
+            DialogManager.Instance?.ShowDialog($"You found {moneyReward} Dong!");
         }
         else
         {

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: arbok
   m_EditorClassIdentifier: 
-  pokemonName: Arbok
   num: 24
+  pokemonName: Arbok
   description: 
-  frontSprite: {fileID: 21300000, guid: f63b163751d56704f9bef3889a3e4798, type: 3}
-  backSprite: {fileID: 21300000, guid: 31c9f3220d5b06b4bb50db12ef679a0e, type: 3}
+  frontSprite: {fileID: 21300000, guid: 89e47aaa94583ed42b48f0c62e02697d, type: 3}
+  backSprite: {fileID: 21300000, guid: 4b54b54a4efaaa14b9441c5699932dea, type: 3}
   type1: 8
   type2: 0
   MaxHp: 60
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 77cefdbcb4afee544b09c8d3278ccce3, type: 2}
     level: 1

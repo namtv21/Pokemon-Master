@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: victreebel
   m_EditorClassIdentifier: 
-  pokemonName: Victreebel
   num: 71
+  pokemonName: Victreebel
   description: 
-  frontSprite: {fileID: 21300000, guid: 679d8d882b7f30148afbfeeb25031312, type: 3}
-  backSprite: {fileID: 21300000, guid: 7b041f94359f16a4497a33ea0f341175, type: 3}
+  frontSprite: {fileID: 21300000, guid: ebfd2bd838df22d4a9e4c28a769f40b0, type: 3}
+  backSprite: {fileID: 21300000, guid: 6d05fb494946d7045bc028a1c541c807, type: 3}
   type1: 5
   type2: 8
   MaxHp: 80
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 170089a43359cd74d9f4e9a7c18923d6, type: 2}
     level: 1

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: machamp
   m_EditorClassIdentifier: 
-  pokemonName: Machamp
   num: 68
+  pokemonName: Machamp
   description: 
-  frontSprite: {fileID: 21300000, guid: 03363b60041dd994bbab31a259e9987f, type: 3}
-  backSprite: {fileID: 21300000, guid: 54df169170a21204d83ee1a5c99f29bf, type: 3}
+  frontSprite: {fileID: 21300000, guid: 6ec8348381e0fb148b0e125d40439868, type: 3}
+  backSprite: {fileID: 21300000, guid: d706a6861a990264fa44ee74ea960f6a, type: 3}
   type1: 7
   type2: 0
   MaxHp: 90
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 592d7eb5c3f0e0e4886c024571fc4572, type: 2}
     level: 1

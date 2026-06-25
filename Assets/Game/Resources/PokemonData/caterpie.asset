@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: caterpie
   m_EditorClassIdentifier: 
-  pokemonName: Caterpie
   num: 10
+  pokemonName: Caterpie
   description: 
-  frontSprite: {fileID: 21300000, guid: c2f4cead520a69f42bd53f6b5d4507c9, type: 3}
-  backSprite: {fileID: 21300000, guid: e0c516ea68c4a7048bf393bf1468eb56, type: 3}
+  frontSprite: {fileID: 21300000, guid: 0b9e91089b5c7554681668fc28199bc6, type: 3}
+  backSprite: {fileID: 21300000, guid: 65928bcc571a49f429c5f35b846764a1, type: 3}
   type1: 12
   type2: 0
   MaxHp: 45
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 7
   evolvesTo: {fileID: 11400000, guid: 7c6b9dbb15b0fc54eaa8836b0b44fdab, type: 2}
+  encounterLocations:
+  - Road01
   learnableMoves:
   - move: {fileID: 11400000, guid: a62e8ea64a6e52742913c994c025139a, type: 2}
     level: 1

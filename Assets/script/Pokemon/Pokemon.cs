@@ -43,6 +43,7 @@ public class Pokemon
     public float AccuracyModifier { get; private set; } = 1f;
 
     public StatusEffect Status { get; private set; } = StatusEffect.None;
+    public int StatusTurns { get; private set; } = 0;
     public List<Move> Moves { get; private set; }
     public MoveBase CurrentPendingMoveLearn => currentPendingMoveLearn;
     public bool HasPendingMoveLearn => currentPendingMoveLearn != null || pendingMoveLearnQueue.Count > 0;
@@ -168,14 +169,18 @@ public class Pokemon
     public void ApplyStatus(StatusEffect effect)
     {
         Status = effect;
+        StatusTurns = 0;
         Debug.Log($"{Base.Name} is now {effect}!");
     }
 
     public void CureStatus()
     {
         Status = StatusEffect.None;
+        StatusTurns = 0;
         Debug.Log($"{Base.Name} is cured of its status condition!");
     }
+
+    public void IncrementStatusTurns() => StatusTurns++;
 
     public void ModifyStat(string stat, float multiplier)
     {

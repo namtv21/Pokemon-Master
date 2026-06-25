@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: tangela
   m_EditorClassIdentifier: 
-  pokemonName: Tangela
   num: 114
+  pokemonName: Tangela
   description: 
-  frontSprite: {fileID: 21300000, guid: bdf387ce4b884734683f1606b0ccff94, type: 3}
-  backSprite: {fileID: 21300000, guid: 27faac60c0f27174fb892fe6f4cffc78, type: 3}
+  frontSprite: {fileID: 21300000, guid: 12067b2b603ca994880e2ad952b85efb, type: 3}
+  backSprite: {fileID: 21300000, guid: 1e0e55825e018594494650373cb40fcb, type: 3}
   type1: 5
   type2: 0
   MaxHp: 65
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations:
+  - Road02
   learnableMoves:
   - move: {fileID: 11400000, guid: 7461b30f495f6dd489acd502d39ba1e9, type: 2}
     level: 1

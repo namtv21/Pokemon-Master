@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: rapidash
   m_EditorClassIdentifier: 
-  pokemonName: Rapidash
   num: 78
+  pokemonName: Rapidash
   description: 
-  frontSprite: {fileID: 21300000, guid: 0efcfec1279a13049969f03075f46a16, type: 3}
-  backSprite: {fileID: 21300000, guid: 761e0466c907aac45b0b707e77fdd944, type: 3}
+  frontSprite: {fileID: 21300000, guid: 8560b92132697c44c9c56017454bc2bc, type: 3}
+  backSprite: {fileID: 21300000, guid: 51884fcf8229b3848ae226e0cf0e3754, type: 3}
   type1: 2
   type2: 0
   MaxHp: 65
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: bae7b3a1c7cba694098fa52df604b780, type: 2}
     level: 0

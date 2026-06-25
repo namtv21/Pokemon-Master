@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: wigglytuff
   m_EditorClassIdentifier: 
-  pokemonName: Wigglytuff
   num: 40
+  pokemonName: Wigglytuff
   description: 
-  frontSprite: {fileID: 21300000, guid: fc1991d8a7f46ad478a14fd33eb5f12a, type: 3}
-  backSprite: {fileID: 21300000, guid: cef8dc6be05faf842a910fc071e6fd1e, type: 3}
+  frontSprite: {fileID: 21300000, guid: 7753ec946b42d784db9a5f7cfdab5086, type: 3}
+  backSprite: {fileID: 21300000, guid: e6d74fc4abf59d24991a67d28a7df30c, type: 3}
   type1: 1
   type2: 18
   MaxHp: 140
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 6907ef8c4109b5647888b1f07dbffbf5, type: 2}
     level: 1

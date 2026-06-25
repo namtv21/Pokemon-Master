@@ -56,15 +56,19 @@ public class PokemonBase : ScriptableObject
         SpDefense = data.baseStats.spd;
         Speed = data.baseStats.spe;
 
-        string spriteName = num.ToString();
+        string spriteName = System.Text.RegularExpressions.Regex.Replace(pokemonName, @"[^a-zA-Z0-9]", "").ToUpper();
         frontSprite = Resources.Load<Sprite>($"Sprites/Front/{spriteName}");
-        backSprite = Resources.Load<Sprite>($"Sprites/Back/{spriteName}");
+        backSprite  = Resources.Load<Sprite>($"Sprites/Back/{spriteName}");
     }
 
     private PokemonType ParseType(string type)
     {
         return (PokemonType)System.Enum.Parse(typeof(PokemonType), type, true);
     }
+    [Header("Encounter")]
+    [SerializeField] private string[] encounterLocations = new string[0];
+    public string[] EncounterLocations => encounterLocations;
+
     [SerializeField] LearnableMove[] learnableMoves;
     public LearnableMove[] LearnableMoves => learnableMoves;
     public static int GetExpForLevel(int level)

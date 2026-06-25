@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: arcanine
   m_EditorClassIdentifier: 
-  pokemonName: Arcanine
   num: 59
+  pokemonName: Arcanine
   description: 
-  frontSprite: {fileID: 21300000, guid: dfa9dcb100feb434e93f8475a9ce29cd, type: 3}
-  backSprite: {fileID: 21300000, guid: df8b788e77bf7bd40881987ce8018b50, type: 3}
+  frontSprite: {fileID: 21300000, guid: ef442c87c972941429638ee02ee63adb, type: 3}
+  backSprite: {fileID: 21300000, guid: e362e0a43374481429e6d0eb15c98d97, type: 3}
   type1: 2
   type2: 0
   MaxHp: 90
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 540c81d2a832817459069415c40c3862, type: 2}
     level: 0

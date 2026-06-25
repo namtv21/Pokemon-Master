@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: bulbasaur
   m_EditorClassIdentifier: 
-  pokemonName: Bulbasaur
   num: 1
+  pokemonName: Bulbasaur
   description: 
-  frontSprite: {fileID: 21300000, guid: 9724ed74214969648a92a447b04a5295, type: 3}
-  backSprite: {fileID: 21300000, guid: 02be5ed97d3d06b49958cdcf6a60cf18, type: 3}
+  frontSprite: {fileID: 21300000, guid: 698b98084bae72a499b4c8cf11b574fc, type: 3}
+  backSprite: {fileID: 21300000, guid: 85abe608a0cfe1447b32e502b2ef7d61, type: 3}
   type1: 5
   type2: 8
   MaxHp: 45
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 16
   evolvesTo: {fileID: 11400000, guid: 7ffe7a555ea35494cbee1cf8ac49b2a8, type: 2}
+  encounterLocations:
+  - Road02
   learnableMoves:
   - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
     level: 1

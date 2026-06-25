@@ -460,12 +460,16 @@ public class PokemonDexMenuUI : MonoBehaviour
 
         string learnsetText = BuildLearnsetPreview(selected);
         string evolutionText = BuildEvolutionText(selected);
+        string locationText = selected.EncounterLocations != null && selected.EncounterLocations.Length > 0
+            ? string.Join(", ", selected.EncounterLocations)
+            : "Tiến hóa / Không gặp trong tự nhiên";
 
         pokemonDbDetailText.text =
             $"Name: {selected.Name}\n" +
             $"Type: {selected.Type1}/{selected.Type2}\n" +
             $"HP: {selected.MaxHp}  Atk: {selected.Attack}  Def: {selected.Defense}\n" +
             $"SpA: {selected.SpAttack}  SpD: {selected.SpDefense}  Spe: {selected.Speed}\n" +
+            $"Gặp tại: {locationText}\n" +
             $"Evolution: {evolutionText}\n" +
             $"Learnset:\n{learnsetText}";
     }
@@ -1534,7 +1538,7 @@ public class PokemonDexMenuUI : MonoBehaviour
         placeholderRect.offsetMax = Vector2.zero;
         var placeholderText = placeholderGo.GetComponent<TextMeshProUGUI>();
         placeholderText.fontSize = 22;
-        placeholderText.text = "Nháº­p tĂªn Move";
+        placeholderText.text = "Nhập tên Move";
         placeholderText.color = new Color(1f, 1f, 1f, 0.45f);
         placeholderText.alignment = TextAlignmentOptions.Left;
         if (TMP_Settings.defaultFontAsset != null)
@@ -1633,7 +1637,7 @@ public class PokemonDexMenuUI : MonoBehaviour
         }
 
         if (moveSearchHint != null)
-            moveSearchHint.text = "Nháº­p tĂªn move Ä‘á»ƒ lá»c ngay (Nháº¥n Esc Ä‘á»ƒ thoĂ¡t)";
+            moveSearchHint.text = "Nhập tên move để tìm kiếm (Nhấn Esc để thoát)";
     }
 
     private void HandleMoveSearchChanged(string query)
@@ -1645,7 +1649,7 @@ public class PokemonDexMenuUI : MonoBehaviour
         if (string.IsNullOrWhiteSpace(normalized))
         {
             if (moveSearchHint != null)
-                moveSearchHint.text = "Nháº­p tĂªn move Ä‘á»ƒ lá»c ngay";
+                moveSearchHint.text = "Nhập tên move để tìm kiếm";
             return;
         }
 
@@ -1653,7 +1657,7 @@ public class PokemonDexMenuUI : MonoBehaviour
         if (foundIndex < 0)
         {
             if (moveSearchHint != null)
-                moveSearchHint.text = $"KhĂ´ng tĂ¬m tháº¥y: {query}";
+                moveSearchHint.text = $"Không tìm thấy: {query}";
             return;
         }
 
@@ -1664,7 +1668,7 @@ public class PokemonDexMenuUI : MonoBehaviour
         if (foundMove != null)
             foundName = string.IsNullOrWhiteSpace(foundMove.MoveName) ? foundMove.name : foundMove.MoveName;
         if (moveSearchHint != null)
-            moveSearchHint.text = foundName != null ? $"ÄĂ£ tĂ¬m: {foundName} â€” Nháº¥n Enter Ä‘á»ƒ quay láº¡i" : "ÄĂ£ tĂ¬m - Nháº¥n Enter Ä‘á»ƒ quay láº¡i";
+            moveSearchHint.text = foundName != null ? $"Đã tìm: {foundName} — Nhấn Esc để thoát" : $"Không tìm thấy move — Nhấn Esc để thoát";
         RefreshAll();
     }
 

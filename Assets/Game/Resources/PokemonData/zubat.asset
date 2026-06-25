@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: zubat
   m_EditorClassIdentifier: 
-  pokemonName: Zubat
   num: 41
+  pokemonName: Zubat
   description: 
-  frontSprite: {fileID: 21300000, guid: b7a400b1fba1a74479abbd8e8757ca6e, type: 3}
-  backSprite: {fileID: 21300000, guid: 36338743b6769c14d8a2099e11b08301, type: 3}
+  frontSprite: {fileID: 21300000, guid: bcb8578d334b0d14187e6c7186555135, type: 3}
+  backSprite: {fileID: 21300000, guid: 5e0c8baf6ff54b446ab46506134f50d7, type: 3}
   type1: 8
   type2: 10
   MaxHp: 40
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 22
   evolvesTo: {fileID: 11400000, guid: 84aa1fcff54b65c408515578354951bb, type: 2}
+  encounterLocations:
+  - Road02
   learnableMoves:
   - move: {fileID: 11400000, guid: 7461b30f495f6dd489acd502d39ba1e9, type: 2}
     level: 1

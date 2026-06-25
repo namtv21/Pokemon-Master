@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 58
   pokemonName: Growlithe
   description: 
-  frontSprite: {fileID: 21300000, guid: 0f1d45b2c7fa19947bf883103e1e89f0, type: 3}
-  backSprite: {fileID: 21300000, guid: d4192bf76fc61934d9c8ce7e050ac9bf, type: 3}
+  frontSprite: {fileID: 21300000, guid: 658e593cf3a81f94dac3f952deb20657, type: 3}
+  backSprite: {fileID: 21300000, guid: f73ad7a3e96f8b2469822f4e38304f80, type: 3}
   type1: 2
   type2: 0
   MaxHp: 55
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 36
   evolvesTo: {fileID: 11400000, guid: f1075044e51b5cb42b8555f1d3f3c0c3, type: 2}
+  encounterLocations:
+  - Road03
   learnableMoves:
   - move: {fileID: 11400000, guid: 77cefdbcb4afee544b09c8d3278ccce3, type: 2}
     level: 1

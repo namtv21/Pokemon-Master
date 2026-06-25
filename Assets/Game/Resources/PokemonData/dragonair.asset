@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: dragonair
   m_EditorClassIdentifier: 
-  num: 148
+  num: 147
   pokemonName: Dragonair
   description: 
-  frontSprite: {fileID: 21300000, guid: bfd89817646804a468afeee1718825ca, type: 3}
-  backSprite: {fileID: 21300000, guid: 62c64c92d0f26e54a849fb02d04e9f39, type: 3}
+  frontSprite: {fileID: 21300000, guid: 5dcddb7b574c7de4e9e8c7c95cbfc61c, type: 3}
+  backSprite: {fileID: 21300000, guid: 8c5bbbcb5c128534ab4df2de92d8c3e0, type: 3}
   type1: 15
   type2: 0
   MaxHp: 61
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 40
   evolvesTo: {fileID: 11400000, guid: 4f8b3c6572565ad438580acbceb717fd, type: 2}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
     level: 1

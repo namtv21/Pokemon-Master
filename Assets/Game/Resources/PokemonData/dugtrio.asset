@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: dugtrio
   m_EditorClassIdentifier: 
-  pokemonName: Dugtrio
   num: 51
+  pokemonName: Dugtrio
   description: 
-  frontSprite: {fileID: 21300000, guid: a7c90dd6164d34f4cbc7ca4c6c2fad2a, type: 3}
-  backSprite: {fileID: 21300000, guid: 032c6122f416efd4296960cd222c4bf3, type: 3}
+  frontSprite: {fileID: 21300000, guid: 508ff4fff6784db4aa66b7779ed725cd, type: 3}
+  backSprite: {fileID: 21300000, guid: 92690dd7e6dec7249884c5ecb6e3bae1, type: 3}
   type1: 9
   type2: 0
   MaxHp: 35
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 530dc755a6d9b824aa7d9677fa96f5f9, type: 2}
     level: 0

@@ -58,8 +58,8 @@ public class BattleSystem : MonoBehaviour
     // Auto-find in scene
     private BattleItemHandler itemHandler;
     private BattlePartyHandler partyHandler;
-    private int currentEnemyIndex;          // chĂ¡Â»â€° sĂ¡Â»â€˜ PokÄ‚Â©mon hiĂ¡Â»â€¡n tĂ¡ÂºÂ¡i cĂ¡Â»Â§a Trainer
-    private List<Pokemon> trainerParty;     // danh sÄ‚Â¡ch PokÄ‚Â©mon cĂ¡Â»Â§a Trainer
+    private int currentEnemyIndex;          // chỉ số Pokemon hiện tại của Trainer
+    private List<Pokemon> trainerParty;     // danh sách Pokemon của Trainer
 
     private BattleState state;
     private NPC currentTrainer;
@@ -230,7 +230,7 @@ public class BattleSystem : MonoBehaviour
     public void PlayerAction()
     {
         SetState(BattleState.PlayerActionSelection);
-        dialogBox.ShowActionMenu(); // HiĂ¡Â»â€¡n menu Fight/Run/Pokemon/Item
+        dialogBox.ShowActionMenu(); // Hiện menu Fight/Run/Pokemon/Item
     }
 
     void Update()
@@ -252,7 +252,7 @@ public class BattleSystem : MonoBehaviour
             case BattleState.PlayerPokemonSelection:
                 if (battlePartyMenu.gameObject.activeSelf)
                     battlePartyMenu.HandleUpdate();
-                // GĂ¡Â»Âi menu tĂ¡Â»Â± xĂ¡Â»Â­ lÄ‚Â½ input
+                // Gọi menu tự xử lý input
                 break;
 
             case BattleState.NewMoveSelection:
@@ -272,7 +272,7 @@ public class BattleSystem : MonoBehaviour
                 }
                 break;
 
-            // Busy, EnemyMove, khÄ‚Â´ng nhĂ¡ÂºÂ­n input
+            // Busy, EnemyMove, không nhận input
         }
     }
     void HandleActionInput()
@@ -287,7 +287,7 @@ public class BattleSystem : MonoBehaviour
                 SetState(BattleState.PlayerMoveSelection);
                 dialogBox.ShowMoveMenu(playerUnit.Pokemon.Moves);
             }
-            else if (actionIndex == 1) // PokÄ‚Â©mon
+            else if (actionIndex == 1) // Pokemon
             {
                 SetState(BattleState.PlayerPokemonSelection);
                 OnPartySelected();
@@ -317,39 +317,46 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    //---------DÄ‚Â¹ng item trong battle -------------//
+    //---------Dùng item trong battle -------------//
     void HandleItemInput()
     {
-        // GĂ¡Â»Âi menu tĂ¡Â»Â± xĂ¡Â»Â­ lÄ‚Â½ input
+        // Gọi menu tự xử lý input
         battleItemMenu.HandleUpdate();
     }
 
-    // Callback khi chĂ¡Â»Ân item
+    // Callback khi chọn item
     void OnItemSelected(ItemBase item)
     {
         if (item.itemType == ItemType.Pokeball)
         {
-            // trĂ¡Â»Â±c tiĂ¡ÂºÂ¿p dÄ‚Â¹ng item lÄ‚Âªn enemyUnit
+            // trực tiếp dùng item lên enemyUnit
             StartCoroutine(itemHandler.UseItemOnPokemon(item, enemyUnit.Pokemon, enemyUnit));
             battleItemMenu.CloseMenu();
             return;
         }
 
-        // MĂ¡Â»Å¸ PartyMenu Ă„â€˜Ă¡Â»Æ’ chĂ¡Â»Ân PokÄ‚Â©mon target
+        if (item.itemType == ItemType.KeyItem)
+        {
+            StartCoroutine(itemHandler.UseItemOnPokemon(item, null, null));
+            battleItemMenu.CloseMenu();
+            return;
+        }
+
+        // Mở PartyMenu để chọn Pokemon target
         state = BattleState.PlayerPokemonSelection;
         battlePartyMenu.Open(PlayerParty.Instance.Pokemons,
             (pokemon) =>
             {
-            // NĂ¡ÂºÂ¿u chĂ¡Â»Ân Ă„â€˜Ä‚Âºng con Ă„â€˜ang ra trĂ¡ÂºÂ­n Ă¢â€ â€™ dÄ‚Â¹ng trĂ¡Â»Â±c tiĂ¡ÂºÂ¿p BattleUnit
+            // Nếu chọn đúng con đang ra trận -> dùng trực tiếp BattleUnit
             if (pokemon == playerUnit.Pokemon)
             {
                 StartCoroutine(itemHandler.UseItemOnPokemon(item, playerUnit.Pokemon, playerUnit));
             }
             else
             {
-                // NĂ¡ÂºÂ¿u chĂ¡Â»Ân PokÄ‚Â©mon khÄ‚Â¡c trong party Ă¢â€ â€™ hĂ¡Â»â€œi mÄ‚Â¡u trĂ¡Â»Â±c tiĂ¡ÂºÂ¿p trÄ‚Âªn Ă„â€˜Ă¡Â»â€˜i tĂ†Â°Ă¡Â»Â£ng Pokemon
+                // Nếu chọn Pokemon khác trong party -> hồi máu trực tiếp trên đối tượng Pokemon
                 StartCoroutine(itemHandler.UseItemOnPokemon(item, pokemon));
-                battlePartyMenu.RefreshSlots(); // cĂ¡ÂºÂ­p nhĂ¡ÂºÂ­t UI
+                battlePartyMenu.RefreshSlots(); // cập nhật UI
             }
 
             battleItemMenu.CloseMenu();
@@ -366,7 +373,7 @@ public class BattleSystem : MonoBehaviour
     }
 
 
-    // Callback khi Ă„â€˜Ä‚Â³ng menu (nhĂ¡ÂºÂ¥n X)
+    // Callback khi đóng menu (nhấn X)
     void OnItemMenuClosed()
     {
         state = BattleState.PlayerActionSelection;
@@ -375,11 +382,11 @@ public class BattleSystem : MonoBehaviour
         battlePartyMenu.Close();
     }
 
-    //---------DÄ‚Â¹ng PokÄ‚Â©mon trong battle -------------//
+    //---------Dùng Pokemon trong battle -------------//
 
     void HandlePartyInput()
     {
-        // GĂ¡Â»Âi menu tĂ¡Â»Â± xĂ¡Â»Â­ lÄ‚Â½ input
+        // Gọi menu tự xử lý input
         battlePartyMenu.HandleUpdate();
     }
     void OnPartySelected()
@@ -388,7 +395,7 @@ public class BattleSystem : MonoBehaviour
         partyHandler.OpenPartyMenu(false);
     }
 
-    //---------DÄ‚Â¹ng move trong battle -------------//
+    //---------Dùng move trong battle -------------//
     void HandleMoveInput()
     {
         dialogBox.HandleMoveSelection();
@@ -412,7 +419,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    // tÄ‚Â­nh sÄ‚Â¡t thĂ†Â°Ă†Â¡ng
+    // tính sát thương
     int CalculateDamage(Pokemon attacker, Pokemon defender, Move move, out bool isCritical)
     {
         isCritical = false;
@@ -461,7 +468,7 @@ public class BattleSystem : MonoBehaviour
     IEnumerator PerformPlayerMove(Move move)
     {
         state = BattleState.Busy;
-        // KiĂ¡Â»Æ’m tra status trĂ†Â°Ă¡Â»â€ºc khi hÄ‚Â nh Ă„â€˜Ă¡Â»â„¢ng
+        // Kiểm tra status trước khi hành động
         bool blocked = false;
         yield return StartCoroutine(CheckStatusBeforeMove(
             playerUnit.Pokemon,
@@ -480,19 +487,20 @@ public class BattleSystem : MonoBehaviour
             ProceedTurn();
             yield break;
         }
-        // Ä‘Å¸â€˜â€° NĂ¡ÂºÂ¿u khÄ‚Â´ng bĂ¡Â»â€¹ block, miss thÄ‚Â¬ tiĂ¡ÂºÂ¿p tĂ¡Â»Â¥c thĂ¡Â»Â±c hiĂ¡Â»â€¡n move
+        // Nếu không bị block hoặc miss thì tiếp tục thực hiện move
         dialogBox.ShowDialog($"{playerUnit.Pokemon.Base.Name} used {move.Base.MoveName}!");
         yield return new WaitForSeconds(1f);
         move.UseMove();
         yield return StartCoroutine(playerUnit.PlayAttackAnimation());
 
         if (move.Base.Power >0){
-            // TÄ‚Â­nh sÄ‚Â¡t thĂ†Â°Ă†Â¡ng vÄ‚Â  trĂ¡Â»Â« mÄ‚Â¡u
+            //
             if (enemyUnit.Pokemon.Status == StatusEffect.Protected)
             {
                 dialogBox.ShowDialog($"{enemyUnit.Pokemon.Base.Name} is protected!");
-                proceddTurn: yield return new WaitForSeconds(1f);
-                goto proceddTurn;
+                yield return new WaitForSeconds(1f);
+                ProceedTurn();
+                yield break;
             }
             bool isCritical = false;
             int targetHpBeforeHit = enemyUnit.Pokemon.CurrentHp;
@@ -531,8 +539,9 @@ public class BattleSystem : MonoBehaviour
             if (enemyUnit.Pokemon.Status == StatusEffect.Sleep)
             {
                 enemyUnit.Pokemon.CureStatus();
-                dialogBox.ShowDialog($"{enemyUnit.Pokemon.Base.Name} woke up !");
                 enemyUnit.Hud.SetStatus(enemyUnit.Pokemon.Status);
+                dialogBox.ShowDialog($"{enemyUnit.Pokemon.Base.Name} woke up!");
+                yield return new WaitForSeconds(1f);
             }
         }
         else
@@ -541,7 +550,7 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
-        // KiĂ¡Â»Æ’m tra faint
+        // Kiểm tra faint
         if (enemyUnit.Pokemon.IsFainted)
         {
             yield return StartCoroutine(enemyUnit.PlayFaintAnimation());
@@ -554,7 +563,7 @@ public class BattleSystem : MonoBehaviour
             dialogBox.ShowDialog($"{playerUnit.Pokemon.Base.Name} gained {expGain} EXP!");
             playerUnit.Hud.SetData(playerUnit.Pokemon);
 
-            // Kiểm tra NGAY sau GainExp, trước yield đầu tiên.
+            // Kiểm tra NGAY sau GainExp, trước yield ầu tiên.
             // Nếu GainExp trigger move learn → state = NewMoveSelection (synchronous, chưa có frame nào chạy).
             // Nếu check sau WaitForSeconds: player có thể chọn move trong lúc yield,
             // ContinueAfterMoveLearn set WaitForNextTrainerPokemon → Update set Busy+StartCoroutine(SendNext...) →
@@ -564,7 +573,7 @@ public class BattleSystem : MonoBehaviour
 
             yield return new WaitForSeconds(1f);
 
-            // Ä‘Å¸â€˜â€° KiĂ¡Â»Æ’m tra nĂ¡ÂºÂ¿u lÄ‚Â  Trainer battle
+            // Kiểm tra nếu là Trainer battle
             if (isTrainerBattle)
             {
                 SetState(BattleState.WaitForNextTrainerPokemon);
@@ -593,7 +602,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator PerformEnemyMove(Move move)
     {
-        // KiĂ¡Â»Æ’m tra status trĂ†Â°Ă¡Â»â€ºc khi hÄ‚Â nh Ă„â€˜Ă¡Â»â„¢ng
+        // Kiểm tra status trước khi hành động
         bool blocked = false;
         yield return StartCoroutine(CheckStatusBeforeMove(
             enemyUnit.Pokemon,
@@ -610,7 +619,7 @@ public class BattleSystem : MonoBehaviour
             PlayerAction();
             yield break;
         }
-        // NĂ¡ÂºÂ¿u khÄ‚Â´ng bĂ¡Â»â€¹ block, miss thÄ‚Â¬ tiĂ¡ÂºÂ¿p tĂ¡Â»Â¥c thĂ¡Â»Â±c hiĂ¡Â»â€¡n move
+        // Nếu không bị block hoặc miss thì tiếp tục thực hiện move
         dialogBox.ShowDialog($"{enemyUnit.Pokemon.Base.Name} used {move.Base.MoveName}!");
         yield return new WaitForSeconds(1f);
         move.UseMove();
@@ -645,7 +654,7 @@ public class BattleSystem : MonoBehaviour
             HandleNonDamageMove(enemyUnit.Pokemon, playerUnit.Pokemon, move);
             yield return new WaitForSeconds(1f);
         }
-        // KiĂ¡Â»Æ’m tra faint
+        // Kiểm tra faint
         if (playerUnit.Pokemon.IsFainted)
         {
             yield return StartCoroutine(playerUnit.PlayFaintAnimation());
@@ -667,7 +676,7 @@ public class BattleSystem : MonoBehaviour
 
     private void HandleNonDamageMove(Pokemon attacker, Pokemon defender, Move move)
     {
-        // 1. NĂ¡ÂºÂ¿u cÄ‚Â³ boost/debuff
+        // 1. boost/debuff
         if (move.Base.StatBoosts != null && move.Base.StatBoosts.Count > 0)
         {
             if (move.Base.Target == MoveTarget.Self)
@@ -676,7 +685,7 @@ public class BattleSystem : MonoBehaviour
                 ApplyBoosts(defender, move.Base.StatBoosts);
         }
         else
-        // 2. NĂ¡ÂºÂ¿u cÄ‚Â³ status effect
+        // 2. status effect
         if (!string.IsNullOrEmpty(move.Base.StatusEffect))
         {
             switch (move.Base.StatusEffect.ToLower())
@@ -732,7 +741,7 @@ public class BattleSystem : MonoBehaviour
             }
         }
         else
-        // 3. NĂ¡ÂºÂ¿u cÄ‚Â³ drain
+        // 3. Nếu không có cả 2 thì báo move không có hiệu quả
         {
             if (IsSplitFollowUpMove(move))
                 dialogBox.ShowDialog("but it failed.");
@@ -759,7 +768,7 @@ public class BattleSystem : MonoBehaviour
                 continue;
             }
 
-            // Ä‚Âp dĂ¡Â»Â¥ng buff/debuff
+            // Áp dụng buff/debuff
             target.ModifyStat(boost.stat, boost.multiplier);
             target.IncrementStacks(boost.stat);
 
@@ -772,12 +781,23 @@ public class BattleSystem : MonoBehaviour
     {
         if (pokemon.Status == StatusEffect.Sleep)
         {
-            dialogBox.ShowDialog($"{pokemon.Base.Name} is asleep and can't move!");
-            unit.Hud.SetData(pokemon);
-            yield return new WaitForSeconds(1f);
-            proceedTurnCallback();
-            resultCallback(true);
-            yield break;
+            pokemon.IncrementStatusTurns();
+            if (pokemon.StatusTurns > 2)
+            {
+                pokemon.CureStatus();
+                unit.Hud.SetStatus(pokemon.Status);
+                dialogBox.ShowDialog($"{pokemon.Base.Name} woke up!");
+                yield return new WaitForSeconds(1f);
+            }
+            else
+            {
+                dialogBox.ShowDialog($"{pokemon.Base.Name} is asleep and can't move!");
+                unit.Hud.SetData(pokemon);
+                yield return new WaitForSeconds(1f);
+                proceedTurnCallback();
+                resultCallback(true);
+                yield break;
+            }
         }
 
         if (pokemon.Status == StatusEffect.Paralyze)
@@ -804,7 +824,15 @@ public class BattleSystem : MonoBehaviour
 
         if (pokemon.Status == StatusEffect.Confusion)
         {
-            if (Random.value < 0.33f)
+            pokemon.IncrementStatusTurns();
+            if (pokemon.StatusTurns > 2)
+            {
+                pokemon.CureStatus();
+                unit.Hud.SetStatus(pokemon.Status);
+                dialogBox.ShowDialog($"{pokemon.Base.Name} snapped out of confusion!");
+                yield return new WaitForSeconds(1f);
+            }
+            else if (Random.value < 0.33f)
             {
                 int selfDamage = CalculateConfusionDamage(pokemon);
                 pokemon.TakeDamage(selfDamage);
@@ -826,13 +854,13 @@ public class BattleSystem : MonoBehaviour
             yield break;
         }
 
-        // NĂ¡ÂºÂ¿u khÄ‚Â´ng bĂ¡Â»â€¹ chĂ¡ÂºÂ·n bĂ¡Â»Å¸i status
+        // Nếu không bị chặn bởi status
         resultCallback(false);
     }
 
     private int CalculateConfusionDamage(Pokemon target)
     {
-        // Damage confusion thĂ†Â°Ă¡Â»Âng lÄ‚Â  nhĂ†Â° mĂ¡Â»â„¢t move Physical 40 power
+        // Damage confusion thường là như một move Physical 40 power
         int power = 40;
         float attack = target.Attack;
         float defense = target.Defense;

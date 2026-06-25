@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: dratini
   m_EditorClassIdentifier: 
-  num: 147
+  num: 146
   pokemonName: Dratini
   description: 
-  frontSprite: {fileID: 21300000, guid: 6c34357b8d334f241a7edaf59f574421, type: 3}
-  backSprite: {fileID: 21300000, guid: ea7e05f93413a9c4182a2a1ce6facf63, type: 3}
+  frontSprite: {fileID: 21300000, guid: b82007e5a5d3b244dbf801f3d760b814, type: 3}
+  backSprite: {fileID: 21300000, guid: d392276bdd882d0429505daf5cdf1948, type: 3}
   type1: 15
   type2: 0
   MaxHp: 41
@@ -28,6 +28,9 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 25
   evolvesTo: {fileID: 11400000, guid: dc6ff3a61fe81be45827b84c8b2e513e, type: 2}
+  encounterLocations:
+  - Road01
+  - Road03
   learnableMoves:
   - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
     level: 1

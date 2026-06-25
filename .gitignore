@@ -9,3 +9,15 @@
 *.user
 *.pidb
 *.booproj
+
+# Báo cáo đồ án (không upload lên git)
+bao_cao/
+
+# Save files
+AutoSave.json
+SaveFile*.json
+UserSettings/
+
+# Cloudflare / KV local state
+CloudflareWorker/.wrangler/
+KVData/.wrangler/

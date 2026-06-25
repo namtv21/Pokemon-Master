@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: charmander
   m_EditorClassIdentifier: 
-  pokemonName: Charmander
   num: 4
+  pokemonName: Charmander
   description: 
-  frontSprite: {fileID: 21300000, guid: b3818805f9d257540bc721b0af0ac4d1, type: 3}
-  backSprite: {fileID: 21300000, guid: 9685c7930c79eca49af8cf77ad04a0db, type: 3}
+  frontSprite: {fileID: 21300000, guid: 219c5a9315a451544a2072c0cc9e823f, type: 3}
+  backSprite: {fileID: 21300000, guid: c653fc54910b5e34683f2de68709ba4d, type: 3}
   type1: 2
   type2: 0
   MaxHp: 39
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 16
   evolvesTo: {fileID: 11400000, guid: 664f9086385a6ba4b9203c8dce2f4998, type: 2}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
     level: 1

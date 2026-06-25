@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: porygon
   m_EditorClassIdentifier: 
+  num: 136
   pokemonName: Porygon
-  num: 137
   description: 
-  frontSprite: {fileID: 21300000, guid: 805ae305568d457409013cb0c5de73e5, type: 3}
-  backSprite: {fileID: 21300000, guid: b99415ba50564e843a874d679f1b9df6, type: 3}
+  frontSprite: {fileID: 21300000, guid: d6b1bc0bad367c14ebe254b05bfe87c7, type: 3}
+  backSprite: {fileID: 21300000, guid: 26f1a0322dea4dc4b9c34f614fa787de, type: 3}
   type1: 1
   type2: 0
   MaxHp: 65
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: ee101a779d19d3d4b94598e3fdbf10fa, type: 2}
     level: 1

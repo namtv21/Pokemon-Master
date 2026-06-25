@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: weedle
   m_EditorClassIdentifier: 
-  pokemonName: Weedle
   num: 13
+  pokemonName: Weedle
   description: 
-  frontSprite: {fileID: 21300000, guid: 0e09e4f46cbb9874288d8e58ef095d2c, type: 3}
-  backSprite: {fileID: 21300000, guid: 77f53c8dc44727e47b5b5d125b0e5d1c, type: 3}
+  frontSprite: {fileID: 21300000, guid: 2a83ac0321c3ee44f8c4b3d2a409b61d, type: 3}
+  backSprite: {fileID: 21300000, guid: 1ccceb02d4629eb47a07cfb248782a8c, type: 3}
   type1: 12
   type2: 8
   MaxHp: 40
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 7
   evolvesTo: {fileID: 11400000, guid: 11bb048b2a2a51a4eb59f3bf93b4343e, type: 2}
+  encounterLocations:
+  - Road01
   learnableMoves:
   - move: {fileID: 11400000, guid: f8656ea407699464188f9bc088726e8a, type: 2}
     level: 1

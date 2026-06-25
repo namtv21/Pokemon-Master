@@ -76,6 +76,53 @@ public class BattleUnit : MonoBehaviour
             spriteRenderer.sprite = newSprite;
     }
 
+    public void ShowSprite()
+    {
+        if (spriteRenderer != null)
+            spriteRenderer.enabled = true;
+    }
+
+    // Rung bóng Pokéball: shakes lần (1-2 = thoát, 3 = bắt được)
+    public IEnumerator PlayShakeBallAnimation(int shakes)
+    {
+        spriteRenderer.enabled = true;
+        for (int i = 0; i < shakes; i++)
+        {
+            yield return RotateSprite(-22f, 0.1f);
+            yield return RotateSprite(22f, 0.12f);
+            yield return RotateSprite(0f, 0.1f);
+            yield return new WaitForSeconds(0.38f);
+        }
+    }
+
+    private IEnumerator RotateSprite(float targetZ, float duration)
+    {
+        float startZ = spriteRenderer.transform.localEulerAngles.z;
+        if (startZ > 180f) startZ -= 360f;
+        float t = 0f;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            spriteRenderer.transform.localEulerAngles = new Vector3(0f, 0f,
+                Mathf.Lerp(startZ, targetZ, Mathf.Clamp01(t / duration)));
+            yield return null;
+        }
+        spriteRenderer.transform.localEulerAngles = new Vector3(0f, 0f, targetZ);
+    }
+
+    // Flash sáng khi Pokemon thoát bóng
+    public IEnumerator PlayBreakFreeFlash()
+    {
+        spriteRenderer.transform.localEulerAngles = Vector3.zero;
+        for (int i = 0; i < 3; i++)
+        {
+            spriteRenderer.enabled = false;
+            yield return new WaitForSeconds(0.06f);
+            spriteRenderer.enabled = true;
+            yield return new WaitForSeconds(0.06f);
+        }
+    }
+
     // ─── Animations ──────────────────────────────────────────────────────────
 
     // Trượt vào từ ngoài màn hình

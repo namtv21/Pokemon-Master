@@ -15,7 +15,7 @@ public class StoryFlagBlocker : MonoBehaviour
     [SerializeField] private bool includeChildColliders = true;
 
     [Header("Blocked Reminder")]
-    [SerializeField] private string blockedReminder = "Ban chua the di qua day.";
+    [SerializeField] private string blockedReminder = "Ban không thể đi qua đây.";
     [SerializeField] private float blockedReminderCooldown = 1f;
 
     private readonly List<Collider2D> trackedColliders = new List<Collider2D>();

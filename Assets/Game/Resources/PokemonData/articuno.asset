@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: articuno
   m_EditorClassIdentifier: 
+  num: 143
   pokemonName: Articuno
-  num: 144
   description: 
-  frontSprite: {fileID: 21300000, guid: 784a76daa4cde5f42bf23bebf04e54dd, type: 3}
-  backSprite: {fileID: 21300000, guid: 4323069f08a6e1340a30b470a807258d, type: 3}
+  frontSprite: {fileID: 21300000, guid: 3eac38a0e41539e47afdc82be6a2bf71, type: 3}
+  backSprite: {fileID: 21300000, guid: 49cc1ee57ad117b4eb44f7dbeb30ba20, type: 3}
   type1: 6
   type2: 10
   MaxHp: 90
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations:
+  - Overworld
   learnableMoves:
   - move: {fileID: 11400000, guid: 77c12fc93d054364cbd63ed464ae683b, type: 2}
     level: 1

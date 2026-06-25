@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 77
   pokemonName: Ponyta
   description: 
-  frontSprite: {fileID: 21300000, guid: 87dcf1fba8aff60489f9924e39ea8cf7, type: 3}
-  backSprite: {fileID: 21300000, guid: b322f2f89b28f7d4a9d8922c0ae5ba7d, type: 3}
+  frontSprite: {fileID: 21300000, guid: 467124cf11a38654fb68c7d79c12c672, type: 3}
+  backSprite: {fileID: 21300000, guid: be6736fdae11d0744a9bc0430cbe73fa, type: 3}
   type1: 2
   type2: 0
   MaxHp: 50
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 36
   evolvesTo: {fileID: 11400000, guid: ce9df5a78c4dcfb4e871b9f652268af5, type: 2}
+  encounterLocations:
+  - Road03
   learnableMoves:
   - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
     level: 1

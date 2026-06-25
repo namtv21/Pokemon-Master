@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: hypno
   m_EditorClassIdentifier: 
-  pokemonName: Hypno
   num: 97
+  pokemonName: Hypno
   description: 
-  frontSprite: {fileID: 21300000, guid: 1dd4f70400099774f961706f2d536194, type: 3}
-  backSprite: {fileID: 21300000, guid: 1a247564bfc828549b74e260b109f45b, type: 3}
+  frontSprite: {fileID: 21300000, guid: b7c664cf3e984d6478f5410e40f56d54, type: 3}
+  backSprite: {fileID: 21300000, guid: dfb34696ccac1594abc85c89a0d65174, type: 3}
   type1: 11
   type2: 0
   MaxHp: 85
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 224bd97601c6c9047b1d6e820f96aec3, type: 2}
     level: 1

@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 101
   pokemonName: Electrode
   description: 
-  frontSprite: {fileID: 21300000, guid: 1b3f2eb9c6912474da7802ca4dde3ac4, type: 3}
-  backSprite: {fileID: 21300000, guid: 9d84c0524af94744ea6a78fa880df527, type: 3}
+  frontSprite: {fileID: 21300000, guid: 9fb03d517bfe7314c912dce55a7460df, type: 3}
+  backSprite: {fileID: 21300000, guid: 36cd5ecd289b3f14abac71d84695bd85, type: 3}
   type1: 4
   type2: 0
   MaxHp: 10
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 16e0634bd65803c47babc9aa83833434, type: 2}
     level: 1

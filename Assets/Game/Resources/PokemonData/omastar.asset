@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: omastar
   m_EditorClassIdentifier: 
+  num: 138
   pokemonName: Omastar
-  num: 139
   description: 
-  frontSprite: {fileID: 21300000, guid: f7ca5e59389725a43bdd32f5b46cf713, type: 3}
-  backSprite: {fileID: 21300000, guid: 6f43dba7fb65b204ab01cf1e552e8fb6, type: 3}
+  frontSprite: {fileID: 21300000, guid: 12e96e5be3ecccb488b14d7526b81820, type: 3}
+  backSprite: {fileID: 21300000, guid: ac0d0a148f45f224ab993fa1ffd7c54c, type: 3}
   type1: 13
   type2: 3
   MaxHp: 70
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 238c53ce48b414d428c60341b471f113, type: 2}
     level: 0

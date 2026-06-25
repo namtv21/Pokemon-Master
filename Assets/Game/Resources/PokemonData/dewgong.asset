@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: dewgong
   m_EditorClassIdentifier: 
-  pokemonName: Dewgong
   num: 87
+  pokemonName: Dewgong
   description: 
-  frontSprite: {fileID: 21300000, guid: 20dc68bfcebce354ea78678c43129c43, type: 3}
-  backSprite: {fileID: 21300000, guid: e1f022a217d2bf14ea360bd61aeb72a4, type: 3}
+  frontSprite: {fileID: 21300000, guid: 5b796b59b4e2bfe4c96796328c9c22eb, type: 3}
+  backSprite: {fileID: 21300000, guid: 6520d285f1c7360449e6e777cfd179b3, type: 3}
   type1: 3
   type2: 6
   MaxHp: 90
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 03333aaff66b83a448c60d0820c1f2c4, type: 2}
     level: 1

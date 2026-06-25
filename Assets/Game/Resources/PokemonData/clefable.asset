@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: clefable
   m_EditorClassIdentifier: 
-  pokemonName: Clefable
   num: 36
+  pokemonName: Clefable
   description: 
-  frontSprite: {fileID: 21300000, guid: cec3c32b6d220a84d8d5f3e6d5bc7466, type: 3}
-  backSprite: {fileID: 21300000, guid: 1f3b1b422c3d44e4aa4bbf2028a3eb65, type: 3}
+  frontSprite: {fileID: 21300000, guid: f6444005441d7834c9e07ee74dee8c4b, type: 3}
+  backSprite: {fileID: 21300000, guid: a6712f6ed79b3c340b1fafd349336176, type: 3}
   type1: 18
   type2: 0
   MaxHp: 95
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: c063422a03426a844aefe5d9930f851e, type: 2}
     level: 1

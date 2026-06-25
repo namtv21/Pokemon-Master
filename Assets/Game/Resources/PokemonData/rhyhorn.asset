@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 111
   pokemonName: Rhyhorn
   description: 
-  frontSprite: {fileID: 21300000, guid: f62f1609c7abc2941905331738ab0e45, type: 3}
-  backSprite: {fileID: 21300000, guid: 47a1bb65c664214408e37f115f8d258b, type: 3}
+  frontSprite: {fileID: 21300000, guid: 31a6f3595730ffc44a67a7e8d4d7c58e, type: 3}
+  backSprite: {fileID: 21300000, guid: 5cac002a228cdb245a501b47fcee3213, type: 3}
   type1: 9
   type2: 13
   MaxHp: 80
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 40
   evolvesTo: {fileID: 11400000, guid: 6258d3d49a7667a418b569d63bc5870c, type: 2}
+  encounterLocations:
+  - Overworld
   learnableMoves:
   - move: {fileID: 11400000, guid: 86e70bb2993f8dc47b5c2ce0599c0703, type: 2}
     level: 1

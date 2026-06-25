@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 120
   pokemonName: Staryu
   description: 
-  frontSprite: {fileID: 21300000, guid: 6c6531b680e607e4ab52a6285bc4756f, type: 3}
-  backSprite: {fileID: 21300000, guid: bcc8daabdc3e4a54197a6d672b1f7212, type: 3}
+  frontSprite: {fileID: 21300000, guid: ea26208d43ba1ab42a417f48af22299d, type: 3}
+  backSprite: {fileID: 21300000, guid: b7cce410d0a18fa499fecc4d545ca1f2, type: 3}
   type1: 3
   type2: 0
   MaxHp: 30
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 28
   evolvesTo: {fileID: 11400000, guid: 448472122983a6c4a818020ab8be5d01, type: 2}
+  encounterLocations:
+  - WaterTown
   learnableMoves:
   - move: {fileID: 11400000, guid: 4181e9376aadffa4cabb13845d245783, type: 2}
     level: 1

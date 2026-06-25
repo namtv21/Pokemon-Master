@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 79
   pokemonName: Slowpoke
   description: 
-  frontSprite: {fileID: 21300000, guid: 760b2bc46b9730449bbfbc405a3e17e2, type: 3}
-  backSprite: {fileID: 21300000, guid: 657ee0f2558fede498204eea792e1a51, type: 3}
+  frontSprite: {fileID: 21300000, guid: 4ecd33ce5c609984fbb656320ce33c4e, type: 3}
+  backSprite: {fileID: 21300000, guid: 63a548908e2e2e040b0c1d742444bc3c, type: 3}
   type1: 3
   type2: 11
   MaxHp: 90
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 32
   evolvesTo: {fileID: 11400000, guid: acc1b141cce4353418f8dc6c2768439e, type: 2}
+  encounterLocations:
+  - Road03
   learnableMoves:
   - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
     level: 1

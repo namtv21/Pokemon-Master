@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: tauros
   m_EditorClassIdentifier: 
-  pokemonName: Tauros
   num: 128
+  pokemonName: Tauros
   description: 
-  frontSprite: {fileID: 21300000, guid: 7f1b505f4069ed54cb73079d7c754168, type: 3}
-  backSprite: {fileID: 21300000, guid: 6f0c9cb727116474fbc6a3bc38993b14, type: 3}
+  frontSprite: {fileID: 21300000, guid: e317b651f3622184fae500980642219e, type: 3}
+  backSprite: {fileID: 21300000, guid: 937d814eda9378741b858dd6b596dbd9, type: 3}
   type1: 1
   type2: 0
   MaxHp: 75
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations:
+  - Road03
   learnableMoves:
   - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
     level: 1

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: pidgey
   m_EditorClassIdentifier: 
-  pokemonName: Pidgey
   num: 16
+  pokemonName: Pidgey
   description: 
-  frontSprite: {fileID: 21300000, guid: 549ba8f71db06274aaedc012df2d2296, type: 3}
-  backSprite: {fileID: 21300000, guid: 76a9dccca8ce389498e136645a80492d, type: 3}
+  frontSprite: {fileID: 21300000, guid: 56ecf5b51156971428b78e3eebb140f5, type: 3}
+  backSprite: {fileID: 21300000, guid: 3561f8d04bd4cd64ea204cdc2339491e, type: 3}
   type1: 1
   type2: 10
   MaxHp: 40
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 18
   evolvesTo: {fileID: 11400000, guid: aed61b7f306b7534595f4a41d8bcaaa9, type: 2}
+  encounterLocations:
+  - Road01
   learnableMoves:
   - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
     level: 1

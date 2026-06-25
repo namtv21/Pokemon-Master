@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: pidgeotto
   m_EditorClassIdentifier: 
-  pokemonName: Pidgeotto
   num: 17
+  pokemonName: Pidgeotto
   description: 
-  frontSprite: {fileID: 21300000, guid: 03fe00dd85e6bcb4093060c90fc1ad9a, type: 3}
-  backSprite: {fileID: 21300000, guid: 2ef7db32f985bdb4c9c90ff7a69f17bf, type: 3}
+  frontSprite: {fileID: 21300000, guid: 1c218695c9fd75e4aa2af6655e0b39b8, type: 3}
+  backSprite: {fileID: 21300000, guid: 0c2ee7d3fa6e910418b1149885baca8a, type: 3}
   type1: 1
   type2: 10
   MaxHp: 63
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 36
   evolvesTo: {fileID: 11400000, guid: a7c14d98ab256db4ead248b318a4bc62, type: 2}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 06b4528290dba8146b4346412f05569f, type: 2}
     level: 1

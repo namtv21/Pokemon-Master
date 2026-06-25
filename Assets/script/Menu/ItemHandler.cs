@@ -67,9 +67,16 @@ public class ItemHandler : MonoBehaviour
             case ItemType.StatusHeal:
                 if (item.curesAllStatus)
                 {
-                    targetPokemon.CureStatus();
-                    msg = $"{targetPokemon.Base.Name}'s status was cured!";
-                    success = true;
+                    if (targetPokemon.Status != StatusEffect.None)
+                    {
+                        targetPokemon.CureStatus();
+                        msg = $"{targetPokemon.Base.Name}'s status was cured!";
+                        success = true;
+                    }
+                    else
+                    {
+                        msg = $"{targetPokemon.Base.Name} không có trạng thái bất lợi.";
+                    }
                 }
                 else if (item.curesSpecific != null && item.curesSpecific.Length > 0)
                 {
@@ -85,6 +92,10 @@ public class ItemHandler : MonoBehaviour
                     }
 
                     if (!success) msg = $"{item.itemName} had no effect.";
+                }
+                else
+                {
+                    msg = $"{item.itemName} had no effect.";
                 }
                 break;
 

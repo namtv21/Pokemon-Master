@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: cloyster
   m_EditorClassIdentifier: 
-  pokemonName: Cloyster
   num: 91
+  pokemonName: Cloyster
   description: 
-  frontSprite: {fileID: 21300000, guid: 1462bfcb21c559d4892a6e5ae459d89f, type: 3}
-  backSprite: {fileID: 21300000, guid: 9fd46bf9428142249a3651eb25be5340, type: 3}
+  frontSprite: {fileID: 21300000, guid: d4b40951b8f94ed479b7f751c0f72d09, type: 3}
+  backSprite: {fileID: 21300000, guid: 60a4126df38ba664b860a0b05684cec1, type: 3}
   type1: 3
   type2: 6
   MaxHp: 50
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 290047cb7db951e4eaf322306484b98c, type: 2}
     level: 0

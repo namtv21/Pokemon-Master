@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: fearow
   m_EditorClassIdentifier: 
-  pokemonName: Fearow
   num: 22
+  pokemonName: Fearow
   description: 
-  frontSprite: {fileID: 21300000, guid: bdca88fe739ce4241982eab565f75c51, type: 3}
-  backSprite: {fileID: 21300000, guid: 27979ea8a56d30a4d995c901009660c3, type: 3}
+  frontSprite: {fileID: 21300000, guid: 719b911dfe135494c9a0a64a6c2d614c, type: 3}
+  backSprite: {fileID: 21300000, guid: 9f51cc4502eddfc4bbe93d3c45b2463a, type: 3}
   type1: 1
   type2: 10
   MaxHp: 65
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: cabbc0a711f8f4b44a1677a1b69f0c26, type: 2}
     level: 1

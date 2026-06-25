@@ -78,12 +78,12 @@ SpriteRenderer:
   m_SortingLayerID: -1174901505
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1105012713, guid: ab7673f19dd0d404e89d43d4e5735682, type: 3}
+  m_Sprite: {fileID: -1629138431, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -153,7 +153,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1.5}
-    newSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -175,8 +175,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcId: Team_Rocket_M
   npcName: Team_Rocket_M
-  portrait: {fileID: -371816311, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
-  introDialog: 
+  portrait: {fileID: 21300000, guid: d134690fda968cf46950d1827207d291, type: 3}
+  introDialog: "H\xE3y \u0111\u1EE3i \u0111\u1EA5y"
   outroDialog: 
   Party: {fileID: 8078471495794275170}
   canHeal: 0
@@ -196,6 +196,9 @@ MonoBehaviour:
   isGymLeader: 0
   badgeName: 
   badgeItem: {fileID: 0}
+  setStoryFlagAfterBadge: 0
+  storyFlagAfterBadge: 4
+  storyFlagAfterBadgeValue: 1
   canBattleOnce: 0
   enableMovement: 0
   patrolPoints: []
@@ -223,30 +226,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e126ebbad944541b3ca063e57ffb72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleDown: {fileID: -371816311, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
-  idleLeft: {fileID: 1427527814, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
-  idleRight: {fileID: -1677186385, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
-  idleUp: {fileID: -1518789299, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
+  idleDown: {fileID: -1629138431, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
+  idleLeft: {fileID: -2107365669, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
+  idleRight: {fileID: 1129757, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
+  idleUp: {fileID: -1289759249, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
   walkDownFrames:
-  - {fileID: -371816311, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
-  - {fileID: 1013845021, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
-  - {fileID: 1622076651, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
-  - {fileID: 595591562, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
+  - {fileID: -1629138431, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
+  - {fileID: -55287880, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
+  - {fileID: 464945032, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
+  - {fileID: -1274747777, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
   walkLeftFrames:
-  - {fileID: 1427527814, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
-  - {fileID: 658984851, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
-  - {fileID: -776200396, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
-  - {fileID: 372456562, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
+  - {fileID: -2107365669, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
+  - {fileID: -1939284719, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
+  - {fileID: -1926190472, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
+  - {fileID: 358108248, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
   walkRightFrames:
-  - {fileID: -1677186385, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
-  - {fileID: -356174689, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
-  - {fileID: 1851750821, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
-  - {fileID: -1475938033, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
+  - {fileID: 1129757, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
+  - {fileID: 1924612596, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
+  - {fileID: 83009560, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
+  - {fileID: 560684293, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
   walkUpFrames:
-  - {fileID: -437016708, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
-  - {fileID: -1518789299, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
-  - {fileID: 1620399110, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
-  - {fileID: -1458776378, guid: 0d6a17059798fd34dad6c9bf356d2248, type: 3}
+  - {fileID: -1289759249, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
+  - {fileID: 1940734571, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
+  - {fileID: 1638779545, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
+  - {fileID: 866078703, guid: 7cb8dff93fc400d42b7d0619cfe07ffd, type: 3}
   framesPerSecond: 8
 --- !u!1 &5934364317884656556
 GameObject:
@@ -299,3 +302,4 @@ MonoBehaviour:
     level: 4
   - baseData: {fileID: 11400000, guid: 9a920d6eed376a84a818dfc2bd03b7d5, type: 2}
     level: 6
+  evolvePokemonByLevel: 0

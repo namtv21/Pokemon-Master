@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 33
   pokemonName: Nidorino
   description: 
-  frontSprite: {fileID: 21300000, guid: f8530d8fec7ab3440ad85d1d4672205f, type: 3}
-  backSprite: {fileID: 21300000, guid: 58157a87fcb6d1f418e4a898e9ad6d6a, type: 3}
+  frontSprite: {fileID: 21300000, guid: 688f781280d6e4744a0519baffe37158, type: 3}
+  backSprite: {fileID: 21300000, guid: 613da6fb60b1d69419917d797df6b6be, type: 3}
   type1: 8
   type2: 0
   MaxHp: 61
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 36
   evolvesTo: {fileID: 11400000, guid: 670b3bdc9e77889428fc79fc80dfb712, type: 2}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
     level: 1

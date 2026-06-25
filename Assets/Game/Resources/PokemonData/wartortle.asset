@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: wartortle
   m_EditorClassIdentifier: 
-  pokemonName: Wartortle
   num: 8
+  pokemonName: Wartortle
   description: 
-  frontSprite: {fileID: 21300000, guid: cbdfee53cee314d4694598d7322671f5, type: 3}
-  backSprite: {fileID: 21300000, guid: 785de75c24e3365419e98f58b238c188, type: 3}
+  frontSprite: {fileID: 21300000, guid: df3b5adf9f0ae2b4195a54fcf9d07afb, type: 3}
+  backSprite: {fileID: 21300000, guid: 3a9816b241f852c43b317e6cb96ee418, type: 3}
   type1: 3
   type2: 0
   MaxHp: 59
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 36
   evolvesTo: {fileID: 11400000, guid: 8969714f7ffc1934fa71d188388a97d3, type: 2}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 959820f8ddaa2074abe27deaf66388c1, type: 2}
     level: 1

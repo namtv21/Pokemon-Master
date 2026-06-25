@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: moltres
   m_EditorClassIdentifier: 
+  num: 145
   pokemonName: Moltres
-  num: 146
   description: 
-  frontSprite: {fileID: 21300000, guid: 0c3b31b571df85f4cb84148f2a270091, type: 3}
-  backSprite: {fileID: 21300000, guid: 8c7c916d251069640b74ca79ab21a875, type: 3}
+  frontSprite: {fileID: 21300000, guid: 8fca459a10aecfa499017cd09e66925e, type: 3}
+  backSprite: {fileID: 21300000, guid: 14504e15618f3454db47890173a10247, type: 3}
   type1: 2
   type2: 10
   MaxHp: 90
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations:
+  - Overworld
   learnableMoves:
   - move: {fileID: 11400000, guid: beac49ccdf5984d48b1f77b88fd7e1ca, type: 2}
     level: 1

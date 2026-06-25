@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: koffing
   m_EditorClassIdentifier: 
-  pokemonName: Koffing
   num: 109
+  pokemonName: Koffing
   description: 
-  frontSprite: {fileID: 21300000, guid: c740ce99ebe0d86499bf27214963ab52, type: 3}
-  backSprite: {fileID: 21300000, guid: 81af23bffcf7db14caab3910759dfd23, type: 3}
+  frontSprite: {fileID: 21300000, guid: f610ba39f64743c4c838285529163600, type: 3}
+  backSprite: {fileID: 21300000, guid: 005bd08709c83c84eaec065c5f9877f5, type: 3}
   type1: 8
   type2: 0
   MaxHp: 40
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 35
   evolvesTo: {fileID: 11400000, guid: b9a384a4430625f4e9f02b5d945fe3c2, type: 2}
+  encounterLocations:
+  - Road02
   learnableMoves:
   - move: {fileID: 11400000, guid: 973eea0eeae042849b9623e3fb725bef, type: 2}
     level: 1

@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 2
   pokemonName: Ivysaur
   description: 
-  frontSprite: {fileID: 21300000, guid: 59405c7bf21d27640818e7d27a6dfdf9, type: 3}
-  backSprite: {fileID: 21300000, guid: 3cd086a698878e746a569cec26e27e7a, type: 3}
+  frontSprite: {fileID: 21300000, guid: c70b810dd661da646966ab4a91bea74a, type: 3}
+  backSprite: {fileID: 21300000, guid: 32159799bf9de8342a0326959b2c2dab, type: 3}
   type1: 5
   type2: 8
   MaxHp: 60
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 36
   evolvesTo: {fileID: 11400000, guid: 1b8e36bfa5930804db920dbf6bec424d, type: 2}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
     level: 1

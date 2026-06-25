@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: raichu
   m_EditorClassIdentifier: 
-  pokemonName: Raichu
   num: 26
+  pokemonName: Raichu
   description: 
-  frontSprite: {fileID: 21300000, guid: f38806d695d1353479efab12f0887a25, type: 3}
-  backSprite: {fileID: 21300000, guid: 4376b27b2a498f0449c11a756a288bc2, type: 3}
+  frontSprite: {fileID: 21300000, guid: 41c4cd497832dd64298817fd966739a6, type: 3}
+  backSprite: {fileID: 21300000, guid: 7467967e666b1ce4481e70c9506ec18b, type: 3}
   type1: 4
   type2: 0
   MaxHp: 60
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations:
+  - Overworld
   learnableMoves:
   - move: {fileID: 11400000, guid: 11d34946a74b8a14c86e79a5dcb6a804, type: 2}
     level: 0

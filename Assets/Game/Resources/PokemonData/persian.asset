@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: persian
   m_EditorClassIdentifier: 
-  pokemonName: Persian
   num: 53
+  pokemonName: Persian
   description: 
-  frontSprite: {fileID: 21300000, guid: e182ce97a68492a47ae77d6b92eaadd0, type: 3}
-  backSprite: {fileID: 21300000, guid: 3efb41754776be74fbf6e4de8f830347, type: 3}
+  frontSprite: {fileID: 21300000, guid: 1e051e21bcff8024e9ec5f039e84f701, type: 3}
+  backSprite: {fileID: 21300000, guid: 0dd15776249d60a46a050f8433ab5a3e, type: 3}
   type1: 1
   type2: 0
   MaxHp: 65
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 6c2786b6750035748b79da8286d32f5f, type: 2}
     level: 0

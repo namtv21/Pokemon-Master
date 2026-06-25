@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: charmeleon
   m_EditorClassIdentifier: 
-  pokemonName: Charmeleon
   num: 5
+  pokemonName: Charmeleon
   description: 
-  frontSprite: {fileID: 21300000, guid: 2c7539f8ab2bb6b49863c74aeed18df3, type: 3}
-  backSprite: {fileID: 21300000, guid: e926b34df9797bd4fab7ca973b759f31, type: 3}
+  frontSprite: {fileID: 21300000, guid: f089fd28802845e489d514f1f4b863d6, type: 3}
+  backSprite: {fileID: 21300000, guid: d55885b4ac486684ba3635adf694bc4d, type: 3}
   type1: 2
   type2: 0
   MaxHp: 58
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 36
   evolvesTo: {fileID: 11400000, guid: 0d7cf46ef741f8e4694867272b7bd0c7, type: 2}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: beac49ccdf5984d48b1f77b88fd7e1ca, type: 2}
     level: 1

@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 67
   pokemonName: Machoke
   description: 
-  frontSprite: {fileID: 21300000, guid: e2cd942ce96cbb94a84a8561a1635924, type: 3}
-  backSprite: {fileID: 21300000, guid: 597b8391c8c951341a5673d1d6fbdeb3, type: 3}
+  frontSprite: {fileID: 21300000, guid: 50d60b359ff89d24ea521f8654b7cac6, type: 3}
+  backSprite: {fileID: 21300000, guid: 3463fc2199566e445aa844db1563f0e6, type: 3}
   type1: 7
   type2: 0
   MaxHp: 80
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 40
   evolvesTo: {fileID: 11400000, guid: b4b44b557a40dd346b83bd7fdd2dc459, type: 2}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 592d7eb5c3f0e0e4886c024571fc4572, type: 2}
     level: 1

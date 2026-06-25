@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 70
   pokemonName: Weepinbell
   description: 
-  frontSprite: {fileID: 21300000, guid: 5f31a0bc05e83b647b289d28e14a3857, type: 3}
-  backSprite: {fileID: 21300000, guid: 3dbd686cebd8a004fb6ffb5529d6bf48, type: 3}
+  frontSprite: {fileID: 21300000, guid: 7c816c6334e8f8648a6fb7c8ae907bc3, type: 3}
+  backSprite: {fileID: 21300000, guid: 25809439469cd024090a296cf7e7c05f, type: 3}
   type1: 5
   type2: 8
   MaxHp: 65
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 36
   evolvesTo: {fileID: 11400000, guid: 9af064c651dd80e49b5ffe34ee79a612, type: 2}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: cc68226ce7f82984b805e45c6711045f, type: 2}
     level: 1

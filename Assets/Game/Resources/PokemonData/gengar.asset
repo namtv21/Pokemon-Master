@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: gengar
   m_EditorClassIdentifier: 
-  pokemonName: Gengar
   num: 94
+  pokemonName: Gengar
   description: 
-  frontSprite: {fileID: 21300000, guid: 41f5f1f88d6aad2488111f0da8e976bc, type: 3}
-  backSprite: {fileID: 21300000, guid: 900a20621d2ba104da2b18e5f9a4cb92, type: 3}
+  frontSprite: {fileID: 21300000, guid: 3c4746bc7d7cab44385b13581202c880, type: 3}
+  backSprite: {fileID: 21300000, guid: f5665e1194b1d914a9fa26843c6b3708, type: 3}
   type1: 14
   type2: 8
   MaxHp: 60
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 4f73abc6bb514aa49bb0d7eb9f33bbfe, type: 2}
     level: 1

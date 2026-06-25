@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: doduo
   m_EditorClassIdentifier: 
-  pokemonName: Doduo
   num: 84
+  pokemonName: Doduo
   description: 
-  frontSprite: {fileID: 21300000, guid: dc1f31911812912498d41a078160f61f, type: 3}
-  backSprite: {fileID: 21300000, guid: 550efc0f233a49a4ea3e60601a6ff297, type: 3}
+  frontSprite: {fileID: 21300000, guid: 85fed8a0491a2f14e94b3be85bf05fc5, type: 3}
+  backSprite: {fileID: 21300000, guid: b02d8a0d24ab67b40925941f1518530b, type: 3}
   type1: 1
   type2: 10
   MaxHp: 35
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 31
   evolvesTo: {fileID: 11400000, guid: 954dd8ccd8d6d5341932a650792105ee, type: 2}
+  encounterLocations:
+  - Road01
   learnableMoves:
   - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
     level: 1

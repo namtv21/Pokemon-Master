@@ -24,14 +24,13 @@ public class BattleItemHandler : MonoBehaviour
 
     public IEnumerator UseItemOnPokemon(ItemBase item, Pokemon targetPokemon, BattleUnit targetUnit = null)
     {
-        battleSystem.SetState(BattleState.Busy);
-
         Debug.Log($"BattleItemHandler: UseItemOnPokemon called for {item?.itemName} on {targetPokemon?.Base?.Name}");
 
         // kiểm tra số lượng item
         ItemSlot slot = inventory.GetSlots().Find(s => s.item == item);
         if (slot == null || slot.count <= 0)
         {
+            battleSystem.SetState(BattleState.Busy);
             if (dialogBox != null)
             {
                 dialogBox.ShowDialog($"You don't have any {item.itemName}.");
@@ -48,18 +47,29 @@ public class BattleItemHandler : MonoBehaviour
         // xử lý Pokéball riêng
         if (!isWildBattle && item.itemType == ItemType.Pokeball)
         {
+            battleSystem.SetState(BattleState.Busy);
             dialogBox.ShowDialog("You can't catch a Trainer's Pokémon!");
             yield return new WaitForSeconds(1.2f);
-
-            // 👉 Quay lại PlayerActionSelection
             battleSystem.PlayerAction();
             yield break;
         }
         else if (item.itemType == ItemType.Pokeball)
         {
+            battleSystem.SetState(BattleState.Busy);
             yield return AttemptCatch(item, wildPokemon);
             yield break;
         }
+
+        // Key item không dùng được trong chiến đấu
+        if (item.itemType == ItemType.KeyItem)
+        {
+            dialogBox.ShowDialog($"{item.itemName} can't be used in battle.");
+            yield return new WaitForSeconds(1.2f);
+            battleSystem.PlayerAction();
+            yield break;
+        }
+
+        battleSystem.SetState(BattleState.Busy);
 
 
         string msg = "";
@@ -106,10 +116,17 @@ public class BattleItemHandler : MonoBehaviour
             case ItemType.StatusHeal:
                 if (item.curesAllStatus)
                 {
-                    targetPokemon.CureStatus();
-                    msg = $"{targetPokemon.Base.Name}'s status was cured!";
-                    success = true;
-                    if (targetUnit != null) targetUnit.UpdateHud();
+                    if (targetPokemon.Status != StatusEffect.None)
+                    {
+                        targetPokemon.CureStatus();
+                        msg = $"{targetPokemon.Base.Name}'s status was cured!";
+                        success = true;
+                        if (targetUnit != null) targetUnit.UpdateHud();
+                    }
+                    else
+                    {
+                        msg = $"{targetPokemon.Base.Name} doesn't have a status condition!";
+                    }
                 }
                 else if (item.curesSpecific != null && item.curesSpecific.Length > 0)
                 {
@@ -127,12 +144,12 @@ public class BattleItemHandler : MonoBehaviour
 
                     if (!success) msg = $"{item.itemName} had no effect.";
                 }
+                else
+                {
+                    msg = $"{item.itemName} had no effect.";
+                }
                 break;
 
-            case ItemType.KeyItem:
-                msg = $"{item.itemName} can't be used in battle.";
-                success = false;
-                break;
         }
 
         if (dialogBox != null)
@@ -160,22 +177,24 @@ public class BattleItemHandler : MonoBehaviour
     private IEnumerator AttemptCatch(ItemBase ball, Pokemon target)
     {
         ShowNoti($"You used {ball.itemName}!");
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.6f);
         if (ball.consumable)
             inventory.RemoveItem(ball, 1);
 
-        var enemyUnit = battleSystem.EnemyUnit; // cần tham chiếu từ Init
-        enemyUnit.SetSprite(ball.icon);   // ballSprite là Sprite của Pokéball
+        var enemyUnit = battleSystem.EnemyUnit;
+        enemyUnit.SetSprite(ball.icon);
+        yield return new WaitForSeconds(0.4f);
 
-        yield return new WaitForSeconds(1f);
-
-
+        // Tính kết quả trước để quyết định số lần rung
         float hpFactor = Mathf.Clamp01(1f - (target.CurrentHp / (float)target.MaxHp));
-        float baseRate = 1f;
-        float ballMod = ball.catchRateMultiplier;
-        float chance = Mathf.Clamp01(baseRate * (0.3f + hpFactor * 0.7f) * ballMod);
+        float chance   = Mathf.Clamp01((0.3f + hpFactor * 0.7f) * ball.catchRateMultiplier);
+        bool caught    = Random.value < chance;
 
-        if (Random.value < chance)
+        // Số rung: 3 lần = bắt được, 1-2 lần = thoát (gần hay xa tuỳ chance)
+        int shakes = caught ? 3 : (chance >= 0.5f ? 2 : 1);
+        yield return StartCoroutine(enemyUnit.PlayShakeBallAnimation(shakes));
+
+        if (caught)
         {
             dialogBox.ShowDialog($"Gotcha! {target.Base.Name} was caught!");
             yield return new WaitForSeconds(1.4f);
@@ -183,9 +202,12 @@ public class BattleItemHandler : MonoBehaviour
         }
         else
         {
+            // Flash sáng → hiện lại Pokemon
+            yield return StartCoroutine(enemyUnit.PlayBreakFreeFlash());
+            enemyUnit.Setup(target);
+            enemyUnit.ShowSprite();
             dialogBox.ShowDialog($"{target.Base.Name} broke free!");
             yield return new WaitForSeconds(1f);
-            enemyUnit.Setup(target);
             yield return ProceedAfterPlayerAction();
         }
     }

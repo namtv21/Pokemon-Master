@@ -1,0 +1,3496 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc543fb9dcdad1b4b9f077d087e74cac, type: 3}
+  m_Name: MainStory
+  m_EditorClassIdentifier: 
+  steps:
+  - stepId: "\u0110i g\u1EB7p gi\xE1o s\u01B0 oke"
+    description: "- \u0110\u1EBFn ph\xF2ng lab \u0111\u1ED1i di\u1EC7n s\xE2n ch\u01A1i\n-
+      V\xE0o ph\xF2ng lab g\u1EB7p gi\xE1o s\u01B0 oke"
+    sceneName: Town01
+    triggerId: 
+    triggerOnSceneLoad: 1
+    requirePrologueDone: 0
+    requireStoryFlag: 0
+    requiredStoryFlag: 1
+    requiredStoryFlagValue: 1
+    oneShot: 1
+    actions:
+    - type: 0
+      dialogText: "Red, ta c\xF3 chuy\u1EC7n mu\u1ED1n n\xF3i v\u1EDBi ch\xE1u \u0111\xE2y.\nTa
+        nghe n\xF3i ch\xE1u mu\u1ED1n tr\u1EDF th\xE0nh nh\xE0 hu\u1EA5n luy\u1EC7n
+        th\xFA.\n\u0110\xE2y l\xE0 Pikachu v\xE0 PokemonDEX, ta d\u01B0\u1EE3c b\u1ED1
+        m\u1EB9 ch\xE1u \u1EE7y quy\u1EC1n cho ch\xE1u khi th\u1EDDi \u0111i\u1EC3m
+        th\xEDch h\u1EE3p \u0111\u1EBFn.\n"
+      speakerName: Prof Oke
+      portrait: {fileID: 21300000, guid: ef736dbd248678246ac8834baa64e63b, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: 
+      moveTargetId: 
+      moveSpeed: 2.5
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 1
+      storyFlagValue: 1
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: Pika Pika
+      speakerName: Pikachu
+      portrait: {fileID: 21300000, guid: 21c46e807345af543b691890f802493c, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: 
+      moveTargetId: 
+      moveSpeed: 2.5
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 1
+      storyFlagValue: 1
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "Ph\u1EE5 huynh nh\xE0 ch\xE1u c\u0169ng th\u1EADt l\xE0, b\u1ECF
+        con nh\u1ECF \u1EDF nh\xE0 \u0111\u1EC3 \u0111i nghi\xEAn c\u1EE9u Pokemon
+        t\u1EADn \u0111\xE2u r\u1ED3i.\n\u1ED2 m\xE0 t\xED n\u1EEFa h\xE3y g\u1EB7p
+        ta \u1EDF lab, ta c\xF2n chuy\u1EC7n mu\u1ED1n nh\u1EDD ch\xE1u."
+      speakerName: Prof Oke
+      portrait: {fileID: 21300000, guid: ef736dbd248678246ac8834baa64e63b, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: 
+      moveTargetId: 
+      moveSpeed: 2.5
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 1
+      storyFlagValue: 1
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 4
+      dialogText: "Ph\xF2ng lab c\u1EE7a ti\u1EBFn s\u0129 \u1EDF g\xF3c tr\xEAn
+        b\xEAn ph\u1EA3i \u0111\u1ED1i di\u1EC7n s\xE2n ch\u01A1i, mau \u0111\u1EBFn
+        th\xF4i."
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 9df41c745238838479613fe64a5794ea, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: prof_oke
+      moveTargetId: post1
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 1
+      storyFlagValue: 1
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 4
+      dialogText: "Ph\u1EE5 huynh nh\xE0 ch\xE1u c\u0169ng th\u1EADt l\xE0, b\u1ECF
+        con nh\u1ECF \u1EDF nh\xE0 \u0111\u1EC3 \u0111i nghi\xEAn c\u1EE9u Pokemon
+        t\u1EADn \u0111\xE2u r\u1ED3i.\n\u1ED2 m\xE0 t\xED n\u1EEFa h\xE3y g\u1EB7p
+        ta \u1EDF lab, ta c\xF2n chuy\u1EC7n mu\u1ED1n nh\u1EDD ch\xE1u."
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 9df41c745238838479613fe64a5794ea, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: prof_oke
+      moveTargetId: post2
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 1
+      storyFlagValue: 1
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 4
+      dialogText: "Ph\xF2ng lab c\u1EE7a ti\u1EBFn s\u0129 \u1EDF g\xF3c tr\xEAn
+        b\xEAn ph\u1EA3i \u0111\u1ED1i di\u1EC7n s\xE2n ch\u01A1i, mau \u0111\u1EBFn
+        th\xF4i."
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 9df41c745238838479613fe64a5794ea, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: prof_oke
+      moveTargetId: post3
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 1
+      storyFlagValue: 1
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 6
+      dialogText: "Ph\xF2ng lab c\u1EE7a ti\u1EBFn s\u0129 \u1EDF g\xF3c tr\xEAn
+        b\xEAn ph\u1EA3i \u0111\u1ED1i di\u1EC7n s\xE2n ch\u01A1i, mau \u0111\u1EBFn
+        th\xF4i."
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 9df41c745238838479613fe64a5794ea, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: 
+      moveTargetId: 
+      moveSpeed: 2.5
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 1
+      storyFlagValue: 1
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+  - stepId: "Ch\u1ECDn pokemon kh\u1EDFi \u0111\u1EA7u"
+    description: "- Ch\u1ECDn pokemon kh\u1EDFi \u0111\u1EA7u\n- \u0110\u1EBFn Road01"
+    sceneName: oke_lab
+    triggerId: 
+    triggerOnSceneLoad: 1
+    requirePrologueDone: 0
+    requireStoryFlag: 0
+    requiredStoryFlag: 2
+    requiredStoryFlagValue: 1
+    oneShot: 1
+    actions:
+    - type: 4
+      dialogText: "Ngo\xE0i ra c\u1EA9n th\u1EADn v\u1EDBi team rocket"
+      speakerName: Prof Oke
+      portrait: {fileID: 21300000, guid: 49c7c73bd56a8b74e9a9c8eaede2325f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: prof_oke
+      moveTargetId: ProfOke1
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 'Choose:'
+      choiceOptions:
+      - optionLabel: Bulbasaur (grass)
+        givePokemon: 1
+        pokemonResourceId: bulbasaur
+        pokemonLevel: 5
+        submitQuestEvent: 1
+        eventType: 1
+        targetId: starter_received
+        amount: 1
+        setStoryFlag: 1
+        storyFlag: 2
+        storyFlagValue: 1
+        starterPokemonId: bulbasaur
+      - optionLabel: Charmander (fire)
+        givePokemon: 1
+        pokemonResourceId: charmander
+        pokemonLevel: 5
+        submitQuestEvent: 1
+        eventType: 1
+        targetId: starter_received
+        amount: 1
+        setStoryFlag: 1
+        storyFlag: 2
+        storyFlagValue: 1
+        starterPokemonId: charmander
+      - optionLabel: Squirtle (water)
+        givePokemon: 1
+        pokemonResourceId: squirtle
+        pokemonLevel: 5
+        submitQuestEvent: 1
+        eventType: 1
+        targetId: starter_received
+        amount: 1
+        setStoryFlag: 1
+        storyFlag: 2
+        storyFlagValue: 1
+        starterPokemonId: squirtle
+    - type: 0
+      dialogText: "Ch\xE1u \u0111\u1EBFn r\u1ED3i \xE0, tr\u01B0\u1EDBc khi b\u1EAFt
+        \u0111\u1EA7u cu\u1ED9c h\xE0nh tr\xECnh\nth\xEC \u0111\xE2y l\xE0 3 pokemon
+        m\xE0 ta m\u1EDBi ph\xE1t hi\u1EC7n ra\nh\xE3y ch\u1ECDn 1 pokemon cho ch\xE1u,
+        2 pokemon c\xF2n l\u1EA1i ta s\u1EBD giao cho 2 nh\xE0 hu\u1EA5n luy\u1EC7n
+        th\xFA tr\u1EBB tu\u1ED5i kh\xE1c.\nC\xF3 l\u1EBD ch\xE1u s\u1EBD g\u1EB7p
+        h\u1ECD s\u1EDBm th\xF4i."
+      speakerName: Prof Oke
+      portrait: {fileID: 21300000, guid: ef736dbd248678246ac8834baa64e63b, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: 
+      moveTargetId: 
+      moveSpeed: 2.5
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 11
+      dialogText: 
+      speakerName: Prof Oke
+      portrait: {fileID: 21300000, guid: 49c7c73bd56a8b74e9a9c8eaede2325f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: 
+      moveTargetId: 
+      moveSpeed: 2.5
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 'Choose:'
+      choiceOptions:
+      - optionLabel: Bulbasaur (grass)
+        givePokemon: 1
+        pokemonResourceId: bulbasaur
+        pokemonLevel: 5
+        submitQuestEvent: 1
+        eventType: 1
+        targetId: starter_received
+        amount: 1
+        setStoryFlag: 1
+        storyFlag: 2
+        storyFlagValue: 1
+        starterPokemonId: bulbasaur
+      - optionLabel: Charmander (fire)
+        givePokemon: 1
+        pokemonResourceId: charmander
+        pokemonLevel: 5
+        submitQuestEvent: 1
+        eventType: 1
+        targetId: starter_received
+        amount: 1
+        setStoryFlag: 1
+        storyFlag: 2
+        storyFlagValue: 1
+        starterPokemonId: charmander
+      - optionLabel: Squirtle (water)
+        givePokemon: 1
+        pokemonResourceId: squirtle
+        pokemonLevel: 5
+        submitQuestEvent: 1
+        eventType: 1
+        targetId: starter_received
+        amount: 1
+        setStoryFlag: 1
+        storyFlag: 2
+        storyFlagValue: 1
+        starterPokemonId: squirtle
+    - type: 0
+      dialogText: "Vi\u1EC7c ch\xE1u c\u1EA7n l\xE0m l\xE0 \u0111\xE1nh b\u1EA1i
+        c\xE1c ch\u1EE7 nh\xE0 hu\u1EA5n luy\u1EC7n th\xFA h\u1EC7 C\u1ECF, N\u01B0\u1EDBc
+        v\xE0 L\u1EEDa\nThu th\u1EADp c\xE1c huy ch\u01B0\u01A1ng v\xE0 \u0111\u1EBFn
+        th\xE1ch th\u1EE9 nh\xE0 v\xF4 \u0111\u1ECBch \u1EDF ChampionMeet.\nNgo\xE0i
+        ra, PokemonDEX m\xE0 ta giao cho ch\xE1u c\xF3 t\u1ED5ng c\u1ED9ng 151 lo\xE0i
+        Pokemon, n\u1EBFu ch\xE1u c\xF3 th\u1EC3 thu th\u1EADp \u0111\u01B0\u1EE3c
+        h\u1EBFt ch\xFAng gi\xFAp ta th\xEC ta r\u1EA5t c\u1EA3m k\xEDch."
+      speakerName: Prof Oke
+      portrait: {fileID: 21300000, guid: ef736dbd248678246ac8834baa64e63b, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: 
+      moveTargetId: 
+      moveSpeed: 2.5
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 'Choose:'
+      choiceOptions:
+      - optionLabel: Bulbasaur (grass)
+        givePokemon: 1
+        pokemonResourceId: bulbasaur
+        pokemonLevel: 5
+        submitQuestEvent: 1
+        eventType: 1
+        targetId: starter_received
+        amount: 1
+        setStoryFlag: 1
+        storyFlag: 2
+        storyFlagValue: 1
+        starterPokemonId: bulbasaur
+      - optionLabel: Charmander (fire)
+        givePokemon: 1
+        pokemonResourceId: charmander
+        pokemonLevel: 5
+        submitQuestEvent: 1
+        eventType: 1
+        targetId: starter_received
+        amount: 1
+        setStoryFlag: 1
+        storyFlag: 2
+        storyFlagValue: 1
+        starterPokemonId: charmander
+      - optionLabel: Squirtle (water)
+        givePokemon: 1
+        pokemonResourceId: squirtle
+        pokemonLevel: 5
+        submitQuestEvent: 1
+        eventType: 1
+        targetId: starter_received
+        amount: 1
+        setStoryFlag: 1
+        storyFlag: 2
+        storyFlagValue: 1
+        starterPokemonId: squirtle
+    - type: 4
+      dialogText: "Ngo\xE0i ra, n\u1EBFu c\xF3 th\u1EC3, h\xE3y thu th\u1EADp t\u1EA5t
+        c\u1EA3 pokemon trong pokemonDEX"
+      speakerName: Prof Oke
+      portrait: {fileID: 21300000, guid: 49c7c73bd56a8b74e9a9c8eaede2325f, type: 3}
+      questToAccept: {fileID: 11400000, guid: c48164b8db805f349bc67ded1e2fd9e9, type: 2}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 1
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: prof_oke
+      moveTargetId: profoke2
+      moveSpeed: 6
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 'Choose:'
+      choiceOptions:
+      - optionLabel: Bulbasaur (grass)
+        givePokemon: 1
+        pokemonResourceId: bulbasaur
+        pokemonLevel: 5
+        submitQuestEvent: 1
+        eventType: 1
+        targetId: starter_received
+        amount: 1
+        setStoryFlag: 1
+        storyFlag: 2
+        storyFlagValue: 1
+        starterPokemonId: bulbasaur
+      - optionLabel: Charmander (fire)
+        givePokemon: 1
+        pokemonResourceId: charmander
+        pokemonLevel: 5
+        submitQuestEvent: 1
+        eventType: 1
+        targetId: starter_received
+        amount: 1
+        setStoryFlag: 1
+        storyFlag: 2
+        storyFlagValue: 1
+        starterPokemonId: charmander
+      - optionLabel: Squirtle (water)
+        givePokemon: 1
+        pokemonResourceId: squirtle
+        pokemonLevel: 5
+        submitQuestEvent: 1
+        eventType: 1
+        targetId: starter_received
+        amount: 1
+        setStoryFlag: 1
+        storyFlag: 2
+        storyFlagValue: 1
+        starterPokemonId: squirtle
+    - type: 1
+      dialogText: "Ngo\xE0i ra, n\u1EBFu c\xF3 th\u1EC3, h\xE3y thu th\u1EADp t\u1EA5t
+        c\u1EA3 pokemon trong pokemonDEX"
+      speakerName: Prof Oke
+      portrait: {fileID: 21300000, guid: 49c7c73bd56a8b74e9a9c8eaede2325f, type: 3}
+      questToAccept: {fileID: 11400000, guid: c48164b8db805f349bc67ded1e2fd9e9, type: 2}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 1
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: 
+      moveTargetId: 
+      moveSpeed: 2.5
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 'Choose:'
+      choiceOptions:
+      - optionLabel: Bulbasaur (grass)
+        givePokemon: 1
+        pokemonResourceId: bulbasaur
+        pokemonLevel: 5
+        submitQuestEvent: 1
+        eventType: 1
+        targetId: starter_received
+        amount: 1
+        setStoryFlag: 1
+        storyFlag: 2
+        storyFlagValue: 1
+        starterPokemonId: bulbasaur
+      - optionLabel: Charmander (fire)
+        givePokemon: 1
+        pokemonResourceId: charmander
+        pokemonLevel: 5
+        submitQuestEvent: 1
+        eventType: 1
+        targetId: starter_received
+        amount: 1
+        setStoryFlag: 1
+        storyFlag: 2
+        storyFlagValue: 1
+        starterPokemonId: charmander
+      - optionLabel: Squirtle (water)
+        givePokemon: 1
+        pokemonResourceId: squirtle
+        pokemonLevel: 5
+        submitQuestEvent: 1
+        eventType: 1
+        targetId: starter_received
+        amount: 1
+        setStoryFlag: 1
+        storyFlag: 2
+        storyFlagValue: 1
+        starterPokemonId: squirtle
+  - stepId: "G\u1EB7p Green \u1EDF \u0111\u01B0\u1EDDng Road01"
+    description: "- G\u1EB7p Green \u1EDF Road01\n- Ti\u1EBFn h\xE0nh 1 tr\u1EADn
+      \u0111\u1EA5u\n- \u0110\u1EBFn GrassTown"
+    sceneName: Road01
+    triggerId: 
+    triggerOnSceneLoad: 1
+    requirePrologueDone: 0
+    requireStoryFlag: 1
+    requiredStoryFlag: 2
+    requiredStoryFlagValue: 1
+    oneShot: 1
+    actions:
+    - type: 0
+      dialogText: "\u0110\u1EE3i \u0111\xE3!"
+      speakerName: Green
+      portrait: {fileID: -6815444706308093326, guid: ecbe07c2ca068cd479f1f1613c816f60, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: 
+      moveTargetId: 
+      moveSpeed: 2.5
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 4
+      dialogText: "\u0110\u1EE3i \u0111\xE3"
+      speakerName: Green
+      portrait: {fileID: -6815444706308093326, guid: ecbe07c2ca068cd479f1f1613c816f60, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Green
+      moveTargetId: road01green1
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "Gi\xE1o s\u01B0 Oke n\xF3i ng\u01B0\u01A1i l\xE0 ng\u01B0\u1EDDi
+        hu\u1EA5n luy\u1EC7n th\xFA xu\u1EA5t s\u1EAFc nh\u1EA5t c\u1EE7a l\xE0ng
+        ch\xFAng ta.\nTa kh\xF4ng ch\u1EA5p nh\u1EADn \u0111i\u1EC1u n\xE0y\nNgay
+        t\u1EA1i \u0111\xE2y, h\xE3y quy\u1EBFt \u0111\u1EA5u \u0111\u1EC3 xem ai
+        m\u1EDBi l\xE0 ng\u01B0\u1EDDi gi\u1ECFi h\u01A1n"
+      speakerName: Green
+      portrait: {fileID: 21300000, guid: 28e6942faef0d364f95e402a6fac2553, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Green
+      moveTargetId: 1
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 12
+      dialogText: "Ch\xFAng ta s\u1EBD c\xF2n g\u1EB7p l\u1EA1i nhau"
+      speakerName: Green
+      portrait: {fileID: -6815444706308093326, guid: ecbe07c2ca068cd479f1f1613c816f60, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Green
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Green
+      moveTargetId: road01green2
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "Kh\xE1 l\u1EAFm, nh\u01B0ng m\u1ECDi chuy\u1EC7n ch\u01B0a k\u1EBFt
+        th\xFAc \u0111\xE2u.\nCh\xFAng ta s\u1EBD c\xF2n g\u1EB7p l\u1EA1i nhau."
+      speakerName: Green
+      portrait: {fileID: 21300000, guid: 28e6942faef0d364f95e402a6fac2553, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Green
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Green
+      moveTargetId: 1
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 4
+      dialogText: "Ch\xFAng ta s\u1EBD c\xF2n g\u1EB7p l\u1EA1i nhau"
+      speakerName: Green
+      portrait: {fileID: -6815444706308093326, guid: ecbe07c2ca068cd479f1f1613c816f60, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Green
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Green
+      moveTargetId: road01green2
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: ...
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 4f20a4517f2129c41bc814a27b3cc4ce, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Green
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Green
+      moveTargetId: road01green2
+      moveSpeed: 9
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 4
+      dialogText: "ch\xFAng ta ph\u1EA3i t\xECm c\xE1ch b\u1EAFt n\xF3 m\u1EDBi \u0111\u01B0\u1EE3c"
+      speakerName: Team_Rocket_F
+      portrait: {fileID: 0}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Green
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: musashi
+      moveTargetId: road01rocketf1
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "Nh\xECn th\u1EA5y kh\xF4ng, th\u1EB1ng nh\xF3c \u0111\u1EA5y c\xF3
+        tri\u1EC3n v\u1ECDng \u0111\u1EA5y ch\u1EE9"
+      speakerName: musashi
+      portrait: {fileID: 21300000, guid: 99cb326e8e07fa54abfb76fe0395befe, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Green
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket_F
+      moveTargetId: road01rocketf2
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 7
+      storyFlagValue: 1
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 4
+      dialogText: "ch\xFAng ta ph\u1EA3i t\xECm c\xE1ch b\u1EAFt n\xF3 m\u1EDBi \u0111\u01B0\u1EE3c"
+      speakerName: Team_Rocket_F
+      portrait: {fileID: 0}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Green
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Kochiro
+      moveTargetId: road01rocketf3
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "\u0110\xFAng v\u1EADy, ch\xFAng ta n\xEAn c\xE2n nh\u1EAFc \u0111\u1EC3
+        \xFD \u0111\u1EBFn n\xF3.\nT\u1EA5t c\u1EA3 v\xEC Team Rocket.\n\u0110i th\xF4i."
+      speakerName: kochiro
+      portrait: {fileID: 21300000, guid: eefaf48fe9a6ad14381d040fe89caed7, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Green
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket_F
+      moveTargetId: road01rocketf2
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 7
+      storyFlagValue: 1
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 4
+      dialogText: "ch\xFAng ta ph\u1EA3i t\xECm c\xE1ch b\u1EAFt n\xF3 m\u1EDBi \u0111\u01B0\u1EE3c"
+      speakerName: Team_Rocket_F
+      portrait: {fileID: 0}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Green
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: musashi
+      moveTargetId: road01rocketf2
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 7
+      storyFlagValue: 1
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 4
+      dialogText: "ch\xFAng ta ph\u1EA3i t\xECm c\xE1ch b\u1EAFt n\xF3 m\u1EDBi \u0111\u01B0\u1EE3c"
+      speakerName: Team_Rocket_F
+      portrait: {fileID: 0}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Green
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: kochiro
+      moveTargetId: road01rocketf2
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 7
+      storyFlagValue: 1
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 6
+      dialogText: "ch\xFAng ta ph\u1EA3i t\xECm c\xE1ch b\u1EAFt n\xF3 m\u1EDBi \u0111\u01B0\u1EE3c"
+      speakerName: Team_Rocket_F
+      portrait: {fileID: 0}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Green
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket_F
+      moveTargetId: road01rocketf2
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0.5
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 7
+      storyFlagValue: 1
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+  - stepId: "G\u1EB7p blue \u1EDF GrassTown"
+    description: "- \u0110\u1EBFn GrassTown\n- G\u1EB7p Blue"
+    sceneName: GrassTown
+    triggerId: grasstown
+    triggerOnSceneLoad: 1
+    requirePrologueDone: 0
+    requireStoryFlag: 1
+    requiredStoryFlag: 2
+    requiredStoryFlagValue: 1
+    oneShot: 1
+    actions:
+    - type: 4
+      dialogText: "T\u1ED1t l\u1EAFm Gym h\u1EC7 c\u1ECF t\u1EA7m lv 10, n\u1EBFu
+        ch\u01B0a \u0111\u1EE7 lv c\u1EADu n\xEAn luy\u1EC7n pokemon \u1EDF \u0111\u01B0\u1EDDng
+        ph\xEDa sau"
+      speakerName: blue
+      portrait: {fileID: 21300000, guid: e912aaa35bddf4142b43abbeab3b924f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: blue
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: blue
+      moveTargetId: grassblue1
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "Ch\xE0o Red! T\u1EDB nghe gi\xE1o s\u01B0 oke v\u1EC1 c\u1EADu
+        r\u1ED3i\nC\xF3 l\u1EBD ch\xFAng ta n\xEAn th\u1EED luy\u1EC7n t\u1EADp m\u1ED9t
+        ch\xFAt"
+      speakerName: blue
+      portrait: {fileID: 21300000, guid: 5b9355a2ea4d7784d82e186bded8534a, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: 
+      moveTargetId: 
+      moveSpeed: 0
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 12
+      dialogText: "Nh\u01B0ng tr\u01B0\u1EDBc \u0111\xF3, h\xE3y t\u1EADp luy\u1EC7n
+        m\u1ED9t ch\xFAt n\xE0o"
+      speakerName: blue
+      portrait: {fileID: 21300000, guid: e912aaa35bddf4142b43abbeab3b924f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: blue
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: 
+      moveTargetId: 
+      moveSpeed: 0
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "T\u1ED1t l\u1EAFm nh\u01B0ng GrassGym t\u1EA7m lv 10\nN\u1EBFu
+        lv pokemon c\u1EE7a c\u1EADu ch\u01B0a \u0111\u1EE7 m\u1EA1nh h\xE3y luy\u1EC7n
+        t\u1EADp \u1EDF Road01 tr\u01B0\u1EDBc\nNgo\xE0i ra, ph\xEDa d\u01B0\u1EDBi
+        l\xE0 WaterTown, \u0111i th\u1EB3ng s\u1EBD sang FireTown, \u0111i l\xEAn
+        tr\xEAn ch\xEDnh l\xE0 khu v\u1EF1c thi \u0111\u1EA5u Champion.\nT\u1EDB
+        s\u1EBD \u0111i luy\u1EC7n t\u1EADp th\xEAm \u0111\xE2y, bai bai"
+      speakerName: blue
+      portrait: {fileID: 21300000, guid: 5b9355a2ea4d7784d82e186bded8534a, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: blue
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: 
+      moveTargetId: 
+      moveSpeed: 0
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 4
+      dialogText: "T\u1ED1t l\u1EAFm Gym h\u1EC7 c\u1ECF t\u1EA7m lv 10, n\u1EBFu
+        ch\u01B0a \u0111\u1EE7 lv c\u1EADu n\xEAn luy\u1EC7n pokemon \u1EDF \u0111\u01B0\u1EDDng
+        ph\xEDa sau"
+      speakerName: blue
+      portrait: {fileID: 21300000, guid: e912aaa35bddf4142b43abbeab3b924f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: blue
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: blue
+      moveTargetId: grassblue2
+      moveSpeed: 6
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 6
+      dialogText: "T\u1ED1t l\u1EAFm Gym h\u1EC7 c\u1ECF t\u1EA7m lv 10, n\u1EBFu
+        ch\u01B0a \u0111\u1EE7 lv c\u1EADu n\xEAn luy\u1EC7n pokemon \u1EDF \u0111\u01B0\u1EDDng
+        ph\xEDa sau"
+      speakerName: blue
+      portrait: {fileID: 21300000, guid: e912aaa35bddf4142b43abbeab3b924f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: blue
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: blue
+      moveTargetId: grassblue2
+      moveSpeed: 6
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 8
+      storyFlagValue: 1
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+  - stepId: "\u0110\xE1nh b\u1EA1i GrassGym"
+    description: "- \u0110\u1EBFn GrassGym\n- \u0110\xE1nh b\u1EA1i GrassGym Master
+      (Recommend lv 10)\n"
+    sceneName: GrassTown
+    triggerId: GrassGym
+    triggerOnSceneLoad: 1
+    requirePrologueDone: 1
+    requireStoryFlag: 1
+    requiredStoryFlag: 4
+    requiredStoryFlagValue: 1
+    oneShot: 1
+    actions:
+    - type: 0
+      dialogText: "Ti\u1EBFp theo l\xE0 Gym h\u1EC7 N\u01B0\u1EDBc v\xE0 h\u1EC7
+        L\u1EEDa\nBLue n\xF3i g\xEC \u1EA5y nh\u1EC9\nH\u1EC7 n\u01B0\u1EDBc th\xEC
+        \u1EDF ph\xEDa nam GrassTown, h\u1EC7 L\u1EEDa ph\xEDa t\xE2y v\xE0 Champion
+        \u1EDF ph\xEDa b\u1EAFc ph\u1EA3i kh\xF4ng ta\nNghe n\xF3i \u0111\u01B0\u1EDDng
+        di \u0111\u1EBFn FireTown \u0111ang b\u1ECB ch\u1EB7n c\xF2n Champion Meet
+        th\xEC c\u1EA7n thu th\u1EADp \u0111\u1EE7 3 huy hi\u1EC7u\n...C\xF3 l\u1EBD
+        m\xECnh n\xEAn \u0111i WaterTown tr\u01B0\u1EDBc\n"
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 4f20a4517f2129c41bc814a27b3cc4ce, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: 
+      moveTargetId: 
+      moveSpeed: 0
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 3
+      storyFlagValue: 1
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+  - stepId: "\u0110\u1EBFn Road02 \u0111\u1EC3 xu\u1ED1ng WaterTown"
+    description: "- \u0110\u1EBFn Road02\n-G\u1EB7p TeamRocket (Recommend lv15)\n"
+    sceneName: Road02
+    triggerId: 
+    triggerOnSceneLoad: 1
+    requirePrologueDone: 0
+    requireStoryFlag: 1
+    requiredStoryFlag: 4
+    requiredStoryFlagValue: 1
+    oneShot: 1
+    actions:
+    - type: 0
+      dialogText: "Khoan \u0111\xE3"
+      speakerName: Team Rocket
+      portrait: {fileID: 21300000, guid: 7cf255b85a572db4990fe82d7747f40f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket_F
+      moveTargetId: road02rocket1
+      moveSpeed: 6
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 4
+      dialogText: 
+      speakerName: 
+      portrait: {fileID: 0}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Kochiro
+      moveTargetId: road02rocket1
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "Ai v\u1EADy"
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 4f20a4517f2129c41bc814a27b3cc4ce, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket_F
+      moveTargetId: road02rocket1
+      moveSpeed: 6
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "N\u1EBFu ng\u01B0\u01A1i \u0111\xE3 th\xE0nh t\xE2m mu\u1ED1n
+        bi\u1EBFt\nTh\xEC ta s\u1EB5n l\xF2ng tr\u1EA3 l\u1EDDi\n\u0110\u1EC3 \u0111\u1EC1
+        ph\xF2ng tr\xE1i \u0111\u1EA5t b\u1ECB ph\xE1 ho\u1EA1i\n\u0110\u1EC3 b\u1EA3o
+        v\u1EC7 n\u1EC1n h\xF2a b\xECnh th\u1EBF gi\u1EDBi\nCh\xFAng ta, b\u0103ng
+        h\u1ECFa ti\u1EC5n b\u1EA3o v\u1EC7 ng\xE2n h\xE0\nM\u1ED9t t\u01B0\u01A1ng
+        l\u1EA1i t\u01B0\u01A1i s\xE1ng \u0111ang ch\u1EDD \u0111\u1EE3i ch\xFAng
+        ta"
+      speakerName: Team Rocket
+      portrait: {fileID: 21300000, guid: 7cf255b85a572db4990fe82d7747f40f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket_F
+      moveTargetId: road02rocket1
+      moveSpeed: 6
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "L\xE0 th\u1EBF \u0111\xF3"
+      speakerName: meoth
+      portrait: {fileID: 21300000, guid: 4ba6d3cec0395b5439ce022bc51baf2d, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket_F
+      moveTargetId: road02rocket1
+      moveSpeed: 6
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: ...
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 4f20a4517f2129c41bc814a27b3cc4ce, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket_F
+      moveTargetId: road02rocket1
+      moveSpeed: 6
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "Kh\u1EE5 kh\u1EE5, t\xF3m l\u1EA1i l\xE0 c\xF3 g\xEC qu\xFD gi\xE1
+        mau giao n\u1ED9p \u0111\xE2y th\xEC ta c\xF3 th\u1EC3 tha m\u1EA1ng cho"
+      speakerName: Team Rocket
+      portrait: {fileID: 21300000, guid: 7cf255b85a572db4990fe82d7747f40f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket_F
+      moveTargetId: road02rocket1
+      moveSpeed: 6
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "\u1ED2 h\xF3a ra l\xE0 c\u01B0\u1EDDng \u0111\u1EA1o, ta c\u1EE9
+        t\u01B0\u1EDFng \u0111\u1ED3ng nghi\u1EC7p v\u1EDBi g\xE1nh xi\u1EBFc T1
+        ch\u1EE9\nH\u1EEB, ti\u1EC1n kh\xF4ng c\xF3, s\u1EAFc th\xEC c\xF3"
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 4f20a4517f2129c41bc814a27b3cc4ce, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket_F
+      moveTargetId: road02rocket1
+      moveSpeed: 6
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 12
+      dialogText: "c\xF2n pikachu, b\u01B0\u1EDBc qua x\xE1c ta r\u1ED3i n\xF3i"
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 9df41c745238838479613fe64a5794ea, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Team Rocket
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket_F
+      moveTargetId: road02rocket1
+      moveSpeed: 6
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "T\u1ED5ng b\u1ED9 c\xF3 l\u1EC7nh tri\u1EC7u t\u1EADp!\nL\u1EA7n
+        n\xE0y tha cho ng\u01B0\u01A1i \u0111\u1EA5y"
+      speakerName: Team Rocket
+      portrait: {fileID: 21300000, guid: 7cf255b85a572db4990fe82d7747f40f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Team_Rocket_F_Road02
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket_F
+      moveTargetId: road02rocket1
+      moveSpeed: 6
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 4
+      dialogText: "L\u1EA7n n\xE0y tha cho ng\u01B0\u01A1i \u0111\u1EA5y"
+      speakerName: Team_Rocket_F
+      portrait: {fileID: 0}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Team_Rocket_F_Road02
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: kochiro
+      moveTargetId: road02rocket2
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "Ch\u1EA1y th\xEC ch\u1EA1y, l\xFD do c\xE1i g\xEC ch\u1EE9"
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 4f20a4517f2129c41bc814a27b3cc4ce, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Team_Rocket_F_Road02
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket_F
+      moveTargetId: road02rocket2
+      moveSpeed: 6
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 6
+      dialogText: Team Rocket...
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 9df41c745238838479613fe64a5794ea, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Team_Rocket_F_Road02
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket_F
+      moveTargetId: road02rocket2
+      moveSpeed: 6
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 9
+      storyFlagValue: 1
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+  - stepId: "V\xE0o WaterTown"
+    description: "- \u0110\u1EBFn WaterTown\n-G\u1EB7p Green (Recommend lv 18)\n"
+    sceneName: WaterTown
+    triggerId: 
+    triggerOnSceneLoad: 1
+    requirePrologueDone: 1
+    requireStoryFlag: 1
+    requiredStoryFlag: 4
+    requiredStoryFlagValue: 1
+    oneShot: 1
+    actions:
+    - type: 4
+      dialogText: 
+      speakerName: 
+      portrait: {fileID: 0}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Green
+      moveTargetId: WaterTownGreen1
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "\u1ED2, xem ai \u0111\xE2y, ch\u1EB3ng ph\u1EA3i l\xE0 Red sao\nKh\xF4ng
+        ng\u1EDD ng\u01B0\u01A1i c\u0169ng qua \u0111\u01B0\u1EE3c Grass Gym\nT\u1EDBi,
+        ch\xFAng ta luy\u1EC7n t\u1EADp tr\u01B0\u1EDBc WaterGym n\xE0o"
+      speakerName: Green
+      portrait: {fileID: 21300000, guid: 28e6942faef0d364f95e402a6fac2553, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Green
+      moveTargetId: WaterTownGreen1
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 12
+      dialogText: "T\u1EDBi, ch\xFAng ta luy\u1EC7n tay c\xE1i n\xE0o"
+      speakerName: Green
+      portrait: {fileID: -6815444706308093326, guid: ecbe07c2ca068cd479f1f1613c816f60, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Green
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Green
+      moveTargetId: WaterTownGreen1
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "Nghe n\xF3i ng\u01B0\u01A1i v\u1EEBa b\u1ECB Team Rocket b\u1EAFt
+        n\u1EA1t\nN\u1EBFu c\u1EA7n gi\xFAp \u0111\u1EE1 c\xF3 th\u1EC3 g\u1ECDi
+        ta..."
+      speakerName: Green
+      portrait: {fileID: 21300000, guid: 28e6942faef0d364f95e402a6fac2553, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Green
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Green
+      moveTargetId: WaterTownGreen1
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 4
+      dialogText: "C\xF3 l\u1EBD ch\xFAng ta s\u1EBD g\u1EB7p l\u1EA1i s\u1EDBm \u0111\u1EA5y"
+      speakerName: Green
+      portrait: {fileID: -6815444706308093326, guid: ecbe07c2ca068cd479f1f1613c816f60, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Green
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Green
+      moveTargetId: WaterTownGreen2
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+  - stepId: "\u0110\u1EBFn Mountain"
+    description: "- \u0110\u1EBFn Mountain\n- G\u1EB7p l\u1EA1i Team Rocket (Recommend
+      lv 21)"
+    sceneName: Mountain
+    triggerId: 
+    triggerOnSceneLoad: 1
+    requirePrologueDone: 1
+    requireStoryFlag: 1
+    requiredStoryFlag: 5
+    requiredStoryFlagValue: 1
+    oneShot: 1
+    actions:
+    - type: 0
+      dialogText: "\u0110\u1EE9ng l\u1EA1i"
+      speakerName: Team Rocket
+      portrait: {fileID: 0}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Blue
+      moveTargetId: MountainBlue1
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 4
+      dialogText: 
+      speakerName: 
+      portrait: {fileID: 0}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: kochiro
+      moveTargetId: MountainBlue1
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "T\xEAn nh\xF3c nh\xE0 ng\u01B0\u01A1i c\u0169ng d\xE1m l\u1EA3ng
+        v\u1EA3ng quanh \u0111\xE2y\nC\xF3 tin ta \u0111\xE1nh cho m\u1EB9 ng\u01B0\u01A1i
+        c\u0169ng kh\xF4ng nh\u1EADn ra kh\xF4ng"
+      speakerName: Team Rocket
+      portrait: {fileID: 21300000, guid: 7cf255b85a572db4990fe82d7747f40f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Blue
+      moveTargetId: MountainBlue1
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 12
+      dialogText: "C\xF3 l\u1EBD ch\xFAng ta n\xEAn luy\u1EC7n t\u1EADp c\xF9ng nhau
+        tr\u01B0\u1EDBc khi \u0111i ti\u1EBFp"
+      speakerName: Blue
+      portrait: {fileID: 21300000, guid: e912aaa35bddf4142b43abbeab3b924f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Team Rocket
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Blue
+      moveTargetId: MountainBlue1
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "Ta \u0111\u1EE3i ng\u01B0\u01A1i trong hang"
+      speakerName: Team Rocket
+      portrait: {fileID: 21300000, guid: 7cf255b85a572db4990fe82d7747f40f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Blue
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Blue
+      moveTargetId: MountainBlue1
+      moveSpeed: 6
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 4
+      dialogText: '[...]'
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 9df41c745238838479613fe64a5794ea, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Blue
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: kochiro
+      moveTargetId: MountainBlue2
+      moveSpeed: 9
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+  - stepId: "V\xE0o Cave"
+    description: "- V\xE0o Cave\n- L\u1EA5y l\u1EA1i badge b\u1ECB team rocket \u0111\xE1nh
+      c\u1EAFp (recommend lv 25)"
+    sceneName: Cave
+    triggerId: 
+    triggerOnSceneLoad: 1
+    requirePrologueDone: 1
+    requireStoryFlag: 1
+    requiredStoryFlag: 5
+    requiredStoryFlagValue: 1
+    oneShot: 1
+    actions:
+    - type: 0
+      dialogText: "V\u1EADy ra \u0111\xE2y l\xE0 n\u01A1i fan GAM \u1EDF khi Levi
+        r\u1EDDi \u0111i. Kh\xF4ng ph\u1EA3i ch\u1EE9, h\xECnh nh\u01B0 m\xECnh c\xF2n
+        th\u1EA5y fan GENG n\u1EEFa k\xECa."
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 4f20a4517f2129c41bc814a27b3cc4ce, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: 
+      moveTargetId: 
+      moveSpeed: 0
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 4
+      dialogText: "\u0110\xE2y l\xE0 hang \u1ED5 team Rocket \u1EDF \u0111\xE2y"
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 9df41c745238838479613fe64a5794ea, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: kochiro1
+      moveTargetId: CaveRocket1
+      moveSpeed: 9
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "Woah, kh\xF4ng ng\u1EDD ng\u01B0\u01A1i d\xE1m \u0111\u1EBFn th\u1EADt.\nN\u1EBFu
+        ng\u01B0\u01A1i \u0111\u1EBFn r\u1ED3i th\xEC \u0111\u1EEBng h\xF2ng r\u1EDDi
+        \u0111i\nTr\u01B0\u1EDBc khi ra tay, ta c\xF3 \u0111i\u1EC1u mu\u1ED1n n\xF3i...\nUFO
+        k\xECa"
+      speakerName: Team Rocket
+      portrait: {fileID: 21300000, guid: 7cf255b85a572db4990fe82d7747f40f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket
+      moveTargetId: CaveRocket1
+      moveSpeed: 3
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: '?'
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 4f20a4517f2129c41bc814a27b3cc4ce, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket
+      moveTargetId: CaveRocket1
+      moveSpeed: 3
+      faceTargetOnArrive: 1
+      npcFadeDuration: 1
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 11400000, guid: c37563804f923f043b77c99327d823cf, type: 2}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "Tuy\u1EC7t k\u1EF9 : Tr\u1ED9m \u0111\xE0o d\u01B0\u1EDBi tr\u0103ng
+        - Steallllll\n? C\xE1i g\xEC \u0111\xE2y,  \u1ED3 WaterBadge\nChu\u1ED3n
+        l\u1EB9."
+      speakerName: Team Rocket
+      portrait: {fileID: 21300000, guid: 7cf255b85a572db4990fe82d7747f40f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket
+      moveTargetId: CaveRocket1
+      moveSpeed: 3
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 11400000, guid: c37563804f923f043b77c99327d823cf, type: 2}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 15
+      dialogText: "V\u1EADy sao, nh\u01B0ng tr\u01B0\u1EDBc \u0111\xF3... Nh\xECn
+        k\xECa! UFO"
+      speakerName: Team_Rocket
+      portrait: {fileID: 0}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket
+      moveTargetId: CaveRocket1
+      moveSpeed: 3
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 11400000, guid: c37563804f923f043b77c99327d823cf, type: 2}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 4
+      dialogText: "Ha ha, ta xin Water Badge n\xE0y c\u1EE7a ng\u01B0\u01A1i nh\xE9"
+      speakerName: Team_Rocket
+      portrait: {fileID: 0}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: kochiro1
+      moveTargetId: CaveRocket2
+      moveSpeed: 9
+      faceTargetOnArrive: 1
+      npcFadeDuration: 1
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 11400000, guid: c37563804f923f043b77c99327d823cf, type: 2}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "Ng\u1ECDa t\xE0o, ch\u1EA1y nhanh v\u1EADy sao\nN\u1EBFu ta h\xF4
+        \"\u0111\u1EE9ng l\u1EA1i\" th\xEC h\u1EAFn c\xF3 d\u1EEBng kh\xF4ng nh\u1EC9\nTh\xF4i
+        kh\xF4ng ngh\u0129 n\u1EEFa, t\xECm ra h\u1EAFn tr\u01B0\u1EDBc r\u1ED3i
+        n\xF3i"
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 4f20a4517f2129c41bc814a27b3cc4ce, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket
+      moveTargetId: CaveRocket1
+      moveSpeed: 3
+      faceTargetOnArrive: 1
+      npcFadeDuration: 1
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 3
+      storyFlagValue: 1
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 11400000, guid: c37563804f923f043b77c99327d823cf, type: 2}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+    - type: 6
+      dialogText: "Tr\u1ED1n r\u1ED3i? kh\xF4ng th\u1EC3 n\xE0o, ta ph\u1EA3i t\xECm
+        ra h\u1EAFn"
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 9df41c745238838479613fe64a5794ea, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Team_Rocket
+      moveTargetId: CaveRocket1
+      moveSpeed: 3
+      faceTargetOnArrive: 1
+      npcFadeDuration: 1
+      disableNpcAfterFade: 1
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 3
+      storyFlagValue: 1
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 11400000, guid: c37563804f923f043b77c99327d823cf, type: 2}
+      itemCount: 1
+      choicePrompt: 
+      choiceOptions: []
+  - stepId: "\u0110\u1EBFn Fire Town"
+    description: "- \u0110\u1EBFn FireTown\n- \u0110\xE1nh b\u1EA1i Gym h\u1EC7 l\u1EEDa
+      (Recommend lv 33)\n"
+    sceneName: FireTown
+    triggerId: 
+    triggerOnSceneLoad: 1
+    requirePrologueDone: 1
+    requireStoryFlag: 1
+    requiredStoryFlag: 10
+    requiredStoryFlagValue: 1
+    oneShot: 1
+    actions:
+    - type: 0
+      dialogText: "V\u1EADy ra \u0111\xE2y l\xE0 FireTown, \u1ED3 c\xF3 SVD B\xE1ch
+        khoa k\xECa\n"
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 4f20a4517f2129c41bc814a27b3cc4ce, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Green
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Green
+      moveTargetId: FireTownGreen1
+      moveSpeed: 3
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 0
+      choicePrompt: 
+      choiceOptions: []
+  - stepId: "\u0110\u1EBFn Road03"
+    description: "- \u0110\u1EBFn Road03\n- G\u1EB7p l\u1EA1i Blue (Recommend lv
+      34)"
+    sceneName: Road03
+    triggerId: 
+    triggerOnSceneLoad: 1
+    requirePrologueDone: 1
+    requireStoryFlag: 1
+    requiredStoryFlag: 6
+    requiredStoryFlagValue: 1
+    oneShot: 1
+    actions:
+    - type: 4
+      dialogText: 
+      speakerName: 
+      portrait: {fileID: 0}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Blue
+      moveTargetId: Road03Blue1
+      moveSpeed: 3
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 0
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "C\xF3 v\u1EBB ch\xFAng ta l\u1EA1i g\u1EB7p nhau r\u1ED3i"
+      speakerName: Blue
+      portrait: {fileID: 21300000, guid: e912aaa35bddf4142b43abbeab3b924f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Blue
+      moveTargetId: Raod03Blue1
+      moveSpeed: 3
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 0
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "C\u1EADu c\u0169ng l\u1EA5y \u0111\u1EE7 3 huy hi\u1EC7u r\u1ED3i
+        \xE0"
+      speakerName: Blue
+      portrait: {fileID: 21300000, guid: e912aaa35bddf4142b43abbeab3b924f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Blue
+      moveTargetId: Raod03Blue1
+      moveSpeed: 3
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 0
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "C\xF9ng Luy\u1EC7n t\u1EADp l\u1EA7n cu\u1ED1i tr\u01B0\u1EDBc
+        khi \u0111\u1EBFn v\u1EDBi Champion Meet n\xE0o"
+      speakerName: Blue
+      portrait: {fileID: 21300000, guid: e912aaa35bddf4142b43abbeab3b924f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Blue
+      moveTargetId: Raod03Blue1
+      moveSpeed: 3
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 0
+      choicePrompt: 
+      choiceOptions: []
+    - type: 12
+      dialogText: "C\xF9ng Luy\u1EC7n t\u1EADp l\u1EA7n cu\u1ED1i tr\u01B0\u1EDBc
+        khi \u0111\u1EBFn v\u1EDBi Champion Meet n\xE0o"
+      speakerName: Blue
+      portrait: {fileID: 21300000, guid: e912aaa35bddf4142b43abbeab3b924f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Blue
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Blue
+      moveTargetId: Raod03Blue1
+      moveSpeed: 3
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 0
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "\u0110i qua c\xE2y c\u1EA7u n\xE0y s\u1EBD quay l\u1EA1i GrassTown"
+      speakerName: Blue
+      portrait: {fileID: 21300000, guid: e912aaa35bddf4142b43abbeab3b924f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Blue
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Blue
+      moveTargetId: Raod03Blue1
+      moveSpeed: 3
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 0
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "Ngay ph\xEDa b\u1EAFc c\u1EE7a GrassTown l\xE0 Road04 \u0111\u1EBFn
+        v\u1EDBi Champion Meet, n\u01A1i nh\u1EEFng ng\u01B0\u1EDDi gi\u1ECFi nh\u1EA5t
+        g\u1EB7p nhau"
+      speakerName: Blue
+      portrait: {fileID: 21300000, guid: e912aaa35bddf4142b43abbeab3b924f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Blue
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Blue
+      moveTargetId: Raod03Blue1
+      moveSpeed: 3
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 0
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "C\u1EA7u b\u1ECB Snorlax ch\u1EAFn r\u1ED3i nh\u01B0ng ch\u1EC9
+        c\u1EA7n \u0111\xE1nh b\u1EA1i n\xF3 l\xE0 s\u1EBD qua \u0111\u01B0\u1EE3c
+        th\xF4i"
+      speakerName: Blue
+      portrait: {fileID: 21300000, guid: e912aaa35bddf4142b43abbeab3b924f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Blue
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Blue
+      moveTargetId: Raod03Blue1
+      moveSpeed: 3
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 0
+      choicePrompt: 
+      choiceOptions: []
+    - type: 0
+      dialogText: "T\u1EA1m bi\u1EC7t, t\u1EDB s\u1EBD quay l\u1EA1i luy\u1EC7n t\u1EADm
+        th\xEAm ch\xFAt n\u1EEFa"
+      speakerName: Blue
+      portrait: {fileID: 21300000, guid: e912aaa35bddf4142b43abbeab3b924f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Blue
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Blue
+      moveTargetId: Raod03Blue1
+      moveSpeed: 3
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 0
+      choicePrompt: 
+      choiceOptions: []
+    - type: 4
+      dialogText: "T\u1EA1m bi\u1EC7t, t\u1EDB s\u1EBD quay l\u1EA1i luy\u1EC7n t\u1EADm
+        th\xEAm ch\xFAt n\u1EEFa"
+      speakerName: Blue
+      portrait: {fileID: 21300000, guid: e912aaa35bddf4142b43abbeab3b924f, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 1
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: Blue
+      waitForBattleEnd: 1
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: Blue
+      moveTargetId: Road03Blue2
+      moveSpeed: 3
+      faceTargetOnArrive: 1
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 0
+      choicePrompt: 
+      choiceOptions: []
+  - stepId: "\u0110\u1EBFn ChampionMeet"
+    description: "- \u0110\u1EBFn Champion Meet\n- V\xE0o CM_studio"
+    sceneName: ChampionMeet
+    triggerId: 
+    triggerOnSceneLoad: 1
+    requirePrologueDone: 1
+    requireStoryFlag: 1
+    requiredStoryFlag: 6
+    requiredStoryFlagValue: 1
+    oneShot: 1
+    actions:
+    - type: 0
+      dialogText: "\u0110\xE2y l\xE0 n\u01A1i m\xECnh s\u1EBD bi\u1EBFn gi\u1EA5c
+        m\u01A1 th\xE0nh s\u1EF1 th\u1EADt"
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 4f20a4517f2129c41bc814a27b3cc4ce, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: 
+      moveTargetId: 
+      moveSpeed: 0
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 0
+      choicePrompt: 
+      choiceOptions: []
+  - stepId: "Tr\u1EDF th\xE0nh nh\xE0 v\xF4 \u0111\u1ECBch"
+    description: "- \u0110\xE1nh b\u1EA1i Blue\n- \u0110\xE1nh b\u1EA1i Green\n-
+      \u0110\xE1nh b\u1EA1i Satoshi\n(Recommend lv 40)"
+    sceneName: CM_Studio
+    triggerId: 
+    triggerOnSceneLoad: 1
+    requirePrologueDone: 0
+    requireStoryFlag: 1
+    requiredStoryFlag: 6
+    requiredStoryFlagValue: 1
+    oneShot: 1
+    actions:
+    - type: 0
+      dialogText: "V\u1EADy ra \u0111\xE2y l\xE0 n\u01A1i thi \u0111\u1EA5u Champion\n\u0110\xE3
+        b\u01B0\u1EDBc \u0111\u1EBFn \u0111\xE2y r\u1ED3i, kh\xF4ng bi\u1EBFt \u0111\u1ED1i
+        th\u1EE7 c\u1EE7a m\xECnh l\xE0 ai\nM\xE0 th\xF4i k\u1EC7, m\xECnh l\xE0
+        nh\xE2n v\u1EADt ch\xEDnh c\u01A1 m\xE0, sao m\xE0 thua \u0111\u01B0\u1EE3c"
+      speakerName: Red
+      portrait: {fileID: 21300000, guid: 4f20a4517f2129c41bc814a27b3cc4ce, type: 3}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: 
+      moveTargetId: 
+      moveSpeed: 0
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 0
+      choicePrompt: 
+      choiceOptions: []
+  - stepId: Ending
+    description: "- Ch\xFAc m\u1EEBng b\u1EA1n \u0111\xE3 ho\xE0n th\xE0nh tr\xF2
+      ch\u01A1i\n- H\xE3y t\u1EF1 do \u0111i thu th\u1EADp pokemon Dex hay l\xE0m
+      b\u1EA5t c\u1EE9 \u0111i\u1EC1u g\xEC t\xF9y b\u1EA1n"
+    sceneName: CM_Studio
+    triggerId: 
+    triggerOnSceneLoad: 0
+    requirePrologueDone: 0
+    requireStoryFlag: 1
+    requiredStoryFlag: 11
+    requiredStoryFlagValue: 1
+    oneShot: 0
+    actions:
+    - type: 0
+      dialogText: "Ch\xFAc m\u1EEBng b\u1EA1n \u0111\xE3 ho\xE0n th\xE0nh tr\xF2
+        ch\u01A1i\nH\xE3y t\u1EF1 do \u0111i thu th\u1EADp pokemon Dex hay l\xE0m
+        b\u1EA5t c\u1EE9 \u0111i\u1EC1u g\xEC t\xF9y b\u1EA1n"
+      speakerName: 
+      portrait: {fileID: 0}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: 
+      moveTargetId: 
+      moveSpeed: 0
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 0}
+      itemCount: 0
+      choicePrompt: 
+      choiceOptions: []
+    - type: 14
+      dialogText: "Ch\xFAc m\u1EEBng b\u1EA1n \u0111\xE3 ho\xE0n th\xE0nh tr\xF2
+        ch\u01A1i\nH\xE3y t\u1EF1 do \u0111i thu th\u1EADp pokemon Dex hay l\xE0m
+        b\u1EA5t c\u1EE9 \u0111i\u1EC1u g\xEC t\xF9y b\u1EA1n"
+      speakerName: 
+      portrait: {fileID: 0}
+      questToAccept: {fileID: 0}
+      useCurrentMainStoryQuest: 0
+      acceptOnceOnly: 0
+      submitQuestEvent: 0
+      eventType: 0
+      targetId: 
+      amount: 0
+      battleType: 0
+      wildPokemonResourceId: 
+      wildPokemonLevel: 0
+      trainerNpcId: 
+      waitForBattleEnd: 0
+      continueOnlyIfWon: 0
+      trainerTeam: []
+      waitSeconds: 0
+      freezePlayerInput: 0
+      npcId: 
+      moveTargetId: 
+      moveSpeed: 0
+      faceTargetOnArrive: 0
+      npcFadeDuration: 0
+      disableNpcAfterFade: 0
+      animator: {fileID: 0}
+      animationTrigger: 
+      storyFlag: 0
+      storyFlagValue: 0
+      starterPokemonId: 
+      pokemonResourceId: 
+      pokemonLevel: 0
+      item: {fileID: 11400000, guid: f7e3dc7edc144984aa1c790646b97e0a, type: 2}
+      itemCount: 150
+      choicePrompt: 
+      choiceOptions: []

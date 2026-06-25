@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: chansey
   m_EditorClassIdentifier: 
-  pokemonName: Chansey
   num: 113
+  pokemonName: Chansey
   description: 
-  frontSprite: {fileID: 21300000, guid: 32d896950cc775d42b261640025717a6, type: 3}
-  backSprite: {fileID: 21300000, guid: 98d364d78af99dc4f8e25591ea7e2f76, type: 3}
+  frontSprite: {fileID: 21300000, guid: 9d8390d92a8443043a1656c5ad64d200, type: 3}
+  backSprite: {fileID: 21300000, guid: 2da58f0423cde364b8396a2372889b40, type: 3}
   type1: 1
   type2: 0
   MaxHp: 250
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations:
+  - Road04
   learnableMoves:
   - move: {fileID: 11400000, guid: 6df84621ba287c64da68d4239af6d4c5, type: 2}
     level: 1

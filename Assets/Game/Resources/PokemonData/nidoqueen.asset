@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: nidoqueen
   m_EditorClassIdentifier: 
-  pokemonName: Nidoqueen
   num: 31
+  pokemonName: Nidoqueen
   description: 
-  frontSprite: {fileID: 21300000, guid: 3db1c07020e87e54e8d6d42a5fb10a9f, type: 3}
-  backSprite: {fileID: 21300000, guid: 4bc9832c8fccd0042a12751a522ef317, type: 3}
+  frontSprite: {fileID: 21300000, guid: 9e300528ec0f1954a8157d1c111882fd, type: 3}
+  backSprite: {fileID: 21300000, guid: be898598b02b9624fbea6f31cea4c531, type: 3}
   type1: 8
   type2: 9
   MaxHp: 90
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: cd5323bededd4a54d960f5a88d2a9261, type: 2}
     level: 0

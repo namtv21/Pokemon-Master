@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: spearow
   m_EditorClassIdentifier: 
-  pokemonName: Spearow
   num: 21
+  pokemonName: Spearow
   description: 
-  frontSprite: {fileID: 21300000, guid: 8a6cbb789420f0e40b71f60efab987ad, type: 3}
-  backSprite: {fileID: 21300000, guid: ff9a181cd3ccfb649af0c1154799e0da, type: 3}
+  frontSprite: {fileID: 21300000, guid: f4b52cae0b552a7409e5f1fb125b522a, type: 3}
+  backSprite: {fileID: 21300000, guid: d988ed8300780224887930a7c2e7b8d4, type: 3}
   type1: 1
   type2: 10
   MaxHp: 40
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 20
   evolvesTo: {fileID: 11400000, guid: 5c90c43429a2d314493f72ad0421e5c6, type: 2}
+  encounterLocations:
+  - Road01
   learnableMoves:
   - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
     level: 1

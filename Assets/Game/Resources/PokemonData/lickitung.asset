@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: lickitung
   m_EditorClassIdentifier: 
-  pokemonName: Lickitung
   num: 108
+  pokemonName: Lickitung
   description: 
-  frontSprite: {fileID: 21300000, guid: 1347034e584ed854fb6181e5512f3c85, type: 3}
-  backSprite: {fileID: 21300000, guid: 96deefccc94e98c40a5dd7938ea58847, type: 3}
+  frontSprite: {fileID: 21300000, guid: 5f87fd0b73afdaf4eb0b8d3fb7f2c9f5, type: 3}
+  backSprite: {fileID: 21300000, guid: 8c951a20835ad624dbbc326966894221, type: 3}
   type1: 1
   type2: 0
   MaxHp: 90
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations:
+  - Road03
   learnableMoves:
   - move: {fileID: 11400000, guid: c063422a03426a844aefe5d9930f851e, type: 2}
     level: 1

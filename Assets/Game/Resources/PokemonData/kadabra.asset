@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 64
   pokemonName: Kadabra
   description: 
-  frontSprite: {fileID: 21300000, guid: f61930f398f6a2e4b8de03a3d1760db4, type: 3}
-  backSprite: {fileID: 21300000, guid: 224d9eeb13f3ce843b0bb24e2b6f89dc, type: 3}
+  frontSprite: {fileID: 21300000, guid: cbfd91c2f44d2824481ca4c69991ae23, type: 3}
+  backSprite: {fileID: 21300000, guid: 5ff66cb5c8ecca643814a2d315631e81, type: 3}
   type1: 11
   type2: 0
   MaxHp: 40
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 36
   evolvesTo: {fileID: 11400000, guid: 7b080246b8bdd4b47b028215ce91c792, type: 2}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 224bd97601c6c9047b1d6e820f96aec3, type: 2}
     level: 0

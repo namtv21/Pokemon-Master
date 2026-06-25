@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: rattata
   m_EditorClassIdentifier: 
-  pokemonName: Rattata
   num: 19
+  pokemonName: Rattata
   description: 
-  frontSprite: {fileID: 21300000, guid: 90ab1011baa36da4c8715ad0e4a07044, type: 3}
-  backSprite: {fileID: 21300000, guid: 9c203b99161c4af4c934d3402b327986, type: 3}
+  frontSprite: {fileID: 21300000, guid: 3d2b6648e1f303f4d91a74462b6bb631, type: 3}
+  backSprite: {fileID: 21300000, guid: ea505161d7f7be64091b3a3d92732c98, type: 3}
   type1: 1
   type2: 0
   MaxHp: 30
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 20
   evolvesTo: {fileID: 11400000, guid: 0baedb4fcb363ee4c93c771513792780, type: 2}
+  encounterLocations:
+  - Road01
   learnableMoves:
   - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
     level: 1

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: electabuzz
   m_EditorClassIdentifier: 
-  pokemonName: Electabuzz
   num: 125
+  pokemonName: Electabuzz
   description: 
-  frontSprite: {fileID: 21300000, guid: a0dffbbcc9348474b8a8a964a7a5ac95, type: 3}
-  backSprite: {fileID: 21300000, guid: 6b46e22ebad843d4ea3facf82a9bb818, type: 3}
+  frontSprite: {fileID: 21300000, guid: 6af3184303a3ded479a8325010e6244b, type: 3}
+  backSprite: {fileID: 21300000, guid: 991b148c926594246883221cc4e3fb70, type: 3}
   type1: 4
   type2: 0
   MaxHp: 65
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations:
+  - Mountain
   learnableMoves:
   - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
     level: 1

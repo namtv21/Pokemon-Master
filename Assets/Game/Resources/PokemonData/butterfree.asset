@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: butterfree
   m_EditorClassIdentifier: 
-  pokemonName: Butterfree
   num: 12
+  pokemonName: Butterfree
   description: 
-  frontSprite: {fileID: 21300000, guid: 70c6213a80ab85f4bb885067bf41be89, type: 3}
-  backSprite: {fileID: 21300000, guid: d09c7541f96bbc64c98ea22d3d1e2f3e, type: 3}
+  frontSprite: {fileID: 21300000, guid: 0489a4ed405662b4597c6f066d3e2bba, type: 3}
+  backSprite: {fileID: 21300000, guid: 383deda1a23c2614eb1c49c1466a407a, type: 3}
   type1: 12
   type2: 10
   MaxHp: 60
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 06b4528290dba8146b4346412f05569f, type: 2}
     level: 0

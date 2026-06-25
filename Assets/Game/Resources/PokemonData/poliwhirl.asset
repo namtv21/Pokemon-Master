@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 61
   pokemonName: Poliwhirl
   description: 
-  frontSprite: {fileID: 21300000, guid: 7eb8f6256e0bd244bb162ab1706bd65b, type: 3}
-  backSprite: {fileID: 21300000, guid: 94b701906abdd374e80b221794fc6bfd, type: 3}
+  frontSprite: {fileID: 21300000, guid: 08482092382822e4f83d7b7ca2505f71, type: 3}
+  backSprite: {fileID: 21300000, guid: 01643774cb132e14bb8bb765191ec8fa, type: 3}
   type1: 3
   type2: 0
   MaxHp: 65
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 40
   evolvesTo: {fileID: 11400000, guid: afab3218118d53840a79f1c4e474a9b8, type: 2}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 959820f8ddaa2074abe27deaf66388c1, type: 2}
     level: 1

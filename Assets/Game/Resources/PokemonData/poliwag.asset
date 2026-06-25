@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: poliwag
   m_EditorClassIdentifier: 
-  pokemonName: Poliwag
   num: 60
+  pokemonName: Poliwag
   description: 
-  frontSprite: {fileID: 21300000, guid: 1a89fd7254532e4408a0c47cf30893a3, type: 3}
-  backSprite: {fileID: 21300000, guid: 59df8082963ed4849935a6319e4d113f, type: 3}
+  frontSprite: {fileID: 21300000, guid: 64f579331b29f6a46915788698212b79, type: 3}
+  backSprite: {fileID: 21300000, guid: 6d0669c36f65f484585ac3fe03bb44fb, type: 3}
   type1: 3
   type2: 0
   MaxHp: 40
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 25
   evolvesTo: {fileID: 11400000, guid: 6c724ba34100af644a9dd406c621d167, type: 2}
+  encounterLocations:
+  - Road02
   learnableMoves:
   - move: {fileID: 11400000, guid: 959820f8ddaa2074abe27deaf66388c1, type: 2}
     level: 1

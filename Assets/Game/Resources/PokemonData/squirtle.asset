@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: squirtle
   m_EditorClassIdentifier: 
-  pokemonName: Squirtle
   num: 7
+  pokemonName: Squirtle
   description: 
-  frontSprite: {fileID: 21300000, guid: 6a21684fed5237b4a92ba4b7224def2b, type: 3}
-  backSprite: {fileID: 21300000, guid: 1326da2e9750a55449aee7b70a553213, type: 3}
+  frontSprite: {fileID: 21300000, guid: 80e3c90ffdb7df74aa1fac25e3115d7d, type: 3}
+  backSprite: {fileID: 21300000, guid: 6e740160272abc2498e23395bee78bd6, type: 3}
   type1: 3
   type2: 0
   MaxHp: 44
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 16
   evolvesTo: {fileID: 11400000, guid: 3e3e90cc346b0da4196d127fd0dd086d, type: 2}
+  encounterLocations:
+  - Road02
   learnableMoves:
   - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
     level: 1

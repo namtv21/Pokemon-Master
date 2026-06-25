@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 25
   pokemonName: Pikachu
   description: 
-  frontSprite: {fileID: 21300000, guid: b1a4cb86f2909ea4286e09b342973cda, type: 3}
-  backSprite: {fileID: 21300000, guid: 2e263f45db713f64e920ed103dfd7086, type: 3}
+  frontSprite: {fileID: 21300000, guid: 96e9757ab6a577a46bf55740a066b698, type: 3}
+  backSprite: {fileID: 21300000, guid: c2442a5437372424ea4cd757b202c4ef, type: 3}
   type1: 4
   type2: 0
   MaxHp: 35
@@ -28,6 +28,7 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 30
   evolvesTo: {fileID: 11400000, guid: 48cc3869d8515b949b9d0f7836bab391, type: 2}
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 6fc2d68d1ff67a447b0367fb15b1c35a, type: 2}
     level: 1

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: onix
   m_EditorClassIdentifier: 
-  pokemonName: Onix
   num: 95
+  pokemonName: Onix
   description: 
-  frontSprite: {fileID: 21300000, guid: 24c73cced0fb520418d8bc54dbce4906, type: 3}
-  backSprite: {fileID: 21300000, guid: aa6e44ddecc0bdf4b92cd49d7c919aff, type: 3}
+  frontSprite: {fileID: 21300000, guid: 0b31bba614c9e5849a548d8eb29553ed, type: 3}
+  backSprite: {fileID: 21300000, guid: 9362a224f8bb30c439da2de0b069b3ce, type: 3}
   type1: 13
   type2: 9
   MaxHp: 35
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  encounterLocations:
+  - Cave
   learnableMoves:
   - move: {fileID: 11400000, guid: 16fbc57445aaa8d4d81e6968b8e97724, type: 2}
     level: 1

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: cubone
   m_EditorClassIdentifier: 
-  pokemonName: Cubone
   num: 104
+  pokemonName: Cubone
   description: 
-  frontSprite: {fileID: 21300000, guid: f57263d5cb8abf043a5589ce213b4b8a, type: 3}
-  backSprite: {fileID: 21300000, guid: d3ea055f1119c9343b6b10db237b7666, type: 3}
+  frontSprite: {fileID: 21300000, guid: c4def6f27095f1544b4d605b9ecef377, type: 3}
+  backSprite: {fileID: 21300000, guid: 0c590714881d4d3439885a91dd62deb4, type: 3}
   type1: 9
   type2: 0
   MaxHp: 50
@@ -28,6 +28,8 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 28
   evolvesTo: {fileID: 11400000, guid: 9ae9e28b9a2c1f0418b2b3902d04dba0, type: 2}
+  encounterLocations:
+  - Cave
   learnableMoves:
   - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
     level: 1

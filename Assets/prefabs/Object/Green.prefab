@@ -175,19 +175,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcId: Green
   npcName: Green
-  portrait: {fileID: -6815444706308093326, guid: ecbe07c2ca068cd479f1f1613c816f60, type: 3}
+  portrait: {fileID: 21300000, guid: 28e6942faef0d364f95e402a6fac2553, type: 3}
   introDialog: Sao?
+  outroDialog: 
   Party: {fileID: 4119077323405618971}
   canHeal: 0
   canShop: 0
   canUseStorage: 0
   canGiveQuest: 0
   canBattle: 0
+  fadeAwayAfterDialog: 0
+  fadeAfterDialogDuration: 0.5
+  disableNpcAfterDialogFade: 1
   shopItems: []
   dialog: {fileID: 0}
   directionalAnimator: {fileID: 0}
   quest: {fileID: 0}
   giveQuestOnce: 1
+  rewardMoney: 50
+  isGymLeader: 0
+  badgeName: 
+  badgeItem: {fileID: 0}
+  setStoryFlagAfterBadge: 0
+  storyFlagAfterBadge: 4
+  storyFlagAfterBadgeValue: 1
+  canBattleOnce: 0
+  enableMovement: 0
+  patrolPoints: []
+  loopPatrol: 1
+  startPatrolOnAwake: 0
+  patrolMoveSpeed: 2
+  waitAtPatrolPoint: 0.25
+  moveAfterBattle: 0
+  postBattleMoveTarget: {fileID: 0}
+  postBattleMoveSpeed: 2
+  faceTargetAfterMove: 1
+  moveAfterDialog: 0
+  dialogMoveTarget: {fileID: 0}
+  dialogMoveSpeed: 2
+  faceTargetAfterDialog: 1
 --- !u!114 &8237702823938949735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,3 +302,4 @@ MonoBehaviour:
     level: 4
   - baseData: {fileID: 11400000, guid: 9a920d6eed376a84a818dfc2bd03b7d5, type: 2}
     level: 6
+  evolvePokemonByLevel: 0
