@@ -10,22 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9f906c7dd221ec48924b115e6940e65, type: 3}
-  m_Name: FindElectric
+  m_Name: Quest01
   m_EditorClassIdentifier: 
-  questId: 003
-  title: "T\xECm \xF4ng th\u1EE3 s\u1EEDa \u0111i\u1EC1u h\xF2a"
-  description: "- T\xECm th\u1EE3 s\u1EEDa \u0111i\u1EC1u h\xF2a \u0111ang \u0111i
-    l\u1EA1c \u1EDF Mountain"
+  questId: 001
+  title: "Mang n\xE3o cho SVBK"
+  description: "\u0110\u1EBFn GrassTown G\u1EB7p SVBK v\xE0 mang n\xE3o cho anh \u1EA5y"
   category: 1
   prerequisiteQuestIds: []
   objectives:
-  - text: 
+  - text: "H\xF4m nay l\xE0 bu\u1ED5i thi cu\u1ED1i k\xEC, 1 svbk \u0111i thi \u0111\xE3
+      qu\xEAn mang n\xE3o, h\xE3y mang n\xE3o cho anh \u1EA5y"
     type: 2
-    targetId: engineer
+    targetId: Town01_svbk
     requiredCount: 1
-  turnInNpcId: engineer
-  rewardMoney: 0
+  turnInNpcId: Town01_svbk
+  rewardMoney: 30
   rewardItems: []
-  rewardPokemons:
-  - pokemonBase: {fileID: 11400000, guid: 12d37622c4f838d4c8b7002bb868d209, type: 2}
-    level: 5
+  rewardPokemons: []

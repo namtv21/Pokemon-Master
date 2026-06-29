@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public enum MainMenuOption { Party, Item, Storage, Quest, PokemonDex, SaveLoad, Option, Companion, Exit }
+public enum MainMenuOption { Party, Item, Quest, PokemonDex, SaveLoad, Option, Companion, Exit }
 
 public class MainMenuUI : MonoBehaviour
 {

@@ -10,20 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9f906c7dd221ec48924b115e6940e65, type: 3}
-  m_Name: Quest01
+  m_Name: FindElectric
   m_EditorClassIdentifier: 
-  questId: 001
-  title: "Mang n\xE3o cho SVBK"
-  description: "\u0110\u1EBFn Town01 G\u1EB7p SVBK v\xE0 mang n\xE3o cho anh \u1EA5y"
+  questId: 003
+  title: "T\xECm \xF4ng th\u1EE3 s\u1EEDa \u0111i\u1EC1u h\xF2a"
+  description: "- T\xECm th\u1EE3 s\u1EEDa \u0111i\u1EC1u h\xF2a \u0111ang \u0111i
+    l\u1EA1c \u1EDF Mountain"
   category: 1
   prerequisiteQuestIds: []
   objectives:
-  - text: "H\xF4m nay l\xE0 bu\u1ED5i thi cu\u1ED1i k\xEC, 1 svbk \u0111i thi \u0111\xE3
-      qu\xEAn mang n\xE3o, h\xE3y mang n\xE3o cho anh \u1EA5y"
+  - text: 
     type: 2
-    targetId: Town01_svbk
+    targetId: engineer
     requiredCount: 1
-  turnInNpcId: Town01_svbk
-  rewardMoney: 20
-  rewardItems: []
+  turnInNpcId: engineer
+  rewardMoney: 0
+  rewardItems:
+  - item: {fileID: 11400000, guid: 098eab360dda8084a8984f7bffa8162a, type: 2}
+    amount: 2
   rewardPokemons: []

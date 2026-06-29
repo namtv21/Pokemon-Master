@@ -24,7 +24,7 @@ MonoBehaviour:
     type: 7
     targetId: 
     requiredCount: 150
-  turnInNpcId: 
+  turnInNpcId: prof_oke
   rewardMoney: 10000
   rewardItems: []
   rewardPokemons: []
