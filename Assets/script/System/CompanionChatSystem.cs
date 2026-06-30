@@ -221,46 +221,46 @@ public class CompanionChatSystem : MonoBehaviour
     {
         if (companion == null) return $"{name}: Pikachu!";
         float hp = (float)companion.CurrentHp / companion.MaxHp;
-        if (hp <= 0f)   return $"{name}: Pi... (cần nghỉ ngơi.. Pi.)";
-        if (hp <= 0.5f)  return $"{name}: Pika pika... (Cần hồi phục rồi..)";
-        if (hp >= 1f)    return $"{name}: PIKACHU! (Trạng thái hoàn hảo! một ngàn vôn sẵn sàng!)";
-        return $"{name}: Pikachu! (I can do this all day! - Một vị đội trưởng đã nói thế đấy Red)";
+        if (hp <= 0f)   return $"{name}: cần nghỉ ngơi..";
+        if (hp <= 0.5f)  return $"{name}: Cần hồi phục rồi..";
+        if (hp >= 1f)    return $"{name}: Trạng thái hoàn hảo!";
+        return $"{name}: I can do this all day!";
     }
 
     private string GetNextStepResponse(string name, StoryFlags flags)
     {
-        if (flags.AfterFireGym)           return $"{name}: Pi PIKA chu! (Đến lúc thách thức Champion rồi!)";
-        if (flags.InCave)                 return $"{name}: Pika... (Chúng ta cần tìm tên đã cướp huy hiệu trong hang động này)";
-        if (flags.AfterWaterGym)          return $"{name}: Pika chu! (FireGym caanfd đi qua Mountain và Cave bên trái WaterTown)";
-        if (flags.AfterGrassGym)          return $"{name}: Pikachu! (Tiếp theo là WaterGym. Nơi đó ở phía nam của GrassTown!)";
-        if (flags.FirstMainQuestAccepted) return $"{name}: Pika... (Bắt đầu cuộc hành trình thôi! Mà tiến sĩ Oke đang đợi cậu đấy!)";
-        if (flags.StarterChosen)           return $"{name}: Pi pi! (Điếm đến đầu tiên: GrassGym)";
-        return $"{name}: Pikachu... (Khám phá thế giới nào!)";
+        if (flags.AfterFireGym)           return $"{name}: Đến lúc thách thức Champion rồi!";
+        if (flags.InCave)                 return $"{name}: Chúng ta cần tìm tên đã cướp huy hiệu trong hang động này";
+        if (flags.AfterWaterGym)          return $"{name}: FireGym cần đi qua Mountain và Cave bên trái WaterTown";
+        if (flags.AfterGrassGym)          return $"{name}: Tiếp theo là WaterGym. Nơi đó ở phía nam của GrassTown!";
+        if (flags.FirstMainQuestAccepted) return $"{name}: Bắt đầu cuộc hành trình thôi! Mà tiến sĩ Oke đang đợi cậu đấy!";
+        if (flags.StarterChosen)           return $"{name}: Điếm đến đầu tiên: GrassGym";
+        return $"{name}: Khám phá thế giới nào!";
     }
 
     private string GetCharacterThoughtResponse(string name, string character, StoryFlags flags)
     {
         if (character == "Green")
         {
-            if (flags.AfterFireGym)         return $"{name}: Pika... (Green có lẽ cũng không quá tệ?)";
-            if (flags.MeetGreen)        return $"{name}: Pi ka... (Green đúng là tên khó ưa!)";
-            if (flags.FirstMainQuestAccepted) return $"{name}: Pi ka? (Green là ai?)";
-            return $"{name}: Pikachu! (Tên kiêu ngạo! Hừ!)";
+            if (flags.AfterFireGym)         return $"{name}: Green có lẽ cũng không quá tệ?";
+            if (flags.MeetGreen)        return $"{name}: Green đúng là tên khó ưa!";
+            if (flags.FirstMainQuestAccepted) return $"{name}: Green là ai?";
+            return $"{name}: Tên kiêu ngạo! Hừ!";
         }
         if (character == "Blue")
         {
-            if (flags.AfterFireGym)  return $"{name}: PIKA! (Blue đã trở nên mạnh hơn nhiều!)";
-            if (flags.MeetBlue) return $"{name}: Pi pi... (Blue luôn chia sẻ đồ ăn của cô ấy cho tôi <3)";
-            return $"{name}: Pikachu! (Blue, đồ ăn, thích!)";
+            if (flags.AfterFireGym)  return $"{name}: Blue đã trở nên mạnh hơn nhiều!";
+            if (flags.MeetBlue) return $"{name}:Blue luôn chia sẻ đồ ăn của cô ấy cho tôi <3";
+            return $"{name}: Pikachu! Blue, đồ ăn, thích!";
         }
-        return $"{name}: Pika pika?";
+        return $"{name}: ?";
     }
 
     private string GetEnemyThoughtResponse(string name, StoryFlags flags)
     {
-        if (flags.OutCave)  return $"{name}: PIKA PIKA! (Có lẽ việc này sẽ khiến họ im lặng một thời gian!)";
-        if (flags.MeetTeamRocket) return $"{name}: Pi ka! (Team Rocket cần được dạy cho một bài học!)";
-        if (flags.FirstMainQuestAccepted)  return $"{name}: Pika? (Team Rocket? chưa từng nghe qua)";
-        return $"{name}: Pi pi! (Team Rocket thật khó ưa)";
+        if (flags.OutCave)  return $"{name}: Có lẽ việc này sẽ khiến họ im lặng một thời gian!";
+        if (flags.MeetTeamRocket) return $"{name}: Team Rocket cần được dạy cho một bài học!";
+        if (flags.FirstMainQuestAccepted)  return $"{name}: Team Rocket? chưa từng nghe qua";
+        return $"{name}: Team Rocket thật khó ưa";
     }
 }

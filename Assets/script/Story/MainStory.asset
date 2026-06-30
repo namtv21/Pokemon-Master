@@ -741,7 +741,7 @@ MonoBehaviour:
     - type: 0
       dialogText: "\u0110\u1EE3i \u0111\xE3!"
       speakerName: Green
-      portrait: {fileID: -6815444706308093326, guid: ecbe07c2ca068cd479f1f1613c816f60, type: 3}
+      portrait: {fileID: 0}
       questToAccept: {fileID: 0}
       useCurrentMainStoryQuest: 0
       acceptOnceOnly: 0
