@@ -213,7 +213,7 @@ public class CompanionChatSystem : MonoBehaviour
             2 => GetEnemyThoughtResponse(name, flags),
             3 => GetCharacterThoughtResponse(name, "Green", flags),
             4 => GetCharacterThoughtResponse(name, "Blue", flags),
-            _ => $"{name}: Pika pika!"
+            _ => $"{name}: ?"
         };
     }
 
@@ -251,7 +251,7 @@ public class CompanionChatSystem : MonoBehaviour
         {
             if (flags.AfterFireGym)  return $"{name}: Blue đã trở nên mạnh hơn nhiều!";
             if (flags.MeetBlue) return $"{name}:Blue luôn chia sẻ đồ ăn của cô ấy cho tôi <3";
-            return $"{name}: Pikachu! Blue, đồ ăn, thích!";
+            return $"{name}:  Blue, đồ ăn, thích!";
         }
         return $"{name}: ?";
     }
