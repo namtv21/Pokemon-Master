@@ -78,7 +78,7 @@ public class ItemAmountSelectorUI : MonoBehaviour
         maxAmount = Mathf.Max(1, maxAmount);
         options.Clear();
 
-        var presets = new[] { 1, 10, 50, 100, maxAmount };
+        var presets = new[] { 10, 50, 100, 500, 1000, maxAmount };
         foreach (var preset in presets)
         {
             int amount = Mathf.Clamp(preset, 1, maxAmount);

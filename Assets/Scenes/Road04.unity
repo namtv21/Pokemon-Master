@@ -1952,11 +1952,11 @@ MonoBehaviour:
   - pokemon: {fileID: 11400000, guid: 7acefff746dc94e46a8c5d8e23809d31, type: 2}
     minLevel: 35
     maxLevel: 37
-    encounterRate: 0.3
+    encounterRate: 0.4
   - pokemon: {fileID: 11400000, guid: e23652ffcb36d3c4c9d7c2154531cc35, type: 2}
     minLevel: 35
     maxLevel: 37
-    encounterRate: 0.3
+    encounterRate: 0.4
   - pokemon: {fileID: 11400000, guid: 9a920d6eed376a84a818dfc2bd03b7d5, type: 2}
     minLevel: 24
     maxLevel: 24

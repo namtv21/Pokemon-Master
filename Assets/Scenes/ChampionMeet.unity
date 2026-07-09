@@ -919,7 +919,6 @@ GameObject:
   - component: {fileID: 770787319}
   - component: {fileID: 770787318}
   - component: {fileID: 770787317}
-  - component: {fileID: 770787321}
   m_Layer: 8
   m_Name: kid F
   m_TagString: Untagged
@@ -973,7 +972,7 @@ MonoBehaviour:
   disableNpcAfterDialogFade: 1
   shopItems: []
   dialog: {fileID: 0}
-  directionalAnimator: {fileID: 770787321}
+  directionalAnimator: {fileID: 0}
   quest: {fileID: 0}
   giveQuestOnce: 1
   rewardMoney: 10
@@ -1122,43 +1121,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &770787321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 770787315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75e126ebbad944541b3ca063e57ffb72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  idleDown: {fileID: -1434660483, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  idleLeft: {fileID: -2110444523, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  idleRight: {fileID: 522460084, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  idleUp: {fileID: 389632254, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  walkDownFrames:
-  - {fileID: -1434660483, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  - {fileID: -191144389, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  - {fileID: -594609085, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  - {fileID: -1135199388, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  walkLeftFrames:
-  - {fileID: -2110444523, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  - {fileID: 613182544, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  - {fileID: 489301892, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  - {fileID: 1761233591, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  walkRightFrames:
-  - {fileID: 522460084, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  - {fileID: 1177979551, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  - {fileID: -1725978494, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  - {fileID: 592692022, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  walkUpFrames:
-  - {fileID: 389632254, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  - {fileID: -1753534020, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  - {fileID: -818917719, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  - {fileID: -239023950, guid: 1af4dd30a894e444fb7948fec3d0a9c1, type: 3}
-  framesPerSecond: 8
 --- !u!1 &812209381
 GameObject:
   m_ObjectHideFlags: 0

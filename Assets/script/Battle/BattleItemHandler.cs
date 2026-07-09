@@ -163,20 +163,24 @@ public class BattleItemHandler : MonoBehaviour
         }
         yield return new WaitForSeconds(1.2f);
 
-        if (success && item.consumable)
-            inventory.RemoveItem(item, 1);
-
-        yield return ProceedAfterPlayerAction();
-    }
-
-    private void ShowNoti(string message, bool warning = false)
-    {
-        ToastNotificationManager.Instance?.Show(message, warning ? Color.yellow : Color.white);
+        if (success)
+        {
+            if (item.consumable)
+                inventory.RemoveItem(item, 1);
+            // Dùng item có tác dụng = tiêu 1 lượt → chuyển sang lượt địch.
+            yield return ProceedAfterPlayerAction();
+        }
+        else
+        {
+            // Item không có tác dụng (đầy máu, chưa ngất, không có trạng thái…) → KHÔNG tiêu lượt,
+            // trả người chơi về màn chọn hành động để chọn lại (giống nhánh KeyItem/ball-vào-trainer).
+            battleSystem.PlayerAction();
+        }
     }
 
     private IEnumerator AttemptCatch(ItemBase ball, Pokemon target)
     {
-        ShowNoti($"You used {ball.itemName}!");
+        dialogBox?.ShowDialog($"You used {ball.itemName}!");
         yield return new WaitForSeconds(0.6f);
         if (ball.consumable)
             inventory.RemoveItem(ball, 1);

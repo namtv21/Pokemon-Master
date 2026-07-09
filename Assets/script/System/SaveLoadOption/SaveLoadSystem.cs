@@ -154,6 +154,11 @@ public class SaveLoadSystem : MonoBehaviour
             storyAfterGrassGym = StoryFlags.Instance != null && StoryFlags.Instance.AfterGrassGym,
             storyAfterWaterGym = StoryFlags.Instance != null && StoryFlags.Instance.AfterWaterGym,
             storyAfterFireGym = StoryFlags.Instance != null && StoryFlags.Instance.AfterFireGym,
+            storyMeetGreen = StoryFlags.Instance != null && StoryFlags.Instance.MeetGreen,
+            storyMeetBlue = StoryFlags.Instance != null && StoryFlags.Instance.MeetBlue,
+            storyMeetTeamRocket = StoryFlags.Instance != null && StoryFlags.Instance.MeetTeamRocket,
+            storyOutCave = StoryFlags.Instance != null && StoryFlags.Instance.OutCave,
+            storyChampion = StoryFlags.Instance != null && StoryFlags.Instance.Champion,
             storyMainSequenceIndex = StoryFlags.Instance != null ? StoryFlags.Instance.MainStorySequenceIndex : 0,
             storyMainStepIndex = StoryFlags.Instance != null ? StoryFlags.Instance.MainStoryStepIndex : 0,
             questSnapshot = QuestManager.Instance != null ? QuestManager.Instance.ExportSaveSnapshot() : null,
@@ -494,6 +499,11 @@ public class SaveLoadSystem : MonoBehaviour
         storyFlags.AfterGrassGym = data.storyAfterGrassGym;
         storyFlags.AfterWaterGym = data.storyAfterWaterGym;
         storyFlags.AfterFireGym = data.storyAfterFireGym;
+        storyFlags.MeetGreen = data.storyMeetGreen;
+        storyFlags.MeetBlue = data.storyMeetBlue;
+        storyFlags.MeetTeamRocket = data.storyMeetTeamRocket;
+        storyFlags.OutCave = data.storyOutCave;
+        storyFlags.Champion = data.storyChampion;
 
         storyFlags.MainStorySequenceIndex = Mathf.Max(0, data.storyMainSequenceIndex);
         storyFlags.MainStoryStepIndex = Mathf.Max(0, data.storyMainStepIndex);

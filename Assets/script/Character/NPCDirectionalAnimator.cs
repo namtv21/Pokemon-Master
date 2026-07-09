@@ -36,6 +36,15 @@ public class NPCDirectionalAnimator : MonoBehaviour
         ShowIdle(facing);
     }
 
+    private void OnDisable()
+    {
+        // Coroutine walk chạy trên CoroutineHost bền vững (DontDestroyOnLoad) nên khi NPC
+        // bị huỷ/tắt lúc đổi scene, nó không tự dừng → phải chủ động dừng để tránh truy cập
+        // SpriteRenderer đã huỷ (MissingReferenceException).
+        isWalking = false;
+        StopWalkRoutine();
+    }
+
     public void SetFacing(Vector2 worldDirection, bool idle)
     {
         facing = NormalizeDirection(worldDirection, facing);
@@ -114,6 +123,8 @@ public class NPCDirectionalAnimator : MonoBehaviour
 
         while (isWalking && walkingDirection == direction)
         {
+            if (spriteRenderer == null)   // NPC đã bị huỷ (vd đổi scene) → dừng an toàn
+                yield break;
             spriteRenderer.sprite = frames[index % frames.Length];
             index++;
             yield return new WaitForSeconds(delay);

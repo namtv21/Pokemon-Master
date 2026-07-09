@@ -275,6 +275,22 @@ public class BattleSystem : MonoBehaviour
             // Busy, EnemyMove, không nhận input
         }
     }
+    // Hiện thông báo (blocking) trong ô battle rồi mở lại menu chọn và đưa FSM về đúng state.
+    // Dùng cho phản hồi từ chối input (hết PP, không chạy được) — thay cho toast để nhất quán
+    // với văn bản trong trận và giống Pokemon gốc. Trong lúc chờ đặt Busy nên không loạn input.
+    private IEnumerator ShowSelectionMessage(string message, BattleState returnState)
+    {
+        SetState(BattleState.Busy);
+        yield return dialogBox.ShowDialogAndWait(message);
+
+        if (returnState == BattleState.PlayerMoveSelection)
+            dialogBox.ShowMoveMenu(playerUnit.Pokemon.Moves);
+        else
+            dialogBox.ShowActionMenu();
+
+        SetState(returnState);
+    }
+
     void HandleActionInput()
     {
         dialogBox.HandleActionSelection();
@@ -302,7 +318,7 @@ public class BattleSystem : MonoBehaviour
                 }
                 else
                 {
-                    ToastNotificationManager.Instance?.Show("You can't run from this battle!", Color.yellow);
+                    StartCoroutine(ShowSelectionMessage("You can't run from this battle!", BattleState.PlayerActionSelection));
                 }
             }
             else if (actionIndex == 3) // Item
@@ -406,7 +422,7 @@ public class BattleSystem : MonoBehaviour
             var move = playerUnit.Pokemon.Moves[moveIndex];
             if (move.PP <= 0)
             {
-                if (ToastNotificationManager.Instance != null) ToastNotificationManager.Instance.Show("Không còn PP cho đòn này!", Color.yellow);
+                StartCoroutine(ShowSelectionMessage("Không còn PP cho đòn này!", BattleState.PlayerMoveSelection));
                 return;
             }
             SetState(BattleState.Busy);

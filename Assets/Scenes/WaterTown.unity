@@ -375,7 +375,7 @@ Transform:
   m_GameObject: {fileID: 76092211}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.521872, y: -14.850897, z: -10}
+  m_LocalPosition: {x: 9.527254, y: -14.850877, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2593,19 +2593,19 @@ MonoBehaviour:
   - pokemon: {fileID: 11400000, guid: 05fcc15f9c3e4e3469b6c72d4386575a, type: 2}
     minLevel: 18
     maxLevel: 21
-    encounterRate: 0.3
+    encounterRate: 0.25
   - pokemon: {fileID: 11400000, guid: fede4ade40e63b74f88ddac99b407a14, type: 2}
     minLevel: 18
     maxLevel: 21
-    encounterRate: 0.3
+    encounterRate: 0.25
   - pokemon: {fileID: 11400000, guid: a44dfbba1b3fd8b43b035e8811783a7c, type: 2}
     minLevel: 18
     maxLevel: 21
-    encounterRate: 0.3
+    encounterRate: 0.25
   - pokemon: {fileID: 11400000, guid: 5854fbf6757959a4288edb0c61860a35, type: 2}
     minLevel: 18
     maxLevel: 21
-    encounterRate: 0.3
+    encounterRate: 0.25
   battleRatePercent: 10
 --- !u!1 &828184757
 GameObject:
@@ -2620,6 +2620,7 @@ GameObject:
   - component: {fileID: 828184761}
   - component: {fileID: 828184760}
   - component: {fileID: 828184759}
+  - component: {fileID: 828184763}
   m_Layer: 8
   m_Name: swimmer
   m_TagString: Untagged
@@ -2823,6 +2824,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &828184763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828184757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e126ebbad944541b3ca063e57ffb72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleDown: {fileID: 211893805, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  idleLeft: {fileID: 1284798481, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  idleRight: {fileID: -685419248, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  idleUp: {fileID: -2073474797, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  walkDownFrames:
+  - {fileID: 211893805, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  - {fileID: 221949714, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  - {fileID: -794686683, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  - {fileID: 1469528067, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  walkLeftFrames:
+  - {fileID: 1284798481, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  - {fileID: -743607070, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  - {fileID: -1794504524, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  - {fileID: 1898579948, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  walkRightFrames:
+  - {fileID: -685419248, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  - {fileID: -765372533, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  - {fileID: -1388126335, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  - {fileID: 1612115934, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  walkUpFrames:
+  - {fileID: -2073474797, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  - {fileID: 2062079041, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  - {fileID: -1018709728, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  - {fileID: 582301713, guid: f731f66797959c74a811d28c3664b73f, type: 3}
+  framesPerSecond: 8
 --- !u!1 &839926668
 GameObject:
   m_ObjectHideFlags: 0
@@ -2854,7 +2892,7 @@ Transform:
   m_GameObject: {fileID: 839926668}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.97, y: -16.13, z: 5}
+  m_LocalPosition: {x: -1.91, y: -15.99, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7833,7 +7871,7 @@ Transform:
   m_GameObject: {fileID: 839968132}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.68, y: -16.89, z: 0}
+  m_LocalPosition: {x: -1.68, y: -16.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21957,7 +21995,7 @@ Transform:
   m_GameObject: {fileID: 1484290429}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.73, y: 0.93, z: 0}
+  m_LocalPosition: {x: 0.73, y: 1.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

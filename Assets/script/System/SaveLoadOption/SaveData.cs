@@ -18,6 +18,11 @@ public class SaveData
     public bool storyAfterGrassGym;
     public bool storyAfterWaterGym;
     public bool storyAfterFireGym;
+    public bool storyMeetGreen;
+    public bool storyMeetBlue;
+    public bool storyMeetTeamRocket;
+    public bool storyOutCave;
+    public bool storyChampion;
     public int storyMainSequenceIndex;
     public int storyMainStepIndex;
     public PokedexSaveData pokedex;

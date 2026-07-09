@@ -94,9 +94,9 @@ public partial class GameController : MonoBehaviour
     private BattleContext DetectBattleContext()
     {
         string scene = SceneManager.GetActiveScene().name.ToLower();
-        if (scene.Contains("cave") || scene.Contains("mountain")) return BattleContext.Cave;
+        if (scene.Contains("cave")) return BattleContext.Cave;
         if (scene.Contains("gym") || scene.Contains("poke") || scene.Contains("mart") ||
-            scene.Contains("lab") || scene.Contains("studio") || scene.Contains("champion"))
+            scene.Contains("lab") || scene.Contains("studio"))
             return BattleContext.Indoor;
         return BattleContext.Grass;
     }

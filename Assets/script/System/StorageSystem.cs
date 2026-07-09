@@ -110,7 +110,10 @@ public class StorageSystem : MonoBehaviour
         storedPokemons.Add(pokemon);
         PokedexManager.GetOrCreate().MarkCaught(pokemon);
         RefreshUI();
-        if (infoUI != null)
+        // Chỉ hiện panel info khi màn kho ĐANG mở; tránh bật panel khi gửi vào kho ngầm
+        // (vd bắt Pokemon lúc party đã đầy) — lúc đó chỉ cần toast thông báo là đủ.
+        bool storageOpen = storagePanelParent != null && storagePanelParent.gameObject.activeSelf;
+        if (infoUI != null && storageOpen)
             infoUI.gameObject.SetActive(true);
     }
     public void RemovePokemon(Pokemon pokemon)

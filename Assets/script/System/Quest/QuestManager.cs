@@ -44,7 +44,6 @@ public class QuestManager : MonoBehaviour
 
     [Header("Main Story Auto Accept")]
     [SerializeField] private bool autoAcceptMainStory = true;
-    [SerializeField] private bool requirePrologueDoneForMainStory = false;
     [SerializeField] private bool mainStoryOnceOnly = true;
     [SerializeField] private bool restrictMainStoryAutoAcceptToScene = true;
     [SerializeField] private string mainStoryAutoAcceptSceneName = "Town1";

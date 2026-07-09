@@ -314,6 +314,7 @@ public class MenuController : MonoBehaviour
         if (selectedItemForUse == null)
             return;
 
+        itemMenuUI?.CloseMenu();   // ẩn UI túi đồ trước khi mở Party (tránh 2 UI đè lên nhau)
         currentState = MenuState.Party;
         partyMenuUI.Open(PlayerParty.Instance.Pokemons, PartyMenuMode.Selection,
             (pokemon) =>

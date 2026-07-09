@@ -400,7 +400,7 @@ Transform:
   m_GameObject: {fileID: 236890580}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.68, y: -1.19, z: 0}
+  m_LocalPosition: {x: 1.58, y: -0.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -495,12 +495,6 @@ CompositeCollider2D:
       - X: 20000000
         Y: -80000000
       - X: 20000000
-        Y: -20000000
-      - X: -40000000
-        Y: -20000000
-      - X: -40000000
-        Y: -29375000
-      - X: -39375000
         Y: -30000000
       - X: -40000000
         Y: -30000000
@@ -534,36 +528,6 @@ CompositeCollider2D:
         Y: -80000000
       - X: -30000000
         Y: -80000000
-    - - X: -30000000
-        Y: -30000000
-      - X: -30000000
-        Y: -29375000
-      - X: -29375000
-        Y: -30000000
-    - - X: -20000000
-        Y: -30000000
-      - X: -20000000
-        Y: -29375000
-      - X: -19375000
-        Y: -30000000
-    - - X: -10000000
-        Y: -30000000
-      - X: -10000000
-        Y: -29375000
-      - X: -9375000
-        Y: -30000000
-    - - X: 10000000
-        Y: -30000000
-      - X: 10000000
-        Y: -29375000
-      - X: 10625000
-        Y: -30000000
-    - - X: 0
-        Y: -30000000
-      - X: 0
-        Y: -29375000
-      - X: 625000
-        Y: -30000000
     - - X: -30000000
         Y: -40000000
       - X: -30000000
@@ -702,10 +666,7 @@ CompositeCollider2D:
       - {x: 1.0000618, y: -7.9375615}
       - {x: 1.0625108, y: -8}
       - {x: 2, y: -7.9999704}
-      - {x: 1.9999708, y: -2}
-      - {x: -4, y: -2.0000293}
-      - {x: -3.9999924, y: -2.9375076}
-      - {x: -3.9375873, y: -3}
+      - {x: 1.9999708, y: -3}
       - {x: -4, y: -3.0000293}
       - {x: -3.9999924, y: -3.9375076}
       - {x: -3.9375873, y: -4}
@@ -721,21 +682,6 @@ CompositeCollider2D:
       - {x: -4, y: -7.0000296}
       - {x: -3.9999924, y: -7.937507}
       - {x: -3.9374893, y: -8}
-    - - {x: -2.9375618, y: -2.9999385}
-      - {x: -3, y: -2.9999707}
-      - {x: -2.9999385, y: -2.9375618}
-    - - {x: -1.9375619, y: -2.9999385}
-      - {x: -2, y: -2.9999707}
-      - {x: -1.9999384, y: -2.9375618}
-    - - {x: -0.9375618, y: -2.9999385}
-      - {x: -1, y: -2.9999707}
-      - {x: -0.9999383, y: -2.9375618}
-    - - {x: 0.0624382, y: -2.9999385}
-      - {x: 0, y: -2.9999707}
-      - {x: 0.000061700004, y: -2.9375618}
-    - - {x: 1.0624382, y: -2.9999385}
-      - {x: 1, y: -2.9999707}
-      - {x: 1.0000618, y: -2.9375618}
     - - {x: -2.9375618, y: -3.9999385}
       - {x: -3, y: -3.9999704}
       - {x: -2.9999385, y: -3.9375618}
@@ -1221,73 +1167,13 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -4, y: -3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -3, y: -3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -2, y: -3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -1, y: -3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 0, y: -3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 1, y: -3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 36
+  - m_RefCount: 30
     m_Data: {fileID: 11400000, guid: 1fd324c256c1f8d4eb67a48d0fb8e9d8, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -1296,12 +1182,12 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 36
+  - m_RefCount: 30
     m_Data: {fileID: 7654806567737475841, guid: 6092738183c668a4d924383acaf9eb5f, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 36
+  - m_RefCount: 30
     m_Data:
       e00: 1
       e01: 0
@@ -1320,7 +1206,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 36
+  - m_RefCount: 30
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -1418,7 +1304,7 @@ MonoBehaviour:
   - pokemon: {fileID: 11400000, guid: 526d66682e0b4bd4a8ea88bb35b2d09f, type: 2}
     minLevel: 21
     maxLevel: 24
-    encounterRate: 0.3
+    encounterRate: 0.2
   - pokemon: {fileID: 11400000, guid: dcf41ec101720e34c85bf291a3f3715c, type: 2}
     minLevel: 22
     maxLevel: 22
@@ -1474,7 +1360,7 @@ MonoBehaviour:
   npcId: Board1
   npcName: Board
   portrait: {fileID: 0}
-  introDialog: Son Doong Cave
+  introDialog: Cave
   outroDialog: 
   Party: {fileID: 0}
   canHeal: 0
@@ -1753,6 +1639,7 @@ GameObject:
   - component: {fileID: 622073433}
   - component: {fileID: 622073432}
   - component: {fileID: 622073431}
+  - component: {fileID: 622073435}
   m_Layer: 8
   m_Name: blackbelt
   m_TagString: Untagged
@@ -1769,7 +1656,7 @@ Transform:
   m_GameObject: {fileID: 622073429}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.7, y: 8.27, z: 9.983179}
+  m_LocalPosition: {x: 1, y: 8.8, z: 9.983179}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1799,7 +1686,7 @@ MonoBehaviour:
   canShop: 0
   canUseStorage: 0
   canGiveQuest: 0
-  canBattle: 0
+  canBattle: 1
   fadeAwayAfterDialog: 0
   fadeAfterDialogDuration: 0.5
   disableNpcAfterDialogFade: 1
@@ -1954,6 +1841,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &622073435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622073429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e126ebbad944541b3ca063e57ffb72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleDown: {fileID: 189300655, guid: d33185377a32a984db01b0e215e3fa69, type: 3}
+  idleLeft: {fileID: -2127576887, guid: d33185377a32a984db01b0e215e3fa69, type: 3}
+  idleRight: {fileID: 1506445105, guid: d33185377a32a984db01b0e215e3fa69, type: 3}
+  idleUp: {fileID: -1001452233, guid: d33185377a32a984db01b0e215e3fa69, type: 3}
+  walkDownFrames: []
+  walkLeftFrames: []
+  walkRightFrames: []
+  walkUpFrames: []
+  framesPerSecond: 8
 --- !u!1 &635787541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2434,8 +2342,9 @@ GameObject:
   - component: {fileID: 770787319}
   - component: {fileID: 770787318}
   - component: {fileID: 770787317}
+  - component: {fileID: 770787321}
   m_Layer: 8
-  m_Name: grandmother
+  m_Name: engineer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2450,7 +2359,7 @@ Transform:
   m_GameObject: {fileID: 770787315}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.07, y: -1.79, z: 9.983179}
+  m_LocalPosition: {x: -17, y: -2.2, z: 9.983179}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2635,6 +2544,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &770787321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770787315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e126ebbad944541b3ca063e57ffb72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  idleDown: {fileID: -1329294714, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  idleLeft: {fileID: -1147665682, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  idleRight: {fileID: 1505090441, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  idleUp: {fileID: -1804370740, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  walkDownFrames:
+  - {fileID: -1329294714, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  - {fileID: 1197013432, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  - {fileID: 1545049089, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  - {fileID: 1329592490, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  walkLeftFrames:
+  - {fileID: -1147665682, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  - {fileID: -776661180, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  - {fileID: 398440836, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  - {fileID: 2019361969, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  walkRightFrames:
+  - {fileID: 1505090441, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  - {fileID: -1637003567, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  - {fileID: 1740072595, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  - {fileID: -838560028, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  walkUpFrames:
+  - {fileID: -1804370740, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  - {fileID: 2106145095, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  - {fileID: 1160602764, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  - {fileID: -569294187, guid: 38f0dbf53616be54f90efc1112e967a9, type: 3}
+  framesPerSecond: 8
 --- !u!1 &812209381
 GameObject:
   m_ObjectHideFlags: 0
@@ -3675,7 +3621,7 @@ Transform:
   m_GameObject: {fileID: 1124734912}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.9506855, y: -0.08034557, z: -10}
+  m_LocalPosition: {x: -7.9453034, y: -0.080290735, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3803,7 +3749,7 @@ Transform:
   m_GameObject: {fileID: 1156942442}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.9, y: -1.75, z: 9.983179}
+  m_LocalPosition: {x: 6, y: -2.2, z: 9.983179}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9093,7 +9039,7 @@ Transform:
   m_GameObject: {fileID: 1485874735}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.33, y: -2.83, z: 9.983179}
+  m_LocalPosition: {x: 0, y: -2.2, z: 9.983179}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9800,7 +9746,7 @@ Transform:
   m_GameObject: {fileID: 1657027680}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.96, y: -0.91, z: 0}
+  m_LocalPosition: {x: 7.06, y: -0.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15174,19 +15120,19 @@ MonoBehaviour:
   - pokemon: {fileID: 11400000, guid: 38993487e4b8fa44eae7fd536eb22df5, type: 2}
     minLevel: 21
     maxLevel: 24
-    encounterRate: 0.3
+    encounterRate: 0.25
   - pokemon: {fileID: 11400000, guid: 279f0a8f9e7b6424ca85288efec207e1, type: 2}
     minLevel: 21
     maxLevel: 24
-    encounterRate: 0.3
+    encounterRate: 0.25
   - pokemon: {fileID: 11400000, guid: 3d205c75d277b704094555a848608ba4, type: 2}
     minLevel: 21
     maxLevel: 24
-    encounterRate: 0.3
+    encounterRate: 0.25
   - pokemon: {fileID: 11400000, guid: 40f288083d36de540b5a6ab982f4bfc2, type: 2}
     minLevel: 21
     maxLevel: 24
-    encounterRate: 0.3
+    encounterRate: 0.25
   battleRatePercent: 10
 --- !u!1 &1988286379
 GameObject:
@@ -30976,7 +30922,7 @@ Transform:
   m_GameObject: {fileID: 2041140368}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.46, y: -2.24, z: 0}
+  m_LocalPosition: {x: -14, y: -2.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31481,11 +31427,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 2116487cb08604143911d571f784a035, type: 2}
     - target: {fileID: 2357580597435286363, guid: 8ad0a0a2d9f05d149ab7d5926d16a608, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.91
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 2357580597435286363, guid: 8ad0a0a2d9f05d149ab7d5926d16a608, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.55
+      value: 6.8
       objectReference: {fileID: 0}
     - target: {fileID: 2357580597435286363, guid: 8ad0a0a2d9f05d149ab7d5926d16a608, type: 3}
       propertyPath: m_LocalPosition.z
