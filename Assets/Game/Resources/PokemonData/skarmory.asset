@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: skarmory
+  m_EditorClassIdentifier: 
+  num: 226
+  pokemonName: Skarmory
+  description: 
+  frontSprite: {fileID: 21300000, guid: ae7e07477e08c0a42a2206c6042de8b9, type: 3}
+  backSprite: {fileID: 21300000, guid: 934da9db6e8dfa34398cf28dd0515861, type: 3}
+  type1: 17
+  type2: 10
+  MaxHp: 65
+  Attack: 80
+  Defense: 140
+  SpAttack: 40
+  SpDefense: 70
+  Speed: 70
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
+  biasPersonality: 1
+  preferredPersonality: 3
+  preferredPersonalityChance: 100
+  encounterLocations:
+  - ChampionMeet
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 159d3b34fde15bd439dd87b7ca3da9a2, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 590248e45e757744fb3fe9c7f520c2bf, type: 2}
+    level: 4
+  - move: {fileID: 11400000, guid: fe5be24e281afc24b8b749c6408bd697, type: 2}
+    level: 8
+  - move: {fileID: 11400000, guid: 81ed3b2359074f7449e74e415bcd0241, type: 2}
+    level: 9
+  - move: {fileID: 11400000, guid: 6ca5edd83e8be3b4e96e543c017f871f, type: 2}
+    level: 9
+  - move: {fileID: 11400000, guid: a39b61c4947f22a418f97e62538a089e, type: 2}
+    level: 12
+  - move: {fileID: 11400000, guid: f0c4e97fd24db4449af5805494d188ba, type: 2}
+    level: 12
+  - move: {fileID: 11400000, guid: b6c4868dbcc5f6440a668dc6623963d7, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: 2edb6ac2b1bcae642883f3a8b01766fd, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: b204d8d5d0d979442a21a0abb40491f6, type: 2}
+    level: 24
+  - move: {fileID: 11400000, guid: b574cbe6963ad4e468d249f2dfd4e5ee, type: 2}
+    level: 28
+  - move: {fileID: 11400000, guid: 8ec7bbb91679fd04687e594a9435adda, type: 2}
+    level: 36
+  - move: {fileID: 11400000, guid: 3d94430411029da48be7d85c7f6e44fa, type: 2}
+    level: 39
+  - move: {fileID: 11400000, guid: 3b0aa0a6b7f94e04c8d5016095fae649, type: 2}
+    level: 45
+  - move: {fileID: 11400000, guid: ecca6129397e24f4fae68bf25be52c30, type: 2}
+    level: 52

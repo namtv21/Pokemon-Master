@@ -207,6 +207,9 @@ public partial class PokemonDexMenuUI
 
         string learnsetText = BuildLearnsetPreview(selected);
         string evolutionText = BuildEvolutionText(selected);
+        string chainText = pokemonEvolutionPath.TryGetValue(selected, out var path) && !string.IsNullOrWhiteSpace(path)
+            ? path
+            : selected.Name;
         string locationText = selected.EncounterLocations != null && selected.EncounterLocations.Length > 0
             ? string.Join(", ", selected.EncounterLocations)
             : "Tiến hóa / Không gặp trong tự nhiên";
@@ -216,6 +219,7 @@ public partial class PokemonDexMenuUI
             $"Type: {selected.Type1}/{selected.Type2}\n" +
             $"HP: {selected.MaxHp}  Atk: {selected.Attack}  Def: {selected.Defense}\n" +
             $"SpA: {selected.SpAttack}  SpD: {selected.SpDefense}  Spe: {selected.Speed}\n" +
+            $"Chain: {chainText}\n" +
             $"Gặp tại: {locationText}\n" +
             $"Evolution: {evolutionText}\n" +
             $"Learnset:\n{learnsetText}";
@@ -223,10 +227,16 @@ public partial class PokemonDexMenuUI
 
     private string BuildEvolutionText(PokemonBase pokemon)
     {
-        if (pokemon == null || !pokemon.Evolvable || pokemon.EvolvesTo == null)
+        if (pokemon == null)
             return "None";
 
-        return $"Lv {Mathf.Max(1, pokemon.EvolutionLevel)} -> {pokemon.EvolvesTo.Name}";
+        var options = pokemon.GetValidEvolutionOptions();
+        if (options == null || options.Count == 0)
+            return "None";
+
+        return string.Join(", ", options
+            .Where(option => option != null && option.EvolvesTo != null)
+            .Select(option => $"Lv {Mathf.Max(1, option.EvolutionLevel)} -> {option.EvolvesTo.Name}"));
     }
 
     private string BuildLearnsetPreview(PokemonBase pokemon)
@@ -288,7 +298,12 @@ public partial class PokemonDexMenuUI
         if (pokemon == null)
             return string.Empty;
 
-        return $"No.{pokemon.Num:000}  {pokemon.Name}";
+        pokemonEvolutionDepth.TryGetValue(pokemon, out var depth);
+        depth = Mathf.Clamp(depth, 0, 4);
+
+        string indent = depth > 0 ? new string(' ', depth * 3) : string.Empty;
+        string prefix = depth > 0 ? "-> " : string.Empty;
+        return $"{indent}{prefix}No.{pokemon.Num:000}  {pokemon.Name}";
     }
 
     private void EnsureDexIndicator(TMP_Text lineText, bool caught)

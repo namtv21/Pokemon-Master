@@ -28,6 +28,9 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 22
   evolvesTo: {fileID: 11400000, guid: 568c41d51e10c9441931c4990511b78b, type: 2}
+  biasPersonality: 1
+  preferredPersonality: 5
+  preferredPersonalityChance: 100
   encounterLocations:
   - Cave
   learnableMoves:
@@ -63,3 +66,6 @@ MonoBehaviour:
     level: 38
   - move: {fileID: 11400000, guid: 3c4cac0429c7d6240a529c98aed47ac0, type: 2}
     level: 45
+
+
+

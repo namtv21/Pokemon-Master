@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: dragonite
   m_EditorClassIdentifier: 
-  num: 148
+  num: 147
   pokemonName: Dragonite
   description: 
   frontSprite: {fileID: 21300000, guid: 9fcbf9566abadc942b0e85f9a61a5fb9, type: 3}
@@ -28,6 +28,9 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  biasPersonality: 1
+  preferredPersonality: 5
+  preferredPersonalityChance: 100
   encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 342f658993e99e44a8d5331a3643a8d5, type: 2}
@@ -62,3 +65,4 @@ MonoBehaviour:
     level: 41
   - move: {fileID: 11400000, guid: 74248fa532ebddb47947db5edaa9eafc, type: 2}
     level: 73
+

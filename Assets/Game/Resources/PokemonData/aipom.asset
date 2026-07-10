@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: aipom
+  m_EditorClassIdentifier: 
+  num: 189
+  pokemonName: Aipom
+  description: 
+  frontSprite: {fileID: 21300000, guid: 537f0de2b71c61346b50cb48e730ef99, type: 3}
+  backSprite: {fileID: 21300000, guid: 850824bc8841bf241b369d0cc98155c3, type: 3}
+  type1: 1
+  type2: 0
+  MaxHp: 55
+  Attack: 70
+  Defense: 55
+  SpAttack: 40
+  SpDefense: 55
+  Speed: 85
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
+  biasPersonality: 1
+  preferredPersonality: 5
+  preferredPersonalityChance: 75
+  encounterLocations:
+  - Road01
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 6f06b53dade7c3845b4526356002f00f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62eb808afeac32348b4cd925896c8028, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 590248e45e757744fb3fe9c7f520c2bf, type: 2}
+    level: 4
+  - move: {fileID: 11400000, guid: 840cdbf3248c03b40875daaab4c2c2de, type: 2}
+    level: 8
+  - move: {fileID: 11400000, guid: c663dcba04afc7e4aa464c48c3639068, type: 2}
+    level: 18
+  - move: {fileID: 11400000, guid: 6ca5edd83e8be3b4e96e543c017f871f, type: 2}
+    level: 22
+  - move: {fileID: 11400000, guid: 16e0634bd65803c47babc9aa83833434, type: 2}
+    level: 25
+  - move: {fileID: 11400000, guid: a39b61c4947f22a418f97e62538a089e, type: 2}
+    level: 29
+  - move: {fileID: 11400000, guid: d32499f9bcedaa7448ff3a5110607655, type: 2}
+    level: 32
+  - move: {fileID: 11400000, guid: 3fa15a1a29c3670418f9b36a6f2d2cbc, type: 2}
+    level: 43

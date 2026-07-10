@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: corsola
+  m_EditorClassIdentifier: 
+  num: 221
+  pokemonName: Corsola
+  description: 
+  frontSprite: {fileID: 21300000, guid: 0308d0d84f44a3a43a72c72c5098c963, type: 3}
+  backSprite: {fileID: 21300000, guid: edea6759afef70c44aeee52650c13f3b, type: 3}
+  type1: 3
+  type2: 13
+  MaxHp: 65
+  Attack: 55
+  Defense: 95
+  SpAttack: 65
+  SpDefense: 95
+  Speed: 35
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
+  biasPersonality: 1
+  preferredPersonality: 0
+  preferredPersonalityChance: 100
+  encounterLocations:
+  - Mountain
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 4181e9376aadffa4cabb13845d245783, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 959820f8ddaa2074abe27deaf66388c1, type: 2}
+    level: 4
+  - move: {fileID: 11400000, guid: 017b19522ce46664c81ac8803892f6a3, type: 2}
+    level: 5
+  - move: {fileID: 11400000, guid: 5990984caa817ed4c84ea751e3420f19, type: 2}
+    level: 10
+  - move: {fileID: 11400000, guid: c40cf627fc3b7684a9ae1de302e82ee5, type: 2}
+    level: 17
+  - move: {fileID: 11400000, guid: 40a681017e9fe244c885b88f18c06ebd, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: b4123928e886cda4b99b777e8ece05d4, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: 32fb9852f075eb34e9f3d72a121ff027, type: 2}
+    level: 27
+  - move: {fileID: 11400000, guid: 6c2786b6750035748b79da8286d32f5f, type: 2}
+    level: 40
+  - move: {fileID: 11400000, guid: 4881a954dd7e9944a99f2d1558c08d0f, type: 2}
+    level: 45

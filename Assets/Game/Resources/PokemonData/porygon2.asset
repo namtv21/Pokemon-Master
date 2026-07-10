@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: porygon2
+  m_EditorClassIdentifier: 
+  num: 232
+  pokemonName: Porygon2
+  description: 
+  frontSprite: {fileID: 21300000, guid: 1304fe113489d2348b4625f8a2a2b43d, type: 3}
+  backSprite: {fileID: 21300000, guid: 357b7e4b7228cfd45804b073abed7ffa, type: 3}
+  type1: 1
+  type2: 0
+  MaxHp: 85
+  Attack: 80
+  Defense: 90
+  SpAttack: 105
+  SpDefense: 95
+  Speed: 60
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
+  biasPersonality: 1
+  preferredPersonality: 5
+  preferredPersonalityChance: 75
+  encounterLocations: []
+  learnableMoves:
+  - move: {fileID: 11400000, guid: c063422a03426a844aefe5d9930f851e, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 480cd86a908ddc448aa753bde124847a, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 37229a41a5b65604eb1901844a144784, type: 2}
+    level: 7
+  - move: {fileID: 11400000, guid: a39b61c4947f22a418f97e62538a089e, type: 2}
+    level: 9
+  - move: {fileID: 11400000, guid: 04c82d3a407de8b4db078420913c9278, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: 16e04f09a53fc0d42bcf0169c6c9f7eb, type: 2}
+    level: 29
+  - move: {fileID: 11400000, guid: d92533dd442ef59418e8f1572c8e614b, type: 2}
+    level: 36
+  - move: {fileID: 11400000, guid: 4ee6e796f0ab40e46b4a9b4d7f0a3d80, type: 2}
+    level: 40
+  - move: {fileID: 11400000, guid: 74248fa532ebddb47947db5edaa9eafc, type: 2}
+    level: 65

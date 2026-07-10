@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: misdreavus
+  m_EditorClassIdentifier: 
+  num: 199
+  pokemonName: Misdreavus
+  description: 
+  frontSprite: {fileID: 21300000, guid: 8b8df61fb0ea5704e82cc80c1442b9c2, type: 3}
+  backSprite: {fileID: 21300000, guid: fa7132c8df0e1d04695235c40354a62e, type: 3}
+  type1: 14
+  type2: 0
+  MaxHp: 60
+  Attack: 60
+  Defense: 60
+  SpAttack: 85
+  SpDefense: 85
+  Speed: 85
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
+  biasPersonality: 1
+  preferredPersonality: 6
+  preferredPersonalityChance: 100
+  encounterLocations:
+  - Road04
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 840cdbf3248c03b40875daaab4c2c2de, type: 2}
+    level: 10
+  - move: {fileID: 11400000, guid: 4f73abc6bb514aa49bb0d7eb9f33bbfe, type: 2}
+    level: 14
+  - move: {fileID: 11400000, guid: c951b3ca23ad9b941badd279748907e2, type: 2}
+    level: 23
+  - move: {fileID: 11400000, guid: 37229a41a5b65604eb1901844a144784, type: 2}
+    level: 23
+  - move: {fileID: 11400000, guid: b9871c8d119e89948b6f33b00563835e, type: 2}
+    level: 32
+  - move: {fileID: 11400000, guid: fa08a1c2a47226e419b57f87173659b5, type: 2}
+    level: 37
+  - move: {fileID: 11400000, guid: 6c2786b6750035748b79da8286d32f5f, type: 2}
+    level: 50

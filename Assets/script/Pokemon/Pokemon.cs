@@ -6,6 +6,8 @@ using System;
 [System.Serializable]
 public class Pokemon
 {
+    public const int BattleParticipationsPerFriendshipLevel = 5;
+
     // Backing fields
     private PokemonBase _baseData;
     private int _level;
@@ -13,6 +15,7 @@ public class Pokemon
     private int _exp;
     private int _battleParticipationCount;
     private int _friendshipLevel;
+    private PokemonPersonality _personality;
     private readonly Queue<MoveBase> pendingMoveLearnQueue = new Queue<MoveBase>();
     private MoveBase currentPendingMoveLearn;
 
@@ -25,6 +28,8 @@ public class Pokemon
     public int BattleParticipationCount => _battleParticipationCount;
     public int FriendshipLevel => _friendshipLevel;
     public int FriendshipProgress => _battleParticipationCount;
+    public PokemonPersonality Personality => _personality;
+    public BondTier BondTier => PokemonPersonalityUtil.TierOf(_friendshipLevel);
 
     // Stat gốc (tính từ baseData + level)
     public int MaxHp => Mathf.FloorToInt((_baseData.MaxHp * _level) / 50f + 10);
@@ -57,6 +62,7 @@ public class Pokemon
         _exp = 0;
         _battleParticipationCount = 0;
         _friendshipLevel = 0;
+        _personality = data != null ? data.RollPersonality() : PokemonPersonalityUtil.RandomPersonality();
         Status = StatusEffect.None;
         Moves = new List<Move>();
 
@@ -82,6 +88,9 @@ public class Pokemon
         _exp = data.exp;
         _battleParticipationCount = Mathf.Max(0, data.battleParticipationCount);
         _friendshipLevel = Mathf.Max(0, data.friendshipLevel);
+        _personality = (data.personality >= 0 && System.Enum.IsDefined(typeof(PokemonPersonality), data.personality))
+            ? (PokemonPersonality)data.personality
+            : PokemonPersonalityUtil.RandomPersonality();
 
         Moves = new List<Move>();
         var moveNames = data.moves ?? new List<string>();
@@ -257,9 +266,9 @@ public class Pokemon
             return;
 
         _battleParticipationCount += count;
-        while (_battleParticipationCount >= 10)
+        while (_battleParticipationCount >= BattleParticipationsPerFriendshipLevel)
         {
-            _battleParticipationCount -= 10;
+            _battleParticipationCount -= BattleParticipationsPerFriendshipLevel;
             _friendshipLevel++;
             Debug.Log($"{Base.Name}'s friendship increased to {_friendshipLevel}!");
         }
@@ -267,20 +276,43 @@ public class Pokemon
 
     public bool CanEvolveNow()
     {
-        return _baseData != null && _baseData.Evolvable && _baseData.EvolvesTo != null && _level >= _baseData.EvolutionLevel;
+        return GetAvailableEvolutionOptions().Count > 0;
+    }
+
+    public List<EvolutionOption> GetAvailableEvolutionOptions()
+    {
+        var result = new List<EvolutionOption>();
+        if (_baseData == null)
+            return result;
+
+        var options = _baseData.GetValidEvolutionOptions();
+        foreach (var option in options)
+        {
+            if (option != null && option.EvolvesTo != null && _level >= option.EvolutionLevel)
+                result.Add(option);
+        }
+
+        return result;
     }
 
     public string GetEvolutionTargetName()
     {
-        return _baseData != null && _baseData.EvolvesTo != null ? _baseData.EvolvesTo.Name : string.Empty;
+        var options = GetAvailableEvolutionOptions();
+        return options.Count > 0 && options[0].EvolvesTo != null ? options[0].EvolvesTo.Name : string.Empty;
     }
 
     public bool TryEvolve()
     {
+        var options = GetAvailableEvolutionOptions();
+        return options.Count > 0 && TryEvolve(options[0]);
+    }
+
+    public bool TryEvolve(EvolutionOption option)
+    {
         if (!CanEvolveNow())
             return false;
 
-        var targetBase = _baseData.EvolvesTo;
+        var targetBase = option != null ? option.EvolvesTo : null;
         if (targetBase == null)
             return false;
 
@@ -404,6 +436,7 @@ public class Pokemon
         data.exp = Exp;
         data.battleParticipationCount = BattleParticipationCount;
         data.friendshipLevel = FriendshipLevel;
+        data.personality = (int)Personality;
 
         data.moves = new List<string>();
         foreach (var m in Moves)

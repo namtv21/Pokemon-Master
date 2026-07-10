@@ -26,8 +26,18 @@ MonoBehaviour:
   SpDefense: 50
   Speed: 90
   evolvable: 1
-  evolutionLevel: 40
+  evolutionLevel: 36
   evolvesTo: {fileID: 11400000, guid: afab3218118d53840a79f1c4e474a9b8, type: 2}
+  evolutionOptions:
+  - evolvesTo: {fileID: 11400000, guid: afab3218118d53840a79f1c4e474a9b8, type: 2}
+    evolutionLevel: 36
+    label: Poliwrath
+  - evolvesTo: {fileID: 11400000, guid: 7f917f68694de10409ff192822235cbb, type: 2}
+    evolutionLevel: 36
+    label: Politoed
+  biasPersonality: 1
+  preferredPersonality: 4
+  preferredPersonalityChance: 100
   encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 959820f8ddaa2074abe27deaf66388c1, type: 2}
@@ -56,3 +66,7 @@ MonoBehaviour:
     level: 53
   - move: {fileID: 11400000, guid: e496f6c618ec32747bb955dabc343e88, type: 2}
     level: 66
+
+
+
+

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: vaporeon
   m_EditorClassIdentifier: 
-  num: 133
+  num: 132
   pokemonName: Vaporeon
   description: 
   frontSprite: {fileID: 21300000, guid: dc026363c69d3aa4aa768775d688c81f, type: 3}
@@ -28,8 +28,10 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
-  encounterLocations:
-  - Road02
+  biasPersonality: 1
+  preferredPersonality: 4
+  preferredPersonalityChance: 100
+  encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 017b19522ce46664c81ac8803892f6a3, type: 2}
     level: 0
@@ -65,3 +67,4 @@ MonoBehaviour:
     level: 41
   - move: {fileID: 11400000, guid: 00970f72f2b898344aa0272d8cccf280, type: 2}
     level: 45
+

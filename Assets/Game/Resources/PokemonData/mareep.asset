@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: mareep
+  m_EditorClassIdentifier: 
+  num: 178
+  pokemonName: Mareep
+  description: 
+  frontSprite: {fileID: 21300000, guid: 9e4757aacdc5c87408b66d9d7cf8016b, type: 3}
+  backSprite: {fileID: 21300000, guid: 3bb5886d83ee8bd479ec725a1d245206, type: 3}
+  type1: 4
+  type2: 0
+  MaxHp: 55
+  Attack: 40
+  Defense: 40
+  SpAttack: 65
+  SpDefense: 45
+  Speed: 35
+  evolvable: 1
+  evolutionLevel: 15
+  evolvesTo: {fileID: 11400000, guid: b369a0e2e99da2d4da9a3a0a6c2c6daa, type: 2}
+  biasPersonality: 1
+  preferredPersonality: 4
+  preferredPersonalityChance: 100
+  encounterLocations:
+  - Mountain
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: f7c7d99ee8389f54e87ae6d423506004, type: 2}
+    level: 4
+  - move: {fileID: 11400000, guid: 04c82d3a407de8b4db078420913c9278, type: 2}
+    level: 8
+  - move: {fileID: 11400000, guid: b015132f9e281df419ecb76847e4b227, type: 2}
+    level: 18
+  - move: {fileID: 11400000, guid: 4f73abc6bb514aa49bb0d7eb9f33bbfe, type: 2}
+    level: 25
+  - move: {fileID: 11400000, guid: 4ee6e796f0ab40e46b4a9b4d7f0a3d80, type: 2}
+    level: 28
+  - move: {fileID: 11400000, guid: 6c2786b6750035748b79da8286d32f5f, type: 2}
+    level: 29
+  - move: {fileID: 11400000, guid: 16e04f09a53fc0d42bcf0169c6c9f7eb, type: 2}
+    level: 32
+  - move: {fileID: 11400000, guid: 44895595fa4afe541a43828bd8021441, type: 2}
+    level: 37

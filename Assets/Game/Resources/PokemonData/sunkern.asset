@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: sunkern
+  m_EditorClassIdentifier: 
+  num: 190
+  pokemonName: Sunkern
+  description: 
+  frontSprite: {fileID: 21300000, guid: 949e458b9c475ba47ab22e4b00c68c55, type: 3}
+  backSprite: {fileID: 21300000, guid: bab9e6b1c83b11e42a69f38158d94349, type: 3}
+  type1: 5
+  type2: 0
+  MaxHp: 30
+  Attack: 30
+  Defense: 30
+  SpAttack: 30
+  SpDefense: 30
+  Speed: 30
+  evolvable: 1
+  evolutionLevel: 18
+  evolvesTo: {fileID: 11400000, guid: 0217bd4ed0beb8249a8836be9c0abd9e, type: 2}
+  biasPersonality: 1
+  preferredPersonality: 4
+  preferredPersonalityChance: 75
+  encounterLocations:
+  - Road02
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 7461b30f495f6dd489acd502d39ba1e9, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: d30e9695208659443b9d70267c52fc89, type: 2}
+    level: 5
+  - move: {fileID: 11400000, guid: 50fcffbba5365e441a73b3bfd69f9bc4, type: 2}
+    level: 16
+  - move: {fileID: 11400000, guid: 3c517801cc974aa45baac7c2f2038d63, type: 2}
+    level: 22
+  - move: {fileID: 11400000, guid: 9b734255591c43e49a172cd7249d50d5, type: 2}
+    level: 34
+  - move: {fileID: 11400000, guid: e496f6c618ec32747bb955dabc343e88, type: 2}
+    level: 37
+  - move: {fileID: 11400000, guid: b0c45b2363b629247a7889dddf3c5204, type: 2}
+    level: 43

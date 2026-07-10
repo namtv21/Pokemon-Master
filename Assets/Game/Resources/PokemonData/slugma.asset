@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: slugma
+  m_EditorClassIdentifier: 
+  num: 217
+  pokemonName: Slugma
+  description: 
+  frontSprite: {fileID: 21300000, guid: 0dd70a9ef877aef42b774907d7b1bf00, type: 3}
+  backSprite: {fileID: 21300000, guid: 40cac0575151db44ca0b0adef0ccea88, type: 3}
+  type1: 2
+  type2: 0
+  MaxHp: 40
+  Attack: 40
+  Defense: 40
+  SpAttack: 70
+  SpDefense: 40
+  Speed: 20
+  evolvable: 1
+  evolutionLevel: 38
+  evolvesTo: {fileID: 11400000, guid: 0b3c592ddbff18345ae12f383d4b0792, type: 2}
+  biasPersonality: 1
+  preferredPersonality: 7
+  preferredPersonalityChance: 100
+  encounterLocations:
+  - Road03
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 4b13cc976bf14764a9b67dc86035acc5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: beac49ccdf5984d48b1f77b88fd7e1ca, type: 2}
+    level: 5
+  - move: {fileID: 11400000, guid: 36f0a08bb0b300c4fa6bcb3170fa3926, type: 2}
+    level: 8
+  - move: {fileID: 11400000, guid: 4181e9376aadffa4cabb13845d245783, type: 2}
+    level: 13
+  - move: {fileID: 11400000, guid: bbec61c3c88c8814d94d133b242be904, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: 3eacaf2bda93e6042a4aec11b8f190f1, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: c40cf627fc3b7684a9ae1de302e82ee5, type: 2}
+    level: 22
+  - move: {fileID: 11400000, guid: 892d0c1c19283cb4c8d0efe95e2805e0, type: 2}
+    level: 23
+  - move: {fileID: 11400000, guid: 014d503be6e83e849b2bea0f0b07ccf7, type: 2}
+    level: 29
+  - move: {fileID: 11400000, guid: 72ee95ca597ea67449f7664c7422ee61, type: 2}
+    level: 34
+  - move: {fileID: 11400000, guid: a42cdd354fe20f94a8a56eeb81e0a81d, type: 2}
+    level: 36
+  - move: {fileID: 11400000, guid: 6907ef8c4109b5647888b1f07dbffbf5, type: 2}
+    level: 41
+  - move: {fileID: 11400000, guid: 4881a954dd7e9944a99f2d1558c08d0f, type: 2}
+    level: 50

@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: togepi
+  m_EditorClassIdentifier: 
+  num: 174
+  pokemonName: Togepi
+  description: 
+  frontSprite: {fileID: 21300000, guid: e9978df1dd83d9f42bc7ab606bc67274, type: 3}
+  backSprite: {fileID: 21300000, guid: 868f35577bb143343b8db2ae56289141, type: 3}
+  type1: 18
+  type2: 0
+  MaxHp: 35
+  Attack: 20
+  Defense: 65
+  SpAttack: 40
+  SpDefense: 65
+  Speed: 20
+  evolvable: 1
+  evolutionLevel: 20
+  evolvesTo: {fileID: 11400000, guid: efdf8cdabc4bafb43ae1210ee5b1d829, type: 2}
+  biasPersonality: 1
+  preferredPersonality: 6
+  preferredPersonalityChance: 100
+  encounterLocations:
+  - GrassTown
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 26c2f0f3b8de511448936625c1e5b3cb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: c40cf627fc3b7684a9ae1de302e82ee5, type: 2}
+    level: 16
+  - move: {fileID: 11400000, guid: e496f6c618ec32747bb955dabc343e88, type: 2}
+    level: 32
+  - move: {fileID: 11400000, guid: 3fa15a1a29c3670418f9b36a6f2d2cbc, type: 2}
+    level: 48

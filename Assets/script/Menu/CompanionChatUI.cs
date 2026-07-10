@@ -32,6 +32,7 @@ public class CompanionChatUI : MonoBehaviour
         "Suy nghĩ về Team Rocket",
         "Suy nghĩ về Green",
         "Suy nghĩ về Blue",
+        "Vuốt ve",
         "Trò chuyện (Online)"
     };
 
@@ -140,6 +141,17 @@ public class CompanionChatUI : MonoBehaviour
                 return;
             }
 
+            if (selectedIndex == Topics.Length - 2) // "Vuốt ve" — tăng bond, offline
+            {
+                string petResp = CompanionChatSystem.Instance.PetCompanion(companion);
+                RefreshIntimacy();
+                UpdateCompanionSprite();
+                if (animCoroutine != null) StopCoroutine(animCoroutine);
+                animCoroutine = StartCoroutine(PlayMoodAnimation(2)); // vui
+                ShowResponse(petResp);
+                return;
+            }
+
             string response = CompanionChatSystem.Instance.GetOfflineResponse(companion, selectedIndex);
             RefreshIntimacy();
 
@@ -201,6 +213,7 @@ public class CompanionChatUI : MonoBehaviour
         {
             string msg = chatInputField != null ? chatInputField.text.Trim() : "";
             if (string.IsNullOrEmpty(msg)) return;
+            if (msg.Length > 200) msg = msg.Substring(0, 200);   // cap độ dài input
             chatInputField.text = "";
             inputPanel?.SetActive(false);
             StartCoroutine(SendOnlineMessage(msg));
@@ -279,8 +292,11 @@ public class CompanionChatUI : MonoBehaviour
 
     private void RefreshIntimacy()
     {
-        if (intimacyText != null)
-            intimacyText.text = $"Lv thân mật: {CompanionChatSystem.Instance.IntimacyLevel}";
+        if (intimacyText == null) return;
+
+        intimacyText.text = companion != null
+            ? CompanionChatSystem.Instance.GetStatusSummary(companion)      // "Tinh nghịch · Bạn (55) · vui vẻ"
+            : $"Lv thân mật: {CompanionChatSystem.Instance.IntimacyLevel}";
     }
 
     private void HighlightOption()

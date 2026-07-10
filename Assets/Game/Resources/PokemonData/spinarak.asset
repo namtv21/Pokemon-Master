@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: spinarak
+  m_EditorClassIdentifier: 
+  num: 166
+  pokemonName: Spinarak
+  description: 
+  frontSprite: {fileID: 21300000, guid: 7da407b680a2f554387c5cf5e111832f, type: 3}
+  backSprite: {fileID: 21300000, guid: 21989306fd9cd7a48ae4409a0f6b3c34, type: 3}
+  type1: 12
+  type2: 8
+  MaxHp: 40
+  Attack: 60
+  Defense: 40
+  SpAttack: 40
+  SpDefense: 40
+  Speed: 30
+  evolvable: 1
+  evolutionLevel: 22
+  evolvesTo: {fileID: 11400000, guid: 60a5c8636c5d9094c8ea7707c2ca6837, type: 2}
+  biasPersonality: 1
+  preferredPersonality: 6
+  preferredPersonalityChance: 75
+  encounterLocations:
+  - Road01
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 06b45535f1e196940b18ff5ab35db32c, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: f8656ea407699464188f9bc088726e8a, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: a62e8ea64a6e52742913c994c025139a, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 7461b30f495f6dd489acd502d39ba1e9, type: 2}
+    level: 5
+  - move: {fileID: 11400000, guid: 86f6bf26eeb4bcb41a063a3565ae06f3, type: 2}
+    level: 8
+  - move: {fileID: 11400000, guid: 64f47dd5e53dc3b42b55caad299f8407, type: 2}
+    level: 12
+  - move: {fileID: 11400000, guid: 7577052ba8b33774c9cd9785857bd997, type: 2}
+    level: 19
+  - move: {fileID: 11400000, guid: c663dcba04afc7e4aa464c48c3639068, type: 2}
+    level: 22
+  - move: {fileID: 11400000, guid: 423a6a9b44735d34e9d97095f618ef36, type: 2}
+    level: 26
+  - move: {fileID: 11400000, guid: a39b61c4947f22a418f97e62538a089e, type: 2}
+    level: 33
+  - move: {fileID: 11400000, guid: 510dc1467b8a02a46bd363d0ecc1f45d, type: 2}
+    level: 36
+  - move: {fileID: 11400000, guid: 237719c8cb0509345a0bd08b39cf0baf, type: 2}
+    level: 40
+  - move: {fileID: 11400000, guid: 33142d68f02ea934c86e46f20ad0f52d, type: 2}
+    level: 43
+  - move: {fileID: 11400000, guid: 414a3c6c7fd9c674abc7c319725642a7, type: 2}
+    level: 47

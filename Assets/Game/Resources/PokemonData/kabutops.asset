@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: kabutops
   m_EditorClassIdentifier: 
-  num: 140
+  num: 139
   pokemonName: Kabutops
   description: 
   frontSprite: {fileID: 21300000, guid: eaf546666406d3c439dacd66b4f713a9, type: 3}
@@ -28,6 +28,9 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  biasPersonality: 1
+  preferredPersonality: 1
+  preferredPersonalityChance: 100
   encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: b204d8d5d0d979442a21a0abb40491f6, type: 2}
@@ -66,3 +69,4 @@ MonoBehaviour:
     level: 56
   - move: {fileID: 11400000, guid: 5fd00157f771e7a469e4a61b38bd1f82, type: 2}
     level: 70
+

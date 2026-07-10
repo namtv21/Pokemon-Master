@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -413,10 +414,22 @@ public partial class GameController : MonoBehaviour
 
         while (pokemon.CanEvolveNow())
         {
+            var options = pokemon.GetAvailableEvolutionOptions();
+            if (options.Count == 0)
+                yield break;
+
+            EvolutionOption selectedOption = options[0];
+            if (options.Count > 1)
+            {
+                yield return StartCoroutine(ShowEvolutionChoice(pokemon, options, option => selectedOption = option));
+                if (selectedOption == null)
+                    yield break;
+            }
+
             var oldBase = pokemon.Base;
-            var newBase = oldBase?.EvolvesTo;
+            var newBase = selectedOption.EvolvesTo;
             string oldName = oldBase != null ? oldBase.Name : pokemon.Base.Name;
-            string targetName = newBase != null ? newBase.Name : pokemon.GetEvolutionTargetName();
+            string targetName = newBase != null ? newBase.Name : selectedOption.Label;
 
             yield return ShowDialogAndWait($"{oldName} is evolving!");
             yield return FadeSceneOverlay(1f, 0.35f);
@@ -425,7 +438,7 @@ public partial class GameController : MonoBehaviour
             Sprite afterSprite = newBase != null ? newBase.FrontSprite : null;
             yield return StartCoroutine(PlayEvolutionVisual(beforeSprite, afterSprite));
 
-            bool evolved = pokemon.TryEvolve();
+            bool evolved = pokemon.TryEvolve(selectedOption);
             yield return FadeSceneOverlay(0f, 0.35f);
 
             if (!evolved)
@@ -434,6 +447,91 @@ public partial class GameController : MonoBehaviour
             PokedexManager.GetOrCreate().MarkCaught(pokemon);
             yield return ShowDialogAndWait($"Congratulations! {oldName} evolved into {targetName}!");
         }
+    }
+
+    private IEnumerator ShowEvolutionChoice(Pokemon pokemon, List<EvolutionOption> options, System.Action<EvolutionOption> onSelected)
+    {
+        var canvasGO = new GameObject("EvolutionChoiceCanvas");
+        DontDestroyOnLoad(canvasGO);
+        var canvas = canvasGO.AddComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.sortingOrder = 10001;
+        var scaler = canvasGO.AddComponent<CanvasScaler>();
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.referenceResolution = new Vector2(1920, 1080);
+        scaler.matchWidthOrHeight = 0.5f;
+        canvasGO.AddComponent<GraphicRaycaster>();
+
+        var panelGO = new GameObject("Panel");
+        panelGO.transform.SetParent(canvasGO.transform, false);
+        var panelRect = panelGO.AddComponent<RectTransform>();
+        panelRect.anchorMin = panelRect.anchorMax = new Vector2(0.5f, 0.5f);
+        panelRect.sizeDelta = new Vector2(720, 420);
+        panelRect.anchoredPosition = Vector2.zero;
+        var panelImage = panelGO.AddComponent<Image>();
+        panelImage.color = new Color(0f, 0f, 0f, 0.86f);
+
+        var textGO = new GameObject("ChoiceText");
+        textGO.transform.SetParent(panelGO.transform, false);
+        var textRect = textGO.AddComponent<RectTransform>();
+        textRect.anchorMin = Vector2.zero;
+        textRect.anchorMax = Vector2.one;
+        textRect.offsetMin = new Vector2(48, 36);
+        textRect.offsetMax = new Vector2(-48, -36);
+        var text = textGO.AddComponent<Text>();
+        text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        text.fontSize = 34;
+        text.color = Color.white;
+        text.alignment = TextAnchor.UpperLeft;
+
+        int index = 0;
+        bool done = false;
+        EvolutionOption selected = null;
+
+        void Refresh()
+        {
+            string pokemonName = pokemon != null && pokemon.Base != null ? pokemon.Base.Name : "Pokemon";
+            var lines = new List<string> { $"{pokemonName} can evolve. Choose a form:", string.Empty };
+            for (int i = 0; i < options.Count; i++)
+            {
+                var option = options[i];
+                string name = option != null && option.EvolvesTo != null ? option.EvolvesTo.Name : option?.Label;
+                lines.Add($"{(i == index ? "> " : "  ")}{name}");
+            }
+            lines.Add(string.Empty);
+            lines.Add("[Z] Choose   [X] Not now");
+            text.text = string.Join("\n", lines);
+        }
+
+        Refresh();
+        while (!done)
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                index = (index - 1 + options.Count) % options.Count;
+                Refresh();
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                index = (index + 1) % options.Count;
+                Refresh();
+            }
+            else if (Input.GetKeyDown(KeyCode.Z))
+            {
+                selected = options[index];
+                done = true;
+            }
+            else if (Input.GetKeyDown(KeyCode.X))
+            {
+                selected = null;
+                done = true;
+            }
+
+            yield return null;
+        }
+
+        Object.Destroy(canvasGO);
+        onSelected?.Invoke(selected);
     }
 
     // Evolution visual was moved to EvolutionVisuals.cs

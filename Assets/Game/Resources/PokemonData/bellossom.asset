@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: bellossom
+  m_EditorClassIdentifier: 
+  num: 181
+  pokemonName: Bellossom
+  description: 
+  frontSprite: {fileID: 21300000, guid: 9b2ad99a97c7b2840b34894ddb8546ce, type: 3}
+  backSprite: {fileID: 21300000, guid: 8da9443bc5beb4743bca8af90ce1521f, type: 3}
+  type1: 5
+  type2: 0
+  MaxHp: 75
+  Attack: 80
+  Defense: 95
+  SpAttack: 90
+  SpDefense: 100
+  Speed: 50
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
+  biasPersonality: 1
+  preferredPersonality: 4
+  preferredPersonalityChance: 75
+  encounterLocations: []
+  learnableMoves:
+  - move: {fileID: 11400000, guid: beb0a00e1de2d8540b64916000d72c30, type: 2}
+    level: 0
+  - move: {fileID: 11400000, guid: 7461b30f495f6dd489acd502d39ba1e9, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 644c71fd54e4b3340a73dd6f1e6b6a30, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 3c517801cc974aa45baac7c2f2038d63, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: cd8b538370ba1e04bb63cc3afde9d169, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: d1aafc9809da77b44af4267efc1c452d, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: cabd6d1a52bfaa64e99cfff71f13bea5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: d30e9695208659443b9d70267c52fc89, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 3a055ffbd619f004a9658a6ba8448b30, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 35e34bb02c5720744ab662302239ea40, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 08e44856acca65f45b41aa3f12a1e320, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 21c1a6a36c0ae8c4bac2b70e84b68cdd, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 9b734255591c43e49a172cd7249d50d5, type: 2}
+    level: 55

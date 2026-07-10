@@ -25,9 +25,12 @@ MonoBehaviour:
   SpAttack: 30
   SpDefense: 45
   Speed: 70
-  evolvable: 0
-  evolutionLevel: 0
-  evolvesTo: {fileID: 0}
+  evolvable: 1
+  evolutionLevel: 40
+  evolvesTo: {fileID: 11400000, guid: 001ba622fab761e4c8d8c9395ae7dd76, type: 2}
+  biasPersonality: 1
+  preferredPersonality: 3
+  preferredPersonalityChance: 100
   encounterLocations:
   - Cave
   learnableMoves:
@@ -63,3 +66,6 @@ MonoBehaviour:
     level: 46
   - move: {fileID: 11400000, guid: 5fd00157f771e7a469e4a61b38bd1f82, type: 2}
     level: 46
+
+
+

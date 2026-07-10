@@ -15,6 +15,7 @@ public class PokemonData
 
     public int battleParticipationCount;
     public int friendshipLevel;
+    public int personality = -1;   // -1 = chưa gán (save cũ) → sẽ gán ngẫu nhiên khi load
 
     public int attack;
     public int defense;
@@ -49,5 +50,6 @@ public class PokemonData
 
         battleParticipationCount = p.BattleParticipationCount;
         friendshipLevel = p.FriendshipLevel;
+        personality = (int)p.Personality;
     }
 }

@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: smeargle
+  m_EditorClassIdentifier: 
+  num: 234
+  pokemonName: Smeargle
+  description: 
+  frontSprite: {fileID: 21300000, guid: 7e8ddb8fa2d568042bf8fb5d6c30f751, type: 3}
+  backSprite: {fileID: 21300000, guid: c1ff6b35fa0ed194cbfe90788f52fdc2, type: 3}
+  type1: 1
+  type2: 0
+  MaxHp: 55
+  Attack: 20
+  Defense: 35
+  SpAttack: 20
+  SpDefense: 45
+  Speed: 75
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
+  biasPersonality: 1
+  preferredPersonality: 6
+  preferredPersonalityChance: 100
+  encounterLocations:
+  - FireTown
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6fc2d68d1ff67a447b0367fb15b1c35a, type: 2}
+    level: 8
+  - move: {fileID: 11400000, guid: 80b4b1b9465e0ca458786c0b8dd582c8, type: 2}
+    level: 18
+  - move: {fileID: 11400000, guid: 6ca5edd83e8be3b4e96e543c017f871f, type: 2}
+    level: 30
+  - move: {fileID: 11400000, guid: a5d44dd3375816446aaf0428fd8c2549, type: 2}
+    level: 42

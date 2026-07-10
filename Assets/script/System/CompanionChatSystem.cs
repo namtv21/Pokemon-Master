@@ -57,6 +57,10 @@ public class CompanionChatSystem : MonoBehaviour
         public string currentMoves;     // "Thunderbolt, Quick Attack, Iron Tail"
         public string activeFlags;      // "AfterGrassGym,MeetGreen,InCave"
         public string currentLocation;
+        public string personality;      // "Tinh nghịch"
+        public string bondTier;         // "Bạn"
+        public int    bondPoints;       // = friendship
+        public string mood;             // "vui vẻ, phấn khởi"
     }
 
     [System.Serializable]
@@ -122,11 +126,68 @@ public class CompanionChatSystem : MonoBehaviour
             intimacy         = companion?.FriendshipLevel ?? 0,
             currentMoves     = string.Join(", ", moveNames),
             activeFlags      = string.Join(",", activeFlags),
-            currentLocation  = GetCurrentLocation()
+            currentLocation  = GetCurrentLocation(),
+            personality      = companion != null ? PokemonPersonalityUtil.Label(companion.Personality) : "Bình thường",
+            bondTier         = PokemonPersonalityUtil.TierLabel(PokemonPersonalityUtil.TierOf(companion?.FriendshipLevel ?? 0)),
+            bondPoints       = companion?.FriendshipLevel ?? 0,
+            mood             = GetMoodLabel(companion)
         };
     }
 
-    private string GetCurrentLocation()
+    // --- Tâm trạng & tương tác (chỉ interaction, không đụng battle) ---
+
+    private static float lastInteractionTime = -999f;
+
+    // Tâm trạng đa yếu tố: HP + trạng thái + bond + vừa được vỗ về.
+    public string GetMoodLabel(Pokemon companion)
+    {
+        if (companion == null) return "không rõ";
+        if (companion.CurrentHp <= 0) return "kiệt sức";
+        if (companion.Status != StatusEffect.None) return "khó chịu";
+
+        if (Time.time - lastInteractionTime < 6f) return "vui vẻ, vừa được vỗ về";
+
+        float hp = (float)companion.CurrentHp / companion.MaxHp;
+        var tier = PokemonPersonalityUtil.TierOf(companion.FriendshipLevel);
+        if (hp < 0.35f) return "mệt mỏi";
+        if (hp >= 1f && tier >= BondTier.Friend) return "vui vẻ, phấn khởi";
+        if (tier >= BondTier.Companion) return "thoải mái, tin tưởng";
+        return "bình thường";
+    }
+
+    // Chuỗi tóm tắt hiển thị trên UI: "Tinh nghịch · Bạn (55) · vui vẻ"
+    public string GetStatusSummary(Pokemon companion)
+    {
+        if (companion == null) return "";
+        var tier = PokemonPersonalityUtil.TierOf(companion.FriendshipLevel);
+        return $"{PokemonPersonalityUtil.Label(companion.Personality)} · {PokemonPersonalityUtil.TierLabel(tier)} ({companion.FriendshipLevel}) · {GetMoodLabel(companion)}";
+    }
+
+    // Vuốt ve: chỉ tương tác + đổi tâm trạng, KHÔNG tăng bond (bond chỉ lên qua số trận đấu).
+    public string PetCompanion(Pokemon companion)
+    {
+        if (companion == null) return "...";
+        lastInteractionTime = Time.time;   // boost mood tạm thời, không đụng friendship
+        return GetPetResponse(companion);
+    }
+
+    private string GetPetResponse(Pokemon companion)
+    {
+        string name = companion.Base?.Name ?? "Pokemon";
+        switch (companion.Personality)
+        {
+            case PokemonPersonality.Playful: return $"{name}: {name}~! (nhảy cẫng lên vui vẻ)";
+            case PokemonPersonality.Brave:   return $"{name}: Hừm! (tỏ ra ngầu nhưng vẫn thích)";
+            case PokemonPersonality.Timid:   return $"{name}: ...{name}? (rụt rè rồi dựa vào bạn)";
+            case PokemonPersonality.Proud:   return $"{name}: Hmph~ (giả vờ không quan tâm, nhưng đuôi vẫy)";
+            case PokemonPersonality.Gentle:  return $"{name}: {name}... (nhắm mắt thoải mái)";
+            case PokemonPersonality.Curious: return $"{name}: {name}? {name}! (tò mò nghiêng đầu)";
+            case PokemonPersonality.Lazy:    return $"{name}: ...zzz~ (lười biếng nhưng hài lòng)";
+            default:                         return $"{name}: {name}~";
+        }
+    }
+
+    public static string GetCurrentLocation()
     {
         var scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         return scene switch
@@ -141,20 +202,43 @@ public class CompanionChatSystem : MonoBehaviour
             "Road04"    => "Road 04",
             "Cave"      => "Cave",
             "Mountain"  => "Mountain",
-            "GrassGym"  => "Grass Gym",
-            "WaterGym"  => "Water Gym",
-            "FireGym"   => "Fire Gym",
+            "ChampionMeet"  => "Champion's Meeting",
+            "CM_studio"  => "Champion's Studio",
             _           => scene
         };
     }
 
     // --- API call ---
 
+    private const int MaxInputChars = 200;
+
+    // Làm sạch input người chơi: bỏ ký tự điều khiển, cắt độ dài (defense-in-depth phía client).
+    private static string SanitizeUserInput(string raw)
+    {
+        if (string.IsNullOrEmpty(raw)) return string.Empty;
+        var sb = new System.Text.StringBuilder(raw.Length);
+        foreach (char c in raw)
+        {
+            if (char.IsControl(c) && c != ' ') continue;   // bỏ ký tự điều khiển
+            sb.Append(c);
+        }
+        string cleaned = sb.ToString().Trim();
+        if (cleaned.Length > MaxInputChars) cleaned = cleaned.Substring(0, MaxInputChars);
+        return cleaned;
+    }
+
     public IEnumerator SendMessageToCompanion(string userMessage, System.Action<string> onComplete)
     {
         if (string.IsNullOrEmpty(workerUrl))
         {
             onComplete?.Invoke("(Chưa cấu hình Worker URL — đặt trong Inspector của CompanionChatSystem)");
+            yield break;
+        }
+
+        userMessage = SanitizeUserInput(userMessage);
+        if (string.IsNullOrEmpty(userMessage))
+        {
+            onComplete?.Invoke("(Tin nhắn trống hoặc không hợp lệ)");
             yield break;
         }
 
@@ -177,6 +261,7 @@ public class CompanionChatSystem : MonoBehaviour
             webRequest.uploadHandler.contentType = "application/json";
             webRequest.downloadHandler          = new DownloadHandlerBuffer();
             webRequest.SetRequestHeader("x-game-token", gameToken);
+            webRequest.timeout = 20;   // chống treo UI nếu server/mạng không phản hồi
 
             yield return webRequest.SendWebRequest();
 

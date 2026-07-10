@@ -25,11 +25,14 @@ MonoBehaviour:
   SpAttack: 35
   SpDefense: 105
   Speed: 50
-  evolvable: 0
-  evolutionLevel: 0
-  evolvesTo: {fileID: 0}
+  evolvable: 1
+  evolutionLevel: 40
+  evolvesTo: {fileID: 11400000, guid: 4fe0cf28f462e1c4b904a144dcc41302, type: 2}
+  biasPersonality: 1
+  preferredPersonality: 4
+  preferredPersonalityChance: 100
   encounterLocations:
-  - Road04
+  - GrassTown
   learnableMoves:
   - move: {fileID: 11400000, guid: 6df84621ba287c64da68d4239af6d4c5, type: 2}
     level: 1
@@ -57,3 +60,6 @@ MonoBehaviour:
     level: 35
   - move: {fileID: 11400000, guid: 3fa15a1a29c3670418f9b36a6f2d2cbc, type: 2}
     level: 48
+
+
+

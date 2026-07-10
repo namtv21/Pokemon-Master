@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: chikorita
+  m_EditorClassIdentifier: 
+  num: 151
+  pokemonName: Chikorita
+  description: 
+  frontSprite: {fileID: 21300000, guid: 0a062726177677342adb82b61c8fc621, type: 3}
+  backSprite: {fileID: 21300000, guid: e9b9b7cf4dcf786459bdb5d6f2d6922e, type: 3}
+  type1: 5
+  type2: 0
+  MaxHp: 45
+  Attack: 49
+  Defense: 65
+  SpAttack: 49
+  SpDefense: 65
+  Speed: 45
+  evolvable: 1
+  evolutionLevel: 16
+  evolvesTo: {fileID: 11400000, guid: 40616a4e23d030640b373e135c2c6f02, type: 2}
+  biasPersonality: 1
+  preferredPersonality: 4
+  preferredPersonalityChance: 100
+  encounterLocations:
+  - Overworld
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 50fcffbba5365e441a73b3bfd69f9bc4, type: 2}
+    level: 6
+  - move: {fileID: 11400000, guid: 08e44856acca65f45b41aa3f12a1e320, type: 2}
+    level: 9
+  - move: {fileID: 11400000, guid: cabd6d1a52bfaa64e99cfff71f13bea5, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: 6907ef8c4109b5647888b1f07dbffbf5, type: 2}
+    level: 29
+  - move: {fileID: 11400000, guid: 9b734255591c43e49a172cd7249d50d5, type: 2}
+    level: 45

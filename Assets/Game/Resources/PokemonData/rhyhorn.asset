@@ -26,10 +26,13 @@ MonoBehaviour:
   SpDefense: 30
   Speed: 25
   evolvable: 1
-  evolutionLevel: 40
+  evolutionLevel: 42
   evolvesTo: {fileID: 11400000, guid: 6258d3d49a7667a418b569d63bc5870c, type: 2}
+  biasPersonality: 1
+  preferredPersonality: 1
+  preferredPersonalityChance: 100
   encounterLocations:
-  - Overworld
+  - Cave
   learnableMoves:
   - move: {fileID: 11400000, guid: 86e70bb2993f8dc47b5c2ce0599c0703, type: 2}
     level: 1
@@ -59,3 +62,6 @@ MonoBehaviour:
     level: 45
   - move: {fileID: 11400000, guid: c9e15f0a5922a754b8315c924892bc4f, type: 2}
     level: 49
+
+
+

@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: umbreon
+  m_EditorClassIdentifier: 
+  num: 196
+  pokemonName: Umbreon
+  description: 
+  frontSprite: {fileID: 21300000, guid: 2e37e7c94333103468af89b4b00c94c0, type: 3}
+  backSprite: {fileID: 21300000, guid: 3bd5b91c31727584cbe7cb7426800bf2, type: 3}
+  type1: 16
+  type2: 0
+  MaxHp: 95
+  Attack: 65
+  Defense: 110
+  SpAttack: 60
+  SpDefense: 130
+  Speed: 65
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
+  biasPersonality: 1
+  preferredPersonality: 5
+  preferredPersonalityChance: 100
+  encounterLocations: []
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 6bcaea5cb7962d14797bf006a1394fba, type: 2}
+    level: 0
+  - move: {fileID: 11400000, guid: b015132f9e281df419ecb76847e4b227, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 77cefdbcb4afee544b09c8d3278ccce3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6df84621ba287c64da68d4239af6d4c5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: e496f6c618ec32747bb955dabc343e88, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62eb808afeac32348b4cd925896c8028, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 4412911dd2198f6449619cb61daa6dc6, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6ca5edd83e8be3b4e96e543c017f871f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 590248e45e757744fb3fe9c7f520c2bf, type: 2}
+    level: 5
+  - move: {fileID: 11400000, guid: 6fc2d68d1ff67a447b0367fb15b1c35a, type: 2}
+    level: 10
+  - move: {fileID: 11400000, guid: 4f73abc6bb514aa49bb0d7eb9f33bbfe, type: 2}
+    level: 17
+  - move: {fileID: 11400000, guid: 96fd45c526e12304a9f0761721a515dd, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: 9a6547082124a55429d96e34960d57b5, type: 2}
+    level: 25
+  - move: {fileID: 11400000, guid: 16e0634bd65803c47babc9aa83833434, type: 2}
+    level: 29
+  - move: {fileID: 11400000, guid: 8b1718c607d166847b68a57d32b97754, type: 2}
+    level: 40
+  - move: {fileID: 11400000, guid: 3fa15a1a29c3670418f9b36a6f2d2cbc, type: 2}
+    level: 41

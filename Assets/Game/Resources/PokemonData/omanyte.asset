@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: omanyte
   m_EditorClassIdentifier: 
-  num: 137
+  num: 136
   pokemonName: Omanyte
   description: 
   frontSprite: {fileID: 21300000, guid: 96ae2e2442d8a874b8da4e923ec3051c, type: 3}
@@ -28,8 +28,11 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 40
   evolvesTo: {fileID: 11400000, guid: 05e63d6d63bb0c240a3dfca1ef91cee7, type: 2}
+  biasPersonality: 1
+  preferredPersonality: 6
+  preferredPersonalityChance: 100
   encounterLocations:
-  - Mountain
+  - Cave
   learnableMoves:
   - move: {fileID: 11400000, guid: 16fbc57445aaa8d4d81e6968b8e97724, type: 2}
     level: 1
@@ -61,3 +64,4 @@ MonoBehaviour:
     level: 50
   - move: {fileID: 11400000, guid: 00970f72f2b898344aa0272d8cccf280, type: 2}
     level: 52
+

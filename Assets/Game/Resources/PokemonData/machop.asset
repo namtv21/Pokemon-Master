@@ -26,8 +26,11 @@ MonoBehaviour:
   SpDefense: 35
   Speed: 35
   evolvable: 1
-  evolutionLevel: 25
+  evolutionLevel: 28
   evolvesTo: {fileID: 11400000, guid: 4f6d5e4e017b68e4d9d1ae552bcd6cb7, type: 2}
+  biasPersonality: 1
+  preferredPersonality: 1
+  preferredPersonalityChance: 100
   encounterLocations:
   - Mountain
   learnableMoves:
@@ -57,3 +60,6 @@ MonoBehaviour:
     level: 44
   - move: {fileID: 11400000, guid: e496f6c618ec32747bb955dabc343e88, type: 2}
     level: 52
+
+
+

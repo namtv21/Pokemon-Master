@@ -61,8 +61,12 @@ public class PokemonInfoUI : MonoBehaviour
 
         if (friendshipBar != null)
         {
-            friendshipBar.SetFriendshipFraction(pokemon.FriendshipProgress / 10f);
-            friendshipBar.SetFriendshipNumbers(pokemon.FriendshipLevel, pokemon.FriendshipProgress, 10);
+            friendshipBar.SetFriendshipFraction(
+                (float)pokemon.FriendshipProgress / Pokemon.BattleParticipationsPerFriendshipLevel);
+            friendshipBar.SetFriendshipNumbers(
+                pokemon.FriendshipLevel,
+                pokemon.FriendshipProgress,
+                Pokemon.BattleParticipationsPerFriendshipLevel);
         }
 
         float fraction = (float)pokemon.CurrentHp / pokemon.MaxHp;

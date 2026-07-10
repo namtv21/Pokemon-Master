@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: piloswine
+  m_EditorClassIdentifier: 
+  num: 220
+  pokemonName: Piloswine
+  description: 
+  frontSprite: {fileID: 21300000, guid: aeec117c200dbb34aa5b2ae07721d6a8, type: 3}
+  backSprite: {fileID: 21300000, guid: 815d51edad4817e488b359f9845fb620, type: 3}
+  type1: 6
+  type2: 9
+  MaxHp: 100
+  Attack: 100
+  Defense: 80
+  SpAttack: 60
+  SpDefense: 60
+  Speed: 50
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
+  biasPersonality: 1
+  preferredPersonality: 2
+  preferredPersonalityChance: 75
+  encounterLocations: []
+  learnableMoves:
+  - move: {fileID: 11400000, guid: f190f1c7ce02e0f49bf31b1cf33bf94e, type: 2}
+    level: 0
+  - move: {fileID: 11400000, guid: c40cf627fc3b7684a9ae1de302e82ee5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: fe5be24e281afc24b8b749c6408bd697, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 86e70bb2993f8dc47b5c2ce0599c0703, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 2b2094182d93bc547b2174b389cf158a, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 159d3b34fde15bd439dd87b7ca3da9a2, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 097b537ddf892294abf28d78eb5bc430, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 57030b10f07de364e902e15bbdff816e, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: 0d260db59f046d24691d424da9af9c60, type: 2}
+    level: 18
+  - move: {fileID: 11400000, guid: 50cca9f5420d0c24e9e63add552439aa, type: 2}
+    level: 21
+  - move: {fileID: 11400000, guid: b015132f9e281df419ecb76847e4b227, type: 2}
+    level: 28
+  - move: {fileID: 11400000, guid: 3c4cac0429c7d6240a529c98aed47ac0, type: 2}
+    level: 40
+  - move: {fileID: 11400000, guid: 9e37829d0711ec74087da73df370cab4, type: 2}
+    level: 41
+  - move: {fileID: 11400000, guid: 0a3b8595f68b936479b8f664c3401ca3, type: 2}
+    level: 52

@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: hooh
+  m_EditorClassIdentifier: 
+  num: 249
+  pokemonName: Ho-Oh
+  description: 
+  frontSprite: {fileID: 21300000, guid: 9b714e041a5648a4896ba5906d174264, type: 3}
+  backSprite: {fileID: 21300000, guid: e4cba59fd541c244c9b6391c240840a4, type: 3}
+  type1: 2
+  type2: 10
+  MaxHp: 106
+  Attack: 130
+  Defense: 90
+  SpAttack: 110
+  SpDefense: 154
+  Speed: 90
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
+  biasPersonality: 0
+  preferredPersonality: 0
+  preferredPersonalityChance: 70
+  encounterLocations:
+  - ChampionMeet
+  learnableMoves:
+  - move: {fileID: 11400000, guid: c40cf627fc3b7684a9ae1de302e82ee5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 06b4528290dba8146b4346412f05569f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 04857d0f42d94b24688cb0e24375cc94, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: ecca6129397e24f4fae68bf25be52c30, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: bcbfe0360f0deac459e06804ce55abe3, type: 2}
+    level: 23
+  - move: {fileID: 11400000, guid: 116ed64279262a9418d5390513678fba, type: 2}
+    level: 29
+  - move: {fileID: 11400000, guid: 7b04acb54059e27409fd459562649d89, type: 2}
+    level: 43
+  - move: {fileID: 11400000, guid: 6ca5edd83e8be3b4e96e543c017f871f, type: 2}
+    level: 43
+  - move: {fileID: 11400000, guid: aeb3aacd15401f747a320bd165d7fbd9, type: 2}
+    level: 79
+  - move: {fileID: 11400000, guid: 7fea54f84c3ddc743a04274ecfdd6c90, type: 2}
+    level: 90
+  - move: {fileID: 11400000, guid: acd589d428a9b574ab53dad2c0326910, type: 2}
+    level: 99

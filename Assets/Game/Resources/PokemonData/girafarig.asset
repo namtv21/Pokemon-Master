@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: girafarig
+  m_EditorClassIdentifier: 
+  num: 202
+  pokemonName: Girafarig
+  description: 
+  frontSprite: {fileID: 21300000, guid: dc93a04e9d631be49a8870cc0cef730b, type: 3}
+  backSprite: {fileID: 21300000, guid: f09d717eb0ab4b642b38c481920599c4, type: 3}
+  type1: 1
+  type2: 11
+  MaxHp: 70
+  Attack: 80
+  Defense: 65
+  SpAttack: 90
+  SpDefense: 65
+  Speed: 85
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
+  biasPersonality: 1
+  preferredPersonality: 5
+  preferredPersonalityChance: 75
+  encounterLocations:
+  - Road04
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 840cdbf3248c03b40875daaab4c2c2de, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 224bd97601c6c9047b1d6e820f96aec3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 9a6547082124a55429d96e34960d57b5, type: 2}
+    level: 10
+  - move: {fileID: 11400000, guid: 0fd90bedd5e77c94580f814a0fa1357f, type: 2}
+    level: 10
+  - move: {fileID: 11400000, guid: a39b61c4947f22a418f97e62538a089e, type: 2}
+    level: 14
+  - move: {fileID: 11400000, guid: 37229a41a5b65604eb1901844a144784, type: 2}
+    level: 19
+  - move: {fileID: 11400000, guid: d32499f9bcedaa7448ff3a5110607655, type: 2}
+    level: 28
+  - move: {fileID: 11400000, guid: 6f88fa17d442e2046b93bf045442c644, type: 2}
+    level: 32
+  - move: {fileID: 11400000, guid: 238c53ce48b414d428c60341b471f113, type: 2}
+    level: 37
+  - move: {fileID: 11400000, guid: 237719c8cb0509345a0bd08b39cf0baf, type: 2}
+    level: 37

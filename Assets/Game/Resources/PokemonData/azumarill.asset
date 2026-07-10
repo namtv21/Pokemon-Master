@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: azumarill
+  m_EditorClassIdentifier: 
+  num: 183
+  pokemonName: Azumarill
+  description: 
+  frontSprite: {fileID: 21300000, guid: 76119264f3775d742b6b26cbb92199d4, type: 3}
+  backSprite: {fileID: 21300000, guid: d15fa12444f94a64d95c6c64100bdf6d, type: 3}
+  type1: 3
+  type2: 18
+  MaxHp: 100
+  Attack: 50
+  Defense: 80
+  SpAttack: 60
+  SpDefense: 80
+  Speed: 50
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
+  biasPersonality: 1
+  preferredPersonality: 0
+  preferredPersonalityChance: 100
+  encounterLocations: []
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 959820f8ddaa2074abe27deaf66388c1, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: c063422a03426a844aefe5d9930f851e, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: cfec46789251e054f8a8c084d896c3bb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 62eb808afeac32348b4cd925896c8028, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 017b19522ce46664c81ac8803892f6a3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 5990984caa817ed4c84ea751e3420f19, type: 2}
+    level: 6
+  - move: {fileID: 11400000, guid: eef4c619e673da14f941e39ea075d5e5, type: 2}
+    level: 12
+  - move: {fileID: 11400000, guid: c4e5cf8ae2689b546b6c4a62f24a34cc, type: 2}
+    level: 15
+  - move: {fileID: 11400000, guid: 9044c388256f7a0479bdcde872d633ec, type: 2}
+    level: 21
+  - move: {fileID: 11400000, guid: e496f6c618ec32747bb955dabc343e88, type: 2}
+    level: 25
+  - move: {fileID: 11400000, guid: d2098d30d91ec33468171f9ba1887e8c, type: 2}
+    level: 25
+  - move: {fileID: 11400000, guid: 00970f72f2b898344aa0272d8cccf280, type: 2}
+    level: 40
+  - move: {fileID: 11400000, guid: cd5323bededd4a54d960f5a88d2a9261, type: 2}
+    level: 42

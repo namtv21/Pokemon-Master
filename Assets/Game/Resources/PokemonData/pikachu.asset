@@ -25,11 +25,18 @@ MonoBehaviour:
   SpAttack: 50
   SpDefense: 50
   Speed: 90
-  evolvable: 0
-  evolutionLevel: 30
+  evolvable: 1
+  evolutionLevel: 22
   evolvesTo: {fileID: 11400000, guid: 48cc3869d8515b949b9d0f7836bab391, type: 2}
+  biasPersonality: 1
+  preferredPersonality: 1
+  preferredPersonalityChance: 100
   encounterLocations: []
   learnableMoves:
+  - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: f93ba9ddb0d4cb049a12b17e3b3f5345, type: 2}
+    level: 1
   - move: {fileID: 11400000, guid: 6fc2d68d1ff67a447b0367fb15b1c35a, type: 2}
     level: 1
   - move: {fileID: 11400000, guid: 62eb808afeac32348b4cd925896c8028, type: 2}
@@ -38,10 +45,10 @@ MonoBehaviour:
     level: 1
   - move: {fileID: 11400000, guid: f7c7d99ee8389f54e87ae6d423506004, type: 2}
     level: 4
-  - move: {fileID: 11400000, guid: eef4c619e673da14f941e39ea075d5e5, type: 2}
-    level: 6
   - move: {fileID: 11400000, guid: b6c4868dbcc5f6440a668dc6623963d7, type: 2}
     level: 16
+  - move: {fileID: 11400000, guid: eef4c619e673da14f941e39ea075d5e5, type: 2}
+    level: 20
   - move: {fileID: 11400000, guid: 3a805edef0b594d4a84ff98a3cab2402, type: 2}
     level: 20
   - move: {fileID: 11400000, guid: a39b61c4947f22a418f97e62538a089e, type: 2}
@@ -54,3 +61,5 @@ MonoBehaviour:
     level: 41
   - move: {fileID: 11400000, guid: 0294a0dc3030a794cbf0327d19ebcd78, type: 2}
     level: 50
+
+

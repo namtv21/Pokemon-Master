@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: qwilfish
+  m_EditorClassIdentifier: 
+  num: 210
+  pokemonName: Qwilfish
+  description: 
+  frontSprite: {fileID: 21300000, guid: 65446bf82a4ee9d449b7242b2823c098, type: 3}
+  backSprite: {fileID: 21300000, guid: 4470a29542a68b54db4cdfcd19023992, type: 3}
+  type1: 3
+  type2: 8
+  MaxHp: 65
+  Attack: 95
+  Defense: 85
+  SpAttack: 55
+  SpDefense: 55
+  Speed: 85
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
+  biasPersonality: 1
+  preferredPersonality: 4
+  preferredPersonalityChance: 75
+  encounterLocations:
+  - Road02
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 6424cd61d42b535488e2827d7a3500cb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 00970f72f2b898344aa0272d8cccf280, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: f8656ea407699464188f9bc088726e8a, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 017b19522ce46664c81ac8803892f6a3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 4181e9376aadffa4cabb13845d245783, type: 2}
+    level: 4
+  - move: {fileID: 11400000, guid: 959820f8ddaa2074abe27deaf66388c1, type: 2}
+    level: 13
+  - move: {fileID: 11400000, guid: cfec46789251e054f8a8c084d896c3bb, type: 2}
+    level: 17
+  - move: {fileID: 11400000, guid: 510dc1467b8a02a46bd363d0ecc1f45d, type: 2}
+    level: 21
+  - move: {fileID: 11400000, guid: 32fb9852f075eb34e9f3d72a121ff027, type: 2}
+    level: 24
+  - move: {fileID: 11400000, guid: 9eb390ce04ef28c449450be6563ac5ec, type: 2}
+    level: 25
+  - move: {fileID: 11400000, guid: b015132f9e281df419ecb76847e4b227, type: 2}
+    level: 33
+  - move: {fileID: 11400000, guid: 33142d68f02ea934c86e46f20ad0f52d, type: 2}
+    level: 40
+  - move: {fileID: 11400000, guid: 9044c388256f7a0479bdcde872d633ec, type: 2}
+    level: 45

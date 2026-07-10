@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: dragonair
   m_EditorClassIdentifier: 
-  num: 147
+  num: 146
   pokemonName: Dragonair
   description: 
   frontSprite: {fileID: 21300000, guid: 5dcddb7b574c7de4e9e8c7c95cbfc61c, type: 3}
@@ -26,8 +26,11 @@ MonoBehaviour:
   SpDefense: 70
   Speed: 70
   evolvable: 1
-  evolutionLevel: 40
+  evolutionLevel: 55
   evolvesTo: {fileID: 11400000, guid: 4f8b3c6572565ad438580acbceb717fd, type: 2}
+  biasPersonality: 1
+  preferredPersonality: 4
+  preferredPersonalityChance: 100
   encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
@@ -52,3 +55,4 @@ MonoBehaviour:
     level: 56
   - move: {fileID: 11400000, guid: 74248fa532ebddb47947db5edaa9eafc, type: 2}
     level: 65
+

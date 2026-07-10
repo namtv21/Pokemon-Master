@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: feraligatr
+  m_EditorClassIdentifier: 
+  num: 159
+  pokemonName: Feraligatr
+  description: 
+  frontSprite: {fileID: 21300000, guid: 0ee7b6859945161409b1ccf4ca94cef1, type: 3}
+  backSprite: {fileID: 21300000, guid: 687f598c2ba413148aadfcf90353dd58, type: 3}
+  type1: 3
+  type2: 0
+  MaxHp: 85
+  Attack: 105
+  Defense: 100
+  SpAttack: 79
+  SpDefense: 83
+  Speed: 78
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
+  biasPersonality: 1
+  preferredPersonality: 1
+  preferredPersonalityChance: 90
+  encounterLocations: []
+  learnableMoves:
+  - move: {fileID: 11400000, guid: a39b61c4947f22a418f97e62538a089e, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6bc249777bb3f1f468fe74850111e50f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 6f06b53dade7c3845b4526356002f00f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 017b19522ce46664c81ac8803892f6a3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 77cefdbcb4afee544b09c8d3278ccce3, type: 2}
+    level: 13
+  - move: {fileID: 11400000, guid: f190f1c7ce02e0f49bf31b1cf33bf94e, type: 2}
+    level: 21
+  - move: {fileID: 11400000, guid: 9e37829d0711ec74087da73df370cab4, type: 2}
+    level: 24
+  - move: {fileID: 11400000, guid: 238c53ce48b414d428c60341b471f113, type: 2}
+    level: 32
+  - move: {fileID: 11400000, guid: c80e705910412c84d9862a1a1271d776, type: 2}
+    level: 37
+  - move: {fileID: 11400000, guid: b204d8d5d0d979442a21a0abb40491f6, type: 2}
+    level: 37
+  - move: {fileID: 11400000, guid: 16e0634bd65803c47babc9aa83833434, type: 2}
+    level: 45
+  - move: {fileID: 11400000, guid: 9044c388256f7a0479bdcde872d633ec, type: 2}
+    level: 50
+  - move: {fileID: 11400000, guid: 00970f72f2b898344aa0272d8cccf280, type: 2}
+    level: 58
+  - move: {fileID: 11400000, guid: cd5323bededd4a54d960f5a88d2a9261, type: 2}
+    level: 58

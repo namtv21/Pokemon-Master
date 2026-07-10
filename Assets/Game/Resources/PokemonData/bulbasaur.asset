@@ -28,8 +28,11 @@ MonoBehaviour:
   evolvable: 1
   evolutionLevel: 16
   evolvesTo: {fileID: 11400000, guid: 7ffe7a555ea35494cbee1cf8ac49b2a8, type: 2}
+  biasPersonality: 1
+  preferredPersonality: 4
+  preferredPersonalityChance: 100
   encounterLocations:
-  - Road02
+  - Overworld
   learnableMoves:
   - move: {fileID: 11400000, guid: 62658d79884b3ca419814036c71f3ec5, type: 2}
     level: 1
@@ -51,3 +54,6 @@ MonoBehaviour:
     level: 27
   - move: {fileID: 11400000, guid: 9b734255591c43e49a172cd7249d50d5, type: 2}
     level: 36
+
+
+

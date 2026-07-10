@@ -9,6 +9,29 @@ public class LearnableMove
     public int level; // cấp độ học chiêu
 }
 
+[System.Serializable]
+public class EvolutionOption
+{
+    [SerializeField] private PokemonBase evolvesTo;
+    [SerializeField] private int evolutionLevel = 0;
+    [SerializeField] private string label;
+
+    public EvolutionOption() { }
+
+    public EvolutionOption(PokemonBase target, int level, string optionLabel = "")
+    {
+        evolvesTo = target;
+        evolutionLevel = level;
+        label = optionLabel;
+    }
+
+    public PokemonBase EvolvesTo => evolvesTo;
+    public int EvolutionLevel => evolutionLevel;
+    public string Label => string.IsNullOrWhiteSpace(label)
+        ? (evolvesTo != null ? evolvesTo.Name : string.Empty)
+        : label;
+}
+
 
 [CreateAssetMenu(fileName = "Pokemon", menuName = "Pokemon/New Pokemon")]
 public class PokemonBase : ScriptableObject
@@ -32,6 +55,16 @@ public class PokemonBase : ScriptableObject
     [SerializeField] private bool evolvable;
     [SerializeField] private int evolutionLevel = 0;
     [SerializeField] private PokemonBase evolvesTo;
+    [SerializeField] private List<EvolutionOption> evolutionOptions = new List<EvolutionOption>();
+
+    [Header("Personality (AI companion — không ảnh hưởng battle)")]
+    [Tooltip("Bật để loài này THIÊN về một tính cách. Tắt = hoàn toàn ngẫu nhiên.")]
+    [SerializeField] private bool biasPersonality = false;
+    [Tooltip("Tính cách ưu tiên (vd Snorlax → Lazy, huyền thoại → Proud).")]
+    [SerializeField] private PokemonPersonality preferredPersonality = PokemonPersonality.Playful;
+    [Range(0, 100)]
+    [Tooltip("Xác suất (%) cá thể nhận đúng tính cách ưu tiên; còn lại ngẫu nhiên. 100 = luôn (huyền thoại).")]
+    [SerializeField] private int preferredPersonalityChance = 70;
     public int Num => num;
     public string Name => pokemonName;
     public Sprite FrontSprite => frontSprite;
@@ -42,6 +75,35 @@ public class PokemonBase : ScriptableObject
     public bool Evolvable => evolvable;
     public int EvolutionLevel => evolutionLevel;
     public PokemonBase EvolvesTo => evolvesTo;
+    public IReadOnlyList<EvolutionOption> EvolutionOptions => evolutionOptions;
+
+    public List<EvolutionOption> GetValidEvolutionOptions()
+    {
+        var result = new List<EvolutionOption>();
+
+        if (evolutionOptions != null)
+        {
+            foreach (var option in evolutionOptions)
+            {
+                if (option != null && option.EvolvesTo != null && option.EvolutionLevel > 0)
+                    result.Add(option);
+            }
+        }
+
+        if (result.Count == 0 && evolvable && evolvesTo != null && evolutionLevel > 0)
+            result.Add(new EvolutionOption(evolvesTo, evolutionLevel));
+
+        return result;
+    }
+
+    /// Chọn tính cách cho một cá thể MỚI: nếu bật bias thì có preferredPersonalityChance%
+    /// ra tính cách ưu tiên, còn lại ngẫu nhiên → giữ sắc thái loài mà không mất đa dạng.
+    public PokemonPersonality RollPersonality()
+    {
+        if (biasPersonality && Random.Range(0, 100) < preferredPersonalityChance)
+            return preferredPersonality;
+        return PokemonPersonalityUtil.RandomPersonality();
+    }
     public void LoadFromJson(PokemonJson data)
     {
         num = data.num;

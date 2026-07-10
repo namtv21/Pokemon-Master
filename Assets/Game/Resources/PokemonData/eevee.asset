@@ -25,11 +25,30 @@ MonoBehaviour:
   SpAttack: 45
   SpDefense: 65
   Speed: 55
-  evolvable: 0
-  evolutionLevel: 0
-  evolvesTo: {fileID: 0}
+  evolvable: 1
+  evolutionLevel: 20
+  evolvesTo: {fileID: 11400000, guid: 084df190f48d42241acbc028a06ffe98, type: 2}
+  evolutionOptions:
+  - evolvesTo: {fileID: 11400000, guid: 084df190f48d42241acbc028a06ffe98, type: 2}
+    evolutionLevel: 20
+    label: Vaporeon
+  - evolvesTo: {fileID: 11400000, guid: dcf41ec101720e34c85bf291a3f3715c, type: 2}
+    evolutionLevel: 20
+    label: Jolteon
+  - evolvesTo: {fileID: 11400000, guid: 71ef9d893b045df4aab40e66e88cecfa, type: 2}
+    evolutionLevel: 20
+    label: Flareon
+  - evolvesTo: {fileID: 11400000, guid: 4ca9bd4a9fb58f248a3ddd2501ab53a1, type: 2}
+    evolutionLevel: 30
+    label: Espeon
+  - evolvesTo: {fileID: 11400000, guid: bb0916d1bbf82c24aaa59e8788f75ca6, type: 2}
+    evolutionLevel: 30
+    label: Umbreon
+  biasPersonality: 1
+  preferredPersonality: 0
+  preferredPersonalityChance: 100
   encounterLocations:
-  - Road01
+  - GrassTown
   learnableMoves:
   - move: {fileID: 11400000, guid: 6df84621ba287c64da68d4239af6d4c5, type: 2}
     level: 1
@@ -53,3 +72,7 @@ MonoBehaviour:
     level: 37
   - move: {fileID: 11400000, guid: 3fa15a1a29c3670418f9b36a6f2d2cbc, type: 2}
     level: 41
+
+
+
+

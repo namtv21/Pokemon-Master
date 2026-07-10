@@ -28,6 +28,9 @@ MonoBehaviour:
   evolvable: 0
   evolutionLevel: 0
   evolvesTo: {fileID: 0}
+  biasPersonality: 1
+  preferredPersonality: 3
+  preferredPersonalityChance: 100
   encounterLocations: []
   learnableMoves:
   - move: {fileID: 11400000, guid: bae7b3a1c7cba694098fa52df604b780, type: 2}
@@ -68,3 +71,6 @@ MonoBehaviour:
     level: 45
   - move: {fileID: 11400000, guid: c141d14902951864886f87d9b792c0c6, type: 2}
     level: 49
+
+
+

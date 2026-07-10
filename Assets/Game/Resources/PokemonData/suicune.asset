@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: suicune
+  m_EditorClassIdentifier: 
+  num: 244
+  pokemonName: Suicune
+  description: 
+  frontSprite: {fileID: 21300000, guid: c7508945d184f3e468119ddd684e429d, type: 3}
+  backSprite: {fileID: 21300000, guid: e845686e0a1b1c342b472bfad478917c, type: 3}
+  type1: 3
+  type2: 0
+  MaxHp: 100
+  Attack: 75
+  Defense: 115
+  SpAttack: 90
+  SpDefense: 115
+  Speed: 85
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
+  biasPersonality: 0
+  preferredPersonality: 0
+  preferredPersonalityChance: 70
+  encounterLocations:
+  - WaterTown
+  learnableMoves:
+  - move: {fileID: 11400000, guid: 77cefdbcb4afee544b09c8d3278ccce3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 5990984caa817ed4c84ea751e3420f19, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: bcbfe0360f0deac459e06804ce55abe3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 540c81d2a832817459069415c40c3862, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 06b4528290dba8146b4346412f05569f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 00970f72f2b898344aa0272d8cccf280, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0f2decbf68c92b443affa1cb91e5d6d5, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 017b19522ce46664c81ac8803892f6a3, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 77d1893c9e046fe45a386064624bfb52, type: 2}
+    level: 6
+  - move: {fileID: 11400000, guid: 03333aaff66b83a448c60d0820c1f2c4, type: 2}
+    level: 29
+  - move: {fileID: 11400000, guid: f190f1c7ce02e0f49bf31b1cf33bf94e, type: 2}
+    level: 30
+  - move: {fileID: 11400000, guid: 238c53ce48b414d428c60341b471f113, type: 2}
+    level: 42
+  - move: {fileID: 11400000, guid: 993b0e0b6c85cbb458837a3e917e30c4, type: 2}
+    level: 54
+  - move: {fileID: 11400000, guid: 0a3b8595f68b936479b8f664c3401ca3, type: 2}
+    level: 78

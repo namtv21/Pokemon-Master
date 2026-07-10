@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: sudowoodo
+  m_EditorClassIdentifier: 
+  num: 184
+  pokemonName: Sudowoodo
+  description: 
+  frontSprite: {fileID: 21300000, guid: 98bfc0c027431f3478d313b0db43dc0e, type: 3}
+  backSprite: {fileID: 21300000, guid: 1bd938a2e6728954782b4dbc978c04eb, type: 3}
+  type1: 13
+  type2: 0
+  MaxHp: 70
+  Attack: 100
+  Defense: 115
+  SpAttack: 30
+  SpDefense: 65
+  Speed: 30
+  evolvable: 0
+  evolutionLevel: 0
+  evolvesTo: {fileID: 0}
+  biasPersonality: 1
+  preferredPersonality: 3
+  preferredPersonalityChance: 75
+  encounterLocations:
+  - ChampionMeet
+  learnableMoves:
+  - move: {fileID: 11400000, guid: eef4c619e673da14f941e39ea075d5e5, type: 2}
+    level: 0
+  - move: {fileID: 11400000, guid: 3dd42246238dc7a4a80756efbcb144e9, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 36f0a08bb0b300c4fa6bcb3170fa3926, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 5fd00157f771e7a469e4a61b38bd1f82, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 8a53367d8ccfe634788a943206466e7d, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 96fd45c526e12304a9f0761721a515dd, type: 2}
+    level: 19
+  - move: {fileID: 11400000, guid: 0b6080e9279af204d9afdc2341af9fca, type: 2}
+    level: 20
+  - move: {fileID: 11400000, guid: 014d503be6e83e849b2bea0f0b07ccf7, type: 2}
+    level: 25
+  - move: {fileID: 11400000, guid: 423a6a9b44735d34e9d97095f618ef36, type: 2}
+    level: 28
+  - move: {fileID: 11400000, guid: e496f6c618ec32747bb955dabc343e88, type: 2}
+    level: 40
+  - move: {fileID: 11400000, guid: edf229cfdd3bfa647aeeab4031e3959a, type: 2}
+    level: 48

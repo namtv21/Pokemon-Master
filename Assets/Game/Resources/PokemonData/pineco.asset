@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
+  m_Name: pineco
+  m_EditorClassIdentifier: 
+  num: 203
+  pokemonName: Pineco
+  description: 
+  frontSprite: {fileID: 21300000, guid: f2e466e0123da834cb496a3ec07b7465, type: 3}
+  backSprite: {fileID: 21300000, guid: 32cf7c5716ec59d4e884580700ef68f4, type: 3}
+  type1: 12
+  type2: 0
+  MaxHp: 50
+  Attack: 65
+  Defense: 90
+  SpAttack: 35
+  SpDefense: 35
+  Speed: 15
+  evolvable: 1
+  evolutionLevel: 31
+  evolvesTo: {fileID: 11400000, guid: 71f796a7831f29f439be398fec892a9c, type: 2}
+  biasPersonality: 1
+  preferredPersonality: 6
+  preferredPersonalityChance: 75
+  encounterLocations:
+  - Road01
+  learnableMoves:
+  - move: {fileID: 11400000, guid: e926e8f533503184dba296b838f5c22f, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 0756a56784cc37e448947438364d08eb, type: 2}
+    level: 1
+  - move: {fileID: 11400000, guid: 4aa1c9e81c8998b43979b6bba0ec5669, type: 2}
+    level: 9
+  - move: {fileID: 11400000, guid: b015132f9e281df419ecb76847e4b227, type: 2}
+    level: 9
+  - move: {fileID: 11400000, guid: 8e6ec01c4cc89f245a1595e3d9a073d2, type: 2}
+    level: 12
+  - move: {fileID: 11400000, guid: b9871c8d119e89948b6f33b00563835e, type: 2}
+    level: 28
+  - move: {fileID: 11400000, guid: 7d8dda4677a0a5f498cf45da24d28ab9, type: 2}
+    level: 31
+  - move: {fileID: 11400000, guid: e496f6c618ec32747bb955dabc343e88, type: 2}
+    level: 42

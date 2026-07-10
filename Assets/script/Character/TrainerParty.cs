@@ -100,12 +100,18 @@ public class TrainerParty : MonoBehaviour
         int guard = 0;
 
         while (current != null &&
-               current.Evolvable &&
-               current.EvolvesTo != null &&
-               level >= current.EvolutionLevel &&
                guard++ < 10)
         {
-            current = current.EvolvesTo;
+            var options = current.GetValidEvolutionOptions();
+            var nextOption = options.FirstOrDefault(option =>
+                option != null &&
+                option.EvolvesTo != null &&
+                level >= option.EvolutionLevel);
+
+            if (nextOption == null)
+                break;
+
+            current = nextOption.EvolvesTo;
         }
 
         return current != null ? current : baseData;

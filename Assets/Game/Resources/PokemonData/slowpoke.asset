@@ -26,8 +26,18 @@ MonoBehaviour:
   SpDefense: 40
   Speed: 15
   evolvable: 1
-  evolutionLevel: 32
+  evolutionLevel: 37
   evolvesTo: {fileID: 11400000, guid: acc1b141cce4353418f8dc6c2768439e, type: 2}
+  evolutionOptions:
+  - evolvesTo: {fileID: 11400000, guid: acc1b141cce4353418f8dc6c2768439e, type: 2}
+    evolutionLevel: 37
+    label: Slowbro
+  - evolvesTo: {fileID: 11400000, guid: 555b388b7e673dd4086f6c6a49e9a05e, type: 2}
+    evolutionLevel: 37
+    label: Slowking
+  biasPersonality: 1
+  preferredPersonality: 7
+  preferredPersonalityChance: 100
   encounterLocations:
   - Road03
   learnableMoves:
@@ -49,3 +59,7 @@ MonoBehaviour:
     level: 30
   - move: {fileID: 11400000, guid: 237719c8cb0509345a0bd08b39cf0baf, type: 2}
     level: 36
+
+
+
+

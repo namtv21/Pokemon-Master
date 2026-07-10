@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bd3d7fa32f9bc42ba17d090b132fb7, type: 3}
   m_Name: porygon
   m_EditorClassIdentifier: 
-  num: 136
+  num: 135
   pokemonName: Porygon
   description: 
   frontSprite: {fileID: 21300000, guid: d6b1bc0bad367c14ebe254b05bfe87c7, type: 3}
@@ -25,10 +25,14 @@ MonoBehaviour:
   SpAttack: 85
   SpDefense: 75
   Speed: 40
-  evolvable: 0
-  evolutionLevel: 0
-  evolvesTo: {fileID: 0}
-  encounterLocations: []
+  evolvable: 1
+  evolutionLevel: 30
+  evolvesTo: {fileID: 11400000, guid: b178f5d33152e674284115318017becc, type: 2}
+  biasPersonality: 1
+  preferredPersonality: 6
+  preferredPersonalityChance: 100
+  encounterLocations:
+  - FireTown
   learnableMoves:
   - move: {fileID: 11400000, guid: ee101a779d19d3d4b94598e3fdbf10fa, type: 2}
     level: 1
@@ -48,3 +52,4 @@ MonoBehaviour:
     level: 40
   - move: {fileID: 11400000, guid: 480cd86a908ddc448aa753bde124847a, type: 2}
     level: 48
+

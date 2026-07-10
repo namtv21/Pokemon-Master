@@ -60,6 +60,7 @@ public partial class PokemonDexMenuUI : MonoBehaviour
     private TMP_InputField moveSearchInput;
     private TMP_Text moveSearchHint;
     private TMP_Text moveDbHeaderText;
+    private TMP_Text tabNavigationHintText;
 
     private const int PokemonRowsPerPage = 15;
     private const int StoryRowsPerPage = 17;
@@ -72,6 +73,8 @@ public partial class PokemonDexMenuUI : MonoBehaviour
     private readonly List<TMP_Text> autoMoveDbTexts = new();
     private readonly List<TMP_Text> autoStoryTexts = new();
     private readonly List<TMP_Text> autoTutorialTexts = new();
+    private readonly Dictionary<PokemonBase, int> pokemonEvolutionDepth = new();
+    private readonly Dictionary<PokemonBase, string> pokemonEvolutionPath = new();
     private Sprite dexCircleSprite;
     private Quest tutorialQuest;
 
@@ -141,7 +144,9 @@ public partial class PokemonDexMenuUI : MonoBehaviour
         if (!(rootPanel != null ? rootPanel.activeSelf : gameObject.activeSelf))
             return;
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        bool textInputFocused = currentTab == DexTab.MoveDb && IsMoveSearchFocused();
+
+        if (!textInputFocused && Input.GetKeyDown(KeyCode.Q))
         {
             StopRepeatScroll();
             currentTab = (DexTab)(((int)currentTab - 1 + 4) % 4);
@@ -149,7 +154,7 @@ public partial class PokemonDexMenuUI : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (!textInputFocused && Input.GetKeyDown(KeyCode.E))
         {
             StopRepeatScroll();
             currentTab = (DexTab)(((int)currentTab + 1) % 4);
@@ -196,10 +201,12 @@ public partial class PokemonDexMenuUI : MonoBehaviour
         moveDb.Clear();
         mainStoryQuests.Clear();
         mainStorySteps.Clear();
+        pokemonEvolutionDepth.Clear();
+        pokemonEvolutionPath.Clear();
         tutorialQuest = null;
 
         var db = PokemonDB.Instance != null ? PokemonDB.Instance.GetAllPokemons() : Resources.LoadAll<PokemonBase>("PokemonData");
-        pokemonDb.AddRange(db.OrderBy(p => p != null ? p.Num : int.MaxValue).ThenBy(p => p != null ? p.Name : string.Empty));
+        BuildPokemonDexEvolutionOrder(db);
 
         var moveEntries = MoveDB.Instance != null
             ? MoveDB.Instance.GetAllMoves()
@@ -269,7 +276,60 @@ public partial class PokemonDexMenuUI : MonoBehaviour
         EnsurePokemonDbRuntimeUI();
         EnsureMoveRuntimeUI();
         EnsureStoryRuntimeUI();
+        EnsureTabNavigationHint();
         ResolveAutoTextCollections();
+    }
+
+    private void BuildPokemonDexEvolutionOrder(IEnumerable<PokemonBase> source)
+    {
+        if (source == null)
+            return;
+
+        var allPokemon = source
+            .Where(pokemon => pokemon != null)
+            .Distinct()
+            .OrderBy(pokemon => pokemon.Num)
+            .ThenBy(pokemon => pokemon.Name)
+            .ToList();
+
+        var evolutionTargets = new HashSet<PokemonBase>();
+        foreach (var pokemon in allPokemon)
+        {
+            foreach (var option in pokemon.GetValidEvolutionOptions())
+            {
+                if (option?.EvolvesTo != null)
+                    evolutionTargets.Add(option.EvolvesTo);
+            }
+        }
+
+        var visited = new HashSet<PokemonBase>();
+        foreach (var root in allPokemon.Where(pokemon => !evolutionTargets.Contains(pokemon)))
+            AddPokemonEvolutionTrace(root, 0, root.Name, visited);
+
+        foreach (var pokemon in allPokemon)
+        {
+            if (!visited.Contains(pokemon))
+                AddPokemonEvolutionTrace(pokemon, 0, pokemon.Name, visited);
+        }
+    }
+
+    private void AddPokemonEvolutionTrace(PokemonBase pokemon, int depth, string path, HashSet<PokemonBase> visited)
+    {
+        if (pokemon == null || !visited.Add(pokemon))
+            return;
+
+        pokemonDb.Add(pokemon);
+        pokemonEvolutionDepth[pokemon] = Mathf.Max(0, depth);
+        pokemonEvolutionPath[pokemon] = string.IsNullOrWhiteSpace(path) ? pokemon.Name : path;
+
+        var options = pokemon.GetValidEvolutionOptions()
+            .Where(option => option != null && option.EvolvesTo != null)
+            .OrderBy(option => option.EvolutionLevel)
+            .ThenBy(option => option.EvolvesTo.Num)
+            .ThenBy(option => option.EvolvesTo.Name);
+
+        foreach (var option in options)
+            AddPokemonEvolutionTrace(option.EvolvesTo, depth + 1, $"{pokemonEvolutionPath[pokemon]} -> {option.EvolvesTo.Name}", visited);
     }
 
     private void MoveVertical(int delta)
@@ -375,6 +435,7 @@ public partial class PokemonDexMenuUI : MonoBehaviour
 
     private void RefreshAll()
     {
+        EnsureTabNavigationHint();
         RefreshTabs();
         RefreshPokemonDb();
         RefreshMoveDb();
@@ -395,6 +456,46 @@ public partial class PokemonDexMenuUI : MonoBehaviour
             for (int i = 0; i < tabPanels.Length; i++)
                 tabPanels[i].SetActive(i == (int)currentTab);
         }
+
+        if (tabNavigationHintText != null)
+            tabNavigationHintText.text = "<- Q   E ->";
+    }
+
+    private void EnsureTabNavigationHint()
+    {
+        if (tabNavigationHintText != null)
+            return;
+
+        var parent = rootPanel != null ? rootPanel.transform : transform;
+        var hintTransform = parent.Find("PokemonDexTabHint") as RectTransform;
+        if (hintTransform == null)
+        {
+            var hintGo = new GameObject("PokemonDexTabHint", typeof(RectTransform));
+            hintTransform = hintGo.GetComponent<RectTransform>();
+            hintTransform.SetParent(parent, false);
+            hintTransform.anchorMin = new Vector2(0.5f, 1f);
+            hintTransform.anchorMax = new Vector2(0.5f, 1f);
+            hintTransform.pivot = new Vector2(0.5f, 1f);
+            hintTransform.anchoredPosition = new Vector2(0f, -12f);
+            hintTransform.sizeDelta = new Vector2(220f, 32f);
+
+            var tmp = hintGo.AddComponent<TextMeshProUGUI>();
+            tmp.alignment = TextAlignmentOptions.Center;
+            tmp.enableWordWrapping = false;
+            tmp.fontSize = 22f;
+            tmp.color = highlightColor;
+            if (TMP_Settings.defaultFontAsset != null)
+                tmp.font = TMP_Settings.defaultFontAsset;
+            tabNavigationHintText = tmp;
+        }
+        else
+        {
+            tabNavigationHintText = hintTransform.GetComponent<TextMeshProUGUI>();
+            if (tabNavigationHintText == null)
+                tabNavigationHintText = hintTransform.gameObject.AddComponent<TextMeshProUGUI>();
+        }
+
+        tabNavigationHintText.text = "<- Q   E ->";
     }
 
     private void ResolveAutoTextCollections()

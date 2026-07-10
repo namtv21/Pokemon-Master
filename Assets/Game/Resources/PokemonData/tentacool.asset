@@ -26,8 +26,11 @@ MonoBehaviour:
   SpDefense: 100
   Speed: 70
   evolvable: 1
-  evolutionLevel: 28
+  evolutionLevel: 30
   evolvesTo: {fileID: 11400000, guid: 361839d3e240a4f41a7aaedd9418bb23, type: 2}
+  biasPersonality: 1
+  preferredPersonality: 6
+  preferredPersonalityChance: 100
   encounterLocations:
   - WaterTown
   learnableMoves:
@@ -65,3 +68,6 @@ MonoBehaviour:
     level: 40
   - move: {fileID: 11400000, guid: 6a3b195684e69e94babdda86c2dd4b59, type: 2}
     level: 43
+
+
+
