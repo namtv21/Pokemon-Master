@@ -27,6 +27,8 @@ public class MoveDB : MonoBehaviour
     }
 
     private List<MoveBase> moves;
+    // Index tra theo tên đã chuẩn hóa — O(1); quan trọng khi load save resolve từng chiêu theo tên.
+    private Dictionary<string, MoveBase> movesByName;
 
     private void Awake()
     {
@@ -38,10 +40,7 @@ public class MoveDB : MonoBehaviour
     {
         LoadAllMoves();
 
-        var move = moves.Find(m =>
-            string.Equals(NormalizeMoveName(m?.MoveName), NormalizeMoveName(name), StringComparison.OrdinalIgnoreCase) ||
-            string.Equals(NormalizeMoveName(m?.name), NormalizeMoveName(name), StringComparison.OrdinalIgnoreCase));
-
+        movesByName.TryGetValue(NormalizeMoveName(name), out var move);
         if (move == null)
             Debug.LogWarning($"MoveDB: Move not found: '{name}'");
 
@@ -60,6 +59,16 @@ public class MoveDB : MonoBehaviour
             return;
 
         moves = new List<MoveBase>(Resources.LoadAll<MoveBase>("MoveData"));
+
+        movesByName = new Dictionary<string, MoveBase>();
+        foreach (var m in moves)
+        {
+            if (m == null) continue;
+            string displayKey = NormalizeMoveName(m.MoveName);
+            string assetKey   = NormalizeMoveName(m.name);
+            if (!string.IsNullOrEmpty(displayKey)) movesByName[displayKey] = m;
+            if (!string.IsNullOrEmpty(assetKey))   movesByName[assetKey]   = m;
+        }
     }
 
     private static string NormalizeMoveName(string value)

@@ -312,14 +312,19 @@ public class CompanionChatSystem : MonoBehaviour
         return $"{name}: I can do this all day!";
     }
 
+    // LƯU Ý: cờ truyện chỉ bật không tắt → PHẢI check mốc MỚI NHẤT trước.
+    // Thứ tự cốt truyện: FirstMainQuestAccepted → StarterChosen → AfterGrassGym →
+    // AfterWaterGym → InCave → OutCave → AfterFireGym → Champion.
     private string GetNextStepResponse(string name, StoryFlags flags)
     {
+        if (flags.Champion)               return $"{name}: Chúng ta là nhà vô địch rồi! Giờ đi khám phá tự do thôi~";
         if (flags.AfterFireGym)           return $"{name}: Đến lúc thách thức Champion rồi!";
+        if (flags.OutCave)                return $"{name}: Lấy lại được huy hiệu rồi! Tiếp theo: FireGym!";
         if (flags.InCave)                 return $"{name}: Chúng ta cần tìm tên đã cướp huy hiệu trong hang động này";
         if (flags.AfterWaterGym)          return $"{name}: FireGym cần đi qua Mountain và Cave bên trái WaterTown";
         if (flags.AfterGrassGym)          return $"{name}: Tiếp theo là WaterGym. Nơi đó ở phía nam của GrassTown!";
+        if (flags.StarterChosen)          return $"{name}: Điểm đến đầu tiên: GrassGym";
         if (flags.FirstMainQuestAccepted) return $"{name}: Bắt đầu cuộc hành trình thôi! Mà tiến sĩ Oke đang đợi cậu đấy!";
-        if (flags.StarterChosen)           return $"{name}: Điếm đến đầu tiên: GrassGym";
         return $"{name}: Khám phá thế giới nào!";
     }
 

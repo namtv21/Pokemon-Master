@@ -103,19 +103,33 @@ public class CompanionAmbientHud : MonoBehaviour
 
     // ===== API công khai cho hệ thống khác (story/quest/battle-end...) =====
 
-    /// Đẩy một câu thoại companion lên HUD (bỏ qua cooldown ngẫu nhiên, vẫn không chặn game).
-    public static void Say(string text)
+    /// Đẩy một câu thoại companion lên HUD (không chặn game).
+    /// important = true → bỏ qua global cooldown (dành cho story/quest đẩy thoại chủ động).
+    public static void Say(string text, bool important = false)
     {
         if (Instance == null || string.IsNullOrWhiteSpace(text)) return;
         if (!Instance.ShouldShow()) return;
-        Instance.ShowBubble(text);
+        Instance.ShowBubble(text, bypassGlobalCooldown: important);
     }
 
     // ===== Vòng đời =====
 
+    private bool wasVisible;
+
     private void Update()
     {
         bool visible = ShouldShow();
+
+        // Vừa hiện lại (thoát dialog/menu/battle): reset đồng hồ idle — người chơi "đứng yên"
+        // trong lúc thoại/menu không được tính là idle, tránh companion nói ngay lập tức.
+        if (visible && !wasVisible)
+        {
+            stillSince = Time.time;
+            var player = PlayerController.Instance;
+            if (player != null) lastPlayerPos = player.transform.position;
+        }
+        wasVisible = visible;
+
         if (uiBuilt && hudRoot != null && hudRoot.activeSelf != visible)
         {
             hudRoot.SetActive(visible);

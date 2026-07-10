@@ -221,10 +221,10 @@ public class PlayerController : MonoBehaviour
         isMoving = false;
         activeMoveRoutine = null;
         
-        foreach (var grassTrigger in FindObjectsOfType<GrassTrigger>())
-        {
-            grassTrigger.TryEncounter();
-        }
+        // Duyệt registry tĩnh thay vì FindObjectsOfType mỗi bước (tránh quét scene + cấp phát).
+        var grassTriggers = GrassTrigger.Active;
+        for (int i = 0; i < grassTriggers.Count; i++)
+            grassTriggers[i].TryEncounter();
         
 
     }

@@ -29,6 +29,8 @@ public class PokemonDB : MonoBehaviour
     }
 
     private List<PokemonBase> pokemons;
+    // Index tra theo tên đã chuẩn hóa — O(1) thay vì quét + chuẩn hóa cả danh sách mỗi lần gọi.
+    private Dictionary<string, PokemonBase> pokemonsByName;
 
     private void Awake()
     {
@@ -51,12 +53,7 @@ public class PokemonDB : MonoBehaviour
     public PokemonBase GetPokemonByName(string name)
     {
         LoadAllPokemon();
-        string normalizedName = NormalizePokemonName(name);
-
-        var pokemon = pokemons.Find(p =>
-            string.Equals(NormalizePokemonName(p?.Name), normalizedName, StringComparison.OrdinalIgnoreCase) ||
-            string.Equals(NormalizePokemonName(p?.name), normalizedName, StringComparison.OrdinalIgnoreCase));
-
+        pokemonsByName.TryGetValue(NormalizePokemonName(name), out var pokemon);
         return pokemon;
     }
 
@@ -66,6 +63,17 @@ public class PokemonDB : MonoBehaviour
             return;
 
         pokemons = new List<PokemonBase>(Resources.LoadAll<PokemonBase>("PokemonData"));
+
+        // Index cả tên hiển thị lẫn tên asset (2 cách gọi đều dùng trong save/dialog).
+        pokemonsByName = new Dictionary<string, PokemonBase>();
+        foreach (var p in pokemons)
+        {
+            if (p == null) continue;
+            string displayKey = NormalizePokemonName(p.Name);
+            string assetKey   = NormalizePokemonName(p.name);
+            if (!string.IsNullOrEmpty(displayKey)) pokemonsByName[displayKey] = p;
+            if (!string.IsNullOrEmpty(assetKey))   pokemonsByName[assetKey]   = p;
+        }
     }
 
     private static string NormalizePokemonName(string value)

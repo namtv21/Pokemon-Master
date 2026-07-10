@@ -1,13 +1,21 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GrassTrigger : MonoBehaviour
 {
+    // Registry tĩnh: tránh FindObjectsOfType sau mỗi bước đi (rất tốn khi scene đông object).
+    private static readonly List<GrassTrigger> active = new List<GrassTrigger>();
+    public static IReadOnlyList<GrassTrigger> Active => active;
+
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private EncounterZone encounterZone;
     [SerializeField] private bool useEncounterZoneBattleRate = true;
     [SerializeField, Range(0f, 100f)] private float battleRatePercent = 10f;
 
     private bool playerInGrass = false;
+
+    private void OnEnable()  => active.Add(this);
+    private void OnDisable() => active.Remove(this);
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
