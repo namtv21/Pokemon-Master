@@ -30,6 +30,7 @@ public class SaveLoadMenuUI : MonoBehaviour
         isSaveMode = inGame;
         currentStep = MenuStep.SelectSlot;
         gameObject.SetActive(true);
+        UiFx.PopIn(gameObject);
         currentIndex = slotNames != null && slotNames.Length > 1 ? 1 : 0;
         ResolveSaveLoadSystem();
         EnsureSlotsInitialized();

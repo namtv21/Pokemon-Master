@@ -53,6 +53,7 @@ public class StorageSystem : MonoBehaviour
 
         gameObject.SetActive(true);
         storagePanelParent.gameObject.SetActive(true);
+        UiFx.PopIn(storagePanelParent.gameObject);
         isReplacing = false;
         pendingStoredPokemon = null;
         selectedIndex = Mathf.Clamp(selectedIndex, 0, Mathf.Max(0, storedPokemons.Count - 1));

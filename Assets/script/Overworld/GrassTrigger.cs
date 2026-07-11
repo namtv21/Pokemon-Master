@@ -11,6 +11,8 @@ public class GrassTrigger : MonoBehaviour
     [SerializeField] private EncounterZone encounterZone;
     [SerializeField] private bool useEncounterZoneBattleRate = true;
     [SerializeField, Range(0f, 100f)] private float battleRatePercent = 10f;
+    [Tooltip("TẮT cho vùng encounter không phải cỏ (hang động, mặt nước...): không hiện bụi cỏ che chân, không bắn lá — encounter vẫn hoạt động bình thường.")]
+    [SerializeField] private bool isVisualGrass = true;
 
     private bool playerInGrass = false;
 
@@ -22,20 +24,33 @@ public class GrassTrigger : MonoBehaviour
         if (IsPlayer(collision))
         {
             playerInGrass = true;
-            Debug.Log("Player entered grass area.");
+            if (isVisualGrass)
+                PlayerGrassOverlay.NotifyGrass(true);   // bật bụi cỏ che chân player
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (IsPlayer(collision))
+        {
             playerInGrass = false;
+            if (isVisualGrass)
+                PlayerGrassOverlay.NotifyGrass(false);
+        }
     }
 
     public void TryEncounter()
     {
         if (!playerInGrass)
             return;
+
+        // Rẽ cỏ: lá bắn nhẹ dưới chân mỗi bước — chỉ với vùng thật sự là cỏ
+        if (isVisualGrass)
+        {
+            var player = PlayerController.Instance;
+            if (player != null)
+                GrassLeafFx.Spawn(player.transform.position + Vector3.down * 0.25f);
+        }
 
         float resolvedRate = ResolveBattleRatePercent();
         if (Random.Range(0f, 100f) > resolvedRate)
@@ -45,7 +60,6 @@ public class GrassTrigger : MonoBehaviour
         if (wildPokemon == null)
             return;
 
-        Debug.Log($"Wild Pokemon appeared! Rate={resolvedRate:0.##}%");
         GameController.Instance.StartWildBattle(wildPokemon);
     }
 

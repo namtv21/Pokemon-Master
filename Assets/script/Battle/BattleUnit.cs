@@ -166,16 +166,65 @@ public class BattleUnit : MonoBehaviour
         spriteRenderer.transform.localPosition = originalLocalPosition;
     }
 
-    // Nhấp nháy khi nhận sát thương
+    // Nhấp nháy + rung nhẹ khi nhận sát thương (shake làm đòn đánh "có trọng lượng")
     public IEnumerator PlayHitAnimation()
     {
         for (int i = 0; i < 3; i++)
         {
             spriteRenderer.enabled = false;
+            spriteRenderer.transform.localPosition = originalLocalPosition +
+                new Vector3(Random.Range(-0.15f, 0.15f), Random.Range(-0.1f, 0.1f), 0f);
             yield return new WaitForSeconds(0.06f);
             spriteRenderer.enabled = true;
+            spriteRenderer.transform.localPosition = originalLocalPosition +
+                new Vector3(Random.Range(-0.15f, 0.15f), Random.Range(-0.1f, 0.1f), 0f);
             yield return new WaitForSeconds(0.06f);
         }
+        spriteRenderer.transform.localPosition = originalLocalPosition;
+    }
+
+    // Số sát thương bay lên trên đầu Pokemon: màu theo hiệu quả, chí mạng chữ to hơn.
+    public void ShowDamagePopup(int damage, bool isCritical, float effectiveness)
+    {
+        if (damage <= 0 || spriteRenderer == null)
+            return;
+
+        Color color = effectiveness > 1f ? new Color(1f, 0.55f, 0.1f)   // siêu hiệu quả — cam
+                    : effectiveness < 1f ? new Color(0.75f, 0.75f, 0.75f) // kém hiệu quả — xám
+                    : Color.white;
+
+        var go = new GameObject("DamagePopup");
+        go.transform.position = spriteRenderer.transform.position + new Vector3(0f, 1.1f, 0f);
+
+        var tmp = go.AddComponent<TMPro.TextMeshPro>();
+        tmp.text = isCritical ? $"-{damage}!" : $"-{damage}";
+        tmp.fontSize = isCritical ? 9f : 7f;
+        tmp.fontStyle = TMPro.FontStyles.Bold;
+        tmp.color = color;
+        tmp.alignment = TMPro.TextAlignmentOptions.Center;
+        tmp.sortingOrder = 50;   // nổi trên sprite battle
+
+        StartCoroutine(AnimateDamagePopup(go.transform, tmp));
+    }
+
+    private IEnumerator AnimateDamagePopup(Transform popup, TMPro.TextMeshPro tmp)
+    {
+        const float duration = 0.75f;
+        Vector3 start = popup.position;
+        Color baseColor = tmp.color;
+
+        float t = 0f;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float p = Mathf.Clamp01(t / duration);
+            popup.position = start + Vector3.up * (0.8f * p);          // bay lên
+            var c = baseColor;
+            c.a = 1f - p * p;                                          // mờ dần về cuối
+            tmp.color = c;
+            yield return null;
+        }
+        Destroy(popup.gameObject);
     }
 
     // Rung khi đòn không hiệu quả / trượt

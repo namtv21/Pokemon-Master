@@ -24,22 +24,13 @@ public class BattleItemHandler : MonoBehaviour
 
     public IEnumerator UseItemOnPokemon(ItemBase item, Pokemon targetPokemon, BattleUnit targetUnit = null)
     {
-        Debug.Log($"BattleItemHandler: UseItemOnPokemon called for {item?.itemName} on {targetPokemon?.Base?.Name}");
-
         // kiểm tra số lượng item
         ItemSlot slot = inventory.GetSlots().Find(s => s.item == item);
         if (slot == null || slot.count <= 0)
         {
             battleSystem.SetState(BattleState.Busy);
             if (dialogBox != null)
-            {
                 dialogBox.ShowDialog($"You don't have any {item.itemName}.");
-                Debug.Log($"BattleItemHandler: dialog shown for missing item {item.itemName}");
-            }
-            else
-            {
-                Debug.LogWarning("BattleItemHandler: dialogBox is null when reporting missing item.");
-            }
             yield return new WaitForSeconds(1f);
             yield break;
         }
@@ -153,14 +144,7 @@ public class BattleItemHandler : MonoBehaviour
         }
 
         if (dialogBox != null)
-        {
             dialogBox.ShowDialog(msg);
-            Debug.Log($"BattleItemHandler: dialog shown with message: {msg}");
-        }
-        else
-        {
-            Debug.LogWarning($"BattleItemHandler: dialogBox is null, message not shown: {msg}");
-        }
         yield return new WaitForSeconds(1.2f);
 
         if (success)

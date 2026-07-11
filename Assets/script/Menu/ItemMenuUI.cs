@@ -29,6 +29,7 @@ public class ItemMenuUI : MonoBehaviour
     public void OpenMenu(List<ItemSlot> slots, Action<ItemBase> onSelectedCallback, Action onCloseCallback)
     {
         gameObject.SetActive(true);
+        UiFx.PopIn(gameObject);
         currentIndex = 0;
 
         EnsureScrollSetup();

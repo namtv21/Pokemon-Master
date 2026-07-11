@@ -44,11 +44,9 @@ public class PlayerParty : MonoBehaviour
         {
             Pokemons.Add(newPokemon);
             PokedexManager.GetOrCreate().MarkCaught(newPokemon);
-            Debug.Log($"{newPokemon.Base.Name} was added to your party!");
         }
         else
         {
-            Debug.Log("Party is full! Send to storage instead.");
             StorageSystem.Instance?.AddPokemon(newPokemon);
         }
     }

@@ -50,6 +50,7 @@ public class CompanionChatUI : MonoBehaviour
     {
         this.companion = companion;
         panel.SetActive(true);
+        UiFx.PopIn(panel);
 
         UpdateCompanionSprite();
         RefreshIntimacy();

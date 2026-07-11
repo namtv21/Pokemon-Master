@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class OverworldPokemon : MonoBehaviour, Interactable
@@ -10,10 +11,52 @@ public class OverworldPokemon : MonoBehaviour, Interactable
     [SerializeField] private int level = 5;
     [SerializeField] private bool allowRun = true;
 
+    [Header("Idle Bob")]
+    [SerializeField] private bool idleBob = true;
+    [SerializeField] private float bobAmplitude = 0.05f;
+    [SerializeField] private float bobPeriod = 1.4f;
+
     private bool isCaptured;
+    private string cachedEncounterId;   // cache TRƯỚC khi nhún — id suy từ vị trí, không được lệch
+    private Vector3 basePosition;
+    private Coroutine bobRoutine;
 
     public string EncounterId => GetEffectiveEncounterId();
     public bool IsCaptured => isCaptured;
+
+    private void Awake()
+    {
+        cachedEncounterId = ComputeEncounterId();
+        basePosition = transform.position;
+    }
+
+    private void OnEnable()
+    {
+        if (idleBob)
+            bobRoutine = StartCoroutine(BobRoutine());
+    }
+
+    private void OnDisable()
+    {
+        if (bobRoutine != null)
+        {
+            StopCoroutine(bobRoutine);
+            bobRoutine = null;
+        }
+        transform.position = basePosition;
+    }
+
+    // Nhún sin nhẹ, lệch pha ngẫu nhiên để các con không nhún đồng loạt.
+    private IEnumerator BobRoutine()
+    {
+        float phase = Random.value * Mathf.PI * 2f;
+        while (true)
+        {
+            float y = Mathf.Sin(Time.time * Mathf.PI * 2f / Mathf.Max(0.2f, bobPeriod) + phase) * bobAmplitude;
+            transform.position = basePosition + new Vector3(0f, y, 0f);
+            yield return null;
+        }
+    }
 
     private void Start()
     {
@@ -78,6 +121,13 @@ public class OverworldPokemon : MonoBehaviour, Interactable
     }
 
     private string GetEffectiveEncounterId()
+    {
+        if (string.IsNullOrEmpty(cachedEncounterId))
+            cachedEncounterId = ComputeEncounterId();
+        return cachedEncounterId;
+    }
+
+    private string ComputeEncounterId()
     {
         if (!string.IsNullOrWhiteSpace(encounterId))
             return encounterId.Trim();

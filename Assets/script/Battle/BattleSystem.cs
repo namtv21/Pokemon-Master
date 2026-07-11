@@ -522,6 +522,8 @@ public class BattleSystem : MonoBehaviour
             int targetHpBeforeHit = enemyUnit.Pokemon.CurrentHp;
             int damage = CalculateDamage(playerUnit.Pokemon, enemyUnit.Pokemon, move, out isCritical);
             float effectiveness = TypeChart.GetEffectiveness(move.Base.Type, enemyUnit.Pokemon.Base.Type1, enemyUnit.Pokemon.Base.Type2);
+            if (effectiveness > 0f)
+                enemyUnit.ShowDamagePopup(damage, isCritical, effectiveness);   // số sát thương bay lên trong lúc hit anim
             yield return StartCoroutine(effectiveness == 0f
                 ? enemyUnit.PlayNoDamageAnimation()
                 : enemyUnit.PlayHitAnimation());
@@ -645,6 +647,8 @@ public class BattleSystem : MonoBehaviour
             int targetHpBeforeHit = playerUnit.Pokemon.CurrentHp;
             int damage = CalculateDamage(enemyUnit.Pokemon, playerUnit.Pokemon, move, out isCritical);
             float effectiveness = TypeChart.GetEffectiveness(move.Base.Type, playerUnit.Pokemon.Base.Type1, playerUnit.Pokemon.Base.Type2);
+            if (effectiveness > 0f)
+                playerUnit.ShowDamagePopup(damage, isCritical, effectiveness);
             yield return StartCoroutine(effectiveness == 0f
                 ? playerUnit.PlayNoDamageAnimation()
                 : playerUnit.PlayHitAnimation());

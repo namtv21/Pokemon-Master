@@ -54,10 +54,9 @@ public class ShopUI : MonoBehaviour
             return;
         }
 
-        Debug.Log("ShopUI: Open() called.");
-
         gameObject.SetActive(true);
         shopPanel.SetActive(true);
+        UiFx.PopIn(shopPanel);
         currentMode = ShopMode.Buy;
         buyItems = (shopItems != null && shopItems.Count > 0) ? shopItems : defaultItems;
         buyItemSet = new HashSet<ItemBase>(buyItems.Where(item => item != null));

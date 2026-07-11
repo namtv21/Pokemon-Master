@@ -38,6 +38,7 @@ public class MainMenuUI : MonoBehaviour
     public void Open(Action<MainMenuOption> onSelectedCallback, Action onCloseCallback)
     {
         menuPanel.SetActive(true);
+        UiFx.PopIn(menuPanel);
         currentIndex = 0;
         RefreshLabels();
         HighlightCurrent();

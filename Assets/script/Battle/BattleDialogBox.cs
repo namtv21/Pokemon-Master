@@ -26,6 +26,11 @@ public class BattleDialogBox : MonoBehaviour
     [SerializeField] private MoveSelectionUI[] moveSlots;
     private int currentMoveIndex = 0;
 
+    [Header("Typing")]
+    [SerializeField] private float typingSpeed = 0.015f;   // giây/ký tự
+    private Coroutine typingCoroutine;
+    private bool isTyping;
+
     // ================== DIALOG ==================
     public void ShowDialog(string message)
     {
@@ -34,22 +39,62 @@ public class BattleDialogBox : MonoBehaviour
         moveMenuPanel.SetActive(false);
         itemMenuPanel.SetActive(false);
         pokemonMenuPanel.SetActive(false);
-        dialogText.text = message;
+        StartTyping(message);
     }
 
     public IEnumerator ShowDialogAndWait(string message)
     {
         dialogPanel.SetActive(true);
-        dialogText.text = message;
+        StartTyping(message);
 
-        // Đợi 1 frame để tránh việc phím bấm chọn Pokemon bị tính luôn cho Dialog
-        yield return null; 
+        // Đợi 1 frame để tránh phím vừa bấm ở menu trước bị tính cho Dialog
+        yield return null;
 
-        // Chờ người dùng bấm phím Z (hoặc phím Enter/Space tùy bạn)
+        // Z lần 1 khi đang gõ → hiện trọn câu; Z tiếp theo → đóng (chuẩn Pokemon)
+        while (isTyping)
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                CompleteTyping(message);
+                yield return null;   // nuốt phím Z này, không cho rơi xuống bước chờ đóng
+            }
+            else
+                yield return null;
+        }
+
         yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Z));
-        
-        // Sau khi bấm xong thì ẩn Dialog đi
         dialogPanel.SetActive(false);
+    }
+
+    private void StartTyping(string message)
+    {
+        if (typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
+        typingCoroutine = StartCoroutine(TypeRoutine(message));
+    }
+
+    private void CompleteTyping(string fullMessage)
+    {
+        if (typingCoroutine != null)
+        {
+            StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
+        }
+        dialogText.text = fullMessage;
+        isTyping = false;
+    }
+
+    private IEnumerator TypeRoutine(string message)
+    {
+        isTyping = true;
+        dialogText.text = "";
+        foreach (char c in message)
+        {
+            dialogText.text += c;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+        isTyping = false;
+        typingCoroutine = null;
     }
 
     // ================== ACTION MENU ==================
@@ -182,6 +227,8 @@ public class BattleDialogBox : MonoBehaviour
     public void HideAll()
     {
         StopAllCoroutines();
+        isTyping = false;
+        typingCoroutine = null;
         gameObject.SetActive(false);
     }
 

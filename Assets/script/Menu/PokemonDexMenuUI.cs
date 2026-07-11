@@ -99,9 +99,15 @@ public partial class PokemonDexMenuUI : MonoBehaviour
     {
         onClose = onCloseCallback;
         if (rootPanel != null)
+        {
             rootPanel.SetActive(true);
+            UiFx.PopIn(rootPanel);
+        }
         else
+        {
             gameObject.SetActive(true);
+            UiFx.PopIn(gameObject);
+        }
 
         BuildData();
 

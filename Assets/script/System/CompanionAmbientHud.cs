@@ -485,29 +485,29 @@ public class CompanionAmbientHud : MonoBehaviour
         rootRect.anchorMin = rootRect.anchorMax = new Vector2(0f, 0f);   // góc trái-dưới
         rootRect.pivot = new Vector2(0f, 0f);
         rootRect.anchoredPosition = new Vector2(24f, 24f);
-        rootRect.sizeDelta = new Vector2(480f, 260f);
+        rootRect.sizeDelta = new Vector2(640f, 320f);
 
         // --- Khung chân dung ---
-        var frame = CreateRect(hudRoot.transform, "PortraitFrame", new Vector2(0f, 0f), new Vector2(120f, 120f));
+        var frame = CreateRect(hudRoot.transform, "PortraitFrame", new Vector2(0f, 0f), new Vector2(170f, 170f));
         var frameImg = frame.gameObject.AddComponent<Image>();
         frameImg.color = new Color(0.06f, 0.08f, 0.12f, 0.82f);
 
-        var portrait = CreateRect(frame, "Portrait", new Vector2(10f, 14f), new Vector2(100f, 100f));
+        var portrait = CreateRect(frame, "Portrait", new Vector2(12f, 16f), new Vector2(146f, 146f));
         portraitImage = portrait.gameObject.AddComponent<Image>();
         portraitImage.preserveAspect = true;
         portraitRect = portrait;
 
         // --- Nhãn tên · bond ---
-        var label = CreateRect(hudRoot.transform, "NameLabel", new Vector2(0f, -22f), new Vector2(200f, 22f));
+        var label = CreateRect(hudRoot.transform, "NameLabel", new Vector2(0f, -26f), new Vector2(280f, 26f));
         nameLabel = label.gameObject.AddComponent<TextMeshProUGUI>();
         nameLabel.font = TMP_Settings.defaultFontAsset;
-        nameLabel.fontSize = 16f;
+        nameLabel.fontSize = 19f;
         nameLabel.color = new Color(1f, 1f, 1f, 0.9f);
         nameLabel.alignment = TextAlignmentOptions.TopLeft;
         nameLabel.raycastTarget = false;
 
         // --- Bong bóng thoại ---
-        var bubble = CreateRect(hudRoot.transform, "Bubble", new Vector2(132f, 10f), new Vector2(360f, 96f));
+        var bubble = CreateRect(hudRoot.transform, "Bubble", new Vector2(184f, 14f), new Vector2(430f, 118f));
         var bubbleImg = bubble.gameObject.AddComponent<Image>();
         bubbleImg.color = new Color(0.06f, 0.08f, 0.12f, 0.88f);
         bubbleGroup = bubble.gameObject.AddComponent<CanvasGroup>();
@@ -515,10 +515,10 @@ public class CompanionAmbientHud : MonoBehaviour
         bubbleGroup.interactable = false;
         bubbleGroup.blocksRaycasts = false;
 
-        var textRect = CreateRect(bubble, "Text", new Vector2(12f, 8f), new Vector2(336f, 80f));
+        var textRect = CreateRect(bubble, "Text", new Vector2(14f, 10f), new Vector2(402f, 98f));
         bubbleText = textRect.gameObject.AddComponent<TextMeshProUGUI>();
         bubbleText.font = TMP_Settings.defaultFontAsset;
-        bubbleText.fontSize = 21f;
+        bubbleText.fontSize = 25f;
         bubbleText.color = Color.white;
         bubbleText.alignment = TextAlignmentOptions.TopLeft;
         bubbleText.enableWordWrapping = true;

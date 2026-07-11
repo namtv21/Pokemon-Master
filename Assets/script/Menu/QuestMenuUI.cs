@@ -15,6 +15,7 @@ public class QuestMenuUI : MonoBehaviour
     public void Open()
     {
         gameObject.SetActive(true);
+        UiFx.PopIn(gameObject);
         RefreshUI();
         if (slotUIs.Count > 0)
             ShowInfo(selectedIndex);

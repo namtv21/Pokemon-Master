@@ -45,6 +45,7 @@ public class PartyMenuUI : MonoBehaviour
     public void Open(List<Pokemon> pokemons, PartyMenuMode mode, Action<Pokemon> onSelected, Action onCancel, string promptText = null)
     {
         gameObject.SetActive(true);
+        UiFx.PopIn(gameObject);
         this.mode = mode;
         this.onSelected = onSelected;
         this.onCancel = onCancel;

@@ -19,34 +19,88 @@ public class NPCDirectionalAnimator : MonoBehaviour
     [Header("Timing")]
     [SerializeField] private float framesPerSecond = 8f;
 
+    [Header("Idle Look (tuỳ chọn)")]
+    [Tooltip("Bật để NPC thỉnh thoảng quay đầu nhìn quanh HOẶC giậm chân tại chỗ khi đứng yên (kiểu Pokemon gốc). Để TẮT với NPC cần cố định hướng (y tá, lính gác...).")]
+    [SerializeField] private bool randomIdleLook = false;
+    [SerializeField] private Vector2 idleLookInterval = new Vector2(3f, 7f);
+    [Range(0f, 1f)]
+    [Tooltip("Xác suất hành vi idle là GIẬM CHÂN tại chỗ (phần còn lại là quay đầu).")]
+    [SerializeField] private float stepInPlaceChance = 0.5f;
+
     private SpriteRenderer spriteRenderer;
     private Coroutine walkRoutine;
-    private CoroutineHost host;
     private Vector2 facing = Vector2.down;
     private Vector2 walkingDirection = Vector2.zero;
     private bool isWalking;
+    private float nextLookTime;
 
     public Vector2 FacingDirection => facing;
+
+    private static readonly Vector2[] LookDirections = { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        host = CoroutineHost.GetOrCreate();
         facing = ResolveInitialFacingFromCurrentSprite();
         ShowIdle(facing);
+        nextLookTime = Time.time + Random.Range(idleLookInterval.x, idleLookInterval.y);
     }
 
+    private bool steppingInPlace;
+
+    // NPC "sống": thỉnh thoảng đổi hướng nhìn hoặc giậm chân tại chỗ khi đứng yên ngoài overworld.
+    // Không chạy khi đang đi, đang thoại/cutscene (state != Overworld) — tránh phá dàn cảnh.
+    private void Update()
+    {
+        if (!randomIdleLook || isWalking || steppingInPlace)
+            return;
+
+        var gc = GameController.Instance;
+        if (gc == null || gc.State != GameState.Overworld)
+            return;
+
+        if (Time.time < nextLookTime)
+            return;
+
+        nextLookTime = Time.time + Random.Range(idleLookInterval.x, idleLookInterval.y);
+
+        if (Random.value < stepInPlaceChance)
+            StartCoroutine(StepInPlaceRoutine());
+        else
+        {
+            facing = LookDirections[Random.Range(0, LookDirections.Length)];
+            ShowIdle(facing);
+        }
+    }
+
+    // Giậm chân tại chỗ: chạy walk frames theo hướng hiện tại một lúc ngắn, KHÔNG di chuyển.
+    // Nếu movement thật ghi đè (SetMoving/SetFacing xoá cờ) thì nhường quyền, không tự dừng.
+    private IEnumerator StepInPlaceRoutine()
+    {
+        steppingInPlace = true;
+        StartWalkRoutine(facing);
+        yield return new WaitForSeconds(Random.Range(0.6f, 1.2f));
+
+        if (steppingInPlace)
+        {
+            isWalking = false;
+            StopWalkRoutine();
+            ShowIdle(facing);
+        }
+        steppingInPlace = false;
+    }
+
+    // Coroutine chạy trên chính NPC → tắt/hủy object là Unity tự dừng, chỉ cần dọn cờ.
     private void OnDisable()
     {
-        // Coroutine walk chạy trên CoroutineHost bền vững (DontDestroyOnLoad) nên khi NPC
-        // bị huỷ/tắt lúc đổi scene, nó không tự dừng → phải chủ động dừng để tránh truy cập
-        // SpriteRenderer đã huỷ (MissingReferenceException).
         isWalking = false;
-        StopWalkRoutine();
+        walkRoutine = null;
+        steppingInPlace = false;
     }
 
     public void SetFacing(Vector2 worldDirection, bool idle)
     {
+        steppingInPlace = false;   // lệnh thật ghi đè hành vi idle
         facing = NormalizeDirection(worldDirection, facing);
 
         if (idle)
@@ -62,6 +116,7 @@ public class NPCDirectionalAnimator : MonoBehaviour
 
     public void SetMoving(bool moving, Vector2 worldDirection)
     {
+        steppingInPlace = false;   // lệnh thật ghi đè hành vi idle
         facing = NormalizeDirection(worldDirection, facing);
 
         if (moving)
@@ -77,10 +132,8 @@ public class NPCDirectionalAnimator : MonoBehaviour
 
     private void StartWalkRoutine(Vector2 direction)
     {
-        if (spriteRenderer == null)
-            return;
-
-        if (host == null)
+        // Object đang tắt thì không start coroutine được — hiện idle là đủ.
+        if (!isActiveAndEnabled)
         {
             ShowIdle(direction);
             return;
@@ -92,17 +145,15 @@ public class NPCDirectionalAnimator : MonoBehaviour
         isWalking = true;
         walkingDirection = direction;
 
-        if (walkRoutine != null)
-            host.StopCoroutine(walkRoutine);
-
-        walkRoutine = host.StartCoroutine(AnimateWalk(direction));
+        StopWalkRoutine();
+        walkRoutine = StartCoroutine(AnimateWalk(direction));
     }
 
     private void StopWalkRoutine()
     {
-        if (walkRoutine != null && host != null)
+        if (walkRoutine != null)
         {
-            host.StopCoroutine(walkRoutine);
+            StopCoroutine(walkRoutine);
             walkRoutine = null;
         }
     }
@@ -123,8 +174,6 @@ public class NPCDirectionalAnimator : MonoBehaviour
 
         while (isWalking && walkingDirection == direction)
         {
-            if (spriteRenderer == null)   // NPC đã bị huỷ (vd đổi scene) → dừng an toàn
-                yield break;
             spriteRenderer.sprite = frames[index % frames.Length];
             index++;
             yield return new WaitForSeconds(delay);
@@ -207,40 +256,5 @@ public class NPCDirectionalAnimator : MonoBehaviour
         }
 
         return false;
-    }
-
-    private sealed class CoroutineHost : MonoBehaviour
-    {
-        private static CoroutineHost instance;
-
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-        private static void ResetInstance()
-        {
-            instance = null;
-        }
-
-        public static CoroutineHost GetOrCreate()
-        {
-            if (instance != null)
-                return instance;
-
-            var existing = FindObjectOfType<CoroutineHost>();
-            if (existing != null)
-            {
-                instance = existing;
-                return instance;
-            }
-
-            var go = new GameObject("NPCDirectionalAnimatorRunner");
-            DontDestroyOnLoad(go);
-            instance = go.AddComponent<CoroutineHost>();
-            return instance;
-        }
-
-        private void OnDestroy()
-        {
-            if (instance == this)
-                instance = null;
-        }
     }
 }
