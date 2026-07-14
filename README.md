@@ -1,6 +1,6 @@
-# Pokemon Master
+# PokeMaster
 
-Pokemon Master là game nhập vai Pokemon 2D được phát triển bằng Unity và C#. Project tập trung vào gameplay khám phá thế giới, thu phục và phát triển Pokemon, chiến đấu theo lượt, nhiệm vụ và cốt truyện nhiều scene.
+PokeMaster là game nhập vai Pokemon 2D được phát triển bằng Unity và C#. Project tập trung vào gameplay khám phá thế giới, thu phục và phát triển Pokemon, chiến đấu theo lượt, nhiệm vụ và cốt truyện nhiều scene.
 
 ## Công nghệ
 
@@ -48,6 +48,4 @@ Assets/
 
 ## Lưu ý
 
-- Không commit các thư mục Unity sinh tự động như `Library`, `Temp`, `Logs` và `UserSettings`.
-- Các file save cục bộ và thông tin cấu hình máy cá nhân đã được loại khỏi Git.
-- Đây là project phục vụ mục đích học tập và đồ án.
+- PokeMaster là project phi thương mại, chỉ phục vụ mục đích học tập và đồ án.
