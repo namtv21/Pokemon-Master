@@ -28,6 +28,7 @@ public class SaveData
     public PokedexSaveData pokedex;
     public List<NPCStateSaveData> npcStates;
     public List<ItemStackSaveData> inventoryItems;
+    public List<string> badgeIds;
     public List<string> triggeredTriggers;
     public List<string> capturedOverworldPokemonIds;
 }

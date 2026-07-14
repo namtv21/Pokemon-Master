@@ -44,21 +44,7 @@ public class Chest : MonoBehaviour, Interactable
 
         if (givesBadge && !string.IsNullOrWhiteSpace(badgeId))
         {
-            // Persist badge id to PlayerPrefs under key "PlayerBadges"
-            const string prefsKey = "PlayerBadges";
-            var data = PlayerPrefs.GetString(prefsKey, string.Empty);
-            var set = new System.Collections.Generic.HashSet<string>(System.StringComparer.OrdinalIgnoreCase);
-            if (!string.IsNullOrWhiteSpace(data))
-            {
-                var parts = data.Split(new[] {'|'}, System.StringSplitOptions.RemoveEmptyEntries);
-                foreach (var p in parts) set.Add(p);
-            }
-            if (!set.Contains(badgeId))
-            {
-                set.Add(badgeId);
-                PlayerPrefs.SetString(prefsKey, string.Join("|", set));
-                PlayerPrefs.Save();
-            }
+            SaveLoadSystem.RegisterRuntimeBadge(badgeId);
 
             DialogManager.Instance?.ShowDialog($"You found a badge: {badgeId}!");
         }

@@ -34,6 +34,7 @@ public class SaveLoadSystem : MonoBehaviour
     // Runtime set of triggered one-shot IDs (persists across scene loads in memory)
     private static HashSet<string> runtimeTriggeredIds;
     private static HashSet<string> runtimeCapturedOverworldPokemonIds;
+    private static HashSet<string> runtimeBadgeIds;
     private static Dictionary<string, bool> runtimeNpcBattleStates;
     private static Dictionary<string, NPCStateSaveData> runtimeNpcTransformStates;
 
@@ -62,6 +63,22 @@ public class SaveLoadSystem : MonoBehaviour
     {
         if (string.IsNullOrWhiteSpace(encounterId)) return false;
         return runtimeCapturedOverworldPokemonIds != null && runtimeCapturedOverworldPokemonIds.Contains(encounterId);
+    }
+
+    public static bool RegisterRuntimeBadge(string badgeId)
+    {
+        if (string.IsNullOrWhiteSpace(badgeId))
+            return false;
+
+        runtimeBadgeIds ??= new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        return runtimeBadgeIds.Add(badgeId.Trim());
+    }
+
+    public static bool HasRuntimeBadge(string badgeId)
+    {
+        return !string.IsNullOrWhiteSpace(badgeId) &&
+               runtimeBadgeIds != null &&
+               runtimeBadgeIds.Contains(badgeId.Trim());
     }
 
     public static string BuildNpcStateKey(string sceneName, string npcId, Vector3 originPosition)
@@ -134,6 +151,7 @@ public class SaveLoadSystem : MonoBehaviour
         OnPendingLoadFinished = null;
         runtimeTriggeredIds = new HashSet<string>();
         runtimeCapturedOverworldPokemonIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        runtimeBadgeIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         runtimeNpcBattleStates = new Dictionary<string, bool>(StringComparer.OrdinalIgnoreCase);
         runtimeNpcTransformStates = new Dictionary<string, NPCStateSaveData>(StringComparer.OrdinalIgnoreCase);
     }
@@ -178,7 +196,8 @@ public class SaveLoadSystem : MonoBehaviour
             storyMainStepIndex = StoryFlags.Instance != null ? StoryFlags.Instance.MainStoryStepIndex : 0,
             questSnapshot = QuestManager.Instance != null ? QuestManager.Instance.ExportSaveSnapshot() : null,
             pokedex = PokedexManager.GetOrCreate().ExportData(),
-            inventoryItems = new List<ItemStackSaveData>()
+            inventoryItems = new List<ItemStackSaveData>(),
+            badgeIds = new List<string>()
         };
 
         // Save NPC states
@@ -315,6 +334,13 @@ public class SaveLoadSystem : MonoBehaviour
         {
             if (!string.IsNullOrWhiteSpace(capturedId) && !data.capturedOverworldPokemonIds.Contains(capturedId))
                 data.capturedOverworldPokemonIds.Add(capturedId);
+        }
+
+        runtimeBadgeIds ??= new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var badgeId in runtimeBadgeIds)
+        {
+            if (!string.IsNullOrWhiteSpace(badgeId))
+                data.badgeIds.Add(badgeId);
         }
 
         string json = JsonUtility.ToJson(data, true);
@@ -602,6 +628,14 @@ public class SaveLoadSystem : MonoBehaviour
 
         storyFlags.MainStorySequenceIndex = Mathf.Max(0, data.storyMainSequenceIndex);
         storyFlags.MainStoryStepIndex = Mathf.Max(0, data.storyMainStepIndex);
+
+        runtimeBadgeIds ??= new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        runtimeBadgeIds.Clear();
+        if (data.badgeIds != null)
+        {
+            foreach (var badgeId in data.badgeIds)
+                RegisterRuntimeBadge(badgeId);
+        }
 
         if (QuestManager.Instance != null && data.questSnapshot != null)
             QuestManager.Instance.ImportSaveSnapshot(data.questSnapshot);

@@ -1039,7 +1039,13 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(1f);
             if (currentTrainer != null && currentTrainer.IsGymLeader)
             {
-                // Prefer giving a configured badge item; otherwise fall back to badge id persistence.
+                string badgeName = !string.IsNullOrWhiteSpace(currentTrainer.BadgeName)
+                    ? currentTrainer.BadgeName
+                    : currentTrainer.BadgeItem != null && !string.IsNullOrWhiteSpace(currentTrainer.BadgeItem.itemName)
+                        ? currentTrainer.BadgeItem.itemName
+                        : "Badge";
+                SaveBadgeLocal(badgeName);
+
                 if (currentTrainer.BadgeItem != null)
                 {
                     Inventory.Instance?.AddItem(currentTrainer.BadgeItem, 1);
@@ -1047,8 +1053,6 @@ public class BattleSystem : MonoBehaviour
                 }
                 else
                 {
-                    string badgeName = string.IsNullOrWhiteSpace(currentTrainer.BadgeName) ? "Badge" : currentTrainer.BadgeName;
-                    SaveBadgeLocal(badgeName);
                     dialogBox.ShowDialog($"You received the {badgeName}!");
                 }
 
@@ -1112,28 +1116,11 @@ public class BattleSystem : MonoBehaviour
         GameController.Instance?.EndBattle();
     }
 
-    // Local helper to persist badge in PlayerPrefs and notify any runtime BadgeManager if present.
+    // Badge progress belongs to the current save slot, not global PlayerPrefs.
     private void SaveBadgeLocal(string badgeId)
     {
-        if (string.IsNullOrWhiteSpace(badgeId)) return;
-
-        const string prefsKey = "PlayerBadges";
-        var data = PlayerPrefs.GetString(prefsKey, string.Empty);
-        var set = new System.Collections.Generic.HashSet<string>(System.StringComparer.OrdinalIgnoreCase);
-        if (!string.IsNullOrWhiteSpace(data))
-        {
-            var parts = data.Split(new[] {'|'}, System.StringSplitOptions.RemoveEmptyEntries);
-            foreach (var p in parts) set.Add(p);
-        }
-
-        if (!set.Contains(badgeId))
-        {
-            set.Add(badgeId);
-            PlayerPrefs.SetString(prefsKey, string.Join("|", set));
-            PlayerPrefs.Save();
-        }
-
-        ToastNotificationManager.Instance?.Show($"Received badge: {badgeId}", Color.cyan);
+        if (SaveLoadSystem.RegisterRuntimeBadge(badgeId))
+            ToastNotificationManager.Instance?.Show($"Received badge: {badgeId}", Color.cyan);
     }
 
     private void TrySetGymStoryFlag(NPC trainer)
