@@ -1,26 +1,25 @@
 /// <summary>
-/// Fixed personality for a Pokemon instance and bond tier derived from FriendshipLevel.
-/// Used only for companion interaction/display, not battle mechanics.
+/// Tính cách CỐ ĐỊNH của một Pokemon và bậc gắn kết (bond) suy từ FriendshipLevel.
+/// Chỉ phục vụ TƯƠNG TÁC (AI companion + hiển thị) — KHÔNG ảnh hưởng cơ chế battle.
 /// </summary>
 public enum PokemonPersonality
 {
-    Playful,
-    Brave,
-    Timid,
-    Proud,
-    Gentle,
-    Loyal,
-    Curious,
-    Lazy
+    Playful,   // Tinh nghịch
+    Brave,     // Dũng cảm
+    Timid,     // Nhút nhát
+    Proud,     // Kiêu hãnh
+    Gentle,    // Điềm tĩnh
+    Curious,   // Tò mò
+    Lazy       // Lười biếng
 }
 
 public enum BondTier
 {
-    Stranger,
-    Acquaintance,
-    Friend,
-    Companion,
-    Soulmate
+    Stranger,     // Xa lạ
+    Acquaintance, // Quen
+    Friend,       // Bạn
+    Companion,    // Đồng hành
+    Soulmate      // Tri kỷ
 }
 
 public static class PokemonPersonalityUtil
@@ -33,19 +32,19 @@ public static class PokemonPersonalityUtil
         return (PokemonPersonality)values.GetValue(rng.Next(values.Length));
     }
 
+    /// Nhãn tiếng Việt (có dấu) để hiển thị UI và gửi cho AI.
     public static string Label(PokemonPersonality personality)
     {
         switch (personality)
         {
-            case PokemonPersonality.Playful: return "Tinh nghich";
-            case PokemonPersonality.Brave:   return "Dung cam";
-            case PokemonPersonality.Timid:   return "Nhut nhat";
-            case PokemonPersonality.Proud:   return "Kieu hanh";
-            case PokemonPersonality.Gentle:  return "Diem tinh";
-            case PokemonPersonality.Loyal:   return "Trung thanh";
-            case PokemonPersonality.Curious: return "To mo";
-            case PokemonPersonality.Lazy:    return "Luoi bieng";
-            default:                         return "Binh thuong";
+            case PokemonPersonality.Playful: return "Tinh nghịch";
+            case PokemonPersonality.Brave:   return "Dũng cảm";
+            case PokemonPersonality.Timid:   return "Nhút nhát";
+            case PokemonPersonality.Proud:   return "Kiêu hãnh";
+            case PokemonPersonality.Gentle:  return "Điềm tĩnh";
+            case PokemonPersonality.Curious: return "Tò mò";
+            case PokemonPersonality.Lazy:    return "Lười biếng";
+            default:                         return "Bình thường";
         }
     }
 
@@ -62,12 +61,12 @@ public static class PokemonPersonalityUtil
     {
         switch (tier)
         {
-            case BondTier.Stranger:     return "Xa la";
+            case BondTier.Stranger:     return "Xa lạ";
             case BondTier.Acquaintance: return "Quen";
-            case BondTier.Friend:       return "Ban";
-            case BondTier.Companion:    return "Dong hanh";
-            case BondTier.Soulmate:     return "Tri ky";
-            default:                    return "Xa la";
+            case BondTier.Friend:       return "Bạn";
+            case BondTier.Companion:    return "Đồng hành";
+            case BondTier.Soulmate:     return "Tri kỷ";
+            default:                    return "Xa lạ";
         }
     }
 }

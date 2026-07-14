@@ -227,7 +227,8 @@ public class CompanionChatSystem : MonoBehaviour
         return cleaned;
     }
 
-    public IEnumerator SendMessageToCompanion(string userMessage, System.Action<string> onComplete)
+    // target = null → mặc định chat với Pokemon đầu đội; truyền vào để chat với con bất kỳ trong party.
+    public IEnumerator SendMessageToCompanion(string userMessage, System.Action<string> onComplete, Pokemon target = null)
     {
         if (string.IsNullOrEmpty(workerUrl))
         {
@@ -242,7 +243,7 @@ public class CompanionChatSystem : MonoBehaviour
             yield break;
         }
 
-        var companion = GetCompanion();
+        var companion = target ?? GetCompanion();
         var flags     = StoryFlags.GetOrCreate();
 
         var requestObj = new ApiRequest

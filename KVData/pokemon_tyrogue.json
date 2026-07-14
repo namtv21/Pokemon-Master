@@ -1,0 +1,1 @@
+{"name":"Tyrogue","type1":"Fighting","hp":35,"attack":35,"defense":35,"spAttack":35,"spDefense":35,"speed":35,"learnset":[{"level":1,"move":"Fake Out","type":"Normal","power":40,"pp":10},{"level":1,"move":"Tackle","type":"Normal","power":40,"pp":35}]}

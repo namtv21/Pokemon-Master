@@ -19,6 +19,8 @@ public static class BootstrapLoader
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Init()
     {
+        SceneManager.sceneLoaded -= OnFirstGameSceneLoaded;
+
         var currentScene = SceneManager.GetActiveScene();
         bool isMainMenu = !string.IsNullOrWhiteSpace(currentScene.name) &&
             System.Array.Exists(MainMenuSceneNames, s =>

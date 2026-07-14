@@ -71,6 +71,14 @@ public class CompanionAmbientHud : MonoBehaviour
     private CanvasGroup bubbleGroup;
     private TextMeshProUGUI bubbleText;
     private RectTransform portraitRect;
+    private Sprite[] pikachuPortraitFrames;
+    private bool pikachuFramesLoadAttempted;
+    private bool pikachuPortraitActive;
+    private bool pikachuWasMoving;
+    private int pikachuRunFrame;
+    private float nextPikachuRunFrameAt;
+    private float nextPikachuIdleVariantAt;
+    private float pikachuIdleVariantUntil;
     private bool uiBuilt;
 
     // ===== Trạng thái trigger =====
@@ -89,6 +97,14 @@ public class CompanionAmbientHud : MonoBehaviour
     private string cachedFlagsSnapshot;
     private Vector3 lastPlayerPos;
     private float stillSince;
+
+    // Theo dõi sự kiện companion/party
+    private GameState prevGameState = GameState.Overworld;
+    private Pokemon lastCompanion;
+    private PokemonBase lastCompanionBase;
+    private int lastCompanionLevel;
+    private int lastPartyCount = -1;
+    private bool healPending;
 
     private Coroutine bubbleRoutine;
     private Coroutine sceneCommentRoutine;
@@ -118,6 +134,13 @@ public class CompanionAmbientHud : MonoBehaviour
 
     private void Update()
     {
+        // Vừa từ Battle về Overworld → companion phản ứng theo kết quả trận
+        var gc = GameController.Instance;
+        var gcState = gc != null ? gc.State : GameState.Overworld;
+        if (prevGameState == GameState.Battle && gcState == GameState.Overworld && gc != null)
+            StartCoroutine(BattleEndReaction(gc.LastBattleOutcome));
+        prevGameState = gcState;
+
         bool visible = ShouldShow();
 
         // Vừa hiện lại (thoát dialog/menu/battle): reset đồng hồ idle — người chơi "đứng yên"
@@ -143,6 +166,10 @@ public class CompanionAmbientHud : MonoBehaviour
 
         if (!visible) return;
         if (!uiBuilt) BuildUi();
+        if (hudRoot != null && !hudRoot.activeSelf)
+            hudRoot.SetActive(true);
+
+        UpdatePikachuPortrait();
 
         pollTimer += Time.deltaTime;
         if (pollTimer >= PollInterval)
@@ -181,6 +208,71 @@ public class CompanionAmbientHud : MonoBehaviour
         }
 
         float now = Time.time;
+        float hpRatio = companion.MaxHp > 0 ? (float)companion.CurrentHp / companion.MaxHp : 1f;
+        var party = PlayerParty.Instance;
+        int partyCount = party != null ? party.Pokemons.Count : 0;
+
+        // ===== Sự kiện companion/party (mỗi poll tối đa 1 bong bóng, tracker luôn được đồng bộ) =====
+
+        // a) Đổi con dẫn đầu → con mới chào
+        if (companion != lastCompanion)
+        {
+            bool hadPrevious = lastCompanion != null;
+            lastCompanion = companion;
+            lastCompanionBase = companion.Base;
+            lastCompanionLevel = companion.Level;
+            healPending = false;
+            if (hadPrevious)
+            {
+                lastPartyCount = partyCount;
+                ShowBubble(NewLeadLine(companion));
+                return;
+            }
+        }
+
+        // b) Tiến hóa (cùng cá thể, Base đổi) — khoảnh khắc lớn, bỏ qua cooldown
+        if (companion.Base != lastCompanionBase)
+        {
+            lastCompanionBase = companion.Base;
+            lastCompanionLevel = companion.Level;
+            lastPartyCount = partyCount;
+            ShowBubble(EvolvedLine(companion), bypassGlobalCooldown: true);
+            return;
+        }
+
+        // c) Lên cấp ngoài trận (vd dùng bình EXP)
+        if (companion.Level > lastCompanionLevel)
+        {
+            lastCompanionLevel = companion.Level;
+            lastPartyCount = partyCount;
+            ShowBubble(LevelUpLine(companion));
+            return;
+        }
+
+        // d) Có thành viên mới vào đội → companion bình luận
+        if (lastPartyCount >= 0 && partyCount > lastPartyCount && party != null)
+        {
+            lastPartyCount = partyCount;
+            var newcomer = party.Pokemons[partyCount - 1];
+            if (newcomer != null && newcomer != companion)
+            {
+                ShowBubble(NewMemberLine(companion, newcomer));
+                return;
+            }
+        }
+        lastPartyCount = partyCount;
+
+        // e) Được chữa khỏi sau khi nguy kịch → cảm ơn
+        if (hpRatio < 0.35f && hpRatio > 0f)
+            healPending = true;
+        else if (healPending && hpRatio >= 0.95f)
+        {
+            healPending = false;
+            ShowBubble(HealedLine(companion));
+            return;
+        }
+
+        // ===== Các trigger nền (như cũ) =====
 
         // 1) Lên bậc bond (quan trọng — bỏ qua global cooldown)
         int tier = (int)companion.BondTier;
@@ -194,7 +286,6 @@ public class CompanionAmbientHud : MonoBehaviour
         cachedBondTier = tier;
 
         // 2) HP thấp (một lần mỗi "đợt": reset khi hồi trên 60%)
-        float hpRatio = companion.MaxHp > 0 ? (float)companion.CurrentHp / companion.MaxHp : 1f;
         if (hpRatio > 0.6f) wasLowHp = false;
         if (!wasLowHp && hpRatio > 0f && hpRatio < 0.35f && now - lastHpLowTime > HpLowCooldown)
         {
@@ -357,7 +448,8 @@ public class CompanionAmbientHud : MonoBehaviour
     {
         if (portraitImage != null && companion.Base != null)
         {
-            portraitImage.sprite = companion.Base.FrontSprite;
+            if (!pikachuPortraitActive)
+                portraitImage.sprite = companion.Base.FrontSprite;
             // Ngất/mệt → xám; bình thường → nguyên màu
             int mood = chat.GetMoodIndex(companion);
             portraitImage.color = mood == 0 ? new Color(0.55f, 0.55f, 0.55f, 1f) : Color.white;
@@ -368,6 +460,120 @@ public class CompanionAmbientHud : MonoBehaviour
     }
 
     // ===== Nội dung thoại (offline, theo tính cách) =====
+
+    private void UpdatePikachuPortrait()
+    {
+        if (portraitImage == null)
+            return;
+
+        var chat = CompanionChatSystem.Instance;
+        var companion = chat != null ? chat.GetCompanion() : null;
+        bool isPikachu = companion != null && companion.Base != null &&
+                         string.Equals(companion.Base.Name, "Pikachu", System.StringComparison.OrdinalIgnoreCase);
+
+        if (!isPikachu)
+        {
+            if (pikachuPortraitActive && companion != null && companion.Base != null)
+                portraitImage.sprite = companion.Base.FrontSprite;
+            pikachuPortraitActive = false;
+            pikachuWasMoving = false;
+            return;
+        }
+
+        if (!pikachuPortraitActive)
+        {
+            pikachuPortraitActive = true;
+            nextPikachuIdleVariantAt = Time.unscaledTime + Random.Range(3f, 7f);
+        }
+
+        EnsurePikachuPortraitFrames();
+        if (pikachuPortraitFrames == null || pikachuPortraitFrames.Length < 4)
+        {
+            portraitImage.sprite = companion.Base.FrontSprite;
+            return;
+        }
+
+        var player = PlayerController.Instance;
+        bool moving = player != null && player.isMoving;
+        float now = Time.unscaledTime;
+
+        if (moving)
+        {
+            if (!pikachuWasMoving)
+            {
+                pikachuRunFrame = 0;
+                nextPikachuRunFrameAt = now;
+            }
+
+            if (now >= nextPikachuRunFrameAt)
+            {
+                portraitImage.sprite = pikachuPortraitFrames[2 + pikachuRunFrame];
+                pikachuRunFrame = 1 - pikachuRunFrame;
+                nextPikachuRunFrameAt = now + 0.14f;
+            }
+        }
+        else
+        {
+            if (pikachuWasMoving)
+            {
+                portraitImage.sprite = pikachuPortraitFrames[0];
+                nextPikachuIdleVariantAt = now + Random.Range(3f, 7f);
+                pikachuIdleVariantUntil = 0f;
+            }
+
+            if (now >= nextPikachuIdleVariantAt)
+            {
+                pikachuIdleVariantUntil = now + 0.7f;
+                nextPikachuIdleVariantAt = pikachuIdleVariantUntil + Random.Range(3f, 7f);
+            }
+
+            portraitImage.sprite = now < pikachuIdleVariantUntil
+                ? pikachuPortraitFrames[1]
+                : pikachuPortraitFrames[0];
+        }
+
+        pikachuWasMoving = moving;
+    }
+
+    private void EnsurePikachuPortraitFrames()
+    {
+        if (pikachuFramesLoadAttempted)
+            return;
+
+        pikachuFramesLoadAttempted = true;
+        var texture = Resources.Load<Texture2D>("Companion/Pikachu/pikachu_hud_sheet");
+        if (texture == null)
+        {
+            var importedSprite = Resources.Load<Sprite>("Companion/Pikachu/pikachu_hud_sheet");
+            texture = importedSprite != null ? importedSprite.texture : null;
+        }
+        if (texture == null)
+        {
+            Debug.LogWarning("[CompanionAmbientHud] Missing Pikachu HUD sheet in Resources.");
+            return;
+        }
+
+        texture.filterMode = FilterMode.Point;
+        texture.wrapMode = TextureWrapMode.Clamp;
+
+        float halfWidth = texture.width * 0.5f;
+        float halfHeight = texture.height * 0.5f;
+        pikachuPortraitFrames = new[]
+        {
+            CreatePikachuFrame(texture, new Rect(0f, halfHeight, halfWidth, halfHeight), "Pikachu_Idle"),
+            CreatePikachuFrame(texture, new Rect(halfWidth, halfHeight, halfWidth, halfHeight), "Pikachu_IdleVariant"),
+            CreatePikachuFrame(texture, new Rect(0f, 0f, halfWidth, halfHeight), "Pikachu_RunA"),
+            CreatePikachuFrame(texture, new Rect(halfWidth, 0f, halfWidth, halfHeight), "Pikachu_RunB")
+        };
+    }
+
+    private static Sprite CreatePikachuFrame(Texture2D texture, Rect rect, string frameName)
+    {
+        var sprite = Sprite.Create(texture, rect, new Vector2(0.5f, 0.5f), 100f, 0,
+            SpriteMeshType.FullRect);
+        sprite.name = frameName;
+        return sprite;
+    }
 
     private static string PickLine(Dictionary<PokemonPersonality, string[]> table, Pokemon c)
     {
@@ -391,6 +597,134 @@ public class CompanionAmbientHud : MonoBehaviour
             case PokemonPersonality.Curious: return $"{name}: {loc}?! Có gì hay ở đây ta, khám phá thôi!";
             case PokemonPersonality.Lazy:    return $"{name}: Tới {loc} rồi hả… đi chậm thôi mà~";
             default:                         return $"{name}: Đến {loc} rồi!";
+        }
+    }
+
+    // ===== Phản ứng kết thúc trận =====
+
+    private IEnumerator BattleEndReaction(BattleOutcome outcome)
+    {
+        yield return new WaitForSeconds(1.1f);
+        if (!ShouldShow()) yield break;
+
+        var chat = CompanionChatSystem.Instance;
+        var companion = chat != null ? chat.GetCompanion() : null;
+        if (companion == null) yield break;
+
+        // Đồng bộ tracker trước — tiến hóa/lên cấp TRONG trận không bắn thêm bong bóng riêng
+        lastCompanion = companion;
+        lastCompanionBase = companion.Base;
+        lastCompanionLevel = companion.Level;
+        var party = PlayerParty.Instance;
+        lastPartyCount = party != null ? party.Pokemons.Count : lastPartyCount;
+
+        string line = BattleOutcomeLine(companion, outcome);
+        if (!string.IsNullOrEmpty(line))
+            ShowBubble(line, bypassGlobalCooldown: true);
+    }
+
+    private string BattleOutcomeLine(Pokemon c, BattleOutcome outcome)
+    {
+        string name = c.Base != null ? c.Base.Name : "Pokemon";
+        switch (outcome)
+        {
+            case BattleOutcome.Win:
+                switch (c.Personality)
+                {
+                    case PokemonPersonality.Brave:   return $"{name}: Thắng rồi! Trận sau đâu, mình chưa đã!";
+                    case PokemonPersonality.Proud:   return $"{name}: Hmph, kết quả hiển nhiên thôi.";
+                    case PokemonPersonality.Playful: return $"{name}: Thắng thắng thắng~! Ăn mừng đi!";
+                    case PokemonPersonality.Timid:   return $"{name}: M-mình... thắng thật à? Hehe...";
+                    case PokemonPersonality.Lazy:    return $"{name}: Thắng rồi... giờ ngủ được chưa...";
+                    case PokemonPersonality.Curious: return $"{name}: Thắng rồi! Mà đối thủ vừa nãy là loài gì nhỉ?";
+                    default:                         return $"{name}: Chúng ta làm được rồi!";
+                }
+            case BattleOutcome.Lose:
+                switch (c.Personality)
+                {
+                    case PokemonPersonality.Brave:   return $"{name}: Thua keo này ta bày keo khác!";
+                    case PokemonPersonality.Proud:   return $"{name}: ...Không có lần sau như vậy đâu.";
+                    case PokemonPersonality.Timid:   return $"{name}: Xin lỗi... mình yếu quá...";
+                    default:                         return $"{name}: Đừng buồn, nghỉ ngơi rồi thử lại nhé.";
+                }
+            case BattleOutcome.Capture:
+                switch (c.Personality)
+                {
+                    case PokemonPersonality.Proud:   return $"{name}: Thêm thành viên? Miễn đừng chậm chân là được.";
+                    case PokemonPersonality.Playful: return $"{name}: Bạn mới bạn mới~! Chơi chung không?";
+                    case PokemonPersonality.Timid:   return $"{name}: Bạn mới... trông có hiền không nhỉ...";
+                    default:                         return $"{name}: Chào mừng thành viên mới!";
+                }
+            case BattleOutcome.Escape:
+                return $"{name}: Chạy... cũng là một chiến thuật!";
+            default:
+                return null;
+        }
+    }
+
+    // ===== Thoại sự kiện companion/party =====
+
+    private string NewLeadLine(Pokemon c)
+    {
+        string name = c.Base != null ? c.Base.Name : "Pokemon";
+        switch (c.Personality)
+        {
+            case PokemonPersonality.Brave:   return $"{name}: Đến lượt mình dẫn đường! Cứ để đó!";
+            case PokemonPersonality.Proud:   return $"{name}: Cuối cùng cũng chọn đúng người.";
+            case PokemonPersonality.Playful: return $"{name}: Yay~ được đi đầu rồi! Đi đâu đây?";
+            case PokemonPersonality.Timid:   return $"{name}: M-mình đi đầu á...? Được rồi, mình cố...";
+            case PokemonPersonality.Lazy:    return $"{name}: Hở, mình dẫn đường...? Đi chậm thôi nha...";
+            case PokemonPersonality.Curious: return $"{name}: Mình đi đầu hả? Để mình đánh hơi đường!";
+            default:                         return $"{name}: Từ giờ mình đồng hành với cậu nhé!";
+        }
+    }
+
+    private string EvolvedLine(Pokemon c)
+    {
+        string name = c.Base != null ? c.Base.Name : "Pokemon";
+        switch (c.Personality)
+        {
+            case PokemonPersonality.Proud:   return $"{name}: Nhìn đi! Đây mới là dáng vẻ xứng đáng với mình!";
+            case PokemonPersonality.Playful: return $"{name}: Oa mình to lên rồi!! Nhìn nè nhìn nè~";
+            case PokemonPersonality.Timid:   return $"{name}: Mình... khang khác... cậu vẫn nhận ra mình chứ?";
+            default:                         return $"{name}: Mình đã tiến hóa! Cảm ơn cậu đã đồng hành!";
+        }
+    }
+
+    private string LevelUpLine(Pokemon c)
+    {
+        string name = c.Base != null ? c.Base.Name : "Pokemon";
+        switch (c.Personality)
+        {
+            case PokemonPersonality.Brave: return $"{name}: Mạnh lên rồi! Thử ngay một trận đi!";
+            case PokemonPersonality.Lazy:  return $"{name}: Lên cấp mà chẳng phải làm gì... thích thật~";
+            default:                       return $"{name}: Mình thấy khỏe hơn hẳn rồi đó!";
+        }
+    }
+
+    private string NewMemberLine(Pokemon c, Pokemon newcomer)
+    {
+        string name = c.Base != null ? c.Base.Name : "Pokemon";
+        string other = newcomer.Base != null ? newcomer.Base.Name : "bạn mới";
+        switch (c.Personality)
+        {
+            case PokemonPersonality.Proud:   return $"{name}: {other} hả... để xem có theo kịp mình không.";
+            case PokemonPersonality.Playful: return $"{name}: {other} ơi chơi với mình không~?";
+            case PokemonPersonality.Timid:   return $"{name}: {other}... trông cũng thân thiện ha...";
+            case PokemonPersonality.Curious: return $"{name}: Ồ, {other}! Mình có nhiều câu muốn hỏi lắm!";
+            default:                         return $"{name}: Chào {other}, gia nhập đội vui vẻ nhé!";
+        }
+    }
+
+    private string HealedLine(Pokemon c)
+    {
+        string name = c.Base != null ? c.Base.Name : "Pokemon";
+        switch (c.Personality)
+        {
+            case PokemonPersonality.Proud: return $"{name}: ...Cảm ơn. Đừng hiểu lầm, mình vẫn ổn mà!";
+            case PokemonPersonality.Brave: return $"{name}: Hồi phục hoàn toàn! Chiến tiếp thôi!";
+            case PokemonPersonality.Lazy:  return $"{name}: Khỏe re~ nhưng vẫn muốn nằm thêm tí...";
+            default:                       return $"{name}: Khỏe lại rồi! Cảm ơn cậu nhé!";
         }
     }
 

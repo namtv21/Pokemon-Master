@@ -30,6 +30,7 @@ public class MainStoryDirector : MonoBehaviour
     private bool isPlayingStep;
     private bool abortCurrentStepExecution;
     private bool skipNextSceneStartAutoplay;
+    private bool configurationValidated;
 
     private void Awake()
     {
@@ -81,24 +82,97 @@ public class MainStoryDirector : MonoBehaviour
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+        SaveLoadSystem.OnPendingLoadFinished += OnPendingLoadFinished;
     }
 
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        SaveLoadSystem.OnPendingLoadFinished -= OnPendingLoadFinished;
     }
 
     private void Start()
     {
+        ValidateConfiguration();
+
+        if (SaveLoadSystem.IsLoadInProgress)
+            return;
+
         RestoreProgressFromStoryFlags();
         TryPlaySceneStartStep();
     }
 
+    private void ValidateConfiguration()
+    {
+        if (configurationValidated)
+            return;
+
+        configurationValidated = true;
+        var sequences = GetStorySequences();
+        if (sequences.Count == 0)
+        {
+            Debug.LogError("[MainStory] No story sequence is configured.", this);
+            return;
+        }
+
+        if (allowAutoAdvanceOnSceneMismatch)
+            Debug.LogWarning("[MainStory] Auto-advance on scene mismatch is enabled. Entering a later story scene can skip intermediate steps.", this);
+
+        var stepIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        for (int sequenceIndex = 0; sequenceIndex < sequences.Count; sequenceIndex++)
+        {
+            var storySequence = sequences[sequenceIndex];
+            if (storySequence == null || storySequence.Steps == null)
+            {
+                Debug.LogError($"[MainStory] Sequence {sequenceIndex} is missing.", this);
+                continue;
+            }
+
+            for (int stepIndex = 0; stepIndex < storySequence.Steps.Count; stepIndex++)
+            {
+                var step = storySequence.Steps[stepIndex];
+                if (step == null)
+                {
+                    Debug.LogError($"[MainStory] Sequence {sequenceIndex}, step {stepIndex} is null.", this);
+                    continue;
+                }
+
+                string label = string.IsNullOrWhiteSpace(step.StepId)
+                    ? $"sequence {sequenceIndex}, step {stepIndex}"
+                    : $"step '{step.StepId}'";
+
+                if (!string.IsNullOrWhiteSpace(step.StepId) && !stepIds.Add(step.StepId))
+                    Debug.LogError($"[MainStory] Duplicate step id '{step.StepId}'.", this);
+
+                if (string.IsNullOrWhiteSpace(step.SceneName))
+                    Debug.LogWarning($"[MainStory] {label} has no scene restriction.", this);
+
+                if (!step.TriggerOnSceneLoad && string.IsNullOrWhiteSpace(step.TriggerId))
+                    Debug.LogWarning($"[MainStory] {label} accepts any trigger id because both TriggerOnSceneLoad and TriggerId are empty.", this);
+
+                if (step.Actions == null || step.Actions.Count == 0)
+                    Debug.LogWarning($"[MainStory] {label} has no actions.", this);
+            }
+        }
+    }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (SaveLoadSystem.IsLoadInProgress)
+            return;
+
         RestoreProgressFromStoryFlags();
-        var step = GetCurrentStep();;
         // If current step doesn't match the loaded scene, optionally try to advance to a step that does.
+        AlignStepToActiveSceneIfNeeded();
+        TryPlaySceneStartStep();
+    }
+
+    private void OnPendingLoadFinished(bool success)
+    {
+        if (!success)
+            return;
+
+        RestoreProgressFromStoryFlags(forceRestore: true);
         AlignStepToActiveSceneIfNeeded();
         TryPlaySceneStartStep();
     }
@@ -135,7 +209,7 @@ public class MainStoryDirector : MonoBehaviour
         }
     }
 
-    private void RestoreProgressFromStoryFlags()
+    private void RestoreProgressFromStoryFlags(bool forceRestore = false)
     {
         var flags = StoryFlags.GetOrCreate();
         if (flags == null)
@@ -143,7 +217,7 @@ public class MainStoryDirector : MonoBehaviour
 
         int savedSequenceIndex = Mathf.Max(0, flags.MainStorySequenceIndex);
         int savedStepIndex = Mathf.Max(0, flags.MainStoryStepIndex);
-        bool allowRollbackFromSaveLoad = SaveLoadSystem.HasPendingLoadData();
+        bool allowRollbackFromSaveLoad = forceRestore || SaveLoadSystem.HasPendingLoadData();
 
         if (allowRollbackFromSaveLoad)
         {
@@ -183,7 +257,7 @@ public class MainStoryDirector : MonoBehaviour
 
     public bool TryTrigger(string triggerId)
     {
-        if (isPlayingStep)
+        if (isPlayingStep || SaveLoadSystem.IsLoadInProgress)
             return false;
 
         var step = GetCurrentStep();
@@ -199,7 +273,7 @@ public class MainStoryDirector : MonoBehaviour
 
     public bool CanTrigger(string triggerId)
     {
-        if (isPlayingStep)
+        if (isPlayingStep || SaveLoadSystem.IsLoadInProgress)
             return false;
 
         var step = GetCurrentStep();
@@ -211,7 +285,7 @@ public class MainStoryDirector : MonoBehaviour
 
     public bool IsCurrentStepAvailableForSceneStart()
     {
-        if (isPlayingStep)
+        if (isPlayingStep || SaveLoadSystem.IsLoadInProgress)
             return false;
 
         var step = GetCurrentStep();
@@ -232,7 +306,7 @@ public class MainStoryDirector : MonoBehaviour
 
     private void TryPlaySceneStartStep()
     {
-        if (!autoPlaySceneStartSteps || isPlayingStep)
+        if (!autoPlaySceneStartSteps || isPlayingStep || SaveLoadSystem.IsLoadInProgress)
             return;
 
         if (skipNextSceneStartAutoplay)

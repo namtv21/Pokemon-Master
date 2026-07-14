@@ -68,7 +68,7 @@ public class PartyMenuUI : MonoBehaviour
         currentIndex = 0;
         HighlightCurrent();
         string hint = (mode == PartyMenuMode.Switch)
-            ? "[Z] Swap  [C] Vào kho"
+            ? "[Z] Swap  [V] Vào kho"
             : (string.IsNullOrWhiteSpace(promptText) ? "Info" : promptText);
         UpdateBottomPrompt(hint);
     }
@@ -151,7 +151,7 @@ public class PartyMenuUI : MonoBehaviour
                         pokemons = partyHandler.GetPokemons();
                         RefreshSlots();
                         firstSelectedIndex = -1;
-                        UpdateBottomPrompt("[Z] Swap  [C] Vào kho");
+                        UpdateBottomPrompt("[Z] Swap  [V] Vào kho");
                     }
                 }
             }
@@ -161,7 +161,7 @@ public class PartyMenuUI : MonoBehaviour
             if (mode == PartyMenuMode.Switch && firstSelectedIndex >= 0)
             {
                 firstSelectedIndex = -1;
-                UpdateBottomPrompt("[Z] Swap  [C] Vào kho");
+                UpdateBottomPrompt("[Z] Swap  [V] Vào kho");
             }
             else
             {
@@ -170,7 +170,7 @@ public class PartyMenuUI : MonoBehaviour
                 Close();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.C) && mode == PartyMenuMode.Switch)
+        else if (Input.GetKeyDown(KeyCode.V) && mode == PartyMenuMode.Switch)
         {
             var storage = StorageSystem.Instance;
             if (storage == null)

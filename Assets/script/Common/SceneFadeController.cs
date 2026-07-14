@@ -8,6 +8,7 @@ public class SceneFadeController : MonoBehaviour
     public static SceneFadeController Instance { get; private set; }
 
     private CanvasGroup sceneFadeCanvasGroup;
+    private float pendingFadeInDuration;
 
     private void Awake()
     {
@@ -87,11 +88,21 @@ public class SceneFadeController : MonoBehaviour
     // Gọi trước SceneManager.LoadScene — tự động fade in sau khi scene mới load xong
     public void FadeInAfterLoad(float duration)
     {
-        void OnLoaded(Scene scene, LoadSceneMode mode)
-        {
-            SceneManager.sceneLoaded -= OnLoaded;
-            StartCoroutine(Fade(0f, duration));
-        }
-        SceneManager.sceneLoaded += OnLoaded;
+        pendingFadeInDuration = duration;
+        SceneManager.sceneLoaded -= HandleSceneLoadedForFade;
+        SceneManager.sceneLoaded += HandleSceneLoadedForFade;
+    }
+
+    private void HandleSceneLoadedForFade(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= HandleSceneLoadedForFade;
+        StartCoroutine(Fade(0f, pendingFadeInDuration));
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= HandleSceneLoadedForFade;
+        if (Instance == this)
+            Instance = null;
     }
 }

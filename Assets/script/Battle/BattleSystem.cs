@@ -68,6 +68,7 @@ public class BattleSystem : MonoBehaviour
     private bool allowRun = true;
     private Pokemon subscribedMoveLearnPokemon;
     public BattleOutcome Outcome { get; private set; } = BattleOutcome.None;
+    public bool IsEndingBattle => isEndingBattle;
 
     private MoveLearnUI ResolveMoveLearnUI()
     {
@@ -149,17 +150,26 @@ public class BattleSystem : MonoBehaviour
 
     public void StartWildBattle(Pokemon wildPokemon, bool allowRun)
     {
+        isEndingBattle = false;
         Outcome = BattleOutcome.None;
         this.allowRun = allowRun;
-        MusicManager.Instance.PlayMusic(wildBattleClip);
+
+        if (wildPokemon == null || wildPokemon.Base == null)
+        {
+            AbortBattleStart("Wild battle has no valid opponent.");
+            return;
+        }
+
+        if (!TryResolvePlayerBattleData(out var playerParty, out var playerPokemon, out var inventory))
+            return;
+
+        MusicManager.Instance?.PlayMusic(wildBattleClip);
         battleUI.SetActive(true);
         isTrainerBattle = false;
-        var playerParty = PlayerParty.Instance;
-        var playerPokemon = playerParty.GetHealthyPokemon();
         playerUnit.Setup(playerPokemon);
         BindMoveLearnHandler(playerPokemon);
         enemyUnit.Setup(wildPokemon);
-        itemHandler.Init(dialogBox, battleUI, MenuController.Instance.Inventory, true, wildPokemon, this);
+        itemHandler.Init(dialogBox, battleUI, inventory, true, wildPokemon, this);
         partyHandler.Init(dialogBox, playerUnit, battlePartyMenu, playerParty, this);
         state = BattleState.Start;
         StartCoroutine(SetupBattle());
@@ -167,14 +177,23 @@ public class BattleSystem : MonoBehaviour
 
     public void StartTrainerBattle(NPC trainer, bool allowRun)
     {
+        isEndingBattle = false;
         Outcome = BattleOutcome.None;
         this.allowRun = allowRun;
-        MusicManager.Instance.PlayMusic(trainerBattleClip);
+
+        if (trainer == null || trainer.Party == null)
+        {
+            AbortBattleStart("Trainer battle has no trainer party.");
+            return;
+        }
+
+        if (!TryResolvePlayerBattleData(out var playerParty, out var playerPokemon, out var inventory))
+            return;
+
+        MusicManager.Instance?.PlayMusic(trainerBattleClip);
         battleUI.SetActive(true);
         isTrainerBattle = true;
         currentTrainer = trainer;
-        var playerParty = PlayerParty.Instance;
-        var playerPokemon = playerParty.GetHealthyPokemon();
         playerUnit.Setup(playerPokemon);
         BindMoveLearnHandler(playerPokemon);
 
@@ -193,10 +212,42 @@ public class BattleSystem : MonoBehaviour
         currentEnemyIndex = 0;
         enemyUnit.Pokemon.HealAll();
 
-        itemHandler.Init(dialogBox, battleUI, MenuController.Instance.Inventory, false, null, this);
+        itemHandler.Init(dialogBox, battleUI, inventory, false, null, this);
         partyHandler.Init(dialogBox, playerUnit, battlePartyMenu, playerParty, this);
         SetState(BattleState.Start);
         StartCoroutine(SetupBattle());
+    }
+
+    private bool TryResolvePlayerBattleData(out PlayerParty playerParty, out Pokemon playerPokemon, out Inventory inventory)
+    {
+        playerParty = PlayerParty.Instance;
+        playerPokemon = playerParty != null ? playerParty.GetHealthyPokemon() : null;
+        inventory = Inventory.Instance != null
+            ? Inventory.Instance
+            : MenuController.Instance != null ? MenuController.Instance.Inventory : null;
+
+        if (playerParty == null || playerPokemon == null)
+        {
+            AbortBattleStart("Player has no healthy Pokemon available for battle.");
+            return false;
+        }
+
+        if (playerUnit == null || enemyUnit == null || dialogBox == null || battleUI == null ||
+            itemHandler == null || partyHandler == null || battlePartyMenu == null || inventory == null)
+        {
+            AbortBattleStart("BattleScene is missing one or more required references.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private void AbortBattleStart(string reason)
+    {
+        Debug.LogError($"[BattleSystem] {reason}", this);
+        ToastNotificationManager.Instance?.Show("Battle could not start.", Color.red);
+        SetBattleOutcome(BattleOutcome.None);
+        EndBattle();
     }
 
     public NPC CurrentTrainer => currentTrainer;
@@ -300,6 +351,12 @@ public class BattleSystem : MonoBehaviour
             int actionIndex = dialogBox.GetSelectedAction();
             if (actionIndex == 0) // Fight
             {
+                if (playerUnit.Pokemon.Moves == null || playerUnit.Pokemon.Moves.Count == 0)
+                {
+                    StartCoroutine(ShowSelectionMessage("This Pokemon has no moves!", BattleState.PlayerActionSelection));
+                    return;
+                }
+
                 SetState(BattleState.PlayerMoveSelection);
                 dialogBox.ShowMoveMenu(playerUnit.Pokemon.Moves);
             }
@@ -419,6 +476,12 @@ public class BattleSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Z))
         {
             int moveIndex = dialogBox.GetSelectedMove();
+            if (playerUnit.Pokemon.Moves == null || moveIndex < 0 || moveIndex >= playerUnit.Pokemon.Moves.Count)
+            {
+                StartCoroutine(ShowSelectionMessage("No valid move was selected.", BattleState.PlayerActionSelection));
+                return;
+            }
+
             var move = playerUnit.Pokemon.Moves[moveIndex];
             if (move.PP <= 0)
             {
@@ -613,6 +676,13 @@ public class BattleSystem : MonoBehaviour
     public IEnumerator EnemyTurn()
     {
         SetState(BattleState.EnemyMove); // changed
+        if (enemyUnit.Pokemon.Moves == null || enemyUnit.Pokemon.Moves.Count == 0)
+        {
+            yield return dialogBox.ShowDialogAndWait($"{enemyUnit.Pokemon.Base.Name} has no moves and cannot attack!");
+            PlayerAction();
+            yield break;
+        }
+
         var enemyMove = enemyUnit.Pokemon.Moves[Random.Range(0, enemyUnit.Pokemon.Moves.Count)];
 
         yield return StartCoroutine(PerformEnemyMove(enemyMove));
@@ -918,8 +988,7 @@ public class BattleSystem : MonoBehaviour
 
         learnUi.Show(poke, newMove, (selectedIndex) =>
         {
-            int resolvedIndex = selectedIndex == 2 ? -1 : selectedIndex;
-            string message = poke.ResolvePendingMoveLearn(resolvedIndex);
+            string message = poke.ResolvePendingMoveLearn(selectedIndex);
             if (!string.IsNullOrWhiteSpace(message))
                 dialogBox.ShowDialog(message);
 
@@ -993,7 +1062,7 @@ public class BattleSystem : MonoBehaviour
             {
                 int rewardMoney = currentTrainer != null ? Mathf.Max(0, currentTrainer.RewardMoney) : 20;
                 dialogBox.ShowDialog($"You got {rewardMoney} money from {trainerName}!");
-                Inventory.Instance.AddMoney(rewardMoney);
+                Inventory.Instance?.AddMoney(rewardMoney);
             }
             yield return new WaitForSeconds(1f);
             SetBattleOutcome(BattleOutcome.Win);

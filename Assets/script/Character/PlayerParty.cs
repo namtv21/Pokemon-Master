@@ -25,9 +25,20 @@ public class PlayerParty : MonoBehaviour
         if (SaveLoadSystem.HasPendingLoadData())
             return;
 
+        EnsureDefaultPokemonIfEmpty();
+    }
+
+    public void EnsureDefaultPokemonIfEmpty()
+    {
         if (Pokemons.Count == 0)
         {
             PokemonBase pikachuBase = Resources.Load<PokemonBase>("PokemonData/pikachu");
+            if (pikachuBase == null)
+            {
+                Debug.LogError("[PlayerParty] Default Pokemon 'pikachu' could not be loaded.");
+                return;
+            }
+
             Pokemon pikachu = new Pokemon(pikachuBase, 5);
             AddPokemon(pikachu);
 

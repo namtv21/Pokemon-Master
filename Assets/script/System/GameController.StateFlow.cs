@@ -13,18 +13,18 @@ public partial class GameController
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    private void Start()
+    private System.Collections.IEnumerator Start()
     {
         SetState(GameState.Overworld);
-        SaveLoadSystem.ApplyLoadedData();
-        // Prologue đã bị bỏ — luôn coi là đã hoàn thành
-        if (StoryFlags.Instance != null) StoryFlags.Instance.PrologueDone = true;
-
         if (DialogManager.Instance != null)
         {
             DialogManager.Instance.OnDialogStarted += OnDialogStarted;
             DialogManager.Instance.OnDialogFinished += OnDialogFinished;
         }
+
+        yield return SaveLoadSystem.ApplyLoadedDataWhenReady();
+        // Prologue đã bị bỏ — luôn coi là đã hoàn thành
+        if (StoryFlags.Instance != null) StoryFlags.Instance.PrologueDone = true;
     }
 
     private void OnDestroy()
@@ -56,6 +56,9 @@ public partial class GameController
 
     private void Update()
     {
+        if (SaveLoadSystem.IsLoadInProgress)
+            return;
+
         switch (State)
         {
             case GameState.Overworld:

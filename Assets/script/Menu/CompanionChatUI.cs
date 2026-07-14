@@ -41,6 +41,21 @@ public class CompanionChatUI : MonoBehaviour
     private int selectedIndex;
     private Pokemon companion;
     private Coroutine animCoroutine;
+    private System.Action onCloseCallback;   // đặt khi mở từ Party — đóng chat sẽ quay lại Party
+
+    /// Nơi mở chat có thể chỉ định "đóng xong quay về đâu" (mặc định: main menu).
+    public void SetCloseCallback(System.Action callback) => onCloseCallback = callback;
+
+    private void CloseAndReturn()
+    {
+        var callback = onCloseCallback;
+        onCloseCallback = null;
+        Close();
+        if (callback != null)
+            callback();
+        else
+            MenuController.Instance?.OpenMainMenu();
+    }
 
     private void Awake() => panel?.SetActive(false);
 
@@ -168,8 +183,7 @@ public class CompanionChatUI : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.X))
         {
-            Close();
-            MenuController.Instance?.OpenMainMenu();
+            CloseAndReturn();
         }
     }
 
@@ -189,8 +203,7 @@ public class CompanionChatUI : MonoBehaviour
             ShowTopicSelection();
         else if (Input.GetKeyDown(KeyCode.X))
         {
-            Close();
-            MenuController.Instance?.OpenMainMenu();
+            CloseAndReturn();
         }
     }
 
@@ -233,10 +246,11 @@ public class CompanionChatUI : MonoBehaviour
         if (responseText != null)
             responseText.text = "Đang nhập...\n\n<size=70%><color=#aaa>Vui lòng chờ</color></size>";
 
+        // Gửi kèm ĐÚNG con đang chat (không phải mặc định slot 0) để AI nhập vai đúng
         yield return CompanionChatSystem.Instance.SendMessageToCompanion(userMessage, response =>
         {
             ShowResponse(response);
-        });
+        }, companion);
     }
 
     // --- Sprite & Animation ---

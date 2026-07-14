@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +9,7 @@ public class SaveLoadSystem : MonoBehaviour
 {
     private const float SaveToastHoldTime = 1.6f;
     private const float LoadFadeDuration = 0.2f;
+    private const int MaxLoadApplyFrames = 120;
 
     [SerializeField] private PlayerParty playerParty;
     [SerializeField] private StorageSystem storageSystem;
@@ -17,6 +19,17 @@ public class SaveLoadSystem : MonoBehaviour
     public static SaveData pendingLoadData;
     private static bool pendingFadeRevealAfterLoad;
     private static List<Pokemon> deferredStoragePokemons;
+    private static bool isApplyingPendingLoad;
+
+    public static bool IsLoadInProgress => pendingLoadData != null || isApplyingPendingLoad;
+    public static event Action<bool> OnPendingLoadFinished;
+
+    private sealed class ResolvedItemStack
+    {
+        public ItemBase Item;
+        public int Count;
+        public int StoredExp;
+    }
 
     // Runtime set of triggered one-shot IDs (persists across scene loads in memory)
     private static HashSet<string> runtimeTriggeredIds;
@@ -117,6 +130,8 @@ public class SaveLoadSystem : MonoBehaviour
         pendingLoadData = null;
         pendingFadeRevealAfterLoad = false;
         deferredStoragePokemons = null;
+        isApplyingPendingLoad = false;
+        OnPendingLoadFinished = null;
         runtimeTriggeredIds = new HashSet<string>();
         runtimeCapturedOverworldPokemonIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         runtimeNpcBattleStates = new Dictionary<string, bool>(StringComparer.OrdinalIgnoreCase);
@@ -225,6 +240,7 @@ public class SaveLoadSystem : MonoBehaviour
                     if (string.Equals(data.npcStates[i].stateKey, kvp.Key, StringComparison.OrdinalIgnoreCase))
                     {
                         data.npcStates[i].stateKey = kvp.Value.stateKey;
+                        data.npcStates[i].npcId = kvp.Value.npcId;
                         data.npcStates[i].sceneName = kvp.Value.sceneName;
                         data.npcStates[i].posX = kvp.Value.posX;
                         data.npcStates[i].posY = kvp.Value.posY;
@@ -321,22 +337,22 @@ public class SaveLoadSystem : MonoBehaviour
         string json = File.ReadAllText(path);
         SaveData data = JsonUtility.FromJson<SaveData>(json);
 
+        if (data == null)
+        {
+            Debug.LogError($"[SaveLoad] Save file is invalid: {path}");
+            return;
+        }
+
         BeginLoadFade();
+        pendingLoadData = data;
 
         if (!string.IsNullOrWhiteSpace(data.sceneName) && !string.Equals(SceneManager.GetActiveScene().name, data.sceneName))
         {
-            pendingLoadData = data;
             SceneManager.LoadScene(data.sceneName);
             return;
         }
 
-        if (TryApplyData(data))
-        {
-            CompleteLoadFade();
-            Debug.Log($"Game Loaded from {path}");
-        }
-        else
-            Debug.LogWarning("[SaveLoad] Could not apply save data immediately.");
+        StartCoroutine(ApplyLoadedDataWhenReady());
     }
 
     // ---------------- LOAD FROM MENU (chuyển scene, áp dữ liệu sau) ----------------
@@ -352,6 +368,12 @@ public class SaveLoadSystem : MonoBehaviour
         string json = File.ReadAllText(path);
         SaveData data = JsonUtility.FromJson<SaveData>(json);
 
+        if (data == null)
+        {
+            Debug.LogError($"[SaveLoad] Save file is invalid: {path}");
+            return;
+        }
+
         // Lưu tạm dữ liệu
         pendingLoadData = data;
         BeginLoadFade();
@@ -362,11 +384,7 @@ public class SaveLoadSystem : MonoBehaviour
         else
         {
             Debug.LogWarning("Save file has no scene name. Pending data will be applied in current scene.");
-            if (TryApplyData(pendingLoadData))
-            {
-                pendingLoadData = null;
-                CompleteLoadFade();
-            }
+            StartCoroutine(ApplyLoadedDataWhenReady());
         }
 
         Debug.Log($"Scene switched to {data.sceneName}, waiting to apply save data...");
@@ -375,18 +393,83 @@ public class SaveLoadSystem : MonoBehaviour
     // ---------------- ÁP DỮ LIỆU SAU KHI SCENE LOAD ----------------
     public static void ApplyLoadedData()
     {
-        if (pendingLoadData == null) return;
+        if (pendingLoadData == null || isApplyingPendingLoad)
+            return;
 
-        if (TryApplyData(pendingLoadData))
+        if (TryApplyData(pendingLoadData, out bool retryable))
         {
-            pendingLoadData = null;
-            CompleteLoadFade();
+            FinishPendingLoad(true);
+        }
+        else if (!retryable)
+        {
+            FinishPendingLoad(false);
         }
     }
 
-    // ---------------- HÀM ÁP DỮ LIỆU CHUNG ----------------
-    private static bool TryApplyData(SaveData data)
+    public static IEnumerator ApplyLoadedDataWhenReady()
     {
+        if (isApplyingPendingLoad)
+        {
+            while (isApplyingPendingLoad)
+                yield return null;
+            yield break;
+        }
+
+        if (pendingLoadData == null)
+            yield break;
+
+        isApplyingPendingLoad = true;
+        bool applied = false;
+        bool retryable = true;
+        int attempts = 0;
+
+        while (pendingLoadData != null && attempts < MaxLoadApplyFrames)
+        {
+            applied = TryApplyData(pendingLoadData, out retryable, logFailure: false);
+            if (applied || !retryable)
+                break;
+
+            attempts++;
+            yield return null;
+        }
+
+        if (!applied && retryable && pendingLoadData != null)
+            TryApplyData(pendingLoadData, out _, logFailure: true);
+
+        FinishPendingLoad(applied);
+    }
+
+    private static void FinishPendingLoad(bool success)
+    {
+        pendingLoadData = null;
+        isApplyingPendingLoad = false;
+        CompleteLoadFade();
+
+        if (success)
+        {
+            Debug.Log("[SaveLoad] Pending save data applied successfully.");
+        }
+        else
+        {
+            Debug.LogError("[SaveLoad] Load was cancelled because the save could not be restored completely. Current runtime data was kept.");
+            PlayerParty.Instance?.EnsureDefaultPokemonIfEmpty();
+            ToastNotificationManager.Instance?.Show("Load failed: save data is incomplete.", Color.red);
+        }
+
+        OnPendingLoadFinished?.Invoke(success);
+    }
+
+    // ---------------- HÀM ÁP DỮ LIỆU CHUNG ----------------
+    private static bool TryApplyData(SaveData data, out bool retryable, bool logFailure = true)
+    {
+        retryable = false;
+        if (data == null)
+        {
+            if (logFailure)
+                Debug.LogError("[SaveLoad] Cannot apply null save data.");
+            return false;
+        }
+
         var playerParty = FindObjectOfType<PlayerParty>(true);
         var storageSystem = FindObjectOfType<StorageSystem>(true) ?? StorageSystem.Instance;
         var inventory = FindObjectOfType<Inventory>(true);
@@ -395,55 +478,77 @@ public class SaveLoadSystem : MonoBehaviour
         bool requiresStorage = data?.storagePokemons != null && data.storagePokemons.Count > 0;
         if (playerParty == null || inventory == null)
         {
-            Debug.LogWarning("[SaveLoad] Load deferred because scene systems are not ready yet.");
+            retryable = true;
+            if (logFailure)
+                Debug.LogWarning("[SaveLoad] Load deferred because scene systems are not ready yet.");
             return false;
         }
 
         if (PokemonDB.Instance == null || MoveDB.Instance == null)
         {
-            Debug.LogWarning("[SaveLoad] Load deferred because PokemonDB or MoveDB is not ready yet.");
+            retryable = true;
+            if (logFailure)
+                Debug.LogWarning("[SaveLoad] Load deferred because PokemonDB or MoveDB is not ready yet.");
             return false;
         }
 
         var loadedParty = new List<Pokemon>();
         foreach (var pd in data.partyPokemons ?? new List<PokemonData>())
         {
-            if (pd == null || string.IsNullOrWhiteSpace(pd.name))
-                continue;
+            if (!TryRestorePokemon(pd, "party", out var pokemon))
+                return false;
 
-            try
-            {
-                loadedParty.Add(new Pokemon(pd));
-            }
-            catch (System.Exception ex)
-            {
-                Debug.LogError($"[SaveLoad] Failed to restore party Pokemon '{pd.name}': {ex}");
-            }
+            loadedParty.Add(pokemon);
         }
 
-        int expectedPartyCount = data?.partyPokemons?.Count ?? 0;
-        if (expectedPartyCount > 0 && loadedParty.Count == 0)
+        int expectedPartyCount = data.partyPokemons?.Count ?? 0;
+        if (loadedParty.Count != expectedPartyCount)
         {
-            Debug.LogWarning("[SaveLoad] Load deferred because party Pokemon could not be reconstructed yet.");
+            Debug.LogError($"[SaveLoad] Party restore was incomplete ({loadedParty.Count}/{expectedPartyCount}).");
             return false;
         }
 
         var loadedStorage = new List<Pokemon>();
         foreach (var sd in data.storagePokemons ?? new List<PokemonData>())
         {
-            if (sd == null || string.IsNullOrWhiteSpace(sd.name))
-                continue;
+            if (!TryRestorePokemon(sd, "storage", out var pokemon))
+                return false;
 
-            try
-            {
-                loadedStorage.Add(new Pokemon(sd));
-            }
-            catch (System.Exception ex)
-            {
-                Debug.LogError($"[SaveLoad] Failed to restore storage Pokemon '{sd.name}': {ex}");
-            }
+            loadedStorage.Add(pokemon);
         }
 
+        int expectedStorageCount = data.storagePokemons?.Count ?? 0;
+        if (loadedStorage.Count != expectedStorageCount)
+        {
+            Debug.LogError($"[SaveLoad] Storage restore was incomplete ({loadedStorage.Count}/{expectedStorageCount}).");
+            return false;
+        }
+
+        var resolvedItems = new List<ResolvedItemStack>();
+        foreach (var itemStack in data.inventoryItems ?? new List<ItemStackSaveData>())
+        {
+            if (itemStack == null || string.IsNullOrWhiteSpace(itemStack.itemName) || itemStack.count <= 0)
+            {
+                Debug.LogError("[SaveLoad] Inventory contains an invalid item stack.");
+                return false;
+            }
+
+            var itemBase = inventory.FindItemByName(itemStack.itemName);
+            if (itemBase == null)
+            {
+                Debug.LogError($"[SaveLoad] Item '{itemStack.itemName}' could not be resolved.");
+                return false;
+            }
+
+            resolvedItems.Add(new ResolvedItemStack
+            {
+                Item = itemBase,
+                Count = itemStack.count,
+                StoredExp = itemStack.storedExp
+            });
+        }
+
+        // Commit only after every Pokemon and item has been reconstructed successfully.
         playerParty.Pokemons.Clear();
         playerParty.Pokemons.AddRange(loadedParty);
 
@@ -455,35 +560,25 @@ public class SaveLoadSystem : MonoBehaviour
             storageSystem.RefreshUIAfterLoad();
             deferredStoragePokemons = null;
         }
-        else if (requiresStorage)
+        else
         {
-            deferredStoragePokemons = loadedStorage;
+            deferredStoragePokemons = requiresStorage ? loadedStorage : null;
         }
 
-        if (inventory != null)
+        inventory.SetMoney(data.money);
+        inventory.ClearItems();
+        foreach (var itemStack in resolvedItems)
         {
-            inventory.SetMoney(data.money);
-            inventory.ClearItems();
-            foreach (var itemStack in data.inventoryItems ?? new List<ItemStackSaveData>())
+            if (itemStack.Item.isExperienceBottle)
             {
-                if (itemStack == null || string.IsNullOrWhiteSpace(itemStack.itemName) || itemStack.count <= 0)
-                    continue;
-
-                var itemBase = inventory.FindItemByName(itemStack.itemName);
-                if (itemBase != null)
-                {
-                    if (itemBase.isExperienceBottle)
-                    {
-                        inventory.AddItem(itemBase, 1);
-                        var bottleExp = Mathf.Max(0, itemStack.storedExp);
-                        if (bottleExp > 0)
-                            inventory.AddExperienceBottleExp(bottleExp);
-                    }
-                    else
-                    {
-                        inventory.AddItem(itemBase, itemStack.count);
-                    }
-                }
+                inventory.AddItem(itemStack.Item, 1);
+                int bottleExp = Mathf.Max(0, itemStack.StoredExp);
+                if (bottleExp > 0)
+                    inventory.AddExperienceBottleExp(bottleExp);
+            }
+            else
+            {
+                inventory.AddItem(itemStack.Item, itemStack.Count);
             }
         }
 
@@ -525,8 +620,12 @@ public class SaveLoadSystem : MonoBehaviour
         // Apply NPC states
         if (runtimeNpcBattleStates == null)
             runtimeNpcBattleStates = new Dictionary<string, bool>(StringComparer.OrdinalIgnoreCase);
+        else
+            runtimeNpcBattleStates.Clear();
         if (runtimeNpcTransformStates == null)
             runtimeNpcTransformStates = new Dictionary<string, NPCStateSaveData>(StringComparer.OrdinalIgnoreCase);
+        else
+            runtimeNpcTransformStates.Clear();
 
         if (data.npcStates != null)
         {
@@ -543,15 +642,18 @@ public class SaveLoadSystem : MonoBehaviour
                 string stateKey = !string.IsNullOrWhiteSpace(ns.stateKey)
                     ? ns.stateKey
                     : BuildNpcStateKey(ns.sceneName, ns.npcId, new Vector3(ns.posX, ns.posY, ns.posZ));
+                string npcId = !string.IsNullOrWhiteSpace(ns.npcId)
+                    ? ns.npcId
+                    : ExtractNpcIdFromStateKey(stateKey);
 
-                if (string.IsNullOrWhiteSpace(stateKey) || string.IsNullOrWhiteSpace(ns.npcId))
+                if (string.IsNullOrWhiteSpace(stateKey) || string.IsNullOrWhiteSpace(npcId))
                     continue;
 
                 runtimeNpcBattleStates[stateKey] = ns.canBattle;
                 runtimeNpcTransformStates[stateKey] = new NPCStateSaveData
                 {
                     stateKey = stateKey,
-                    npcId = ns.npcId,
+                    npcId = npcId,
                     canBattle = ns.canBattle,
                     sceneName = ns.sceneName,
                     posX = ns.posX,
@@ -574,30 +676,20 @@ public class SaveLoadSystem : MonoBehaviour
             }
         }
 
-        // Apply saved triggered one-shot story triggers: ensure visuals hidden immediately
-        var triggeredToApply = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        // Loading replaces the runtime trigger snapshot so an older save can roll story state back correctly.
+        runtimeTriggeredIds ??= new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        runtimeTriggeredIds.Clear();
         if (data.triggeredTriggers != null)
             foreach (var id in data.triggeredTriggers)
-                if (!string.IsNullOrWhiteSpace(id)) triggeredToApply.Add(id);
+                if (!string.IsNullOrWhiteSpace(id)) runtimeTriggeredIds.Add(id);
 
-        // Merge runtime-registered triggers (they should also hide visuals)
-        foreach (var rt in runtimeTriggeredIds)
-            if (!string.IsNullOrWhiteSpace(rt)) triggeredToApply.Add(rt);
-
-        if (triggeredToApply.Count > 0)
+        var allTriggers = UnityEngine.Object.FindObjectsOfType<MainStoryTrigger>(true);
+        foreach (var trigger in allTriggers)
         {
-            var allTriggers = UnityEngine.Object.FindObjectsOfType<MainStoryTrigger>(true);
-            var map = new Dictionary<string, MainStoryTrigger>(StringComparer.OrdinalIgnoreCase);
-            foreach (var tr in allTriggers)
-                if (!string.IsNullOrWhiteSpace(tr.TriggerId)) map[tr.TriggerId] = tr;
+            if (trigger == null || string.IsNullOrWhiteSpace(trigger.TriggerId))
+                continue;
 
-            foreach (var id in triggeredToApply)
-            {
-                if (map.TryGetValue(id, out var trg))
-                {
-                    trg.ApplyTriggeredState(true);
-                }
-            }
+            trigger.ApplyTriggeredState(runtimeTriggeredIds.Contains(trigger.TriggerId));
         }
 
         if (runtimeCapturedOverworldPokemonIds == null)
@@ -623,6 +715,54 @@ public class SaveLoadSystem : MonoBehaviour
             bool captured = !string.IsNullOrWhiteSpace(overworldPokemon.EncounterId) &&
                             runtimeCapturedOverworldPokemonIds.Contains(overworldPokemon.EncounterId);
             overworldPokemon.ApplyCapturedState(captured);
+        }
+
+        return true;
+    }
+
+    private static string ExtractNpcIdFromStateKey(string stateKey)
+    {
+        if (string.IsNullOrWhiteSpace(stateKey))
+            return string.Empty;
+
+        string[] parts = stateKey.Split('|');
+        return parts.Length >= 2 ? parts[1] : string.Empty;
+    }
+
+    private static bool TryRestorePokemon(PokemonData data, string destination, out Pokemon pokemon)
+    {
+        pokemon = null;
+        if (data == null || (string.IsNullOrWhiteSpace(data.resourceId) && string.IsNullOrWhiteSpace(data.name)))
+        {
+            Debug.LogError($"[SaveLoad] {destination} contains invalid Pokemon data.");
+            return false;
+        }
+
+        try
+        {
+            pokemon = new Pokemon(data);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"[SaveLoad] Failed to restore {destination} Pokemon '{data.name}': {ex}");
+            return false;
+        }
+
+        int expectedMoveCount = 0;
+        if (data.moves != null)
+        {
+            foreach (var moveName in data.moves)
+            {
+                if (!string.IsNullOrWhiteSpace(moveName))
+                    expectedMoveCount++;
+            }
+        }
+
+        if (pokemon.Moves.Count != expectedMoveCount)
+        {
+            Debug.LogError($"[SaveLoad] Moves for {destination} Pokemon '{data.name}' were incomplete ({pokemon.Moves.Count}/{expectedMoveCount}).");
+            pokemon = null;
+            return false;
         }
 
         return true;

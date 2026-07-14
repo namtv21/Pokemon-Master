@@ -20,6 +20,7 @@ public class MenuController : MonoBehaviour
     [SerializeField] private QuestMenuUI questMenuUI;
     [SerializeField] private PokemonDexMenuUI pokemonDexMenuUI;
     [SerializeField] private CompanionChatUI companionChatUI;
+    [SerializeField] private PokemonHomeUI pokemonHomeUI;
 
     public Inventory Inventory => inventory;
 
@@ -115,7 +116,10 @@ public class MenuController : MonoBehaviour
                 break;
 
             case MenuState.Companion:
-                companionChatUI?.HandleUpdate();
+                if (pokemonHomeUI != null && pokemonHomeUI.IsOpen)
+                    pokemonHomeUI.HandleUpdate();
+                else
+                    companionChatUI?.HandleUpdate();
                 break;
 
         }
@@ -194,6 +198,15 @@ public class MenuController : MonoBehaviour
             case MainMenuOption.Companion:
                 mainMenuUI.Close();
                 SetState(MenuState.Companion);
+
+                // Đã dựng Nhà Pokemon → mở nhà (chat từng con giờ nằm trong Party [C] hoặc trong nhà).
+                if (pokemonHomeUI != null)
+                {
+                    OpenHome();
+                    break;
+                }
+
+                // Chưa dựng nhà → giữ hành vi chat cũ
                 var chatSystem = CompanionChatSystem.Instance;
                 var companion = chatSystem?.GetCompanion();
                 if (companion == null)
@@ -220,6 +233,37 @@ public class MenuController : MonoBehaviour
         }
     }
 
+    /// Mở Nhà Pokemon (X trong nhà → về menu chính).
+    public void OpenHome()
+    {
+        if (pokemonHomeUI == null)
+            return;
+
+        SetState(MenuState.Companion);
+        pokemonHomeUI.Open(() =>
+        {
+            SetState(MenuState.Main);
+            mainMenuUI?.Open(OnMenuSelected, CloseAll);
+        });
+    }
+
+    /// Mở chat với một Pokemon từ trong Nhà; đóng chat sẽ quay lại Nhà.
+    public void OpenChatFromHome(Pokemon pokemon)
+    {
+        if (pokemon == null || companionChatUI == null)
+            return;
+
+        pokemonHomeUI?.Close();
+        SetState(MenuState.Companion);
+        companionChatUI.SetCloseCallback(OpenHome);
+
+        var chatSystem = CompanionChatSystem.Instance;
+        if (chatSystem != null && chatSystem.IsOnline)
+            companionChatUI.OpenOnlineMode(pokemon);
+        else
+            companionChatUI.OpenOfflineMode(pokemon);
+    }
+
     /// Đóng tất cả menu
     public void CloseAll()
     {
@@ -234,6 +278,8 @@ public class MenuController : MonoBehaviour
         audioSettings?.Close();
         pokemonDexMenuUI?.Close();
         companionChatUI?.Close();
+        if (pokemonHomeUI != null && pokemonHomeUI.IsOpen)
+            pokemonHomeUI.Close();
         pokemonInfoUI?.Hide();
         HideAmountSelector();
         // Nếu có StorageMenu, SaveMenu, LoadMenu, OptionMenu thì Close ở đây

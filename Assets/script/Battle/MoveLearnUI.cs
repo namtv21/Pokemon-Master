@@ -16,6 +16,15 @@ public class MoveLearnUI : MonoBehaviour
 
     public void Show(Pokemon pokemon, MoveBase newMoveBase, Action<int> onSelected)
     {
+        if (pokemon == null || newMoveBase == null || pokemon.Moves == null || pokemon.Moves.Count != 4 ||
+            moveSlots == null || moveSlots.Count < 5)
+        {
+            Debug.LogError("[MoveLearnUI] Expected one new move, four current moves and five UI slots.");
+            gameObject.SetActive(false);
+            onSelected?.Invoke(-1);
+            return;
+        }
+
         gameObject.SetActive(true);
         titleText.text = "Delete which move?";
 
@@ -58,7 +67,7 @@ public class MoveLearnUI : MonoBehaviour
             MoveSelection(Vector2.right);
         else if (Input.GetKeyDown(KeyCode.Z))
         {
-            onMoveSelected?.Invoke(currentIndex);
+            onMoveSelected?.Invoke(ToPokemonMoveIndex(currentIndex));
             gameObject.SetActive(false);
         }
         else if (Input.GetKeyDown(KeyCode.X))
@@ -67,6 +76,15 @@ public class MoveLearnUI : MonoBehaviour
             onMoveSelected?.Invoke(-1);
             gameObject.SetActive(false);
         }
+    }
+
+    private static int ToPokemonMoveIndex(int uiIndex)
+    {
+        // UI layout: old 0, old 1, new move, old 2, old 3.
+        if (uiIndex == 2)
+            return -1;
+
+        return uiIndex < 2 ? uiIndex : uiIndex - 1;
     }
 
     private void MoveSelection(Vector2 direction)

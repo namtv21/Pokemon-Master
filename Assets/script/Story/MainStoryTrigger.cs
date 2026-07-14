@@ -35,10 +35,11 @@ public class MainStoryTrigger : MonoBehaviour
         try
         {
             var pending = SaveLoadSystem.pendingLoadData;
-            if (!ShouldIgnoreSavedTriggeredState() &&
-                pending != null &&
-                pending.triggeredTriggers != null &&
-                pending.triggeredTriggers.Contains(triggerId))
+            bool savedAsTriggered = pending != null
+                ? pending.triggeredTriggers != null && pending.triggeredTriggers.Exists(
+                    id => string.Equals(id, triggerId, System.StringComparison.OrdinalIgnoreCase))
+                : SaveLoadSystem.IsRuntimeTriggered(triggerId);
+            if (!ShouldIgnoreSavedTriggeredState() && savedAsTriggered)
             {
                 hasTriggered = true;
                 var triggerVisualExisting2 = GetComponentInChildren<StoryTriggerVisual>();
@@ -46,9 +47,12 @@ public class MainStoryTrigger : MonoBehaviour
                     triggerVisualExisting2.ForceHideInstant();
             }
         }
-        catch { }
+        catch (System.Exception ex)
+        {
+            Debug.LogWarning($"[MainStoryTrigger] Could not inspect pending save state for '{triggerId}': {ex.Message}", this);
+        }
         if (triggerOnSceneStart)
-            TryTrigger();
+            StartCoroutine(TryTriggerWhenLoadFinishes());
 
         if (triggerOnPlayerEnter)
             StartCoroutine(TryTriggerIfPlayerAlreadyInside());
@@ -83,6 +87,9 @@ public class MainStoryTrigger : MonoBehaviour
 
     public void TryTrigger()
     {
+        if (SaveLoadSystem.IsLoadInProgress)
+            return;
+
         if (oneShot && hasTriggered)
         {
             return;
@@ -123,9 +130,20 @@ public class MainStoryTrigger : MonoBehaviour
                 {
                     SaveLoadSystem.RegisterRuntimeTriggered(triggerId);
                 }
-                catch { }
+                catch (System.Exception ex)
+                {
+                    Debug.LogWarning($"[MainStoryTrigger] Could not persist trigger '{triggerId}': {ex.Message}", this);
+                }
             }
         }
+    }
+
+    private System.Collections.IEnumerator TryTriggerWhenLoadFinishes()
+    {
+        while (SaveLoadSystem.IsLoadInProgress)
+            yield return null;
+
+        TryTrigger();
     }
 
     public static void TryTriggerAnyOverlappingPlayerTriggers()

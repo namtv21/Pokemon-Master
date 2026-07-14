@@ -1,0 +1,1 @@
+{"name":"Cleffa","type1":"Fairy","hp":50,"attack":25,"defense":28,"spAttack":45,"spDefense":55,"speed":15,"learnset":[{"level":1,"move":"Pound","type":"Normal","power":40,"pp":35},{"level":4,"move":"Sing","type":"Normal","power":0,"pp":15},{"level":12,"move":"Disarming Voice","type":"Fairy","power":40,"pp":15},{"level":16,"move":"Magical Leaf","type":"Grass","power":60,"pp":20}]}

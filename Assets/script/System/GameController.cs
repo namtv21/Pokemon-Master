@@ -201,7 +201,11 @@ public partial class GameController : MonoBehaviour
         SetState(GameState.Battle);
 
         yield return EnsureBattleSceneLoadedAndBound();
-        if (battleSystem == null) yield break;
+        if (battleSystem == null)
+        {
+            yield return RecoverFromBattleStartupFailure();
+            yield break;
+        }
 
         SetOverworldSceneVisibility(false);
         SetBattleCameraIsolation(true);
@@ -221,6 +225,9 @@ public partial class GameController : MonoBehaviour
         battleSystem.StartWildBattle(wildPokemon, pendingBattleAllowRun);
         pendingBattleAllowRun = true;
 
+        if (battleSystem == null || battleSystem.IsEndingBattle)
+            yield break;
+
         if (battleTransition != null)
         {
             yield return battleTransition.PlayOpen();
@@ -231,6 +238,43 @@ public partial class GameController : MonoBehaviour
             if (fadeCtrl != null)
                 yield return fadeCtrl.Fade(0f, battleFallbackFadeDuration);
         }
+    }
+
+    private IEnumerator RecoverFromBattleStartupFailure()
+    {
+        Debug.LogError("[Battle] BattleScene could not be initialized. Returning to the overworld.");
+        SetBattleCameraIsolation(false);
+        SetOverworldSceneVisibility(true);
+        RestoreOverworldAsActiveScene();
+
+        var battleScene = SceneManager.GetSceneByName(battleSceneName);
+        if (battleScene.IsValid() && battleScene.isLoaded)
+        {
+            var unload = SceneManager.UnloadSceneAsync(battleSceneName);
+            if (unload != null)
+                yield return unload;
+        }
+
+        battleSceneLoaded = false;
+        battleSystem = null;
+        battleTransition = null;
+        pendingBattleAllowRun = true;
+        SetState(GameState.Overworld);
+
+        activeOverworldPokemon?.HandleBattleFinished(false);
+        activeOverworldPokemon = null;
+        activeOverworldPokemonCaptured = false;
+        yield return FadeSceneOverlay(0f, battleEndRevealDuration);
+    }
+
+    private void RestoreOverworldAsActiveScene()
+    {
+        if (string.IsNullOrWhiteSpace(cachedOverworldSceneName))
+            return;
+
+        var overworldScene = SceneManager.GetSceneByName(cachedOverworldSceneName);
+        if (overworldScene.IsValid() && overworldScene.isLoaded)
+            SceneManager.SetActiveScene(overworldScene);
     }
 
     public void StartTrainerBattle(NPC trainer)
@@ -259,7 +303,11 @@ public partial class GameController : MonoBehaviour
         SetState(GameState.Battle);
 
         yield return EnsureBattleSceneLoadedAndBound();
-        if (battleSystem == null) yield break;
+        if (battleSystem == null)
+        {
+            yield return RecoverFromBattleStartupFailure();
+            yield break;
+        }
 
         SetOverworldSceneVisibility(false);
         SetBattleCameraIsolation(true);
@@ -278,6 +326,9 @@ public partial class GameController : MonoBehaviour
         battleSystem.SetBackground(pendingBattleContext);
         battleSystem.StartTrainerBattle(trainer, pendingBattleAllowRun);
         pendingBattleAllowRun = true;
+
+        if (battleSystem == null || battleSystem.IsEndingBattle)
+            yield break;
 
         if (battleTransition != null)
         {
@@ -341,6 +392,7 @@ public partial class GameController : MonoBehaviour
         SetBattleCameraIsolation(false);
         SetOverworldSceneVisibility(true);
         nextBattleCameraEnforceTime = 0f;
+        RestoreOverworldAsActiveScene();
 
         if (battleSceneLoaded)
         {
@@ -350,13 +402,6 @@ public partial class GameController : MonoBehaviour
         }
         battleSystem = null;
         battleTransition = null;
-
-        if (!string.IsNullOrEmpty(cachedOverworldSceneName))
-        {
-            var scene = SceneManager.GetSceneByName(cachedOverworldSceneName);
-            if (scene.IsValid() && scene.isLoaded)
-                SceneManager.SetActiveScene(scene);
-        }
 
         SetState(GameState.Overworld);
         if (playerController != null) playerController.enabled = true;
@@ -572,10 +617,12 @@ public partial class GameController : MonoBehaviour
                 yield break;
             }
             yield return op;
-            battleSceneLoaded = true;
+            battleScene = SceneManager.GetSceneByName(battleSceneName);
         }
 
-        if (battleScene.IsValid() && battleScene.isLoaded)
+        battleSceneLoaded = battleScene.IsValid() && battleScene.isLoaded;
+
+        if (battleSceneLoaded)
             SceneManager.SetActiveScene(battleScene);
 
         BindBattleReferencesFromScene(battleScene);
@@ -640,7 +687,7 @@ public partial class GameController : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         playerController = PlayerController.Instance != null ? PlayerController.Instance : FindObjectOfType<PlayerController>();
-        SaveLoadSystem.ApplyLoadedData();
+        StartCoroutine(SaveLoadSystem.ApplyLoadedDataWhenReady());
 
         if (scene.name == battleSceneName)
             BindBattleReferencesFromScene(scene);

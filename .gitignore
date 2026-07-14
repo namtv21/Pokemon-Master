@@ -21,3 +21,26 @@ UserSettings/
 # Cloudflare / KV local state
 CloudflareWorker/.wrangler/
 KVData/.wrangler/
+
+# Unity-generated and local editor state
+[Bb]uilds/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+*.lscache
+.vs/
+.idea/
+.claude/settings.local.json
+
+# Local secrets and JavaScript tooling
+.env
+.env.*
+!.env.example
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Generated reports and temporary KV import bundles
+/BaoCao_*.md
+/KVData/bulk_*.json

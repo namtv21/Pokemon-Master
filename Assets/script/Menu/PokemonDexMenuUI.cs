@@ -60,7 +60,6 @@ public partial class PokemonDexMenuUI : MonoBehaviour
     private TMP_InputField moveSearchInput;
     private TMP_Text moveSearchHint;
     private TMP_Text moveDbHeaderText;
-    private TMP_Text tabNavigationHintText;
 
     private const int PokemonRowsPerPage = 15;
     private const int StoryRowsPerPage = 17;
@@ -152,7 +151,7 @@ public partial class PokemonDexMenuUI : MonoBehaviour
 
         bool textInputFocused = currentTab == DexTab.MoveDb && IsMoveSearchFocused();
 
-        if (!textInputFocused && Input.GetKeyDown(KeyCode.Q))
+        if (!textInputFocused && Input.GetKeyDown(KeyCode.LeftArrow))
         {
             StopRepeatScroll();
             currentTab = (DexTab)(((int)currentTab - 1 + 4) % 4);
@@ -160,7 +159,7 @@ public partial class PokemonDexMenuUI : MonoBehaviour
             return;
         }
 
-        if (!textInputFocused && Input.GetKeyDown(KeyCode.E))
+        if (!textInputFocused && Input.GetKeyDown(KeyCode.RightArrow))
         {
             StopRepeatScroll();
             currentTab = (DexTab)(((int)currentTab + 1) % 4);
@@ -282,7 +281,7 @@ public partial class PokemonDexMenuUI : MonoBehaviour
         EnsurePokemonDbRuntimeUI();
         EnsureMoveRuntimeUI();
         EnsureStoryRuntimeUI();
-        EnsureTabNavigationHint();
+        RemoveTabNavigationHint();
         ResolveAutoTextCollections();
     }
 
@@ -441,7 +440,6 @@ public partial class PokemonDexMenuUI : MonoBehaviour
 
     private void RefreshAll()
     {
-        EnsureTabNavigationHint();
         RefreshTabs();
         RefreshPokemonDb();
         RefreshMoveDb();
@@ -463,45 +461,14 @@ public partial class PokemonDexMenuUI : MonoBehaviour
                 tabPanels[i].SetActive(i == (int)currentTab);
         }
 
-        if (tabNavigationHintText != null)
-            tabNavigationHintText.text = "<- Q   E ->";
     }
 
-    private void EnsureTabNavigationHint()
+    private void RemoveTabNavigationHint()
     {
-        if (tabNavigationHintText != null)
-            return;
-
         var parent = rootPanel != null ? rootPanel.transform : transform;
-        var hintTransform = parent.Find("PokemonDexTabHint") as RectTransform;
-        if (hintTransform == null)
-        {
-            var hintGo = new GameObject("PokemonDexTabHint", typeof(RectTransform));
-            hintTransform = hintGo.GetComponent<RectTransform>();
-            hintTransform.SetParent(parent, false);
-            hintTransform.anchorMin = new Vector2(0.5f, 1f);
-            hintTransform.anchorMax = new Vector2(0.5f, 1f);
-            hintTransform.pivot = new Vector2(0.5f, 1f);
-            hintTransform.anchoredPosition = new Vector2(0f, -12f);
-            hintTransform.sizeDelta = new Vector2(220f, 32f);
-
-            var tmp = hintGo.AddComponent<TextMeshProUGUI>();
-            tmp.alignment = TextAlignmentOptions.Center;
-            tmp.enableWordWrapping = false;
-            tmp.fontSize = 22f;
-            tmp.color = highlightColor;
-            if (TMP_Settings.defaultFontAsset != null)
-                tmp.font = TMP_Settings.defaultFontAsset;
-            tabNavigationHintText = tmp;
-        }
-        else
-        {
-            tabNavigationHintText = hintTransform.GetComponent<TextMeshProUGUI>();
-            if (tabNavigationHintText == null)
-                tabNavigationHintText = hintTransform.gameObject.AddComponent<TextMeshProUGUI>();
-        }
-
-        tabNavigationHintText.text = "<- Q   E ->";
+        var hintTransform = parent.Find("PokemonDexTabHint");
+        if (hintTransform != null)
+            Destroy(hintTransform.gameObject);
     }
 
     private void ResolveAutoTextCollections()

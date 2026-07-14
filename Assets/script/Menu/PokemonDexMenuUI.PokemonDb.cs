@@ -162,6 +162,8 @@ public partial class PokemonDexMenuUI
         for (int i = 0; i < lines.Count; i++)
         {
             var text = lines[i];
+            text.enableWordWrapping = false;
+            text.overflowMode = TextOverflowModes.Ellipsis;
 
             if (i >= visibleRows)
             {
