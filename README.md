@@ -44,7 +44,13 @@ Assets/
 1. Cài Unity Hub và Unity `2022.3.62f2`.
 2. Thêm thư mục repository vào Unity Hub.
 3. Mở project và chờ Unity import toàn bộ asset.
-4. Mở scene khởi đầu trong Build Settings và chạy Play Mode.
+4. Mở scene `Assets/Scenes/MainMenuScreen.unity` và chạy Play Mode.
+
+## Companion AI (tùy chọn)
+
+Gameplay chính có thể chạy mà không cần tự cấu hình Cloudflare. Tính năng chat online với Pokemon sử dụng Cloudflare Worker đã triển khai; khi dịch vụ không khả dụng, các phản hồi companion offline vẫn có thể được sử dụng.
+
+Để tự triển khai backend companion AI, cần cấu hình Worker trong thư mục `CloudflareWorker`, KV binding `GAME_DATA`, hai secret `CLAUDE_API_KEY` và `GAME_TOKEN`, sau đó cập nhật Worker URL và game token trong `CompanionChatSystem` của Unity.
 
 ## Lưu ý
 
