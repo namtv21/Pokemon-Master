@@ -115,10 +115,10 @@ public class BattleTransition : MonoBehaviour
             {
                 foreach (var c in ringCells) StartCoroutine(FadeCell(c, 1f, cellFadeTime));
             }
-            yield return new WaitForSeconds(ringDelay);
+            yield return new WaitForSecondsRealtime(ringDelay);
         }
 
-        yield return new WaitForSeconds(cellFadeTime);
+        yield return new WaitForSecondsRealtime(cellFadeTime);
     }
 
     private IEnumerator PlayStartFlash()
@@ -132,7 +132,7 @@ public class BattleTransition : MonoBehaviour
 
         while (t < half)
         {
-            t += Time.deltaTime;
+            t += Time.unscaledDeltaTime;
             float alpha = Mathf.Lerp(0f, startFlashMaxAlpha, Mathf.Clamp01(t / half));
             flashOverlay.color = new Color(1f, 1f, 1f, alpha);
             yield return null;
@@ -141,7 +141,7 @@ public class BattleTransition : MonoBehaviour
         t = 0f;
         while (t < half)
         {
-            t += Time.deltaTime;
+            t += Time.unscaledDeltaTime;
             float alpha = Mathf.Lerp(startFlashMaxAlpha, 0f, Mathf.Clamp01(t / half));
             flashOverlay.color = new Color(1f, 1f, 1f, alpha);
             yield return null;
@@ -166,10 +166,10 @@ public class BattleTransition : MonoBehaviour
             {
                 foreach (var c in ringCells) StartCoroutine(FadeCell(c, 0f, cellFadeTime));
             }
-            yield return new WaitForSeconds(ringDelay);
+            yield return new WaitForSecondsRealtime(ringDelay);
         }
 
-        yield return new WaitForSeconds(cellFadeTime);
+        yield return new WaitForSecondsRealtime(cellFadeTime);
         gameObject.SetActive(false);
     }
 
@@ -206,7 +206,7 @@ public class BattleTransition : MonoBehaviour
 
         while (t < duration)
         {
-            t += Time.deltaTime;
+            t += Time.unscaledDeltaTime;
             float a = Mathf.Lerp(start, targetAlpha, Mathf.Clamp01(t / duration));
             var col = img.color; col.a = a; img.color = col;
             yield return null;

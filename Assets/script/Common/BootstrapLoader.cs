@@ -33,7 +33,7 @@ public static class BootstrapLoader
             return;
         }
 
-        TryInstantiateSystemRoot();
+        EnsureSystemRoot();
     }
 
     private static void OnFirstGameSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -45,13 +45,14 @@ public static class BootstrapLoader
             return; // vẫn còn trong MainMenu, tiếp tục chờ scene game thật sự
 
         SceneManager.sceneLoaded -= OnFirstGameSceneLoaded;
-        TryInstantiateSystemRoot();
+        EnsureSystemRoot();
     }
 
-    private static void TryInstantiateSystemRoot()
+    public static GameObject EnsureSystemRoot()
     {
-        if (Object.FindObjectOfType<GameController>() != null)
-            return;
+        var existingController = Object.FindObjectOfType<GameController>(true);
+        if (existingController != null)
+            return existingController.transform.root.gameObject;
 
         GameObject prefab = null;
 
@@ -65,11 +66,12 @@ public static class BootstrapLoader
         if (prefab == null)
         {
             Debug.LogError("Missing SystemRoot prefab. Put one of these at Assets/Resources/: SystemRoot.prefab or SystemsRoot.prefab");
-            return;
+            return null;
         }
 
         var instance = Object.Instantiate(prefab);
         instance.name = "SystemRoot (Runtime)";
         Object.DontDestroyOnLoad(instance);
+        return instance;
     }
 }

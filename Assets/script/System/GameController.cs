@@ -58,7 +58,8 @@ public partial class GameController : MonoBehaviour
     private readonly Dictionary<Camera, bool> cachedCameraEnabledStates = new();
     private readonly Dictionary<AudioListener, bool> cachedListenerEnabledStates = new();
     private readonly Dictionary<GameObject, bool> cachedOverworldRootStates = new();
-    private float nextBattleCameraEnforceTime;
+    private bool battleCameraIsolationActive;
+    private bool overworldSceneHidden;
     private CanvasGroup sceneFadeCanvasGroup;
     // scene fade is handled by SceneFadeController
     private bool isSceneTransitioning;
@@ -391,7 +392,6 @@ public partial class GameController : MonoBehaviour
 
         SetBattleCameraIsolation(false);
         SetOverworldSceneVisibility(true);
-        nextBattleCameraEnforceTime = 0f;
         RestoreOverworldAsActiveScene();
 
         if (battleSceneLoaded)
@@ -687,9 +687,24 @@ public partial class GameController : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         playerController = PlayerController.Instance != null ? PlayerController.Instance : FindObjectOfType<PlayerController>();
-        StartCoroutine(SaveLoadSystem.ApplyLoadedDataWhenReady());
 
         if (scene.name == battleSceneName)
+        {
+            battleSceneLoaded = true;
             BindBattleReferencesFromScene(scene);
+
+            // sceneLoaded runs before LoadSceneAsync completes. Isolate cameras here so a
+            // restored session cannot render one frame (or remain) with both scenes visible.
+            if (State == GameState.Battle)
+            {
+                SetOverworldSceneVisibility(false);
+                SetBattleCameraIsolation(true);
+            }
+
+            return;
+        }
+
+        if (SaveLoadSystem.HasPendingLoadData())
+            StartCoroutine(SaveLoadSystem.ApplyLoadedDataWhenReady());
     }
 }

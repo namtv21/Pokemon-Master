@@ -118,9 +118,27 @@ public class PokemonBase : ScriptableObject
         SpDefense = data.baseStats.spd;
         Speed = data.baseStats.spe;
 
-        string spriteName = System.Text.RegularExpressions.Regex.Replace(pokemonName, @"[^a-zA-Z0-9]", "").ToUpper();
+        string spriteName = GetSpriteResourceName(pokemonName);
         frontSprite = Resources.Load<Sprite>($"Sprites/Front/{spriteName}");
         backSprite  = Resources.Load<Sprite>($"Sprites/Back/{spriteName}");
+
+        if (frontSprite == null || backSprite == null)
+            Debug.LogError($"[PokemonImporter] Missing battle sprite for '{pokemonName}' (resource name '{spriteName}').");
+    }
+
+    private static string GetSpriteResourceName(string displayName)
+    {
+        string normalized = System.Text.RegularExpressions.Regex
+            .Replace(displayName ?? string.Empty, @"[^a-zA-Z0-9]", string.Empty)
+            .ToUpperInvariant();
+
+        // The source sprite pack encodes the Nidoran gender symbols as FE/MA.
+        return normalized switch
+        {
+            "NIDORANF" => "NIDORANfE",
+            "NIDORANM" => "NIDORANmA",
+            _ => normalized
+        };
     }
 
     private PokemonType ParseType(string type)

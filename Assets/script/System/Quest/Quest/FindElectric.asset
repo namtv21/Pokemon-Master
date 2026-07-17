@@ -25,7 +25,7 @@ MonoBehaviour:
     requiredCount: 1
   turnInNpcId: engineer
   rewardMoney: 0
-  rewardItems:
-  - item: {fileID: 11400000, guid: 098eab360dda8084a8984f7bffa8162a, type: 2}
-    amount: 2
-  rewardPokemons: []
+  rewardItems: []
+  rewardPokemons:
+  - pokemonBase: {fileID: 11400000, guid: 24feb6ed22956a244835e1633ceec178, type: 2}
+    level: 20

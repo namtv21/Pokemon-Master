@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 32
   pokemonName: Nidoran-M
   description: 
-  frontSprite: {fileID: 21300000, guid: 2dff34d2ec423a842bd35daa88180b79, type: 3}
-  backSprite: {fileID: 21300000, guid: 9d1771ca9572b574c8b4c1c668553005, type: 3}
+  frontSprite: {fileID: 21300000, guid: 152dcb66d29668a49b9c72015dac7134, type: 3}
+  backSprite: {fileID: 21300000, guid: 12de713c7aca60544aee200e7d167ae0, type: 3}
   type1: 8
   type2: 0
   MaxHp: 46

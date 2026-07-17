@@ -4,6 +4,10 @@ using System.Collections.Generic;
 [System.Serializable]
 public class SaveData
 {
+    public const int CurrentSchemaVersion = 1;
+
+    public int schemaVersion = CurrentSchemaVersion;
+    public string gameVersion;
     public List<PokemonData> partyPokemons;
     public List<PokemonData> storagePokemons;
     public int money;

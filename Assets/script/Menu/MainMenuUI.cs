@@ -137,7 +137,7 @@ public class MainMenuUI : MonoBehaviour
         {
             case MainMenuOption.Party: return "Party";
             case MainMenuOption.Item: return "Item";
-            case MainMenuOption.Companion: return "Chat";
+            case MainMenuOption.Companion: return "Pokemon House";
             case MainMenuOption.PokemonDex: return "Pokédex";
             case MainMenuOption.Quest: return "Quest";
             case MainMenuOption.SaveLoad: return "Save/Load";

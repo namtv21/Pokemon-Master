@@ -6,9 +6,9 @@ using UnityEngine;
 /// <summary>
 /// Nhà Pokemon: party sống trong một căn phòng (UI panel) — đi lại, né nội thất,
 /// nhịp sinh hoạt theo tính cách, và TƯƠNG TÁC:
-///   [←][→] chọn Pokemon · [Z] vuốt ve · [C] chat · [X] thoát.
+///   [↑][↓] chọn Pokemon · [Z] vuốt ve · [C] chat · [X] thoát.
 /// Hai Pokemon lại gần nhau sẽ trao đổi emote theo cặp tính cách.
-/// Ở trong nhà tăng bond CHẬM và CÓ TRẦN (đường chính vẫn là chiến đấu).
+/// Friendship theo thời gian được PlayerParty xử lý tự động, không phụ thuộc House.
 /// </summary>
 public class PokemonHomeUI : MonoBehaviour
 {
@@ -23,19 +23,12 @@ public class PokemonHomeUI : MonoBehaviour
     [SerializeField] private float meetDistance = 125f;
     [SerializeField] private float meetCooldown = 14f;
 
-    [Header("Bond (tăng chậm, có trần)")]
-    [Tooltip("Số giây ở trong nhà để mỗi Pokemon +1 friendship.")]
-    [SerializeField] private float secondsPerBondPoint = 180f;
-    [Tooltip("Trần friendship cộng từ nhà cho MỖI Pokemon trong một phiên chơi.")]
-    [SerializeField] private int bondCapPerSession = 3;
-
     public bool IsOpen { get; private set; }
 
     private readonly List<HomeAgent> agents = new List<HomeAgent>();
     private readonly List<Rect> obstacleRects = new List<Rect>();          // trong không gian roomArea
     private readonly Dictionary<int, float> meetCooldowns = new Dictionary<int, float>();
     private Action onClose;
-    private float bondTimer;
     private float meetScanTimer;
 
     // Chọn Pokemon bằng ↑↓ — highlight trực tiếp sprite trong phòng,
@@ -43,12 +36,6 @@ public class PokemonHomeUI : MonoBehaviour
     private int selectedIndex;
     private RectTransform hintBar;
     private TextMeshProUGUI hintBarText;
-
-    // Trần bond theo phiên chơi (reset khi khởi động game)
-    private static readonly Dictionary<Pokemon, int> sessionBondGained = new Dictionary<Pokemon, int>();
-
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    private static void ResetSession() => sessionBondGained.Clear();
 
     public void Open(Action onCloseCallback)
     {
@@ -63,7 +50,6 @@ public class PokemonHomeUI : MonoBehaviour
         gameObject.SetActive(true);
         UiFx.PopIn(gameObject);
         IsOpen = true;
-        bondTimer = 0f;
         meetCooldowns.Clear();
 
         CollectObstacles();
@@ -167,35 +153,14 @@ public class PokemonHomeUI : MonoBehaviour
         return $"{cry}! {cry}! {cry}!";
     }
 
-    // ===== Bond tick + emote khi gặp nhau =====
+    // ===== Emote khi gặp nhau =====
 
     private void Update()
     {
         if (!IsOpen)
             return;
 
-        TickBond();
         ScanMeetings();
-    }
-
-    private void TickBond()
-    {
-        bondTimer += Time.deltaTime;
-        if (bondTimer < secondsPerBondPoint)
-            return;
-
-        bondTimer = 0f;
-        foreach (var agent in agents)
-        {
-            var pokemon = agent != null ? agent.Pokemon : null;
-            if (pokemon == null) continue;
-
-            sessionBondGained.TryGetValue(pokemon, out int gained);
-            if (gained >= bondCapPerSession) continue;
-
-            pokemon.AddFriendship(1);
-            sessionBondGained[pokemon] = gained + 1;
-        }
     }
 
     // Hai Pokemon lại gần nhau → trao đổi emote theo cặp tính cách (có cooldown từng cặp).

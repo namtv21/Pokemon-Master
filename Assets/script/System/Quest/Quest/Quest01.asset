@@ -26,4 +26,6 @@ MonoBehaviour:
   turnInNpcId: Town01_svbk
   rewardMoney: 30
   rewardItems: []
-  rewardPokemons: []
+  rewardPokemons:
+  - pokemonBase: {fileID: 11400000, guid: 30fc4600a97dba6469b797e49afe5645, type: 2}
+    level: 10

@@ -1821,12 +1821,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 718a26ca9b7983041b57a4f635f38288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcId: bugcatcher
-  npcName: bugcatcher
+  npcId: buglover
+  npcName: buglover
   portrait: {fileID: 21300000, guid: 39a2b4f1d5648ba44b9f7eb361f57678, type: 3}
-  introDialog: "Nghe n\xF3i nh\u1EEFng Pokemon h\u1EC7 c\xF4n tr\xF9ng n\xE0y ti\u1EBFn
-    h\xF3a r\u1EA5t s\u1EDBm, c\xF3 l\u1EBD em n\xEAn b\u1EAFt th\u1EED v\xE0i con
-    xem sao"
+  introDialog: "Pokemon y\xEAu th\xEDch c\u1EE7a em \u01B0? Kha'zix. H\u1EA3 sao
+    anh l\u1EA1i b\u1EA3o em ch\u01A1i game \xEDt th\xF4i."
   outroDialog: 
   Party: {fileID: 1626281300}
   canHeal: 0
@@ -2081,11 +2080,15 @@ MonoBehaviour:
   - pokemon: {fileID: 11400000, guid: 4a821f8cf425ff2428f6c753fd794278, type: 2}
     minLevel: 5
     maxLevel: 5
-    encounterRate: 0.95
+    encounterRate: 0.6
   - pokemon: {fileID: 11400000, guid: 4ab8ad1dca5465a469c6003a11a32e37, type: 2}
     minLevel: 5
     maxLevel: 5
     encounterRate: 0.05
+  - pokemon: {fileID: 11400000, guid: 713d33ca26024f34abfbc39abe41c713, type: 2}
+    minLevel: 5
+    maxLevel: 5
+    encounterRate: 0.35
   battleRatePercent: 10
 --- !u!1 &361223976
 GameObject:
@@ -2390,20 +2393,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   possiblePokemon:
   - pokemon: {fileID: 11400000, guid: 2fc077da27686274b9dc5a423a0be6be, type: 2}
-    minLevel: 2
-    maxLevel: 4
+    minLevel: 3
+    maxLevel: 6
     encounterRate: 0.3
-  - pokemon: {fileID: 11400000, guid: 11bb048b2a2a51a4eb59f3bf93b4343e, type: 2}
-    minLevel: 5
-    maxLevel: 5
+  - pokemon: {fileID: 11400000, guid: 05124f685bc02bc498e6f72d21239e37, type: 2}
+    minLevel: 3
+    maxLevel: 6
+    encounterRate: 0.3
+  - pokemon: {fileID: 11400000, guid: a597f88aca60d084cbc360649efd2b72, type: 2}
+    minLevel: 4
+    maxLevel: 6
     encounterRate: 0.2
-  - pokemon: {fileID: 11400000, guid: 03ae3dc93953830468a6583f72d1f6b4, type: 2}
-    minLevel: 2
-    maxLevel: 5
-    encounterRate: 0.3
-  - pokemon: {fileID: 11400000, guid: d32bbeb143e6d504c92e6db2b75e69ed, type: 2}
-    minLevel: 5
-    maxLevel: 5
+  - pokemon: {fileID: 11400000, guid: 4c8a4501ed65f4d4599304bfdc744ff1, type: 2}
+    minLevel: 4
+    maxLevel: 6
     encounterRate: 0.2
   battleRatePercent: 10
 --- !u!1 &481430207
@@ -2451,22 +2454,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possiblePokemon:
-  - pokemon: {fileID: 11400000, guid: 5d6694120dec5bc46a9f82352726c23f, type: 2}
-    minLevel: 5
-    maxLevel: 5
-    encounterRate: 0.25
-  - pokemon: {fileID: 11400000, guid: 90cf96799068fe44f9fe63ce2ff4f870, type: 2}
-    minLevel: 5
-    maxLevel: 5
-    encounterRate: 0.25
+  - pokemon: {fileID: 11400000, guid: 36dbfd1785357104488b46ca84c92174, type: 2}
+    minLevel: 4
+    maxLevel: 7
+    encounterRate: 0.2
+  - pokemon: {fileID: 11400000, guid: 03ae3dc93953830468a6583f72d1f6b4, type: 2}
+    minLevel: 4
+    maxLevel: 7
+    encounterRate: 0.2
   - pokemon: {fileID: 11400000, guid: 32a6aeace041e0c4693e91f766286738, type: 2}
-    minLevel: 3
-    maxLevel: 5
-    encounterRate: 0.25
-  - pokemon: {fileID: 11400000, guid: 30fc4600a97dba6469b797e49afe5645, type: 2}
-    minLevel: 5
-    maxLevel: 5
-    encounterRate: 0.25
+    minLevel: 4
+    maxLevel: 7
+    encounterRate: 0.2
+  - pokemon: {fileID: 11400000, guid: d32bbeb143e6d504c92e6db2b75e69ed, type: 2}
+    minLevel: 4
+    maxLevel: 7
+    encounterRate: 0.2
+  - pokemon: {fileID: 11400000, guid: 13fdb91c6322f0f4b955195bde7001ca, type: 2}
+    minLevel: 4
+    maxLevel: 7
+    encounterRate: 0.2
   battleRatePercent: 10
 --- !u!1001 &489039866
 PrefabInstance:
@@ -2610,6 +2617,221 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6511176640625330429, guid: 42231d3441034c74990409483fe6379d, type: 3}
   m_PrefabInstance: {fileID: 489039866}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &566961566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 566961567}
+  - component: {fileID: 566961571}
+  - component: {fileID: 566961570}
+  - component: {fileID: 566961569}
+  - component: {fileID: 566961568}
+  m_Layer: 8
+  m_Name: kid (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &566961567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566961566}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.01, y: -1.81, z: 9.983179}
+  m_LocalScale: {x: 1, y: 1, z: 1.4243}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1253227250}
+  m_Father: {fileID: 1684216417}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &566961568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566961566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718a26ca9b7983041b57a4f635f38288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  npcId: bugcatcher
+  npcName: bugcatcher
+  portrait: {fileID: 21300000, guid: 39a2b4f1d5648ba44b9f7eb361f57678, type: 3}
+  introDialog: "Nghe n\xF3i nh\u1EEFng Pokemon h\u1EC7 c\xF4n tr\xF9ng n\xE0y ti\u1EBFn
+    h\xF3a r\u1EA5t s\u1EDBm, c\xF3 l\u1EBD em n\xEAn b\u1EAFt th\u1EED v\xE0i con
+    xem sao"
+  outroDialog: 
+  Party: {fileID: 1253227251}
+  canHeal: 0
+  canShop: 0
+  canUseStorage: 0
+  canGiveQuest: 0
+  canBattle: 1
+  fadeAwayAfterDialog: 0
+  fadeAfterDialogDuration: 0.5
+  disableNpcAfterDialogFade: 1
+  shopItems: []
+  dialog: {fileID: 0}
+  directionalAnimator: {fileID: 0}
+  quest: {fileID: 0}
+  giveQuestOnce: 1
+  rewardMoney: 20
+  isGymLeader: 0
+  badgeName: 
+  badgeItem: {fileID: 0}
+  setStoryFlagAfterBadge: 0
+  storyFlagAfterBadge: 4
+  storyFlagAfterBadgeValue: 1
+  canBattleOnce: 0
+  enableMovement: 0
+  patrolPoints: []
+  loopPatrol: 1
+  startPatrolOnAwake: 0
+  patrolMoveSpeed: 2
+  waitAtPatrolPoint: 0.25
+  moveAfterBattle: 0
+  postBattleMoveTarget: {fileID: 779843968}
+  postBattleMoveSpeed: 3
+  faceTargetAfterMove: 0
+  moveAfterDialog: 0
+  dialogMoveTarget: {fileID: 0}
+  dialogMoveSpeed: 2
+  faceTargetAfterDialog: 1
+--- !u!61 &566961569
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566961566}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.11178684}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1.5}
+    newSize: {x: 1, y: 1.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.2235737}
+  m_EdgeRadius: 0
+--- !u!50 &566961570
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566961566}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!212 &566961571
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566961566}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1174901505
+  m_SortingLayer: 4
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -1368052310, guid: d6ca6127da7b1ac43aaddd07c6d20d04, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1.5}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &652844376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2909,58 +3131,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1684216417}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &921316756
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 921316757}
-  - component: {fileID: 921316758}
-  m_Layer: 8
-  m_Name: TrainerParty
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &921316757
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 921316756}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2103605496}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &921316758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 921316756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa22d58be6a4c9c43aca7a55faa739cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pokemons:
-  - baseData: {fileID: 11400000, guid: 36dbfd1785357104488b46ca84c92174, type: 2}
-    level: 5
-  - baseData: {fileID: 11400000, guid: bcf3215dbdde6554489080c7339c99bd, type: 2}
-    level: 4
-  - baseData: {fileID: 11400000, guid: 9a920d6eed376a84a818dfc2bd03b7d5, type: 2}
-    level: 6
-  evolvePokemonByLevel: 0
 --- !u!1 &971009345
 GameObject:
   m_ObjectHideFlags: 0
@@ -3249,8 +3419,7 @@ Transform:
   m_LocalPosition: {x: -9.03, y: 8.24, z: 9.983179}
   m_LocalScale: {x: 1, y: 1, z: 1.4243}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1201151049}
+  m_Children: []
   m_Father: {fileID: 1684216417}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1034724900
@@ -3268,10 +3437,10 @@ MonoBehaviour:
   npcId: GuideRoad01
   npcName: Guider
   portrait: {fileID: 21300000, guid: 0e3ae3e929cb5324395833dbe78a6be6, type: 3}
-  introDialog: (Weedle, Kakuna, Spearow, dodou), (Caterpie, Metapod, Pidgey, Rattata),
-    (Abra, Drowzee, Farfetchd, Eevee), (Magikarp, Dragontini)
+  introDialog: "(Weedle, Caterpie, Spinarak, Ledyba), (Rattata, Sentret, Aipom, Murkrow),\n
+    (Pidgey, Spearow, Farfetchd, Dodou, Hoothoot), (Magikarp, Wooper, Dragontini)"
   outroDialog: 
-  Party: {fileID: 1201151050}
+  Party: {fileID: 0}
   canHeal: 0
   canShop: 0
   canUseStorage: 0
@@ -3608,7 +3777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: road01green2
---- !u!1 &1201151048
+--- !u!1 &1253227249
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3616,8 +3785,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1201151049}
-  - component: {fileID: 1201151050}
+  - component: {fileID: 1253227250}
+  - component: {fileID: 1253227251}
   m_Layer: 8
   m_Name: TrainerParty
   m_TagString: Untagged
@@ -3625,40 +3794,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1201151049
+--- !u!4 &1253227250
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1201151048}
+  m_GameObject: {fileID: 1253227249}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1034724899}
+  m_Father: {fileID: 566961567}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1201151050
+--- !u!114 &1253227251
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1201151048}
+  m_GameObject: {fileID: 1253227249}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa22d58be6a4c9c43aca7a55faa739cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pokemons:
-  - baseData: {fileID: 11400000, guid: 36dbfd1785357104488b46ca84c92174, type: 2}
+  - baseData: {fileID: 11400000, guid: 05124f685bc02bc498e6f72d21239e37, type: 2}
     level: 5
-  - baseData: {fileID: 11400000, guid: bcf3215dbdde6554489080c7339c99bd, type: 2}
-    level: 4
-  - baseData: {fileID: 11400000, guid: 9a920d6eed376a84a818dfc2bd03b7d5, type: 2}
-    level: 6
+  - baseData: {fileID: 11400000, guid: 2fc077da27686274b9dc5a423a0be6be, type: 2}
+    level: 5
   evolvePokemonByLevel: 0
 --- !u!1 &1287301041
 GameObject:
@@ -8394,11 +8561,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1834147287}
-  - {fileID: 143619172}
   - {fileID: 1892311909}
   - {fileID: 1287301042}
   - {fileID: 2023308621}
   - {fileID: 1462326671}
+  - {fileID: 143619172}
   - {fileID: 1657027681}
   - {fileID: 236890581}
   - {fileID: 1627300692}
@@ -8562,9 +8729,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pokemons:
-  - baseData: {fileID: 11400000, guid: 05124f685bc02bc498e6f72d21239e37, type: 2}
+  - baseData: {fileID: 11400000, guid: a597f88aca60d084cbc360649efd2b72, type: 2}
     level: 5
-  - baseData: {fileID: 11400000, guid: 2fc077da27686274b9dc5a423a0be6be, type: 2}
+  - baseData: {fileID: 11400000, guid: 4c8a4501ed65f4d4599304bfdc744ff1, type: 2}
     level: 5
   evolvePokemonByLevel: 0
 --- !u!1 &1627300691
@@ -9339,6 +9506,113 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &1644068138
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1684216417}
+    m_Modifications:
+    - target: {fileID: 1647879755975749150, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647879755975749150, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647879755975749150, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.983179
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647879755975749150, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647879755975749150, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647879755975749150, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647879755975749150, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647879755975749150, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647879755975749150, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647879755975749150, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750832006257091153, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 238884349, guid: 1d1a8de3a373cf34191ce2032e01226d, type: 3}
+    - target: {fileID: 3137591723904132606, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: npcId
+      value: BirdLover
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137591723904132606, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: npcName
+      value: BirdLover
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137591723904132606, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: introDialog
+      value: "mong sau n\xE0y nh\u1EEFng Pokemon h\u1EC7 chim n\xE0y c\xF3 th\u1EC3
+        cho t\xF4i bay"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137591723904132606, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: outroDialog
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137591723904132606, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: moveAfterBattle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137591723904132606, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: faceTargetAfterMove
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3137591723904132606, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: postBattleMoveTarget
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521637278798066482, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: pokemons.Array.data[0].baseData
+      value: 
+      objectReference: {fileID: 11400000, guid: d32bbeb143e6d504c92e6db2b75e69ed, type: 2}
+    - target: {fileID: 5521637278798066482, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: pokemons.Array.data[1].baseData
+      value: 
+      objectReference: {fileID: 11400000, guid: 13fdb91c6322f0f4b955195bde7001ca, type: 2}
+    - target: {fileID: 5521637278798066482, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: pokemons.Array.data[2].baseData
+      value: 
+      objectReference: {fileID: 11400000, guid: 1184c030419b71d4b91782d01b22c04b, type: 2}
+    - target: {fileID: 6473926772362306626, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+      propertyPath: m_Name
+      value: Surge BirdKeeper (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+--- !u!4 &1644068139 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1647879755975749150, guid: 6b399fa7a76b2e24d89becd7958ea2c2, type: 3}
+  m_PrefabInstance: {fileID: 1644068138}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1657027680
 GameObject:
   m_ObjectHideFlags: 0
@@ -10519,12 +10793,15 @@ Transform:
   m_Children:
   - {fileID: 1034724899}
   - {fileID: 2103605496}
+  - {fileID: 2078494090}
   - {fileID: 2473763789822811123}
   - {fileID: 5620744179951703089}
   - {fileID: 815098727}
   - {fileID: 779843968}
   - {fileID: 3935589282644638384}
+  - {fileID: 1644068139}
   - {fileID: 246925179}
+  - {fileID: 566961567}
   - {fileID: 489039867}
   - {fileID: 2008740229}
   m_Father: {fileID: 1754196665}
@@ -15185,22 +15462,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possiblePokemon:
-  - pokemon: {fileID: 11400000, guid: 05124f685bc02bc498e6f72d21239e37, type: 2}
-    minLevel: 2
-    maxLevel: 4
-    encounterRate: 0.3
-  - pokemon: {fileID: 11400000, guid: 7c6b9dbb15b0fc54eaa8836b0b44fdab, type: 2}
-    minLevel: 5
-    maxLevel: 5
-    encounterRate: 0.2
-  - pokemon: {fileID: 11400000, guid: 36dbfd1785357104488b46ca84c92174, type: 2}
-    minLevel: 3
-    maxLevel: 5
-    encounterRate: 0.3
   - pokemon: {fileID: 11400000, guid: f942d94041af7014a9643dba42291c90, type: 2}
     minLevel: 3
     maxLevel: 5
-    encounterRate: 0.2
+    encounterRate: 0.3
+  - pokemon: {fileID: 11400000, guid: e11c13f16f239b44c95242520605f84e, type: 2}
+    minLevel: 3
+    maxLevel: 5
+    encounterRate: 0.3
+  - pokemon: {fileID: 11400000, guid: 087a518a462c5b14c817bbe59185d52e, type: 2}
+    minLevel: 3
+    maxLevel: 5
+    encounterRate: 0.3
+  - pokemon: {fileID: 11400000, guid: 1184c030419b71d4b91782d01b22c04b, type: 2}
+    minLevel: 3
+    maxLevel: 5
+    encounterRate: 0.1
   battleRatePercent: 10
 --- !u!4 &1946673419 stripped
 Transform:
@@ -30998,6 +31275,184 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2078494089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2078494090}
+  - component: {fileID: 2078494094}
+  - component: {fileID: 2078494093}
+  - component: {fileID: 2078494092}
+  - component: {fileID: 2078494091}
+  m_Layer: 8
+  m_Name: Scy (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2078494090
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078494089}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -17.36, y: 0.94, z: 9.983179}
+  m_LocalScale: {x: 3.2627, y: 3.585381, z: 4.6470637}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1684216417}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2078494091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078494089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c52f3890ffd569c458d82da6edfeea01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  encounterId: 
+  pokemonBase: {fileID: 11400000, guid: 93e195460e137d74eafebf9dd33bca6f, type: 2}
+  level: 10
+  allowRun: 1
+  idleBob: 1
+  bobAmplitude: 0.05
+  bobPeriod: 1.4
+--- !u!61 &2078494092
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078494089}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.018293172, y: 0.01829262}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.3, y: 0.18}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.49999338, y: 0.49999365}
+  m_EdgeRadius: 0
+--- !u!50 &2078494093
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078494089}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!212 &2078494094
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078494089}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -1174901505
+  m_SortingLayer: 4
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -5057577798808160617, guid: 5445621c0e532424883a4c1a7d9e182b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &2103605495
 GameObject:
   m_ObjectHideFlags: 0
@@ -31030,8 +31485,7 @@ Transform:
   m_LocalPosition: {x: 6.11, y: 9.79, z: 9.983179}
   m_LocalScale: {x: 3.2627, y: 3.585381, z: 4.6470637}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 921316757}
+  m_Children: []
   m_Father: {fileID: 1684216417}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2103605497
@@ -31898,9 +32352,9 @@ MonoBehaviour:
   pokemons:
   - baseData: {fileID: 11400000, guid: f942d94041af7014a9643dba42291c90, type: 2}
     level: 5
-  - baseData: {fileID: 11400000, guid: d32bbeb143e6d504c92e6db2b75e69ed, type: 2}
+  - baseData: {fileID: 11400000, guid: e11c13f16f239b44c95242520605f84e, type: 2}
     level: 5
-  - baseData: {fileID: 11400000, guid: 30fc4600a97dba6469b797e49afe5645, type: 2}
+  - baseData: {fileID: 11400000, guid: 087a518a462c5b14c817bbe59185d52e, type: 2}
     level: 5
   evolvePokemonByLevel: 0
 --- !u!1 &8825648152693883851

@@ -906,7 +906,7 @@ public class BattleSystem : MonoBehaviour
         if (pokemon.Status == StatusEffect.Poison)
         {
             int poisonDamage = Mathf.FloorToInt(pokemon.MaxHp / 8f);
-            pokemon.TakeDamage(poisonDamage);
+            pokemon.TakeNonLethalDamage(poisonDamage);
             unit.Hud.SetData(pokemon);
             dialogBox.ShowDialog($"{pokemon.Base.Name} is hurt by poison!");
             yield return new WaitForSeconds(1f);
@@ -925,7 +925,7 @@ public class BattleSystem : MonoBehaviour
             else if (Random.value < 0.33f)
             {
                 int selfDamage = CalculateConfusionDamage(pokemon);
-                pokemon.TakeDamage(selfDamage);
+                pokemon.TakeNonLethalDamage(selfDamage);
                 unit.Hud.SetData(pokemon);
                 dialogBox.ShowDialog($"{pokemon.Base.Name} is confused and hurt itself!");
                 yield return new WaitForSeconds(1f);

@@ -53,6 +53,11 @@ public class MainMenuManager : MonoBehaviour
             switch (currentIndex)
             {
                 case 0:
+                    if (BootstrapLoader.EnsureSystemRoot() == null)
+                    {
+                        Debug.LogError("[MainMenu] Cannot start a new game because SystemRoot is missing.");
+                        return;
+                    }
                     SceneManager.LoadScene(newGameScene);
                     break;
                 case 1:

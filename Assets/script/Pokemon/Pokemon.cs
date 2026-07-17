@@ -146,6 +146,14 @@ public class Pokemon
         _currentHp = Mathf.Max(_currentHp - damage, 0);
     }
 
+    public void TakeNonLethalDamage(int damage)
+    {
+        if (damage <= 0 || IsFainted)
+            return;
+
+        _currentHp = Mathf.Max(_currentHp - damage, 1);
+    }
+
     public bool IsFainted => _currentHp <= 0;
     public bool IsHealthy => !IsFainted && Status == StatusEffect.None;
 

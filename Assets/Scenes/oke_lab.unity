@@ -16852,6 +16852,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prof Oke
       objectReference: {fileID: 0}
+    - target: {fileID: 5668847546078353128, guid: af513a89f47c3e842a24ccd7af8c5029, type: 3}
+      propertyPath: introDialog
+      value: "Ch\xE0, kh\xF4ng bi\u1EBFt bao gi\u1EDD game m\u1EDBi c\u1EADp nh\u1EADt
+        Pokemon th\u1EBF h\u1EC7 ti\u1EBFp theo nh\u1EC9"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

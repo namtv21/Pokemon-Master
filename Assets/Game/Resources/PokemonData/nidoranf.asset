@@ -15,8 +15,8 @@ MonoBehaviour:
   num: 29
   pokemonName: Nidoran-F
   description: 
-  frontSprite: {fileID: 21300000, guid: fda6d5feafe7c8142b4df3a517a7e2cb, type: 3}
-  backSprite: {fileID: 21300000, guid: 3a42dc5b87595854a954b4bd3d2c245c, type: 3}
+  frontSprite: {fileID: 21300000, guid: cd581a5625fc81548aabb9de9d2a14fd, type: 3}
+  backSprite: {fileID: 21300000, guid: 6487dd2076691df49ae4dd1761c051d7, type: 3}
   type1: 8
   type2: 0
   MaxHp: 55

@@ -122,12 +122,22 @@ public partial class GameController
 
     private void SetBattleCameraIsolation(bool inBattle)
     {
+        if (inBattle && battleCameraIsolationActive)
+        {
+            EnforceBattleCameraSettings();
+            return;
+        }
+
+        if (!inBattle && !battleCameraIsolationActive)
+            return;
+
         var cameras = FindObjectsOfType<Camera>(true);
         var listeners = FindObjectsOfType<AudioListener>(true);
         var battleScene = SceneManager.GetSceneByName(battleSceneName);
 
         if (inBattle)
         {
+            battleCameraIsolationActive = true;
             cachedCameraEnabledStates.Clear();
             cachedListenerEnabledStates.Clear();
 
@@ -151,6 +161,7 @@ public partial class GameController
                 al.enabled = belongsToBattleScene;
             }
 
+            EnforceBattleCameraSettings();
             return;
         }
 
@@ -168,10 +179,17 @@ public partial class GameController
 
         cachedCameraEnabledStates.Clear();
         cachedListenerEnabledStates.Clear();
+        battleCameraIsolationActive = false;
     }
 
     private void SetOverworldSceneVisibility(bool visible)
     {
+        if (!visible && overworldSceneHidden)
+            return;
+
+        if (visible && !overworldSceneHidden)
+            return;
+
         if (string.IsNullOrWhiteSpace(cachedOverworldSceneName))
             return;
 
@@ -201,6 +219,7 @@ public partial class GameController
                 root.SetActive(false);
             }
 
+            overworldSceneHidden = true;
             return;
         }
 
@@ -211,11 +230,12 @@ public partial class GameController
         }
 
         cachedOverworldRootStates.Clear();
+        overworldSceneHidden = false;
     }
 
     private void EnforceBattleCameraSettings()
     {
-        if (State != GameState.Battle)
+        if (!battleCameraIsolationActive)
             return;
 
         var battleScene = SceneManager.GetSceneByName(battleSceneName);

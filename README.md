@@ -2,6 +2,8 @@
 
 PokeMaster là game nhập vai Pokemon 2D được phát triển bằng Unity và C#. Project tập trung vào gameplay khám phá thế giới, thu phục và phát triển Pokemon, chiến đấu theo lượt, nhiệm vụ và cốt truyện nhiều scene.
 
+Phiên bản hiện tại: **V1.0.0 Release Candidate**. Trạng thái kiểm thử trước khi phát hành được theo dõi tại [RELEASE_CHECKLIST.md](docs/RELEASE_CHECKLIST.md).
+
 ## Công nghệ
 
 - Unity 2022.3.62f2 LTS
@@ -46,6 +48,8 @@ Assets/
 3. Mở project và chờ Unity import toàn bộ asset.
 4. Mở scene `Assets/Scenes/MainMenuScreen.unity` và chạy Play Mode.
 
+Save mới được lưu bằng `Application.persistentDataPath`. Trên Windows, thư mục mặc định là `%USERPROFILE%\AppData\LocalLow\NamTV21\PokeMaster`. Game vẫn có thể đọc các save cũ nằm cạnh bản build để hỗ trợ chuyển đổi.
+
 ## Companion AI (tùy chọn)
 
 Gameplay chính có thể chạy mà không cần tự cấu hình Cloudflare. Tính năng chat online với Pokemon sử dụng Cloudflare Worker đã triển khai; khi dịch vụ không khả dụng, các phản hồi companion offline vẫn có thể được sử dụng.
@@ -55,3 +59,4 @@ Gameplay chính có thể chạy mà không cần tự cấu hình Cloudflare. T
 ## Lưu ý
 
 - PokeMaster là project phi thương mại, chỉ phục vụ mục đích học tập và đồ án.
+- Pokemon và các tài sản liên quan thuộc quyền sở hữu của các chủ sở hữu tương ứng; repository không đại diện cho một sản phẩm Pokemon chính thức.

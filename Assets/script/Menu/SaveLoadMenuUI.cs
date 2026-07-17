@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.IO;
 using System.Linq;
 
 public class SaveLoadMenuUI : MonoBehaviour
@@ -140,12 +139,7 @@ public class SaveLoadMenuUI : MonoBehaviour
             string slotName = GetSlotName(i);
             SaveData data = null;
 
-            string path = Path.Combine(Path.GetFullPath(Path.Combine(Application.dataPath, "..")), slotName + ".json");
-            if (File.Exists(path))
-            {
-                string json = File.ReadAllText(path);
-                data = JsonUtility.FromJson<SaveData>(json);
-            }
+            SaveLoadSystem.TryReadSaveData(slotName, out data, out string path);
 
             slots[i].SetData(slotName, data, path, i == currentIndex, currentStep == MenuStep.SelectMode, isSaveMode);
         }

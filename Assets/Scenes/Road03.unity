@@ -4078,15 +4078,19 @@ MonoBehaviour:
   - pokemon: {fileID: 11400000, guid: 1720916550dff3949b11ff61bf1124ae, type: 2}
     minLevel: 29
     maxLevel: 32
-    encounterRate: 0.3
-  - pokemon: {fileID: 11400000, guid: cb26f7c9589e60d4c815520795907f13, type: 2}
+    encounterRate: 0.2
+  - pokemon: {fileID: 11400000, guid: 485265e5b3d93ed4891140f535d02b4e, type: 2}
     minLevel: 29
-    maxLevel: 32
+    maxLevel: 29
     encounterRate: 0.2
   - pokemon: {fileID: 11400000, guid: 5f7f8c21575ac294fb87df260f0b3507, type: 2}
     minLevel: 29
     maxLevel: 32
-    encounterRate: 0.3
+    encounterRate: 0.2
+  - pokemon: {fileID: 11400000, guid: ffac55dbaf27f2c439b9cd5e843c4d6d, type: 2}
+    minLevel: 29
+    maxLevel: 32
+    encounterRate: 0.2
   battleRatePercent: 10
 --- !u!1 &394556028
 GameObject:
@@ -4345,13 +4349,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pokemons:
-  - baseData: {fileID: 11400000, guid: 954dd8ccd8d6d5341932a650792105ee, type: 2}
+  - baseData: {fileID: 11400000, guid: ffac55dbaf27f2c439b9cd5e843c4d6d, type: 2}
     level: 33
-  - baseData: {fileID: 11400000, guid: 6b2a6e3710c37624aab18bea8b3eef9f, type: 2}
+  - baseData: {fileID: 11400000, guid: cb26f7c9589e60d4c815520795907f13, type: 2}
     level: 33
-  - baseData: {fileID: 11400000, guid: 84aa1fcff54b65c408515578354951bb, type: 2}
+  - baseData: {fileID: 11400000, guid: f946f5fa994f2ef40ab40433ae682c4d, type: 2}
     level: 33
-  evolvePokemonByLevel: 0
+  evolvePokemonByLevel: 1
 --- !u!1 &509121002
 GameObject:
   m_ObjectHideFlags: 0
@@ -4384,8 +4388,7 @@ Transform:
   m_LocalPosition: {x: -17, y: 2.6, z: 9.983179}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1979312220}
+  m_Children: []
   m_Father: {fileID: 1684216417}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &509121004
@@ -4403,10 +4406,10 @@ MonoBehaviour:
   npcId: GuideRoad03
   npcName: Guide
   portrait: {fileID: 21300000, guid: 0e3ae3e929cb5324395833dbe78a6be6, type: 3}
-  introDialog: (Slowpoke, Psyduck, Dratini), (Growlithe, Vulpix, Ponyta, Magmar),
-    (Meoth, Tauros, Lickitung, Flareon)
+  introDialog: (Slowpoke, Psyduck, Dratini, Delibird), (Growlithe, Vulpix, Ponyta,
+    Magby, Slugma), (Meoth, Tauros, Lickitung, Houndour)
   outroDialog: 
-  Party: {fileID: 1979312221}
+  Party: {fileID: 0}
   canHeal: 0
   canShop: 0
   canUseStorage: 0
@@ -5523,15 +5526,19 @@ MonoBehaviour:
   - pokemon: {fileID: 11400000, guid: b922129b38b194249b64aa7c35ccf764, type: 2}
     minLevel: 29
     maxLevel: 31
-    encounterRate: 0.4
+    encounterRate: 0.3
   - pokemon: {fileID: 11400000, guid: 4ab8ad1dca5465a469c6003a11a32e37, type: 2}
-    minLevel: 24
-    maxLevel: 24
+    minLevel: 29
+    maxLevel: 29
     encounterRate: 0.2
   - pokemon: {fileID: 11400000, guid: 754471951d482aa43a85484abe6dd025, type: 2}
     minLevel: 29
     maxLevel: 31
-    encounterRate: 0.4
+    encounterRate: 0.3
+  - pokemon: {fileID: 11400000, guid: 19d920e8447ea1d4fa70f4c02ccba176, type: 2}
+    minLevel: 29
+    maxLevel: 31
+    encounterRate: 0.2
   battleRatePercent: 10
 --- !u!1 &1002541025
 GameObject:
@@ -17822,61 +17829,11 @@ MonoBehaviour:
     minLevel: 29
     maxLevel: 32
     encounterRate: 0.3
-  - pokemon: {fileID: 11400000, guid: 71ef9d893b045df4aab40e66e88cecfa, type: 2}
-    minLevel: 29
-    maxLevel: 32
+  - pokemon: {fileID: 11400000, guid: f946f5fa994f2ef40ab40433ae682c4d, type: 2}
+    minLevel: 23
+    maxLevel: 23
     encounterRate: 0.2
   battleRatePercent: 10
---- !u!1 &1979312219
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1979312220}
-  - component: {fileID: 1979312221}
-  m_Layer: 8
-  m_Name: TrainerParty
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1979312220
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1979312219}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 509121003}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1979312221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1979312219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa22d58be6a4c9c43aca7a55faa739cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pokemons:
-  - baseData: {fileID: 11400000, guid: 68f287b09cf9fae4c8d014cc78e4ed74, type: 2}
-    level: 5
-  - baseData: {fileID: 11400000, guid: b755c1f129904c140bbbe3f979bac3fd, type: 2}
-    level: 5
-  evolvePokemonByLevel: 0
 --- !u!1 &1988286379
 GameObject:
   m_ObjectHideFlags: 0

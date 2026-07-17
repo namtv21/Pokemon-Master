@@ -1,13 +1,16 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemAmountSelectorUI : MonoBehaviour
 {
+    private const int DigitCount = 5;
+    private const int MaxRepresentableAmount = 99999;
+    private const string DefaultHint = "[Left/Right] Select digit   [Up/Down] Change   [Z] Confirm   [X] Cancel";
+
     public static ItemAmountSelectorUI Instance { get; private set; }
+    public int CurrentAmount => ComposeAmount();
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void ResetInstance()
@@ -27,24 +30,38 @@ public class ItemAmountSelectorUI : MonoBehaviour
             return existing;
         }
 
-        var canvas = FindObjectOfType<Canvas>(true);
-        GameObject root = new GameObject("ItemAmountSelectorUI");
-        if (canvas != null)
-            root.transform.SetParent(canvas.transform, false);
+        var root = new GameObject(
+            "ItemAmountSelectorUI",
+            typeof(RectTransform),
+            typeof(Canvas),
+            typeof(CanvasScaler),
+            typeof(GraphicRaycaster));
 
-        var selector = root.AddComponent<ItemAmountSelectorUI>();
-        Instance = selector;
-        return selector;
+        if (MenuController.Instance != null)
+            root.transform.SetParent(MenuController.Instance.transform, false);
+
+        var canvas = root.GetComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.sortingOrder = 5000;
+
+        var scaler = root.GetComponent<CanvasScaler>();
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.referenceResolution = new Vector2(1920f, 1080f);
+        scaler.matchWidthOrHeight = 0.5f;
+
+        return root.AddComponent<ItemAmountSelectorUI>();
     }
 
     [SerializeField] private GameObject panel;
     [SerializeField] private TextMeshProUGUI promptText;
-    [SerializeField] private TextMeshProUGUI[] optionTexts;
+    [SerializeField] private TextMeshProUGUI hintText;
+    [SerializeField] private TextMeshProUGUI[] digitTexts;
 
-    private readonly List<(int amount, string label)> options = new();
+    private readonly int[] digits = new int[DigitCount];
     private Action<int> onSelected;
     private Action onCancel;
-    private int currentSelection;
+    private int currentDigit;
+    private int maxAmount;
     private float inputLockedUntil;
     private bool built;
 
@@ -68,40 +85,27 @@ public class ItemAmountSelectorUI : MonoBehaviour
             Instance = null;
     }
 
-    public void Show(int maxAmount, Action<int> onSelectedCallback, Action onCancelCallback = null)
+    public void Show(int availableAmount, Action<int> onSelectedCallback, Action onCancelCallback = null)
     {
         BuildIfNeeded();
-
-        if (panel == null || optionTexts == null || optionTexts.Length == 0)
+        if (panel == null || digitTexts == null || digitTexts.Length != DigitCount)
             return;
 
-        maxAmount = Mathf.Max(1, maxAmount);
-        options.Clear();
-
-        var presets = new[] { 10, 50, 100, 500, 1000, maxAmount };
-        foreach (var preset in presets)
-        {
-            int amount = Mathf.Clamp(preset, 1, maxAmount);
-            string label = amount >= maxAmount ? $"All ({maxAmount})" : amount.ToString();
-            if (!options.Any(o => o.amount == amount))
-                options.Add((amount, label));
-        }
-
+        maxAmount = Mathf.Clamp(availableAmount, 1, MaxRepresentableAmount);
+        Array.Clear(digits, 0, digits.Length);
+        currentDigit = DigitCount - 1;
         onSelected = onSelectedCallback;
         onCancel = onCancelCallback;
-        currentSelection = 0;
         inputLockedUntil = Time.unscaledTime + 0.12f;
 
         if (promptText != null)
-            promptText.text = $"Choose EXP amount (max {maxAmount})";
-
-        for (int i = 0; i < optionTexts.Length; i++)
         {
-            bool active = i < options.Count;
-            optionTexts[i].gameObject.SetActive(active);
-            if (active)
-                optionTexts[i].text = options[i].label;
+            promptText.text = availableAmount > MaxRepresentableAmount
+                ? $"Choose EXP amount (available {availableAmount}, max per use {MaxRepresentableAmount})"
+                : $"Choose EXP amount (available {availableAmount})";
         }
+
+        SetHint(DefaultHint, Color.white);
 
         if (panel.TryGetComponent<CanvasGroup>(out var canvasGroup))
         {
@@ -112,8 +116,8 @@ public class ItemAmountSelectorUI : MonoBehaviour
 
         panel.transform.SetAsLastSibling();
         panel.SetActive(true);
-        UpdateSelection();
-
+        RefreshDigits();
+        UiFx.PopIn(panel);
     }
 
     public void Hide()
@@ -130,10 +134,8 @@ public class ItemAmountSelectorUI : MonoBehaviour
             panel.SetActive(false);
         }
 
-        options.Clear();
         onSelected = null;
         onCancel = null;
-
     }
 
     private void Update()
@@ -151,24 +153,31 @@ public class ItemAmountSelectorUI : MonoBehaviour
         if (Time.unscaledTime < inputLockedUntil)
             return;
 
-        if (options.Count == 0)
-            return;
-
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            currentSelection = (currentSelection - 1 + options.Count) % options.Count;
-            UpdateSelection();
+            currentDigit = (currentDigit - 1 + DigitCount) % DigitCount;
+            RefreshDigits();
+        }
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            currentDigit = (currentDigit + 1) % DigitCount;
+            RefreshDigits();
+        }
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            digits[currentDigit] = (digits[currentDigit] + 1) % 10;
+            RefreshDigits();
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            currentSelection = (currentSelection + 1) % options.Count;
-            UpdateSelection();
+            digits[currentDigit] = (digits[currentDigit] + 9) % 10;
+            RefreshDigits();
         }
         else if (Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Return))
         {
             ExecuteSelection();
         }
-        else if (Input.GetKeyDown(KeyCode.X))
+        else if (Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.Escape))
         {
             var cancel = onCancel;
             Hide();
@@ -178,24 +187,63 @@ public class ItemAmountSelectorUI : MonoBehaviour
 
     private void ExecuteSelection()
     {
-        if (currentSelection < 0 || currentSelection >= options.Count)
+        int amount = ComposeAmount();
+        if (amount <= 0)
+        {
+            SetHint("Amount must be at least 0 0 0 0 1.", Color.yellow);
             return;
+        }
 
-        int amount = options[currentSelection].amount;
+        if (amount > maxAmount)
+        {
+            SetHint($"Only {maxAmount} EXP is available.", new Color(1f, 0.45f, 0.35f));
+            return;
+        }
+
         var callback = onSelected;
         Hide();
         callback?.Invoke(amount);
     }
 
-    private void UpdateSelection()
+    private int ComposeAmount()
     {
-        for (int i = 0; i < optionTexts.Length; i++)
+        int amount = 0;
+        for (int i = 0; i < DigitCount; i++)
+            amount = amount * 10 + digits[i];
+        return amount;
+    }
+
+    private void RefreshDigits()
+    {
+        int amount = ComposeAmount();
+        bool exceedsAvailable = amount > maxAmount;
+
+        for (int i = 0; i < DigitCount; i++)
         {
-            bool active = i < options.Count;
-            optionTexts[i].gameObject.SetActive(active);
-            if (active)
-                optionTexts[i].color = i == currentSelection ? Color.yellow : Color.white;
+            var digitText = digitTexts[i];
+            if (digitText == null)
+                continue;
+
+            digitText.text = digits[i].ToString();
+            digitText.color = exceedsAvailable
+                ? (i == currentDigit ? new Color(1f, 0.65f, 0.15f) : new Color(1f, 0.4f, 0.35f))
+                : (i == currentDigit ? Color.yellow : Color.white);
+            digitText.transform.localScale = i == currentDigit ? Vector3.one * 1.18f : Vector3.one;
         }
+
+        if (exceedsAvailable)
+            SetHint($"Selected {amount}; only {maxAmount} EXP is available.", new Color(1f, 0.45f, 0.35f));
+        else
+            SetHint(DefaultHint, Color.white);
+    }
+
+    private void SetHint(string message, Color color)
+    {
+        if (hintText == null)
+            return;
+
+        hintText.text = message;
+        hintText.color = color;
     }
 
     private void BuildIfNeeded()
@@ -207,69 +255,88 @@ public class ItemAmountSelectorUI : MonoBehaviour
 
         if (panel == null)
         {
-            var root = transform.Find("Panel");
-            if (root != null)
-                panel = root.gameObject;
+            var existingPanel = transform.Find("Panel");
+            if (existingPanel != null)
+                panel = existingPanel.gameObject;
         }
 
-        if (panel != null)
+        if (panel == null)
+            CreatePanel();
+
+        EnsureCanvasGroup();
+
+        promptText ??= FindText("PromptText");
+        if (promptText == null)
+            promptText = CreateText(panel.transform, "PromptText", new Vector2(0f, 105f), new Vector2(680f, 48f), 30f);
+
+        hintText ??= FindText("HintText");
+        if (hintText == null)
+            hintText = CreateText(panel.transform, "HintText", new Vector2(0f, -100f), new Vector2(700f, 44f), 21f);
+
+        digitTexts = new TextMeshProUGUI[DigitCount];
+        for (int i = 0; i < DigitCount; i++)
         {
-            promptText ??= panel.GetComponentsInChildren<TextMeshProUGUI>(true)
-                .FirstOrDefault(t => t != null && t.gameObject.name == "PromptText");
-
-            optionTexts ??= panel.GetComponentsInChildren<TextMeshProUGUI>(true)
-                .Where(t => t != null && t != promptText)
-                .OrderBy(t => t.transform.GetSiblingIndex())
-                .ToArray();
-
-            return;
-        }
-
-        var panelRoot = new GameObject("Panel");
-        panelRoot.transform.SetParent(transform, false);
-        panel = panelRoot;
-
-        var rect = panelRoot.AddComponent<RectTransform>();
-        rect.anchorMin = new Vector2(0.5f, 0.5f);
-        rect.anchorMax = new Vector2(0.5f, 0.5f);
-        rect.pivot = new Vector2(0.5f, 0.5f);
-        rect.sizeDelta = new Vector2(520f, 360f);
-
-        var image = panelRoot.AddComponent<Image>();
-        image.color = new Color(0f, 0f, 0f, 0.85f);
-
-        var canvasGroup = panelRoot.AddComponent<CanvasGroup>();
-        canvasGroup.alpha = 0f;
-        canvasGroup.interactable = false;
-        canvasGroup.blocksRaycasts = false;
-
-        promptText = CreateText(panelRoot.transform, "PromptText", new Vector2(0f, 130f), 32, TextAlignmentOptions.Center);
-        promptText.text = "Choose EXP amount";
-
-        optionTexts = new TextMeshProUGUI[6];
-        for (int i = 0; i < optionTexts.Length; i++)
-        {
-            optionTexts[i] = CreateText(panelRoot.transform, $"Option{i + 1}", new Vector2(0f, 70f - i * 40f), 28, TextAlignmentOptions.Center);
-            optionTexts[i].gameObject.SetActive(false);
+            digitTexts[i] = FindText($"Digit{i}");
+            if (digitTexts[i] == null)
+            {
+                float x = (i - (DigitCount - 1) * 0.5f) * 92f;
+                digitTexts[i] = CreateText(panel.transform, $"Digit{i}", new Vector2(x, 5f), new Vector2(72f, 86f), 58f);
+            }
         }
     }
 
-    private TextMeshProUGUI CreateText(Transform parent, string name, Vector2 anchoredPos, float fontSize, TextAlignmentOptions alignment)
+    private void CreatePanel()
     {
-        var go = new GameObject(name);
-        go.transform.SetParent(parent, false);
+        var panelRoot = new GameObject("Panel", typeof(RectTransform), typeof(Image), typeof(CanvasGroup));
+        panelRoot.transform.SetParent(transform, false);
+        panel = panelRoot;
 
-        var rect = go.AddComponent<RectTransform>();
+        var rect = panelRoot.GetComponent<RectTransform>();
         rect.anchorMin = new Vector2(0.5f, 0.5f);
         rect.anchorMax = new Vector2(0.5f, 0.5f);
         rect.pivot = new Vector2(0.5f, 0.5f);
-        rect.anchoredPosition = anchoredPos;
-        rect.sizeDelta = new Vector2(460f, 36f);
+        rect.sizeDelta = new Vector2(780f, 320f);
+
+        var image = panelRoot.GetComponent<Image>();
+        image.color = new Color(0.035f, 0.055f, 0.08f, 0.96f);
+    }
+
+    private void EnsureCanvasGroup()
+    {
+        if (panel != null && panel.GetComponent<CanvasGroup>() == null)
+            panel.AddComponent<CanvasGroup>();
+    }
+
+    private TextMeshProUGUI FindText(string objectName)
+    {
+        if (panel == null)
+            return null;
+
+        var child = panel.transform.Find(objectName);
+        return child != null ? child.GetComponent<TextMeshProUGUI>() : null;
+    }
+
+    private static TextMeshProUGUI CreateText(
+        Transform parent,
+        string objectName,
+        Vector2 anchoredPosition,
+        Vector2 size,
+        float fontSize)
+    {
+        var go = new GameObject(objectName, typeof(RectTransform));
+        go.transform.SetParent(parent, false);
+
+        var rect = go.GetComponent<RectTransform>();
+        rect.anchorMin = new Vector2(0.5f, 0.5f);
+        rect.anchorMax = new Vector2(0.5f, 0.5f);
+        rect.pivot = new Vector2(0.5f, 0.5f);
+        rect.anchoredPosition = anchoredPosition;
+        rect.sizeDelta = size;
 
         var text = go.AddComponent<TextMeshProUGUI>();
         text.font = TMP_Settings.defaultFontAsset;
         text.fontSize = fontSize;
-        text.alignment = alignment;
+        text.alignment = TextAlignmentOptions.Center;
         text.color = Color.white;
         text.raycastTarget = false;
         return text;

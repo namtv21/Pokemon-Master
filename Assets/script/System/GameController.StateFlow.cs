@@ -50,8 +50,34 @@ public partial class GameController
 
     public void SetState(GameState newState)
     {
+        if (battleSceneLoaded && battleCameraIsolationActive && State == GameState.Battle && newState != GameState.Battle)
+        {
+            Debug.LogWarning($"[Battle] Ignored state change from Battle to {newState} while BattleScene is active.");
+            return;
+        }
+
         State = newState;
         OnStateChanged?.Invoke(newState);
+    }
+
+    public void PrepareForSaveLoad()
+    {
+        StopAllCoroutines();
+
+        SetBattleCameraIsolation(false);
+        SetOverworldSceneVisibility(true);
+
+        battleSceneLoaded = false;
+        battleSystem = null;
+        battleTransition = null;
+        isSceneTransitioning = false;
+        pendingBattleAllowRun = true;
+        activeOverworldPokemon = null;
+        activeOverworldPokemonCaptured = false;
+        cachedOverworldSceneName = null;
+        LastBattleOutcome = BattleOutcome.None;
+
+        SetState(GameState.Overworld);
     }
 
     private void Update()
@@ -95,6 +121,12 @@ public partial class GameController
         }
     }
 
+    private void LateUpdate()
+    {
+        if (battleSceneLoaded && battleCameraIsolationActive)
+            EnforceBattleCameraSettings();
+    }
+
     private void HandleOverworldUpdate()
     {
         if (MainStoryDirector.Instance != null && MainStoryDirector.Instance.IsPlayingStep)
@@ -118,11 +150,7 @@ public partial class GameController
 
     private void HandleBattleUpdate()
     {
-        if (Time.unscaledTime < nextBattleCameraEnforceTime)
-            return;
-
-        EnforceBattleCameraSettings();
-        nextBattleCameraEnforceTime = Time.unscaledTime + 0.1f;
+        // Battle input is handled by BattleSystem. Camera isolation is maintained in LateUpdate.
     }
 
     private void OpenMenu()

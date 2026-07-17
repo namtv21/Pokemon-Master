@@ -30,6 +30,7 @@ public class CompanionAmbientHud : MonoBehaviour
     private const float AiAmbientMinGap       = 180f;  // tối thiểu 3 phút giữa 2 lần gọi AI ambient
     private const float AiAmbientChance       = 0.25f; // xác suất dùng AI khi vào scene (nếu đủ điều kiện)
     private const float AiRaceTimeout         = 6f;    // AI trả lời chậm hơn 6s → dùng câu offline
+    private const float PikachuMoveStopGrace  = 0.2f;  // che frame ngắt giữa hai bước di chuyển grid
     private const int   MaxBubbleChars        = 160;
 
     private const string PrefHudEnabled  = "CompanionHudEnabled";
@@ -77,6 +78,7 @@ public class CompanionAmbientHud : MonoBehaviour
     private bool pikachuWasMoving;
     private int pikachuRunFrame;
     private float nextPikachuRunFrameAt;
+    private float lastPikachuMoveSignalAt = -999f;
     private float nextPikachuIdleVariantAt;
     private float pikachuIdleVariantUntil;
     private bool uiBuilt;
@@ -477,6 +479,7 @@ public class CompanionAmbientHud : MonoBehaviour
                 portraitImage.sprite = companion.Base.FrontSprite;
             pikachuPortraitActive = false;
             pikachuWasMoving = false;
+            lastPikachuMoveSignalAt = -999f;
             return;
         }
 
@@ -493,9 +496,16 @@ public class CompanionAmbientHud : MonoBehaviour
             return;
         }
 
-        var player = PlayerController.Instance;
-        bool moving = player != null && player.isMoving;
         float now = Time.unscaledTime;
+        var player = PlayerController.Instance;
+        bool rawMoving = player != null && player.isMoving;
+        if (rawMoving)
+            lastPikachuMoveSignalAt = now;
+
+        // isMoving tắt trong một frame khi kết thúc từng ô grid. Chỉ chuyển Idle
+        // khi tín hiệu đã mất đủ lâu để tránh Run/Idle nhấp nháy lúc giữ phím.
+        bool moving = rawMoving ||
+                      (pikachuWasMoving && now - lastPikachuMoveSignalAt <= PikachuMoveStopGrace);
 
         if (moving)
         {

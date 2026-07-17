@@ -199,7 +199,7 @@ public class MenuController : MonoBehaviour
                 mainMenuUI.Close();
                 SetState(MenuState.Companion);
 
-                // Đã dựng Nhà Pokemon → mở nhà (chat từng con giờ nằm trong Party [C] hoặc trong nhà).
+                // Nhà Pokemon là điểm vào chung cho tương tác và chat với từng Pokemon.
                 if (pokemonHomeUI != null)
                 {
                     OpenHome();

@@ -156,10 +156,70 @@ public class SaveLoadSystem : MonoBehaviour
         runtimeNpcTransformStates = new Dictionary<string, NPCStateSaveData>(StringComparer.OrdinalIgnoreCase);
     }
 
-    private string GetSavePath(string slotName)
+    public static string GetSavePath(string slotName)
     {
-        string exeFolder = Path.GetFullPath(Path.Combine(Application.dataPath, ".."));
-        return Path.Combine(exeFolder, slotName + ".json");
+        return Path.Combine(Application.persistentDataPath, NormalizeSlotName(slotName) + ".json");
+    }
+
+    public static string GetExistingSavePath(string slotName)
+    {
+        string preferredPath = GetSavePath(slotName);
+        if (File.Exists(preferredPath))
+            return preferredPath;
+
+        string legacyPath = GetLegacySavePath(slotName);
+        return File.Exists(legacyPath) ? legacyPath : preferredPath;
+    }
+
+    public static bool TryReadSaveData(string slotName, out SaveData data, out string path)
+    {
+        data = null;
+        path = GetExistingSavePath(slotName);
+        if (!File.Exists(path))
+            return false;
+
+        try
+        {
+            data = JsonUtility.FromJson<SaveData>(File.ReadAllText(path));
+            if (data == null)
+            {
+                Debug.LogError($"[SaveLoad] Save file is invalid: {path}");
+                return false;
+            }
+
+            if (data.schemaVersion > SaveData.CurrentSchemaVersion)
+            {
+                Debug.LogError($"[SaveLoad] Save schema {data.schemaVersion} is newer than supported schema {SaveData.CurrentSchemaVersion}.");
+                data = null;
+                return false;
+            }
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError($"[SaveLoad] Failed to read save file '{path}': {ex.Message}");
+            data = null;
+            return false;
+        }
+    }
+
+    private static string GetLegacySavePath(string slotName)
+    {
+        string executableFolder = Path.GetFullPath(Path.Combine(Application.dataPath, ".."));
+        return Path.Combine(executableFolder, NormalizeSlotName(slotName) + ".json");
+    }
+
+    private static string NormalizeSlotName(string slotName)
+    {
+        if (string.IsNullOrWhiteSpace(slotName))
+            throw new ArgumentException("Save slot name cannot be empty.", nameof(slotName));
+
+        string normalized = slotName.Trim();
+        if (normalized.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+            throw new ArgumentException($"Save slot name '{slotName}' contains invalid characters.", nameof(slotName));
+
+        return normalized;
     }
 
     // ---------------- SAVE ----------------
@@ -172,6 +232,8 @@ public class SaveLoadSystem : MonoBehaviour
 
         var data = new SaveData
         {
+            schemaVersion = SaveData.CurrentSchemaVersion,
+            gameVersion = Application.version,
             partyPokemons = new List<PokemonData>(),
             storagePokemons = new List<PokemonData>(),
             money = inventory != null ? inventory.Money : 0,
@@ -343,32 +405,25 @@ public class SaveLoadSystem : MonoBehaviour
                 data.badgeIds.Add(badgeId);
         }
 
+        string path = GetSavePath(slotName);
+        Directory.CreateDirectory(Path.GetDirectoryName(path));
         string json = JsonUtility.ToJson(data, true);
-        File.WriteAllText(GetSavePath(slotName), json);
+        File.WriteAllText(path, json);
 
-        Debug.Log($"Game Saved to {GetSavePath(slotName)}");
+        Debug.Log($"Game Saved to {path}");
         ToastNotificationManager.Instance?.Show($"Saved to {slotName}.", Color.white, SaveToastHoldTime);
     }
 
     // ---------------- LOAD (chỉ dùng trong game, không đổi scene) ----------------
     public void Load(string slotName)
     {
-        string path = GetSavePath(slotName);
-        if (!File.Exists(path))
+        if (!TryReadSaveData(slotName, out SaveData data, out string path))
         {
             Debug.LogWarning($"No save file found at {path}");
             return;
         }
 
-        string json = File.ReadAllText(path);
-        SaveData data = JsonUtility.FromJson<SaveData>(json);
-
-        if (data == null)
-        {
-            Debug.LogError($"[SaveLoad] Save file is invalid: {path}");
-            return;
-        }
-
+        GameController.Instance?.PrepareForSaveLoad();
         BeginLoadFade();
         pendingLoadData = data;
 
@@ -384,24 +439,25 @@ public class SaveLoadSystem : MonoBehaviour
     // ---------------- LOAD FROM MENU (chuyển scene, áp dữ liệu sau) ----------------
     public void LoadFromMenu(string slotName)
     {
-        string path = GetSavePath(slotName);
-        if (!File.Exists(path))
+        if (!TryReadSaveData(slotName, out SaveData data, out string path))
         {
             Debug.LogWarning($"No save file found at {path}");
             return;
         }
 
-        string json = File.ReadAllText(path);
-        SaveData data = JsonUtility.FromJson<SaveData>(json);
+        // Lưu tạm dữ liệu
+        GameController.Instance?.PrepareForSaveLoad();
+        pendingLoadData = data;
 
-        if (data == null)
+        // The loaded scene needs global systems during Awake/OnEnable. Creating
+        // SystemRoot from sceneLoaded is too late for a cold load from Main Menu.
+        if (BootstrapLoader.EnsureSystemRoot() == null)
         {
-            Debug.LogError($"[SaveLoad] Save file is invalid: {path}");
+            Debug.LogError("[SaveLoad] Cannot load because SystemRoot could not be initialized.");
+            pendingLoadData = null;
             return;
         }
 
-        // Lưu tạm dữ liệu
-        pendingLoadData = data;
         BeginLoadFade();
 
         // Chuyển sang scene đã lưu
@@ -849,13 +905,18 @@ public class SaveLoadSystem : MonoBehaviour
     // ---------------- LẤY DANH SÁCH FILE SAVE ----------------
     public List<string> GetAllSaveFiles()
     {
-        string exeFolder = Path.GetFullPath(Path.Combine(Application.dataPath, ".."));
-        var files = Directory.GetFiles(exeFolder, "SaveFile*.json");
-        List<string> saveFiles = new List<string>();
+        var saveFiles = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        AddSaveFilesFromDirectory(Application.persistentDataPath, saveFiles);
+        AddSaveFilesFromDirectory(Path.GetFullPath(Path.Combine(Application.dataPath, "..")), saveFiles);
+        return new List<string>(saveFiles);
+    }
 
-        foreach (var f in files)
-            saveFiles.Add(Path.GetFileNameWithoutExtension(f));
+    private static void AddSaveFilesFromDirectory(string directory, HashSet<string> saveFiles)
+    {
+        if (!Directory.Exists(directory))
+            return;
 
-        return saveFiles;
+        foreach (var file in Directory.GetFiles(directory, "SaveFile*.json"))
+            saveFiles.Add(Path.GetFileNameWithoutExtension(file));
     }
 }

@@ -5,8 +5,17 @@ public class PlayerParty : MonoBehaviour
 {
     public static PlayerParty Instance { get; private set; }
 
+    [Header("Passive Friendship")]
+    [Tooltip("Số giây chơi để mỗi Pokemon đang trong party tự động nhận +1 friendship.")]
+    [SerializeField, Min(1f)] private float passiveFriendshipIntervalSeconds = 180f;
+    [Tooltip("Số friendship tối đa nhận tự động cho mỗi Pokemon trong một phiên. Đặt 0 để không giới hạn.")]
+    [SerializeField, Min(0)] private int passiveFriendshipCapPerSession = 3;
+
     //[SerializeField] private List<Pokemon> pokemons = new List<Pokemon>();
     public List<Pokemon> Pokemons { get; private set; } = new List<Pokemon>();
+
+    private readonly Dictionary<Pokemon, int> passiveFriendshipGained = new Dictionary<Pokemon, int>();
+    private float passiveFriendshipTimer;
 
     private void Awake()
     {
@@ -26,6 +35,30 @@ public class PlayerParty : MonoBehaviour
             return;
 
         EnsureDefaultPokemonIfEmpty();
+    }
+
+    private void Update()
+    {
+        if (SaveLoadSystem.IsLoadInProgress || Pokemons.Count == 0)
+            return;
+
+        passiveFriendshipTimer += Time.deltaTime;
+        if (passiveFriendshipTimer < passiveFriendshipIntervalSeconds)
+            return;
+
+        passiveFriendshipTimer %= passiveFriendshipIntervalSeconds;
+        foreach (var pokemon in Pokemons)
+        {
+            if (pokemon == null)
+                continue;
+
+            passiveFriendshipGained.TryGetValue(pokemon, out int gained);
+            if (passiveFriendshipCapPerSession > 0 && gained >= passiveFriendshipCapPerSession)
+                continue;
+
+            pokemon.AddFriendship(1);
+            passiveFriendshipGained[pokemon] = gained + 1;
+        }
     }
 
     public void EnsureDefaultPokemonIfEmpty()

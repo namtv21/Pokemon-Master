@@ -24,5 +24,9 @@ MonoBehaviour:
     requiredCount: 1
   turnInNpcId: dore
   rewardMoney: 20
-  rewardItems: []
+  rewardItems:
+  - item: {fileID: 11400000, guid: 098eab360dda8084a8984f7bffa8162a, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 1cc76d8b2d245f0428b9b4f393a87af4, type: 2}
+    amount: 5
   rewardPokemons: []

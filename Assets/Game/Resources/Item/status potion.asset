@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: status potion
   description: "H\u1ED3i ph\u1EE5c tr\u1EA1ng th\xE1i v\u1EC1 ban \u0111\u1EA7u"
   icon: {fileID: 21300000, guid: 59e36f86b98d4ab499b8b9befb9a5c3c, type: 3}
-  itemType: 0
+  itemType: 2
   price: 10
   consumable: 1
   healAmount: 0
